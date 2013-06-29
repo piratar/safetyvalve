@@ -59,7 +59,7 @@ def update_issues():
         print 'New Thing created!'
     
     for mal in reversed(obtain_thingmal(thing)[-5:]):
-        issue, created = Issue.objects.get_or_create(session=session, issue_num=mal['issue_num'])
+        issue, created = Issue.objects.get_or_create(name=mal['name'], session=session, issue_num=mal['issue_num'])
         if not created:
             break
         issue.name = mal['name']

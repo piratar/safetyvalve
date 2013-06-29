@@ -23,8 +23,8 @@ class Issue(models.Model):
 
     issue_num = models.IntegerField() # IS: Málsnúmer
     issue_type = models.CharField(max_length = 1, choices = ISSUE_TYPES) # IS: Málstegund
-    name = models.CharField(max_length = 50)
-    description = models.CharField(max_length = 100)
+    name = models.CharField(max_length = 500)
+    description = models.TextField()
 
     # External URLs
     path_html = models.CharField(max_length = 200)
