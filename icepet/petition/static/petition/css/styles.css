@@ -1,3 +1,17 @@
 body {
-	padding-top: 60px;
+	padding-top: 80px;
+}
+
+a, a:active, a:focus {
+  outline: none;
+  -moz-outline-style: none;
+}
+
+a.share_icon, a.share_icon:hover {
+	font-size: 35px;
+	text-decoration: none;
+}
+
+.date_created {
+	font-size: .75em;
 }

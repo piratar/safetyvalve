@@ -5,8 +5,18 @@
 		<div class="row">
 			<div class="span12">
 
-				<a href="#">{{p.name}}</a> <br />
-				<span class="date_created">{{p.date_created}}</span>
+				<a href="/petition/{{p.id}}">{{p.name}}</a> <br />
+
+				<span class="date_created">{{p.date_created|date:"DATE_FORMAT"|title}}</span> -
+				<span class="num_signatures">{{p.num_signatures}}</span> - 
+				Deila: 
+				<a class="share_icon" target="_blank" href="{{p.url_facebook_share}}"><i class="icon-facebook-sign"></i></a>
+				
+				<a class="share_icon" target="_blank" href="{{p.url_twitter_share}}"><i class="icon-twitter-sign"></i></a>
+
+				<a class="share_icon" target="_blank" href="{{p.url_googleplus_share}}"><i class="icon-google-plus-sign"></i></a>
+
+				<br /><br /><br />
 
 			</div>
 		</div>

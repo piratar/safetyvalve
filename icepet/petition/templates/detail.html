@@ -1,2 +1,9 @@
 {% extends "base.html" %}
-{% block test %} {{petition.name}} {% endblock %}
+
+{% block extra_meta %}
+		<meta name="og:title" property="og:title" content="{{petition.name}}" />
+{% endblock %}
+
+{% block title %}
+	{{petition.name}}
+{% endblock %}
