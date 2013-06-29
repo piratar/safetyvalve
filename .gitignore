@@ -5,3 +5,7 @@ include/
 lib/
 local/
 share/
+
+# Ignore local databasefiles
+*.sqlite3
+
