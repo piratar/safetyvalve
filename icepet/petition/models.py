@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 # Create your models here
 class Petition(models.Model):
     name = models.CharField(max_length=500)
+    resource = models.CharField(max_length=500)
+    description = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
 
