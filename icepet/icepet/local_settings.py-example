@@ -5,8 +5,11 @@ DEBUG = False
 INSTANCE_NAME = ''
 INSTANCE_SLUG = ''
 INSTANCE_LOGO = ''
+INSTANCE_URL = ''
 
 TIME_ZONE = 'Iceland'
+LANGUAGE_CODE = 'is'
+DATE_FORMAT = 'd-F-Y'
 
 # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 # at the DATABASE_ENGINE
