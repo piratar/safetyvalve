@@ -8,10 +8,11 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
-		<link href="{{STATIC_URL}}css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="{{STATIC_URL}}bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="{{STATIC_URL}}petition/css/styles.css" rel="stylesheet">
+		<link href="{{STATIC_URL}}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
-		<script src="{{STATIC_URL}}js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="{{STATIC_URL}}bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	</head>
 
 	<body>
@@ -30,25 +31,26 @@
 	              <li class="active"><a href="/">Home</a></li>
 	              <li><a href="#about">About</a></li>
 	              <li><a href="#contact">Contact</a></li>
-	              <li>{% block test %}d{% endblock %}</li>
 	            </ul>
 	          </div><!--/.nav-collapse -->
 	        </div>
 	      </div>
 	    </div>
-test test
-	    <div id="messages">
-	      {% if messages %}
-	        {% for message in messages %}
-	          <div class="alert alert-{{message.tags}}">
-	            <a class="close" data-dismiss="alert">×</a>
-	            {{message}}
-	          </div>
-	        {% endfor %}
-	      {% endif %}
-	    </div>
 
 	    <div class="container">
+
+	    	<div class="row">
+
+	    		<div class="span9">
+	    			test
+	    		</div>
+
+	    		<div class="span3">
+	    			test2
+	    		</div>
+
+	    	</div>
+
 	    {% block content %}
 	    {% endblock %}
 	    </div> <!-- /container -->

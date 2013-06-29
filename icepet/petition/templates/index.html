@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+	{% for p in petitions %}
+		<div class="row">
+			<div class="span12">
+
+				<a href="#">{{p.name}}</a> <br />
+				<span class="date_created">{{p.date_created}}</span>
+
+			</div>
+		</div>
+	{% endfor %}
+
+{% endblock %}
