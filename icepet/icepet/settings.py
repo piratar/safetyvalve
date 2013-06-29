@@ -2,24 +2,28 @@ import os
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 # Django settings for icepet project.
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
-)
+try:
+    from local_settings import *
+except ImportError:
+    raise Exception('You need to set up local_settings.py (see local_settings.py-example')
+
+# Some error checking for local_settings
+if not SECRET_KEY:
+    raise Exception('You need to specify Django SECRET_KEY in the local_settings!')
+
+TEMPLATE_DEBUG = DEBUG
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'icepet',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': 'icepet',
-        'PASSWORD': 'icepet',
-        'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '3306',                      # Set to empty string for default.
+        'ENGINE': DATABASE_ENGINE,
+        'NAME': DATABASE_NAME,
+        'USER': DATABASE_USER,
+        'PASSWORD': DATABASE_PASSWORD,
+        'HOST': DATABASE_HOST,
+        'PORT': DATABASE_PORT,
     }
 }
 
@@ -83,9 +87,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = '24pbx=fi3j-+uf4zq9ktkvscy124203=y-8tm9ws&(+r(wppus'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

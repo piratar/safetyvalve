@@ -1,0 +1,31 @@
+# -*- coding: utf-8 -*-
+
+DEBUG = False
+
+INSTANCE_NAME = ''
+INSTANCE_SLUG = ''
+INSTANCE_LOGO = ''
+
+TIME_ZONE = 'Iceland'
+
+# Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+# at the DATABASE_ENGINE
+DATABASE_ENGINE = 'django.db.backends.'
+DATABASE_HOST = ''
+DATABASE_PORT = ''
+DATABASE_NAME = ''
+DATABASE_USER = ''
+DATABASE_PASSWORD = ''
+
+# Required!
+SECRET_KEY = ''
+
+#EMAIL_HOST = ''
+#EMAIL_PORT = ''
+#EMAIL_HOST_USER = ''
+#EMAIL_HOST_PASSWORD = ''
+#EMAIL_USE_TLS = True
+
+ADMINS = (
+    ('username', 'user@example.com'),
+)
