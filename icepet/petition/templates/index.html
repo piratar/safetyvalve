@@ -3,18 +3,22 @@
 
 	{% for p in petitions %}
 		<div class="row">
-			<div class="span12">
+			<div class="span12 petition_item">
 
-				<a href="/petition/{{p.id}}">{{p.name}}</a> <br />
+				<a href="/petition/{{p.id}}"><h2>{{p.name|title}}</h2></a> <br />
 
-				<span class="date_created">{{p.date_created|date:"DATE_FORMAT"|title}}</span> -
-				<span class="num_signatures">{{p.num_signatures}}</span> - 
-				Deila: 
-				<a class="share_icon" target="_blank" href="{{p.url_facebook_share}}"><i class="icon-facebook-sign"></i></a>
-				
-				<a class="share_icon" target="_blank" href="{{p.url_twitter_share}}"><i class="icon-twitter-sign"></i></a>
+				<a class="addremove_signature" href="#"><i class="icon-pencil"></i> bæta við undirskrift</a><br />
 
-				<a class="share_icon" target="_blank" href="{{p.url_googleplus_share}}"><i class="icon-google-plus-sign"></i></a>
+				<div class="details">
+					<span class="date_created">{{p.date_created|date:"DATE_FORMAT"|title}}</span> -
+					<span class="num_signatures">{{p.num_signatures}} undirskrift(ur)</span> - 
+					Deila: 
+					<a href="{{p.url_facebook_share}}" target="_blank" class="share_icon"><i class="icon-facebook-sign"></i></a>
+					
+					<a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="icon-twitter-sign"></i></a>
+
+					<a href="{{p.url_googleplus_share}}" target="_blank" class="share_icon"><i class="icon-google-plus-sign"></i></a>
+				</div>
 
 				<br /><br /><br />
 

@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'icepet.views.home', name='home'),
+    url(r'^$', 'petition.views.index', name='index'),
     # url(r'^icepet/', include('icepet.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

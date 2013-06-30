@@ -6,12 +6,39 @@ a, a:active, a:focus {
   outline: none;
   -moz-outline-style: none;
 }
+.pe
+a:hover {
+	cursor: hand;
+}
 
-a.share_icon, a.share_icon:hover {
-	font-size: 35px;
+.petition_item h2 {
+	font-size: 1.5em;
+	margin-bottom: 0;
+	display: inline-block;
+}
+
+.petition_item .details {
+	font-size: .75em;
+}
+
+.petition_item .details a.share_icon, a.share_icon, a.share_icon:hover {
+	font-size: 2.5em;
 	text-decoration: none;
 }
 
-.date_created {
-	font-size: .75em;
+a.addremove_signature {
+	font-size: .85em;
+	cursor: hand;
+}
+
+a.addremove_signature i {
+	font-size: 2em;
+}
+
+a.addremove_signature:hover, a.addremove_signature:focus, a.addremove_signature:visited {
+	text-decoration: none;
+}
+
+.petition_detail h1 {
+	font-size: 1.95em;
 }
