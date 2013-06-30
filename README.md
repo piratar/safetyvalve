@@ -3,12 +3,13 @@ icepet
 
 after installing, make sure to run:
 
-$ pip install -r requirements.txt
+    cd icepet
+    pip install -r requirements.txt
 
-and
+then:
 
-$ python manage.py syncdb # (if you haven't already done so)
-
-and finally
-
-$ python manage.py collectstatic
+    cd icepet (yes, again)
+    python manage.py syncdb (if you haven't already done so)
+    python manage.py collectstatic (optional in dev)
+    python manage.py updatealthingi (will poll for frumvarp)
+    python manage.py runserver (to run a dev server)
