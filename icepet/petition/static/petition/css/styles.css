@@ -1,12 +1,35 @@
-body {
-	padding-top: 80px;
+html, body {
+	height: 100%;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	/* Negative indent footer by it's height */
+	margin: 0 auto -60px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+	height: 60px;
+}
+#footer {
+	background-color: #181818;
+	color: #FFFFFF;
+}
+
+#wrap > .container {
+	padding-top: 60px;
 }
 
 a, a:active, a:focus {
   outline: none;
   -moz-outline-style: none;
 }
-.pe
+
 a:hover {
 	cursor: hand;
 }
