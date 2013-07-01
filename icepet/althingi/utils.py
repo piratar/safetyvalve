@@ -58,7 +58,9 @@ def update_issues():
     if created:
         print 'New Thing created!'
     
-    for mal in reversed(obtain_thingmal(thing)[-5:]):
+    limit = 5
+    print 'NOTA BENE: Currently, we only fetch the last %d thingmal, for quicker updates' % limit
+    for mal in reversed(obtain_thingmal(thing)[-limit:]):
         issue, created = Issue.objects.get_or_create(name=mal['name'], session=session, issue_num=mal['issue_num'])
         if not created:
             break
