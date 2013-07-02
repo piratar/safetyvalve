@@ -1,0 +1,4 @@
+# This folder will contain generated stuff from
+# manage.py collectstatic
+*
+!/.gitignore

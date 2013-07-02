@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+	{% for p in petitions %}
+		<div class="row">
+			<div class="span12 petition_item">
+
+				<a href="/petition/{{p.id}}"><h2>{{p.name|capfirst}}</h2></a> <br />
+
+				<a class="addremove_signature" href="#"><i class="icon-pencil"></i> bæta við undirskrift</a><br />
+
+				<div class="details">
+					<span class="date_created">{{p.date_created|date:"DATE_FORMAT"}}</span> -
+					<span class="num_signatures">{{p.num_signatures}} undirskrift(ir)</span> - 
+					Deila: 
+					<a href="{{p.url_facebook_share}}" target="_blank" class="share_icon"><i class="icon-facebook-sign"></i></a>
+					
+					<a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="icon-twitter-sign"></i></a>
+
+					<a href="{{p.url_googleplus_share}}" target="_blank" class="share_icon"><i class="icon-google-plus-sign"></i></a>
+				</div>
+
+				<br /><br />
+
+			</div>
+		</div>
+	{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block extra_meta %}
+		<meta property="og:title" content="{{petition.name}}" />
+{% endblock %}
+
+{% block title %}
+	{{petition.name}}
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="span12 petition_detail">
+			<h1>{{petition.name|capfirst}}</h1>
+			bætt við þann: {{petition.date_created|date:"DATE_FORMAT"|title}}
+
+			<div class="description">
+				{{petition.description|safe}}
+			</div>
+		</div>
+	</div>
+{% endblock %}
