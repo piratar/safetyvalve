@@ -11,6 +11,8 @@ TIME_ZONE = 'Iceland'
 LANGUAGE_CODE = 'is'
 DATE_FORMAT = 'd-F-Y'
 
+ALLOWED_HOSTS = []
+
 # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 # at the DATABASE_ENGINE
 DATABASE_ENGINE = 'django.db.backends.'
