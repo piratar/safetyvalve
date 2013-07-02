@@ -16,6 +16,10 @@ LANGUAGE_CODE = 'en-us'
 #date format
 DATE_FORMAT = 'd-F-Y'
 
+# Hosts/domain names that are valid for this site; required if DEBUG is False
+# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
+ALLOWED_HOSTS = []
+
 # Moved the two vars above time_zone and language_code because otherwise they would not be
 # overwritten in the local settings import
 
@@ -42,10 +46,6 @@ DATABASES = {
         'PORT': DATABASE_PORT,
     }
 }
-
-# Hosts/domain names that are valid for this site; required if DEBUG is False
-# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
 
 SITE_ID = 1
 
