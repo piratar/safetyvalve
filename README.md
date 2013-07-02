@@ -1,7 +1,14 @@
 icepet
 ======
 
-after installing, make sure to run:
+*nix system requirements:
+
+    libmysqlclient-dev (if intending to use mysql as a db, which is reccomended)
+    python-dev
+    ---
+    sudo apt-get install libmysqlclient-dev python-dev (on a debian/ubuntu based flavor)
+
+after cloning, make sure to run:
 
     cd icepet
     pip install -r requirements.txt
