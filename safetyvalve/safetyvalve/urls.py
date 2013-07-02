@@ -7,7 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'petition.views.index', name='index'),
-    # url(r'^icepet/', include('icepet.foo.urls')),
+    # url(r'^safetyvalve/', include('safetyvalve.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

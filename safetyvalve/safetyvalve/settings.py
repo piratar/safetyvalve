@@ -1,4 +1,4 @@
-# Django settings for icepet project.
+# Django settings for safetyvalve project.
 
 import os
 here = lambda x: os.path.realpath(os.path.join(os.path.realpath(os.path.dirname(__file__)), x))
@@ -116,10 +116,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'icepet.urls'
+ROOT_URLCONF = 'safetyvalve.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'icepet.wsgi.application'
+WSGI_APPLICATION = 'safetyvalve.wsgi.application'
 
 TEMPLATE_DIRS = (
     here('../templates'),
