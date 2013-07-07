@@ -2,25 +2,26 @@
 {% block content %}
 
 	{% for p in petitions %}
-		<div class="row">
-			<div class="span12 petition_item">
+		<div class="row-fluid">
+			<div class="span1">
+				&nbsp;
+			</div>
+			<div class="span11 petition_item">
 
-				<a href="/petition/{{p.id}}"><h2>{{p.name|capfirst}}</h2></a> <br />
+				<a class="petition_title" href="/petition/{{p.id}}">{{p.name|capfirst}}</a>
 
-				<a class="addremove_signature" href="#"><i class="icon-pencil"></i> bæta við undirskrift</a><br />
+				<a class="addremove_signature" href="#"><i class="icon-pencil"></i> bæta við undirskrift</a>
 
 				<div class="details">
 					<span class="date_created">{{p.date_created|date:"DATE_FORMAT"}}</span> -
 					<span class="num_signatures">{{p.num_signatures}} undirskrift(ir)</span> - 
-					Deila: 
+					<span class="share">Deila:</span>
 					<a href="{{p.url_facebook_share}}" target="_blank" class="share_icon"><i class="icon-facebook-sign"></i></a>
 					
 					<a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="icon-twitter-sign"></i></a>
 
 					<a href="{{p.url_googleplus_share}}" target="_blank" class="share_icon"><i class="icon-google-plus-sign"></i></a>
 				</div>
-
-				<br /><br />
 
 			</div>
 		</div>

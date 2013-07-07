@@ -1,29 +1,109 @@
 html, body {
 	height: 100%;
+	font-size: 16px;
 }
 
-/* Wrapper for page content to push down footer */
-#wrap {
-	min-height: 100%;
-	height: auto !important;
+/* GLOBAL ELEMENTS -------- */
+
+#left-panel {
+	width: 250px;
 	height: 100%;
-	/* Negative indent footer by it's height */
-	margin: 0 auto -60px;
+
+	font-size: inherit;
+	text-align: center;
+
+	padding-top: 95px;
+	position: fixed;
+
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;  
+
+	background-image: linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: -o-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: -moz-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: -webkit-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: -ms-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #231641),
+		color-stop(1, #3B4265)
+	);
 }
 
-/* Set the fixed height of the footer here */
-#push,
-#footer {
-	height: 60px;
-}
-#footer {
-	background-color: #181818;
+#left-panel h1 {
+	font-family: 'fairviewregular';
 	color: #FFFFFF;
+	font-weight: normal;
+	font-size: 2em;
+	line-height: .85em;
+
+	margin-bottom: 0;
+	margin-top: 0;
+
+	opacity: 0.7;
 }
 
-#wrap > .container {
-	padding-top: 60px;
+#left-panel ul {
+	list-style-type: none;
+
+	padding: 0;
+	margin: 40px 0 0 0;
 }
+
+#left-panel ul li {
+	padding: 10px 0;
+}
+
+#left-panel ul li a {
+	color: #FFFFFF;
+	font-family: 'klinic_slabbold';
+	font-size: 1.2em;
+	text-transform: uppercase;
+
+	opacity: 0.6;
+}
+
+#left-panel ul li a:hover {
+	text-decoration: none;
+
+	opacity: 0.75;
+}
+
+#right-panel:before { /* for the background image */
+	content : "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: url(../img/escheresque.png); 
+    width: 100%;
+    height: 100%;
+    opacity : 0.5;
+    z-index: -9999;
+}
+
+#right-panel.container-fluid {
+	padding: 90px 0 100px 0;
+	margin-left: 250px;
+}
+
+#right-panel .row-fluid [class*="span"] { 
+	margin:0;
+}
+
+#right-panel .row-fluid .span1 {
+	width: 8.3334%;
+}
+
+#right-panel .row-fluid .span11 {
+	width: 91.6666%;
+}
+
+/* END GLOBAL ELEMENTS ---- */
 
 a, a:active, a:focus {
   outline: none;
@@ -34,23 +114,49 @@ a:hover {
 	cursor: hand;
 }
 
-.petition_item h2 {
-	font-size: 1.5em;
-	margin-bottom: 0;
+.petition_item {
+	border: 2px solid #D7D7D7;
+	border-right: none;
+	border-bottom: none;
+
+	padding: 15px 23px;
+}
+
+.row-fluid:last-child .petition_item {
+	border: 2px solid #D7D7D7;
+}
+
+.petition_item, .petition_item a {
+	color: #3C4366;
+}
+
+.petition_item .petition_title {
+	font-size: 1.4em;
+	line-height: 1em;
+	font-family: 'klinic_slabbold';
+
 	display: inline-block;
+	margin-bottom: 10px;
 }
 
 .petition_item .details {
-	font-size: .75em;
+	font-size: .8em;
 }
 
-.petition_item .details a.share_icon, a.share_icon, a.share_icon:hover {
+.petition_item .details a.share_icon, a.share_icon:hover {
 	font-size: 2.5em;
 	text-decoration: none;
+
+	vertical-align: -.2em;
 }
 
 a.addremove_signature {
-	font-size: .85em;
+	font-size: .8em;
+	font-family: 'klinic_slabbook';
+
+	display: block;
+	margin: 5px 0;
+
 	cursor: hand;
 }
 
@@ -62,6 +168,7 @@ a.addremove_signature:hover, a.addremove_signature:focus, a.addremove_signature:
 	text-decoration: none;
 }
 
-.petition_detail h1 {
-	font-size: 1.95em;
+.petition_item .details .date_created, .petition_item .details .num_signatures, .petition_item .details .share {
+	font-family: 'klinic_slabbook_italic';
+	text-align: middle;
 }

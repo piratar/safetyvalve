@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'fairviewregular';
+    src: url('../font/fairview_regular-webfont.eot');
+    src: url('../font/fairview_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/fairview_regular-webfont.woff') format('woff'),
+         url('../font/fairview_regular-webfont.ttf') format('truetype'),
+         url('../font/fairview_regular-webfont.svg#fairviewregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'fairviewsmall_caps';
+    src: url('../font/fairview_smallcaps-webfont.eot');
+    src: url('../font/fairview_smallcaps-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/fairview_smallcaps-webfont.woff') format('woff'),
+         url('../font/fairview_smallcaps-webfont.ttf') format('truetype'),
+         url('../font/fairview_smallcaps-webfont.svg#fairviewsmall_caps') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'klinic_slabbold';
+    src: url('../font/klinicslabbold-webfont.eot');
+    src: url('../font/klinicslabbold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/klinicslabbold-webfont.woff') format('woff'),
+         url('../font/klinicslabbold-webfont.ttf') format('truetype'),
+         url('../font/klinicslabbold-webfont.svg#klinic_slabbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'klinic_slabbold_italic';
+    src: url('../font/klinicslabboldit-webfont.eot');
+    src: url('../font/klinicslabboldit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/klinicslabboldit-webfont.woff') format('woff'),
+         url('../font/klinicslabboldit-webfont.ttf') format('truetype'),
+         url('../font/klinicslabboldit-webfont.svg#klinic_slabbold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'klinic_slabbook_italic';
+    src: url('../font/klinicslabbookit-webfont.eot');
+    src: url('../font/klinicslabbookit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/klinicslabbookit-webfont.woff') format('woff'),
+         url('../font/klinicslabbookit-webfont.ttf') format('truetype'),
+         url('../font/klinicslabbookit-webfont.svg#klinic_slabbook_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'klinic_slabbook';
+    src: url('../font/klinicslabbook-webfont.eot');
+    src: url('../font/klinicslabbook-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/klinicslabbook-webfont.woff') format('woff'),
+         url('../font/klinicslabbook-webfont.ttf') format('truetype'),
+         url('../font/klinicslabbook-webfont.svg#klinic_slabbook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
