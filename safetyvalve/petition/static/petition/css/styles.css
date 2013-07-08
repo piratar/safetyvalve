@@ -86,9 +86,13 @@ html, body {
     z-index: -9999;
 }
 
-#right-panel.container-fluid {
+#right-panel {
 	padding: 90px 0 100px 0;
 	margin-left: 250px;
+}
+
+#right-panel > .container-fluid {
+	padding: 0;
 }
 
 #right-panel .row-fluid [class*="span"] { 
