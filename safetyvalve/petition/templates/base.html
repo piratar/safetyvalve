@@ -17,7 +17,12 @@
 		<link href="{{STATIC_URL}}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 		<link href="{{STATIC_URL}}fontawesome/css/font-awesome.min.css" rel="stylesheet">
 
+		<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+
 		<script src="{{STATIC_URL}}bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		{% block javascript %}
+		{% endblock %}
+
 	</head>
 
 	<body>
