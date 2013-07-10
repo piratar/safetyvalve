@@ -6,6 +6,7 @@ INSTANCE_NAME = ''
 INSTANCE_SLUG = ''
 INSTANCE_LOGO = ''
 INSTANCE_URL = ''
+AUTH_URL = ''  # e.g. https://www.island.is/audkenning?id=hello.is&%s
 
 TIME_ZONE = 'Iceland'
 LANGUAGE_CODE = 'is'

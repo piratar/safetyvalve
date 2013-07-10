@@ -149,7 +149,8 @@ INSTALLED_APPS = (
 
     # Local apps
     'althingi',
-    'petition'
+    'petition',
+    'person',
 )
 
 # A sample logging configuration. The only tangible logging
