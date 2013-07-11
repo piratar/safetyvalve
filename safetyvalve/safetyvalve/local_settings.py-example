@@ -7,6 +7,12 @@ INSTANCE_SLUG = ''
 INSTANCE_LOGO = ''
 INSTANCE_URL = ''
 AUTH_URL = ''  # e.g. https://www.island.is/audkenning?id=hello.is&%s
+AUTH_ISLAND = {
+    'wsdl': 'https://egov.webservice.is/sst/runtime.asvc/com.actional.soapstation.eGOVDKM_AuthConsumer.AccessPoint?WSDL',
+    'login': 'piratar_vefur',
+    'password': '',
+}
+
 
 TIME_ZONE = 'Iceland'
 LANGUAGE_CODE = 'is'
