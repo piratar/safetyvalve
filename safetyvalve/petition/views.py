@@ -101,8 +101,8 @@ def sign(request, petition_id):
     auth.method = 'icekey'
     auth.save()
 
-    if Signature(user=user, petition=p).count():
-        Signature(user=user, petition=p).delete()
+    if Signature.objects.filter(user=user, petition=p).count():
+        Signature.objects.filter(user=user, petition=p).delete()
     s = Signature(user=user, petition=p, authentication=auth)
     s.save()
 
