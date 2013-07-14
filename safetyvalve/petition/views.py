@@ -1,7 +1,7 @@
 
 from datetime import datetime
 from pprint import pprint
-from pysimplesoap.client import SoapClient
+from suds.client import Client
 from urllib import urlencode
 import urllib
 
@@ -78,15 +78,13 @@ def sign(request, petition_id):
             import base64
 
             AI = settings.AUTH_ISLAND
-            encoded = base64.encodestring('%s:%s' % (AI['login'], AI['password']))
-            headers = {'Authorization': 'Basic %s' % encoded}
 
-            client = SoapClient(wsdl=AI['wsdl'], trace=False, http_headers=headers)
+            client = Client(AI['wsdl'], username=AI['login'], password=AI['password'])
 
             ipaddr = request.META.get('REMOTE_ADDR')
 #            ipaddr = '81.15.30.31'
 
-            result = client.generateSAMLFromToken(token, ipaddr)
+            result = client.service.generateSAMLFromToken(token, ipaddr)
 
 #            result_example = {
 #                'status': {
@@ -98,7 +96,8 @@ def sign(request, petition_id):
 #                'saml': '<hello>SamlInfo</hello>',
 #            }
 
-            pprint(result['saml'])
+            pprint(result)
+
             saml = {
                 'kennitala': '1234',
             }
