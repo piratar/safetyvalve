@@ -5,8 +5,9 @@ from suds.client import Client
 from urllib import urlencode
 import urllib
 
-from django.db.models import Count, Q
+from django.db.models import Count
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -58,66 +59,54 @@ def sign(request, petition_id):
     p = get_object_or_404(Petition, pk=petition_id)
 
     user = request.user
-    if user.is_authenticated():
-        auths = UserAuthentication.objects.filter(Q(expires=None) | Q(expires__gt=now()), user=user, petition=p)
-    else:
-        auths = []
 
-    if not auths:
+    token = request.GET.get('token')
 
-        token = request.GET.get('token')
+    if not token:
+        params = {'path': reverse('sign', args=(petition_id, ))[1:]}
+        return HttpResponseRedirect(settings.AUTH_URL % urlencode(params))
 
-        if not token:
+    # Fetch SAML info
+    AI = settings.AUTH_ISLAND
+    client = Client(AI['wsdl'], username=AI['login'], password=AI['password'])
+    ipaddr = request.META.get('REMOTE_ADDR')
+    result = client.service.generateSAMLFromToken(token, ipaddr)
 
-            params = {'path': reverse('sign', args=(petition_id, ))[1:]}
-            return HttpResponseRedirect(settings.AUTH_URL % urlencode(params))
+    if result['status']['message'] != 'Success':
+        raise Exception('SAML error: %s' % result['status']['message'])
 
-        else:
+    # Parse the SAML and retrieve user info
+    from StringIO import StringIO
+    from lxml import etree
+    tree = etree.parse(StringIO(result['saml']))
+    namespaces = {'saml': 'urn:oasis:names:tc:SAML:1.0:assertion'}
+    name = tree.xpath('/saml:Assertion/saml:AttributeStatement/saml:Subject/saml:NameIdentifier[@NameQualifier="Full Name"]/text()', namespaces=namespaces)[0]
+    kennitala = tree.xpath('/saml:Assertion/saml:AttributeStatement/saml:Attribute[@AttributeName="SSN"]/saml:AttributeValue/text()', namespaces=namespaces)[0]
 
-            # Fetch SAML info
-            import base64
+    if not user.is_authenticated() or user.username != kennitala:
 
-            AI = settings.AUTH_ISLAND
+        user = User.objects.get_or_create(username=kennitala)[0]
+        if user.first_name == '':
+            user.first_name = name
+            user.save()
 
-            client = Client(AI['wsdl'], username=AI['login'], password=AI['password'])
+        from django.contrib.auth import login
+        user.backend = 'django.contrib.auth.backends.ModelBackend'
+        login(request, user)
 
-            ipaddr = request.META.get('REMOTE_ADDR')
-#            ipaddr = '81.15.30.31'
+    auth = UserAuthentication()
+    auth.user = user
+    auth.token = token
+    auth.generated = datetime.now()
+    auth.method = 'icekey'
+    auth.save()
 
-            result = client.service.generateSAMLFromToken(token, ipaddr)
+    if Signature(user=user, petition=p).count():
+        Signature(user=user, petition=p).delete()
+    s = Signature(user=user, petition=p, authentication=auth)
+    s.save()
 
-#            result_example = {
-#                'status': {
-#                    'message': 'Success',
-#                    'code': '',
-#                    'type': '',
-#                    #...
-#                },
-#                'saml': '<hello>SamlInfo</hello>',
-#            }
-
-            pprint(result)
-
-            saml = {
-                'kennitala': '1234',
-            }
-
-            if not user.is_authenticated():
-                user = User()
-                user.username = saml['kennitala']
-
-            auth = UserAuthentication()
-            auth.user = user
-            auth.petition = p
-            auth.token = token
-            auth.generated = datetime.now()
-            auth.method = 'icekey'
-            auth.save()
-
-
-    s, created = Signature.objects.get_or_create(user=user, petition=p)
-
-    return HttpResponse(str(s) + ' ' + str(created))
+    return HttpResponse(str(s))
     return render(request, 'sign.html', c)
 
 
