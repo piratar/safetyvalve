@@ -6,43 +6,51 @@ from xml.dom import minidom
 from models import Session, Issue
 
 
-LOGGJAFATHING_URL = 'http://www.althingi.is/altext/xml/loggjafarthing/'
-THINGMALALISTI_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/?lthing=%d'
+#SESSION_URL = 'http://www.althingi.is/altext/xml/loggjafarthing/'
+ISSUE_LIST_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/?lthing=%d'
 
+CURRENT_SESSION_NUM = 142 # Temporary, while we figure out a wholesome way to auto-detect
 
-def obtain_loggjafathings():
-    dom = minidom.parse(urllib.urlopen(LOGGJAFATHING_URL))
+#def obtain_sessions():
+#    dom = minidom.parse(urllib.urlopen(SESSION_URL))
+#
+#    raw_things = dom.getElementsByTagName(u'þing')
+#
+#    things = []
+#    for raw_thing in raw_things:
+#        thing = {}
+#        thing['year'] = raw_thing.getElementsByTagName(u'tímabil')[0].firstChild.nodeValue
+#        thing['session_num'] = int(raw_thing.getAttribute(u'númer'))
+#        things.append(thing)
+#
+#    return sorted(things, key=lambda t: t['session_num'])
+#
+#
+#def get_last_session():
+#    return obtain_sessions()[-1]
 
-    raw_things = dom.getElementsByTagName(u'þing')
+def get_last_session_num(): # Temporary, while we figure out a wholesome way to auto-detect
+    return CURRENT_SESSION_NUM
 
-    things = []
-    for raw_thing in raw_things:
-        thing = {}
-        thing['year'] = raw_thing.getElementsByTagName(u'tímabil')[0].firstChild.nodeValue
-        thing['session_num'] = int(raw_thing.getAttribute(u'númer'))
-        things.append(thing)
-
-    return sorted(things, key=lambda t: t['session_num'])
-
-
-def get_last_loggjafathing():
-    return obtain_loggjafathings()[-1]
-
-
-def obtain_thingmal(thing):
-    dom = minidom.parse(urllib.urlopen(THINGMALALISTI_URL % thing['session_num']))
+def obtain_thingmal(session_num):
+    dom = minidom.parse(urllib.urlopen(ISSUE_LIST_URL % session_num))
+    #dom = minidom.parse(urllib.urlopen(ISSUE_LIST_URL % 142))
 
     raw_thingmals = dom.getElementsByTagName(u'mál')
 
     thingmals = []
     for raw_thingmal in raw_thingmals:
         mal = {}
+
         mal['name'] = raw_thingmal.getElementsByTagName(u'málsheiti')[0].firstChild.nodeValue
-#        mal[''] = raw_thingmal.getElementsByTagName(u'')[0].firstChild.nodeValue
-#        mal[''] = raw_thingmal.getElementsByTagName(u'')[0].firstChild.nodeValue
+
+        mal['description'] = raw_thingmal.getElementsByTagName(u'efnisgreining')[0].firstChild
+        mal['description'] = mal['description'].nodeValue if mal['description'] != None else ''
+
+        mal['issue_type'] = raw_thingmal.getElementsByTagName(u'málstegund')[0].getAttribute(u'málstegund')
+
         mal['issue_num'] = int(raw_thingmal.getAttribute(u'málsnúmer'))
-#        mal[''] = int(raw_thingmal.getAttribute(u''))
-#        mal[''] = int(raw_thingmal.getAttribute(u''))
+
         thingmals.append(mal)
 
     return sorted(thingmals, key=lambda t: t['issue_num'])
@@ -53,19 +61,26 @@ def update_issues():
     accordingly.
     """
 
-    thing = get_last_loggjafathing()
-    session, created = Session.objects.get_or_create(session_num=thing['session_num'])
+    #thing = get_last_session()
+    session_num = get_last_session_num()
+
+    session, created = Session.objects.get_or_create(session_num = session_num)
     if created:
-        print 'New Thing created!'
+        print 'Added session: %s' % session_num
     
-    limit = 5
-    print 'NOTA BENE: Currently, we only fetch the last %d thingmal, for quicker updates' % limit
-    for mal in reversed(obtain_thingmal(thing)[-limit:]):
+    #limit = 5
+    #print 'NOTA BENE: Currently, we only fetch the last %d thingmal, for quicker updates' % limit
+    #for mal in reversed(obtain_thingmal(thing)[-limit:]):
+    for mal in reversed(obtain_thingmal(session_num)):
         issue, created = Issue.objects.get_or_create(name=mal['name'], session=session, issue_num=mal['issue_num'])
         if not created:
             break
         issue.name = mal['name']
+        issue.description = mal['description']
+        issue.issue_type = mal['issue_type']
         issue.save()
+
+        print "Added issue: %s" % issue
 
     '''
     ISSUE_TYPES = (
@@ -85,4 +100,4 @@ def update_issues():
     path_html = models.CharField(max_length = 200)
     path_xml = models.CharField(max_length = 200)
     path_rss = models.CharField(max_length = 200)
-'''
+    '''
