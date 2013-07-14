@@ -2,14 +2,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from petition.models import Petition
-
 from person.auth import AUTHENTICATION_NAME_MAX_LENGTH
 
 
 class UserAuthentication(models.Model):
     user = models.ForeignKey(User)
-    petition = models.ForeignKey(Petition)
     method = models.CharField(max_length=AUTHENTICATION_NAME_MAX_LENGTH)
     token = models.TextField()
     generated = models.DateTimeField(auto_now_add=True)

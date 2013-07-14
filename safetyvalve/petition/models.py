@@ -2,6 +2,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from person.models import UserAuthentication
+
 
 class Petition(models.Model):
     name = models.CharField(max_length=500)
@@ -12,8 +14,9 @@ class Petition(models.Model):
 
 
 class Signature(models.Model):
-    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
-    petition = models.ForeignKey(Petition, blank=True, null=True, on_delete=models.SET_NULL)
+    user = models.ForeignKey(User)
+    petition = models.ForeignKey(Petition)
+    authentication = models.ForeignKey(UserAuthentication)
     comment = models.CharField(max_length=500)
     date_created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
