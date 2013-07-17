@@ -1,3 +1,4 @@
 django==1.5.1
 mysql-python
 suds==0.4
+lxml==3.2.1
