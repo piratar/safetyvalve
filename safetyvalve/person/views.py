@@ -1,6 +1,7 @@
 
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.core.context_processors import csrf
 from django.shortcuts import HttpResponseRedirect
 from django.shortcuts import render_to_response
 
@@ -22,3 +23,17 @@ def signatures(request):
 
     return render_to_response(request, 'petition/signatures.html', c)
 
+
+def test_auth(request):
+    c = {}
+#    c.update(csrf(request))
+
+    if request.method == 'POST':
+
+        c['result'] = 'success'
+        c['token'] = 'TestToken123'
+
+        ret_url = request.GET.get('next')
+        return HttpResponseRedirect(ret_url)
+
+    return render_to_response('person/test_auth.html', c)
