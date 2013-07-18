@@ -3,11 +3,12 @@
 import urllib
 from xml.dom import minidom
 
-from models import Session, Issue
+from models import Session, Issue, Document
 
 
 #SESSION_URL = 'http://www.althingi.is/altext/xml/loggjafarthing/'
 ISSUE_LIST_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/?lthing=%d'
+ISSUE_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/thingmal/?lthing=%d&malnr=%d'
 
 CURRENT_SESSION_NUM = 142 # Temporary, while we figure out a wholesome way to auto-detect
 
@@ -81,6 +82,46 @@ def update_issues():
         issue.save()
 
         print "Added issue: %s" % issue
+
+        # Import the issue's documents.
+        issue_xml = minidom.parse(urllib.urlopen(ISSUE_URL % (session_num, issue.issue_num))) 
+        docs_xml = issue_xml.getElementsByTagName(u'þingskjöl')[0].getElementsByTagName(u'þingskjal');
+
+        lowest_doc_num = 0 # Lowest document number will always be the main document of the issue.
+        for doc_xml in docs_xml:
+            # Make sure that this is indeed the correct issue.
+            if int(doc_xml.getAttribute(u'málsnúmer')) != issue.issue_num or int(doc_xml.getAttribute(u'þingnúmer')) != session_num:
+                continue
+
+            doc_num = int(doc_xml.getAttribute(u'skjalsnúmer'))
+            doc_type = doc_xml.getElementsByTagName(u'skjalategund')[0].firstChild.nodeValue
+            timing_published = doc_xml.getElementsByTagName(u'útbýting')[0].firstChild.nodeValue + "+00:00"
+
+            path_html = doc_xml.getElementsByTagName(u'slóð')[0].getElementsByTagName(u'html')[0].firstChild.nodeValue
+            path_pdf = doc_xml.getElementsByTagName(u'slóð')[0].getElementsByTagName(u'pdf')[0].firstChild.nodeValue
+
+            if lowest_doc_num == 0:
+                lowest_doc_num = doc_num
+            elif lowest_doc_num > doc_num:
+                lowest_doc_num = doc_num
+
+            Document.objects.get_or_create(
+                doc_num=doc_num,
+                doc_type=doc_type,
+                timing_published=timing_published,
+                path_html=path_html,
+                path_pdf=path_pdf,
+                issue=issue,
+            )
+
+            print "- Added document: %d" % doc_num
+
+        main_doc = Document.objects.get(issue=issue, doc_num=lowest_doc_num)
+        main_doc.is_main = True
+        main_doc.save()
+
+        print "- Main document determined to be: %d" % lowest_doc_num
+
 
     '''
     ISSUE_TYPES = (

@@ -46,3 +46,15 @@ class Issue(models.Model):
 
     def __unicode__(self):
         return u'Issue: %s' % self.name
+
+class Document(models.Model):
+    issue = models.ForeignKey(Issue)
+
+    doc_num = models.IntegerField()
+    doc_type = models.CharField(max_length = 50)
+    timing_published = models.DateTimeField()
+    is_main = models.BooleanField(default = False)
+
+    path_html = models.CharField(max_length = 500)
+    path_pdf = models.CharField(max_length = 500)
+
