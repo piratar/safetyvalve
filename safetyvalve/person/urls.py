@@ -4,4 +4,5 @@ from django.conf.urls import patterns
 
 urlpatterns = patterns('person.views',
     (r'^logout/$', 'logout_view'),
+    (r'^signatures/$', 'signatures'),
 )
