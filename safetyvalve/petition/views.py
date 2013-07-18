@@ -1,9 +1,12 @@
 
+import urllib
+
 from datetime import datetime
+from lxml import etree
 from pprint import pprint
 from suds.client import Client
+from StringIO import StringIO
 from urllib import urlencode
-import urllib
 
 from django.db.models import Count
 from django.conf import settings
@@ -62,26 +65,33 @@ def sign(request, petition_id):
 
     token = request.GET.get('token')
 
+    auth_fake = getattr(settings, 'AUTH_FAKE', None)
+    if auth_fake:
+        if not token:
+            return HttpResponseRedirect('%s?token=%s' % (reverse('sign', args=(petition_id, )), auth_fake['token']))
+        name = auth_fake['name']
+        kennitala = auth_fake['kennitala']
+
     if not token:
         params = {'path': reverse('sign', args=(petition_id, ))[1:]}
         return HttpResponseRedirect(settings.AUTH_URL % urlencode(params))
 
-    # Fetch SAML info
-    AI = settings.AUTH_ISLAND
-    client = Client(AI['wsdl'], username=AI['login'], password=AI['password'])
-    ipaddr = request.META.get('REMOTE_ADDR')
-    result = client.service.generateSAMLFromToken(token, ipaddr)
+    if auth_fake is None:
 
-    if result['status']['message'] != 'Success':
-        raise Exception('SAML error: %s' % result['status']['message'])
+        # Fetch SAML info
+        AI = settings.AUTH_ISLAND
+        client = Client(AI['wsdl'], username=AI['login'], password=AI['password'])
+        ipaddr = request.META.get('REMOTE_ADDR')
+        result = client.service.generateSAMLFromToken(token, ipaddr)
 
-    # Parse the SAML and retrieve user info
-    from StringIO import StringIO
-    from lxml import etree
-    tree = etree.parse(StringIO(result['saml']))
-    namespaces = {'saml': 'urn:oasis:names:tc:SAML:1.0:assertion'}
-    name = tree.xpath('/saml:Assertion/saml:AttributeStatement/saml:Subject/saml:NameIdentifier[@NameQualifier="Full Name"]/text()', namespaces=namespaces)[0]
-    kennitala = tree.xpath('/saml:Assertion/saml:AttributeStatement/saml:Attribute[@AttributeName="SSN"]/saml:AttributeValue/text()', namespaces=namespaces)[0]
+        if result['status']['message'] != 'Success':
+            raise Exception('SAML error: %s' % result['status']['message'])
+
+        # Parse the SAML and retrieve user info
+        tree = etree.parse(StringIO(result['saml']))
+        namespaces = {'saml': 'urn:oasis:names:tc:SAML:1.0:assertion'}
+        name = tree.xpath('/saml:Assertion/saml:AttributeStatement/saml:Subject/saml:NameIdentifier[@NameQualifier="Full Name"]/text()', namespaces=namespaces)[0]
+        kennitala = tree.xpath('/saml:Assertion/saml:AttributeStatement/saml:Attribute[@AttributeName="SSN"]/saml:AttributeValue/text()', namespaces=namespaces)[0]
 
     if not user.is_authenticated() or user.username != kennitala:
 

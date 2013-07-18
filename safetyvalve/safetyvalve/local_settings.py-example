@@ -12,6 +12,11 @@ AUTH_ISLAND = {
     'login': 'piratar_vefur',
     'password': '',
 }
+#AUTH_FAKE = {
+#    'token': '1234567890abcdef',
+#    'kennitala': '1234567890',
+#    'name': u'Jón Jónsson'
+#}
 
 
 TIME_ZONE = 'Iceland'
