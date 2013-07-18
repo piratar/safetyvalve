@@ -12,6 +12,9 @@ class Petition(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
 
+    def __unicode__(self):
+        return self.name
+
 
 class Signature(models.Model):
     user = models.ForeignKey(User)
@@ -20,3 +23,6 @@ class Signature(models.Model):
     comment = models.CharField(max_length=500)
     date_created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return u'%s signed "%s"' % (self.user, self.petition)
