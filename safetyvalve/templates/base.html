@@ -1,90 +1,90 @@
 <!DOCTYPE html>
 <html lang="is">
-	<head>
-		<meta charset="utf-8">
-		{% block extra_meta %}
-		{% endblock %}
+  <head>
+    <meta charset="utf-8">
+    {% block extra_meta %}
+    {% endblock %}
 
-		<title>Öryggisventill - {% block title %}{% endblock %}</title>
+    <title>Öryggisventill - {% block title %}{% endblock %}</title>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-		<link href="{{STATIC_URL}}bootstrap/css/bootstrap.css" rel="stylesheet">
-		<link href="{{STATIC_URL}}petition/css/fonts.css" rel="stylesheet">
-		<link href="{{STATIC_URL}}petition/css/styles.css" rel="stylesheet">
-		<link href="{{STATIC_URL}}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-		<link href="{{STATIC_URL}}fontawesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}petition/css/fonts.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}petition/css/styles.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}fontawesome/css/font-awesome.min.css" rel="stylesheet">
 
-		<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 
-		<script src="{{STATIC_URL}}bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-		{% block javascript %}
-		{% endblock %}
+    <script src="{{STATIC_URL}}bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    {% block javascript %}
+    {% endblock %}
 
-	</head>
+  </head>
 
-	<body>
-
-
-		<!-- <div class="navbar navbar-inverse navbar-fixed-top">
-	      <div class="navbar-inner">
-	        <div class="container">
-	          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </a>
-	          <a class="brand" href="/">Öryggisventill</a>
-	          <div class="nav-collapse collapse">
-	            <ul class="nav">
-	              <li class="active"><a href="/">Heim</a></li>
-	              <li><a href="#about">Um okkur</a></li>
-	              <li><a href="#contact">Hafðu samband</a></li>
-	            </ul>
-	          </div>
-	        </div>
-	      </div>
-	    </div> -->
-
-	    <div id="left-panel">
-	    	<div class="container-fluid">
-
-	    		<div class="row-fluid">
-	    			<div class="span12">
-	    				<h1>ÖRYGGISVENTILL</h1>
-	    				<img src="{{STATIC_URL}}petition/img/logo.png" />
-	    			</div>
-	    		</div>
-
-	    		<div class="row-fluid">
-	    			<div class="span12">
-	    				<ul>
-	    					<li><a href="/">Heim</a></li>
-	    					<li><a href="#">Um Okkur</a></li>
-	    					<li><a href="#">Hafa Samband</a></li>
-	    					<li><a href="/person/signatures/">Mínar<br />Undirskriftir</a></li>
-	    					<li><a href="#">Vinsælast</a></li>
-	    					{% if user.is_authenticated %}
-	    					<li><a href="/person/logout/">Útskrá</a></li>
-	    					{% endif %}
-	    				</ul>
-	    			</div>
-	    		</div>
-
-	    	</div>
-	    </div>
-
-	    <div id="right-panel">
-	    	<div class="container-fluid">
-		    	{% block content %}
-			    {% endblock %}
-			</div>
-	    </div> <!-- /container -->
+  <body>
 
 
+    <!-- <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">Öryggisventill</a>
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+                <li class="active"><a href="/">Heim</a></li>
+                <li><a href="#about">Um okkur</a></li>
+                <li><a href="#contact">Hafðu samband</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div> -->
 
-	</body>
+      <div id="left-panel">
+        <div class="container-fluid">
+
+          <div class="row-fluid">
+            <div class="span12">
+              <h1>ÖRYGGISVENTILL</h1>
+              <img src="{{STATIC_URL}}petition/img/logo.png" />
+            </div>
+          </div>
+
+          <div class="row-fluid">
+            <div class="span12">
+              <ul>
+                <li><a href="/">Heim</a></li>
+                <li><a href="#">Um Okkur</a></li>
+                <li><a href="#">Hafa Samband</a></li>
+                <li><a href="/person/signatures/">Mínar<br />Undirskriftir</a></li>
+                <li><a href="#">Vinsælast</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="/person/logout/">Útskrá</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="right-panel">
+        <div class="container-fluid">
+          {% block content %}
+          {% endblock %}
+      </div>
+      </div> <!-- /container -->
+
+
+
+  </body>
 
 </html>
