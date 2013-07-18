@@ -61,11 +61,14 @@
 	    		<div class="row-fluid">
 	    			<div class="span12">
 	    				<ul>
-	    					<li><a href="#">Heim</a></li>
+	    					<li><a href="/">Heim</a></li>
 	    					<li><a href="#">Um Okkur</a></li>
 	    					<li><a href="#">Hafa Samband</a></li>
-	    					<li><a href="#">Mínar<br />Undirskriftir</a></li>
+	    					<li><a href="/person/signatures/">Mínar<br />Undirskriftir</a></li>
 	    					<li><a href="#">Vinsælast</a></li>
+	    					{% if user.is_authenticated %}
+	    					<li><a href="/person/logout/">Útskrá</a></li>
+	    					{% endif %}
 	    				</ul>
 	    			</div>
 	    		</div>

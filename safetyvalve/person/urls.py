@@ -1,10 +1,11 @@
 
-from django.conf.urls import patterns
+from django.conf.urls import patterns, url
 
 
 urlpatterns = patterns('person.views',
-    (r'^logout/$', 'logout_view'),
-    (r'^signatures/$', 'signatures'),
+    url(r'^login/$', 'login_view', name='login'),
+    url(r'^logout/$', 'logout_view', name='logout'),
+    url(r'^signatures/$', 'signatures', name='signatures'),
 
     (r'^test_auth/$', 'test_auth'),
 )

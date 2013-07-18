@@ -52,8 +52,8 @@ def sign(request, petition_id):
     p = get_object_or_404(Petition, pk=petition_id)
 
     params = {'path': reverse('sign', args=(petition_id, ))[1:]}
-    redirect_url = settings.AUTH_URL % urlencode(params)
-    ret = authenticate(request, redirect_url)
+    auth_url = settings.AUTH_URL % urlencode(params)
+    ret = authenticate(request, auth_url)
     if isinstance(ret, HttpResponse):
         return ret
     else:
