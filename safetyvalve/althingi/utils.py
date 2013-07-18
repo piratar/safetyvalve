@@ -32,28 +32,28 @@ CURRENT_SESSION_NUM = 142 # Temporary, while we figure out a wholesome way to au
 def get_last_session_num(): # Temporary, while we figure out a wholesome way to auto-detect
     return CURRENT_SESSION_NUM
 
-def obtain_thingmal(session_num):
+def obtain_issue(session_num):
     dom = minidom.parse(urllib.urlopen(ISSUE_LIST_URL % session_num))
     #dom = minidom.parse(urllib.urlopen(ISSUE_LIST_URL % 142))
 
-    raw_thingmals = dom.getElementsByTagName(u'mál')
+    raw_issues = dom.getElementsByTagName(u'mál')
 
-    thingmals = []
-    for raw_thingmal in raw_thingmals:
+    issues = []
+    for raw_issue in raw_issues:
         mal = {}
 
-        mal['name'] = raw_thingmal.getElementsByTagName(u'málsheiti')[0].firstChild.nodeValue
+        mal['name'] = raw_issue.getElementsByTagName(u'málsheiti')[0].firstChild.nodeValue
 
-        mal['description'] = raw_thingmal.getElementsByTagName(u'efnisgreining')[0].firstChild
+        mal['description'] = raw_issue.getElementsByTagName(u'efnisgreining')[0].firstChild
         mal['description'] = mal['description'].nodeValue if mal['description'] != None else ''
 
-        mal['issue_type'] = raw_thingmal.getElementsByTagName(u'málstegund')[0].getAttribute(u'málstegund')
+        mal['issue_type'] = raw_issue.getElementsByTagName(u'málstegund')[0].getAttribute(u'málstegund')
 
-        mal['issue_num'] = int(raw_thingmal.getAttribute(u'málsnúmer'))
+        mal['issue_num'] = int(raw_issue.getAttribute(u'málsnúmer'))
 
-        thingmals.append(mal)
+        issues.append(mal)
 
-    return sorted(thingmals, key=lambda t: t['issue_num'])
+    return sorted(issues, key=lambda t: t['issue_num'])
 
 
 def update_issues():
@@ -70,8 +70,8 @@ def update_issues():
     
     #limit = 5
     #print 'NOTA BENE: Currently, we only fetch the last %d thingmal, for quicker updates' % limit
-    #for mal in reversed(obtain_thingmal(thing)[-limit:]):
-    for mal in reversed(obtain_thingmal(session_num)):
+    #for mal in reversed(obtain_issue(thing)[-limit:]):
+    for mal in reversed(obtain_issue(session_num)):
         issue, created = Issue.objects.get_or_create(name=mal['name'], session=session, issue_num=mal['issue_num'])
         if not created:
             break
