@@ -90,23 +90,20 @@ def ensure_user(request, name, kennitala):
     return user
 
 
-def sign(request, petition_id):
-    c = {}
-
-    p = get_object_or_404(Petition, pk=petition_id)
+def authenticate(request, redirect_url):
     user = request.user
     token = request.GET.get('token')
 
     auth_fake = getattr(settings, 'AUTH_FAKE', None)
     if auth_fake:
         if not token:
-            return HttpResponseRedirect('%s?token=%s' % (reverse('sign', args=(petition_id, )), auth_fake['token']))
+            curr_url = request.get_full_path().split('?')[0]
+            return HttpResponseRedirect('%s?token=%s' % (curr_url, auth_fake['token']))
         name = auth_fake['name']
         kennitala = auth_fake['kennitala']
 
     if not token:
-        params = {'path': reverse('sign', args=(petition_id, ))[1:]}
-        return HttpResponseRedirect(settings.AUTH_URL % urlencode(params))
+        return HttpResponseRedirect(redirect_url)
 
     if auth_fake is None:
         result = get_saml(request, token)
@@ -114,6 +111,21 @@ def sign(request, petition_id):
 
     if not user.is_authenticated() or user.username != kennitala:
         user = ensure_user(request, name, kennitala)
+
+    return user, token
+
+
+def sign(request, petition_id):
+
+    p = get_object_or_404(Petition, pk=petition_id)
+
+    params = {'path': reverse('sign', args=(petition_id, ))[1:]}
+    redirect_url = settings.AUTH_URL % urlencode(params)
+    ret = authenticate(request, redirect_url)
+    if isinstance(ret, HttpResponse):
+        return ret
+    else:
+        user, token = ret
 
     auth = UserAuthentication()
     auth.user = user
@@ -127,13 +139,4 @@ def sign(request, petition_id):
     s = Signature(user=user, petition=p, authentication=auth)
     s.save()
 
-    return HttpResponse(str(s))
-    return render(request, 'sign.html', c)
-
-
-def authenticate(request):
-    c = {}
-
-    # Check if already has authentication
-
-    return render(request, 'authenticate.html', c)
+    return HttpResponseRedirect(reverse('detail', args=(petition_id, )))
