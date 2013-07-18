@@ -74,7 +74,7 @@ def update_issues():
     for mal in reversed(obtain_issue(session_num)):
         issue, created = Issue.objects.get_or_create(name=mal['name'], session=session, issue_num=mal['issue_num'])
         if not created:
-            break
+            continue
         issue.name = mal['name']
         issue.description = mal['description']
         issue.issue_type = mal['issue_type']
