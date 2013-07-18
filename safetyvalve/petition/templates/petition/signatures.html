@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Signatures
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="span12 petition_detail">
+            <h1>Signatures</h1>
+
+            <ul>
+                {% for signature in signatures %}
+                <li>
+                    {{signature}}
+                </li>
+                {% empty %}
+                <li>No signatures yet!</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
