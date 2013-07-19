@@ -26,11 +26,6 @@ class Issue(models.Model):
     name = models.CharField(max_length = 500)
     description = models.TextField()
 
-    # External URLs
-    path_html = models.CharField(max_length = 200)
-    path_xml = models.CharField(max_length = 200)
-    path_rss = models.CharField(max_length = 200)
-
     def save(self, *args, **kwargs):
         is_new = self.pk is None
 
@@ -41,11 +36,10 @@ class Issue(models.Model):
             petition = Petition()
             petition.name = self.name
             petition.description = self.description
-            petition.description += '\n\nHlekkur: <a href="%s">%s</a>' % (self.path_html, self.path_html)
             petition.save()
 
     def __unicode__(self):
-        return u'Issue: %s' % self.name
+        return u'%d (%s)' % (self.issue_num, self.name)
 
 class Document(models.Model):
     issue = models.ForeignKey(Issue)
@@ -57,4 +51,7 @@ class Document(models.Model):
 
     path_html = models.CharField(max_length = 500)
     path_pdf = models.CharField(max_length = 500)
+
+    def __unicode__(self):
+        return u'%d (%s)' % (self.doc_num, self.doc_type)
 
