@@ -1,8 +1,10 @@
 # -*- coding: UTF8
 from django.db import models
 
-from petition.models import Petition
+from BeautifulSoup import BeautifulSoup
+import urllib
 
+from petition.models import Petition
 
 class Session(models.Model):
     session_num = models.IntegerField(unique = True) # IS: Þingnúmer
@@ -61,7 +63,15 @@ class Document(models.Model):
             external_id = "%s.%s" % (self.issue.session.session_num, self.issue.issue_num)
 
             petition = Petition.objects.get(external_id=external_id)
+
+            # The resource is essentially a link to some external data.
             petition.resource = self.path_html
+
+            # Get the content of the petition.
+            content = urllib.urlopen(self.path_html).read().decode('ISO-8859-1').replace('&nbsp;', ' ')
+            content = BeautifulSoup(content).prettify() # Turn it into proper XML.
+            petition.content = content
+
             petition.save()
 
     def __unicode__(self):

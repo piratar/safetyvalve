@@ -44,12 +44,7 @@ def index(request):
 def detail(request, petition_id):
     p = Petition.objects.get(id=petition_id)
 
-    issue_content = urllib.urlopen(p.resource).read().decode('ISO-8859-1')
-
-    context = {
-        'petition': p,
-        'issue_content': issue_content
-    }
+    context = Context({'petition': p})
     return render(request, 'detail.html', context)
 
 

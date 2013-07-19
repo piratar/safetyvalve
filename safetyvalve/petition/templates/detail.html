@@ -15,7 +15,7 @@
 			bætt við þann: {{ petition.date_created|date:"DATE_FORMAT"|title }}
 
 			<div class="description">
-                {{ issue_content|safe }}
+                {{ petition.content|safe }}
 				{{ petition.description|safe }}
 			</div>
 
