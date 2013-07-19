@@ -12,6 +12,9 @@ class UserAuthentication(models.Model):
     generated = models.DateTimeField(auto_now_add=True)
     expires = models.DateTimeField(null=True, blank=True)
 
+    def __unicode__(self):
+        return "%s (%s)" % (self.token, self.generated)
+
 
 '''
 
