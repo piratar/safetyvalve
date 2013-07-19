@@ -27,16 +27,18 @@ class Issue(models.Model):
     description = models.TextField()
 
     def save(self, *args, **kwargs):
-        is_new = self.pk is None
-
         models.Model.save(self, *args, **kwargs)
 
-        if is_new:
-            # Create a petition for this issue
-            petition = Petition()
-            petition.name = self.name
-            petition.description = self.description
-            petition.save()
+        if self.issue_type == 'l':
+            external_id = "%s.%s" % (self.session.session_num, self.issue_num)
+
+            if Petition.objects.filter(external_id=external_id).count() == 0:
+                # Create a petition for this issue
+                petition = Petition()
+                petition.external_id = external_id
+                petition.name = self.name
+                petition.description = self.description
+                petition.save()
 
     def __unicode__(self):
         return u'%d (%s)' % (self.issue_num, self.name)
@@ -51,6 +53,16 @@ class Document(models.Model):
 
     path_html = models.CharField(max_length = 500)
     path_pdf = models.CharField(max_length = 500)
+
+    def save(self, *args, **kwargs):
+        models.Model.save(self, *args, **kwargs)
+
+        if self.is_main and self.issue.issue_type == 'l':
+            external_id = "%s.%s" % (self.issue.session.session_num, self.issue.issue_num)
+
+            petition = Petition.objects.get(external_id=external_id)
+            petition.resource = self.path_html
+            petition.save()
 
     def __unicode__(self):
         return u'%d (%s)' % (self.doc_num, self.doc_type)

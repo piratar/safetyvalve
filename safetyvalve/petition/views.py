@@ -18,7 +18,7 @@ from models import Signature
 
 
 def index(request):
-    p = Petition.objects.all().order_by('-date_created').annotate(num_signatures=Count('signature'))[:5]
+    p = Petition.objects.all().order_by('-date_created').annotate(num_signatures=Count('signature'))
 
     for i in p:
         if isinstance(i.name, unicode):
@@ -43,7 +43,13 @@ def index(request):
 
 def detail(request, petition_id):
     p = Petition.objects.get(id=petition_id)
-    context = Context({'petition': p})
+
+    issue_content = urllib.urlopen(p.resource).read().decode('ISO-8859-1')
+
+    context = {
+        'petition': p,
+        'issue_content': issue_content
+    }
     return render(request, 'detail.html', context)
 
 
