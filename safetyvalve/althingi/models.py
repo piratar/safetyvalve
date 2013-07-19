@@ -69,8 +69,24 @@ class Document(models.Model):
 
             # Get the content of the petition.
             content = urllib.urlopen(self.path_html).read().decode('ISO-8859-1').replace('&nbsp;', ' ')
-            content = BeautifulSoup(content).prettify() # Turn it into proper XML.
-            petition.content = content
+            soup = BeautifulSoup(content) # Turn it into proper XML.
+
+            # Remove garbage.
+            [s.extract() for s in soup('script')]
+            [s.extract() for s in soup('noscript')]
+            [s.extract() for s in soup('head')]
+            [s.extract() for s in soup('small')]
+            [s.extract() for s in soup('hr')]
+
+            # Replace 'html' and 'body' tags'
+            body_tag = soup.find('body')
+            body_tag.attrs.append(('id', 'body_tag'))
+            body_tag.name = 'div'
+            html_tag = soup.find('html')
+            html_tag.attrs.append(('id', 'html_tag'))
+            html_tag.name = 'div'
+
+            petition.content = soup.prettify()
 
             petition.save()
 
