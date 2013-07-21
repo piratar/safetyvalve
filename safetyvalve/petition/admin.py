@@ -4,10 +4,12 @@ from petition.models import Petition, Signature
 
 class PetitionAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'date_created', 'last_updated')
+    date_hierarchy = 'timing_published'
 
 
 class SignatureAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'petition', 'authentication', 'comment', 'date_created')
+    date_hierarchy = 'date_created'
 
 
 admin.site.register(Petition, PetitionAdmin)
