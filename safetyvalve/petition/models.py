@@ -17,6 +17,9 @@ class Petition(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['-timing_published', 'name']
+
     def __unicode__(self):
         return self.name
 
