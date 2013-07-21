@@ -70,7 +70,9 @@ def sign(request, petition_id):
 
     p = get_object_or_404(Petition, pk=petition_id)
 
-    params = {'path': reverse('sign', args=(petition_id, ))[1:]}
+    show_public = int(request.GET.get('show_public', 0))
+
+    params = {'path': reverse('sign', args=(petition_id, ))[1:] + '?show_public=%d' % show_public}
     auth_url = settings.AUTH_URL % urlencode(params)
     ret = authenticate(request, auth_url)
     if isinstance(ret, HttpResponse):
@@ -80,7 +82,7 @@ def sign(request, petition_id):
 
     if Signature.objects.filter(user=auth.user, petition=p).count():
         Signature.objects.filter(user=auth.user, petition=p).delete()
-    s = Signature(user=auth.user, petition=p, authentication=auth)
+    s = Signature(user=auth.user, petition=p, show_public=show_public, authentication=auth)
     s.save()
 
     if not request.user.email:

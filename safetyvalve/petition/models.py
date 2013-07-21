@@ -29,6 +29,7 @@ class Signature(models.Model):
     petition = models.ForeignKey(Petition)
     authentication = models.ForeignKey(UserAuthentication)
     comment = models.CharField(max_length=500)
+    show_public = models.BooleanField(default=False)
 
     date_created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
