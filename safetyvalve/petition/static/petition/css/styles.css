@@ -154,6 +154,14 @@ a:hover {
 	vertical-align: -.2em;
 }
 
+.petition_already_signed {
+    border: 1px solid #000000;
+    text-align: center;
+    background: #e0e0e0;
+    padding: 4px 4px 4px 4px;
+    display: inline;
+}
+
 a.addremove_signature {
 	font-size: .8em;
 	font-family: 'klinic_slabbook';

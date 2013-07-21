@@ -10,6 +10,11 @@
 
 {% block content %}
 	<div>
+        {% if already_signed %}
+            <div class="petition_already_signed">
+                Þú hefur þegar skrifað undir mótmæli gegn þessu lagafrumvarpi.
+            </div>
+        {% endif %}
 		<div class="petition_detail">
 			<h1>{{ petition.name|capfirst }}</h1>
 			útbýtt: {{ petition.timing_published|date:"DATE_FORMAT"|title }}

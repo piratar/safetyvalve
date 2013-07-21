@@ -55,7 +55,12 @@ def index(request):
 def detail(request, petition_id):
     p = Petition.objects.get(id=petition_id)
 
-    context = Context({'petition': p})
+    already_signed = Signature.objects.filter(user=request.user, petition=p).count() > 0
+
+    context = Context({
+        'petition': p,
+        'already_signed': already_signed
+    })
     return render(request, 'detail.html', context)
 
 
