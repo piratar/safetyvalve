@@ -1,10 +1,13 @@
+# -*- coding: utf-8 -*-
 
 import urllib
 
 from urllib import urlencode
 
+from django import forms
 from django.db.models import Count
 from django.conf import settings
+from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -63,6 +66,64 @@ def sign(request, petition_id):
     if Signature.objects.filter(user=auth.user, petition=p).count():
         Signature.objects.filter(user=auth.user, petition=p).delete()
     s = Signature(user=auth.user, petition=p, authentication=auth)
+    s.save()
+
+    if not request.user.email:
+        return HttpResponseRedirect(reverse('email', args=(petition_id, )))
+
+    return HttpResponseRedirect(reverse('receipt', args=(petition_id, )))
+
+
+def email(request, petition_id):
+    c = {}
+
+    class EmailForm(forms.Form):
+        email = forms.EmailField()
+        confirm_email = forms.EmailField()
+
+        def clean(self):
+            if (self.cleaned_data.get('email') !=
+                self.cleaned_data.get('confirm_email')):
+                raise forms.ValidationError(
+                    "Email addresses must match."
+                )
+            return self.cleaned_data
+
+    if request.method == 'POST':
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            request.user.email = form.cleaned_data['email']
+            request.user.save()
+            return HttpResponseRedirect(reverse('receipt', args=(petition_id, )))
+    else:
+        form = EmailForm()
+
+    c['form'] = form
+
+    return render(request, 'petition/email.html', c)
+
+
+def receipt(request, petition_id):
+
+    p = get_object_or_404(Petition, pk=petition_id)
+    s = get_object_or_404(Signature, user=request.user, petition=p)
+
+    subject = u'Staðfesting undirskriftar á Ventill.is'
+    message = u'''Sæl(l) %s!
+
+Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir skrifað undir eftirfarandi lög með tókanum %s frá island.is:
+
+> %s
+
+Með kveðju,
+Ventill.is
+''' % (request.user.first_name, s.authentication.token, s.petition.content.replace('\n', '\n> '))
+    sender = 'stadfesting@ventill.is'
+    recipients = [request.user.email]
+
+    #send_mail(subject, message, sender, recipients)
+
+    s.mail_sent = True
     s.save()
 
     return HttpResponseRedirect(reverse('detail', args=(petition_id, )))

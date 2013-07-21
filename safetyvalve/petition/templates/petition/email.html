@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    E-Mail wanted
+{% endblock %}
+
+{% block content %}
+    <p>
+        Til að auka traust á undirskriftirnar þurfum við ... (sbdy. please finish this text :p)
+    </p>
+    <p>
+        Gættu þess að netfangið sé alveg rétt, þar sem við krefjumst ekki staðfestingar á netfanginu.
+    </p>
+    <form action="." method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+    </form>
+{% endblock %}
+
+

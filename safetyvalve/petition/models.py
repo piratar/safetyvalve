@@ -23,6 +23,7 @@ class Petition(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Signature(models.Model):
     user = models.ForeignKey(User)
     petition = models.ForeignKey(Petition)
@@ -31,6 +32,8 @@ class Signature(models.Model):
 
     date_created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
+
+    mail_sent = models.BooleanField(default=False)
 
     def __unicode__(self):
         return u'%s signed "%s"' % (self.user, self.petition)
