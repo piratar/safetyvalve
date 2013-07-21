@@ -36,6 +36,9 @@ DATABASE_PASSWORD = ''
 # Required!
 SECRET_KEY = ''
 
+# To test email smtp:
+# $ sudo /usr/lib/python2.7/smtpd.py -n -c DebuggingServer 127.0.0.1:25
+
 #EMAIL_HOST = ''
 #EMAIL_PORT = ''
 #EMAIL_HOST_USER = ''
