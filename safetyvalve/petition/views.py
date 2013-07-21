@@ -121,9 +121,16 @@ Ventill.is
     sender = 'stadfesting@ventill.is'
     recipients = [request.user.email]
 
-    #send_mail(subject, message, sender, recipients)
+    try:
+        send_mail(subject, message, sender, recipients)
+
+    except Exception as e:
+        c = {'e': e}
+        return render(request, 'petition/receipt_error.html', c)
 
     s.mail_sent = True
     s.save()
 
     return HttpResponseRedirect(reverse('detail', args=(petition_id, )))
+
+
