@@ -56,9 +56,9 @@ class Document(models.Model):
     path_html = models.CharField(max_length = 500)
     path_pdf = models.CharField(max_length = 500)
 
-    def save(self, *args, **kwargs):
-        models.Model.save(self, *args, **kwargs)
+    xhtml = models.TextField()
 
+    def save(self, *args, **kwargs):
         if self.is_main and self.issue.issue_type == 'l':
             external_id = "%s.%s" % (self.issue.session.session_num, self.issue.issue_num)
 
@@ -86,9 +86,13 @@ class Document(models.Model):
             html_tag.attrs.append(('id', 'html_tag'))
             html_tag.name = 'div'
 
-            petition.content = soup.prettify()
+            self.xhtml = soup.prettify()
+
+            petition.content = self.xhtml
 
             petition.save()
+
+        models.Model.save(self, *args, **kwargs)
 
     def __unicode__(self):
         return u'%d (%s)' % (self.doc_num, self.doc_type)
