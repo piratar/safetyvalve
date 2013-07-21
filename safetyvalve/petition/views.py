@@ -90,7 +90,21 @@ def sign(request, petition_id):
     if not request.user.email:
         return HttpResponseRedirect(reverse('email', args=(petition_id, )))
 
-    return HttpResponseRedirect(reverse('receipt', args=(petition_id, )))
+    return HttpResponseRedirect(reverse('sign_receipt', args=(petition_id, )))
+
+
+def unsign(request, petition_id):
+
+    p = get_object_or_404(Petition, pk=petition_id)
+    s = get_object_or_404(Signature, user=request.user, petition=p)
+
+    if request.user.email:
+        ret = unsign_receipt(request, petition_id)
+        if not isinstance(ret, HttpResponseRedirect):
+            return ret
+    else:
+        s.delete()
+    return HttpResponseRedirect('/')
 
 
 def email(request, petition_id):
@@ -113,7 +127,7 @@ def email(request, petition_id):
         if form.is_valid():
             request.user.email = form.cleaned_data['email']
             request.user.save()
-            return HttpResponseRedirect(reverse('receipt', args=(petition_id, )))
+            return HttpResponseRedirect(reverse('sign_receipt', args=(petition_id, )))
     else:
         form = EmailForm()
 
@@ -122,8 +136,21 @@ def email(request, petition_id):
     return render(request, 'petition/email.html', c)
 
 
-def receipt(request, petition_id):
+def _receipt(request, petition_id, subject, message):
+    sender = 'stadfesting@ventill.is'
+    recipients = [request.user.email]
 
+    try:
+        send_mail(subject, message, sender, recipients)
+
+    except Exception as e:
+        c = {'e': e}
+        return render(request, 'petition/receipt_error.html', c)
+
+    return HttpResponseRedirect(reverse('detail', args=(petition_id, )))
+
+
+def sign_receipt(request, petition_id):
     p = get_object_or_404(Petition, pk=petition_id)
     s = get_object_or_404(Signature, user=request.user, petition=p)
 
@@ -137,19 +164,34 @@ Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir skrifa�
 Með kveðju,
 Ventill.is
 ''' % (request.user.first_name, s.authentication.token, s.petition.content.replace('\n', '\n> '))
-    sender = 'stadfesting@ventill.is'
-    recipients = [request.user.email]
 
-    try:
-        send_mail(subject, message, sender, recipients)
+    ret = _receipt(request, petition_id, subject, message)
 
-    except Exception as e:
-        c = {'e': e}
-        return render(request, 'petition/receipt_error.html', c)
+    if isinstance(ret, HttpResponseRedirect):
+        s.mail_sent = True
+        s.save()
 
-    s.mail_sent = True
-    s.save()
-
-    return HttpResponseRedirect(reverse('detail', args=(petition_id, )))
+    return ret
 
 
+def unsign_receipt(request, petition_id):
+    p = get_object_or_404(Petition, pk=petition_id)
+    s = get_object_or_404(Signature, user=request.user, petition=p)
+
+    subject = u'Staðfesting á fjarlægingu undirskriftar á Ventill.is'
+    message = u'''Sæl(l) %s!
+
+Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir fjarlægt undirskrift undir eftirfarandi lög með tókanum %s frá island.is:
+
+> %s
+
+Með kveðju,
+Ventill.is
+''' % (request.user.first_name, s.authentication.token, s.petition.content.replace('\n', '\n> '))
+
+    ret = _receipt(request, petition_id, subject, message)
+
+    if isinstance(ret, HttpResponseRedirect):
+        s.delete()
+
+    return ret

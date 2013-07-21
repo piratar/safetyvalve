@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+
+{% block javascript %}
+{{block.super}}
+    <script src="{{STATIC_URL}}petition/js/petition.js" type="text/javascript"></script>
+{% endblock %}
+
 {% block content %}
 
 	{% for p in petitions %}
@@ -15,7 +21,7 @@
                 {% endif %}
 
                 {% if p.id in signed_petition_ids %}
-    				<a class="addremove_signature" href="/petition/{{ p.id }}/sign/"><i class="icon-pencil" style="color: #a0a0a0;"></i> afmá undirskrift</a>
+    				<a class="addremove_signature unsign" href="/petition/{{ p.id }}/unsign/"><i class="icon-pencil" style="color: #a0a0a0;"></i> afmá undirskrift</a>
                 {% else %}
                     <a class="addremove_signature" href="/petition/{{ p.id }}/sign/"><i class="icon-pencil"></i> bæta við undirskrift</a>
                 {% endif %}
