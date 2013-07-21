@@ -59,7 +59,7 @@ def detail(request, petition_id):
 
     already_signed = False
     if request.user.is_authenticated():
-        Signature.objects.filter(user=request.user, petition=p).count() > 0
+        already_signed = Signature.objects.filter(user=request.user, petition=p).count() > 0
 
     context = Context({
         'petition': p,
