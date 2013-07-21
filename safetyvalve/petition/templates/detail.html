@@ -12,7 +12,7 @@
 	<div>
 		<div class="petition_detail">
 			<h1>{{ petition.name|capfirst }}</h1>
-			bætt við þann: {{ petition.date_created|date:"DATE_FORMAT"|title }}
+			útbýtt: {{ petition.timing_published|date:"DATE_FORMAT"|title }}
 
 			<div class="description">
                 {{ petition.content|safe }}

@@ -12,6 +12,7 @@ class Petition(models.Model):
     external_id = models.CharField(max_length=30)
     description = models.TextField()
     content = models.TextField()
+    timing_published = models.DateTimeField(null=True)
 
     date_created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)

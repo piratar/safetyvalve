@@ -64,6 +64,9 @@ class Document(models.Model):
 
             petition = Petition.objects.get(external_id=external_id)
 
+            # Time of publication (not necessarily creation)
+            petition.timing_published = self.timing_published
+
             # The resource is essentially a link to some external data.
             petition.resource = self.path_html
 
