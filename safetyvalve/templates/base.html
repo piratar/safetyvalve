@@ -48,7 +48,15 @@
         </div>
       </div> -->
 
+
       <div id="left-panel">
+      {% if user.is_authenticated or True %}
+        <div class="person_info">
+          <label>Innskr&aacute;&eth;ur notandi:</label>
+          {{ user.first_name }}<br />
+          <small>{{ user }}</small><br /><br />
+        </div>
+      {% endif %}
         <div class="container-fluid">
 
           <div class="row-fluid">

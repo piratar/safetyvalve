@@ -176,3 +176,20 @@ a.addremove_signature:hover, a.addremove_signature:focus, a.addremove_signature:
 	font-family: 'klinic_slabbook_italic';
 	text-align: middle;
 }
+
+.person_info {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    color: #f0f0f0;
+    width: 250px;
+    padding-top: 8px;
+    font-size: 0.8em;
+}
+
+.person_info label {
+    font-size: 1em;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+
