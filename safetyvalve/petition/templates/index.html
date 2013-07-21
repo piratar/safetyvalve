@@ -14,7 +14,11 @@
                     <small>({{ p.description }})</small>
                 {% endif %}
 
-				<a class="addremove_signature" href="/petition/{{ p.id }}/sign/"><i class="icon-pencil"></i> bæta við undirskrift</a>
+                {% if p.id in signed_petition_ids %}
+    				<a class="addremove_signature" href="/petition/{{ p.id }}/sign/"><i class="icon-pencil" style="color: #a0a0a0;"></i> afmá undirskrift</a>
+                {% else %}
+                    <a class="addremove_signature" href="/petition/{{ p.id }}/sign/"><i class="icon-pencil"></i> bæta við undirskrift</a>
+                {% endif %}
 
 				<div class="details">
 					<span class="date_created">{{p.timing_published|date:"DATE_FORMAT"}}</span> -

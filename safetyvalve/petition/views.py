@@ -40,7 +40,15 @@ def index(request):
         #g+ share logic
         i.url_googleplus_share = 'https://plus.google.com/share?url=%s' % url
 
-    context = Context({'petitions': p, 'instance_url': settings.INSTANCE_URL})
+    signs = Signature.objects.filter(user=request.user)
+    signed_petition_ids = [ s.petition_id for s in signs ]
+
+    context = Context({
+        'petitions': p,
+        'instance_url': settings.INSTANCE_URL,
+        'signed_petition_ids': signed_petition_ids
+    })
+
     return render(request, 'index.html', context)
 
 
