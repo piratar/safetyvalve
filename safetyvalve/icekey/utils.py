@@ -1,4 +1,6 @@
 
+import os, binascii
+
 from lxml import etree
 from StringIO import StringIO
 from suds.client import Client
@@ -52,7 +54,8 @@ def authenticate(request, redirect_url):
     if auth_fake:
         if not token:
             curr_url = request.get_full_path().split('?')[0]
-            return HttpResponseRedirect('%s?token=%s' % (curr_url, auth_fake['token']))
+            fake_token = binascii.b2a_hex(os.urandom(10))
+            return HttpResponseRedirect('%s?token=%s' % (curr_url, fake_token))
         name = auth_fake['name']
         kennitala = auth_fake['kennitala']
 
