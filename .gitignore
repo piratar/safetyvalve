@@ -6,6 +6,7 @@ include/
 lib/
 local/
 share/
+env/
 
 # Ignore local databasefiles
 *.sqlite3
