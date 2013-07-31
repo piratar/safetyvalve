@@ -5,8 +5,10 @@
 
     libmysqlclient-dev (if intending to use mysql as a db, which is reccomended)
     python-dev
+    libxml2-dev
+    libxslt-dev
     ---
-    sudo apt-get install libmysqlclient-dev python-dev (on a debian/ubuntu based flavor)
+    sudo apt-get install libmysqlclient-dev python-dev libxml2-dev libxslt-dev (on a debian/ubuntu based flavor)
 
 after cloning, make sure to run:
 
