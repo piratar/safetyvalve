@@ -13,6 +13,7 @@
 after cloning, make sure to run:
 
     cd safetyvalve
+    pip install distribute==0.7.3
     pip install -r requirements.txt
 
 NB: If you intend to use different backend than MySQL, you don't need the mysql-python lib listed in the requirements.txt.
