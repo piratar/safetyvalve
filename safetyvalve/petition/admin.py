@@ -8,7 +8,7 @@ class PetitionAdmin(admin.ModelAdmin):
 
 
 class SignatureAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'petition', 'authentication', 'comment', 'date_created')
+    list_display = ('id', 'user', 'show_public', 'petition', 'authentication', 'comment', 'date_created')
     date_hierarchy = 'date_created'
 
 
