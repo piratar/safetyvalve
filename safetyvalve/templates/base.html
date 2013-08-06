@@ -48,6 +48,21 @@
         </div>
       </div> -->
 
+      {% if request.META.SERVER_NAME == 'localhost' or request.META.SERVER_NAME == 'staging.ventill.is' %}
+        <a href="/?fake-auth={% if request.session.fake_auth %}off{% else %}on{% endif %}"
+           id="fake-auth-link">Fake auth: {% if request.session.fake_auth %}on{% else %}off{% endif %}</a>
+          <style>
+            #fake-auth-link {
+              position: absolute;
+              right: 0;
+              top: 0;
+              z-index: 999;
+              color: #F00;
+              padding: 4px 6px;
+              background-color: #AA0;
+            }
+          </style>
+      {% endif %}
 
       <div id="left-panel">
       {% if user.is_authenticated or True %}

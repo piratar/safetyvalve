@@ -50,8 +50,9 @@ def authenticate(request, redirect_url):
     user = request.user
     token = request.GET.get('token')
 
-    auth_fake = getattr(settings, 'AUTH_FAKE', None)
-    if auth_fake:
+    fake_auth = request.session['fake_auth']
+    if  fake_auth and hasattr(settings, 'AUTH_FAKE'):
+        auth_fake = settings.AUTH_FAKE
         if not token:
             curr_url = request.get_full_path().split('?')[0]
             fake_token = binascii.b2a_hex(os.urandom(10))

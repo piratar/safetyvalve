@@ -26,6 +26,9 @@ from models import Signature
 def index(request):
     p = Petition.objects.all().order_by('-date_created').annotate(num_signatures=Count('signature'))
 
+    if request.META['SERVER_NAME'] in ['localhost', 'staging.ventill.is']:
+        request.session['fake_auth'] = request.GET.get('fake-auth', '').lower() in ['on', 'true']
+
     for i in p:
         if isinstance(i.name, unicode):
             i.name = i.name.encode('utf-8')

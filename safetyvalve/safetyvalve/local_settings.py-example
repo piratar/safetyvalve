@@ -12,10 +12,10 @@ AUTH_ISLAND = {
     'login': 'piratar_vefur',
     'password': '',
 }
-#AUTH_FAKE = {
-#    'kennitala': '1234567890',
-#    'name': u'Jón Jónsson'
-#}
+AUTH_FAKE = {
+    'kennitala': '1234567890',
+    'name': u'Jón Jónsson'
+}
 
 INSTANCE_NOREPLY_EMAIL = 'noreply@example.com'
 
