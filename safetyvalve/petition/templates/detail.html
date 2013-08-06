@@ -9,6 +9,21 @@
 {% endblock %}
 
 {% block content %}
+
+
+<!-- Temporary CSS -->
+<style type="text/css">
+
+div.description {
+    border: 1px solid #000000;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin: 24px;
+    width: 800px;
+}
+
+</style>
+
 	<div>
         {% if already_signed %}
             <div class="petition_already_signed">
@@ -17,11 +32,13 @@
         {% endif %}
 		<div class="petition_detail">
 			<h1>{{ petition.name|capfirst }}</h1>
-			útbýtt: {{ petition.timing_published|date:"DATE_FORMAT"|title }}
+            <small>
+                {{ petition.description }}<br />
+    			útbýtt: {{ petition.timing_published|date:"DATE_FORMAT"|title }}
+            </small>
 
 			<div class="description">
                 {{ petition.content|safe }}
-				{{ petition.description|safe }}
 			</div>
 
 			<a class="sign" href="sign/">Sign</a>
