@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import codecs
 import urllib
 
 from urllib import urlencode
@@ -12,6 +13,8 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.template import Context
+
+from safetyvalve.mail import create_email
 
 from petition.models import Petition
 
@@ -136,12 +139,14 @@ def email(request, petition_id):
     return render(request, 'petition/email.html', c)
 
 
-def _receipt(request, petition_id, subject, message):
+def _receipt(request, petition_id, subject, message, html=None):
     sender = 'stadfesting@ventill.is'
     recipients = [request.user.email]
 
     try:
-        send_mail(subject, message, sender, recipients)
+        email = create_email(subject, message, html, from_email=sender)
+        email.to = recipients
+        email.send()
 
     except Exception as e:
         c = {'e': e}
@@ -155,17 +160,24 @@ def sign_receipt(request, petition_id):
     s = get_object_or_404(Signature, user=request.user, petition=p)
 
     subject = u'Staðfesting undirskriftar á Ventill.is'
-    message = u'''Sæl(l) %s!
 
-Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir skrifað undir eftirfarandi lög með tókanum %s frá island.is:
+    message = codecs.open('templates/email/sign_notification.txt', 'r', 'utf-8').read()
+    message = message % {
+        'name': request.user.first_name,
+        'token': s.authentication.token,
+        'subject': subject,
+        'text': s.petition.content,
+        }
 
-> %s
+    html = codecs.open('templates/email/sign_notification.html', 'r', 'utf-8').read()
+    html = html % {
+        'name': request.user.first_name,
+        'token': s.authentication.token,
+        'subject': subject,
+        'text': s.petition.content,
+        }
 
-Með kveðju,
-Ventill.is
-''' % (request.user.first_name, s.authentication.token, s.petition.content.replace('\n', '\n> '))
-
-    ret = _receipt(request, petition_id, subject, message)
+    ret = _receipt(request, petition_id, subject, message, html)
 
     if isinstance(ret, HttpResponseRedirect):
         s.mail_sent = True
@@ -179,17 +191,24 @@ def unsign_receipt(request, petition_id):
     s = get_object_or_404(Signature, user=request.user, petition=p)
 
     subject = u'Staðfesting á fjarlægingu undirskriftar á Ventill.is'
-    message = u'''Sæl(l) %s!
 
-Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir fjarlægt undirskrift undir eftirfarandi lög með tókanum %s frá island.is:
+    message = codecs.open('templates/email/unsign_notification.txt', 'r', 'utf-8').read()
+    message = message % {
+        'name': request.user.first_name,
+        'token': s.authentication.token,
+        'subject': subject,
+        'text': s.petition.content,
+        }
 
-> %s
+    html = codecs.open('templates/email/unsign_notification.html', 'r', 'utf-8').read()
+    html = html % {
+        'name': request.user.first_name,
+        'token': s.authentication.token,
+        'subject': subject,
+        'text': s.petition.content,
+        }
 
-Með kveðju,
-Ventill.is
-''' % (request.user.first_name, s.authentication.token, s.petition.content.replace('\n', '\n> '))
-
-    ret = _receipt(request, petition_id, subject, message)
+    ret = _receipt(request, petition_id, subject, message, html)
 
     if isinstance(ret, HttpResponseRedirect):
         s.delete()

@@ -12,6 +12,29 @@ class TimeoutEmailBackend(EmailBackend):
         super(TimeoutEmailBackend, self).__init__(*args, **kwargs)
         #EmailBackend.__init__(self, *args, **kwargs)
         self.timeout = timeout or getattr(settings, 'EMAIL_CONNECTION_TIMEOUT', None)
+        self.keep_alive = kwargs.get('keep_alive') or getattr(settings, 'EMAIL_CONNECTION_KEEP_ALIVE', None)
+
+    def send_messages(self, email_messages):
+        """
+        Sends one or more EmailMessage objects and returns the number of email
+        messages sent.
+        """
+        if not email_messages:
+            return
+        with self._lock:
+            new_conn_created = self.open()
+            if not self.connection:
+                # We failed silently on open().
+                # Trying to send would be pointless.
+                return
+            num_sent = 0
+            for message in email_messages:
+                sent = self._send(message)
+                if sent:
+                    num_sent += 1
+            if new_conn_created and not self.keep_alive:
+                self.close()
+        return num_sent
 
     def open(self):
         """

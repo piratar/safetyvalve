@@ -1,0 +1,9 @@
+Sæl(l) %(name)s!
+
+Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir skrifað undir eftirfarandi lög með tókanum %(token)s frá island.is:
+
+> %(text)s
+
+Með kveðju,
+Ventill.is
+
