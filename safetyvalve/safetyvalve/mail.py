@@ -33,7 +33,7 @@ class Email(EmailMultiAlternatives):
 
 
 def create_email(subject, body, html=None, from_email=None):
-    email = Email()
+    email = Email(headers={'Reply-To': from_email})
     email.subject = subject
     email.body = body
     if from_email is None:
