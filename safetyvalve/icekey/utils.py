@@ -59,6 +59,8 @@ def authenticate(request, redirect_url):
             return HttpResponseRedirect('%s?token=%s' % (curr_url, fake_token))
         name = auth_fake['name']
         kennitala = auth_fake['kennitala']
+    else:
+        auth_fake = None
 
     if not token:
         return HttpResponseRedirect(redirect_url)
