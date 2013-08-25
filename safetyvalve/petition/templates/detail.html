@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% block javascript %}
+{{block.super}}
+    <script src="{{STATIC_URL}}petition/js/petition.js" type="text/javascript"></script>
+{% endblock %}
+
 {% block extra_meta %}
 		<meta property="og:title" content="{{ petition.name }}" />
 {% endblock %}
@@ -29,6 +34,13 @@ div.description {
             <div class="petition_already_signed">
                 Þú hefur þegar skrifað undir mótmæli gegn þessu lagafrumvarpi.
             </div>
+            {% with p=petition %}
+                {% include 'stub/unsign_button.html' %}
+            {% endwith %}
+        {% else %}
+            {% with p=petition %}
+                {% include 'stub/sign_button.html' %}
+            {% endwith %}
         {% endif %}
 		<div class="petition_detail">
 			<h1>{{ petition.name|capfirst }}</h1>
@@ -41,7 +53,15 @@ div.description {
                 {{ petition.content|safe }}
 			</div>
 
-			<a class="sign" href="sign/">Sign</a>
+            {% if not already_signed %}
+                {% with p=petition %}
+                    {% include 'stub/sign_button.html' %}
+                {% endwith %}
+            {% else %}
+               {% with p=petition %}
+                    {% include 'stub/unsign_button.html' %}
+                {% endwith %}
+            {% endif %}
 		</div>
 	</div>
 {% endblock %}

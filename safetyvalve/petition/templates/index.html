@@ -21,10 +21,10 @@
                 {% endif %}
 
                 {% if p.id in signed_petition_ids %}
-    				<a class="addremove_signature unsign" href="/petition/{{ p.id }}/unsign/"><i class="icon-pencil" style="color: #a0a0a0;"></i> afmá undirskrift</a>
+                    {% include 'stub/unsign_button.html' %}
                 {% else %}
-                    <a class="addremove_signature" href="/petition/{{ p.id }}/sign/"><i class="icon-pencil"></i> bæta við undirskrift</a>
-                {% endif %}
+                    {% include 'stub/sign_button.html' %}
+                 {% endif %}
 
 				<div class="details">
 					<span class="date_created">{{p.timing_published|date:"DATE_FORMAT"}}</span> -

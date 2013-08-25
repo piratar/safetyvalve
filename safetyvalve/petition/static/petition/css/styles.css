@@ -163,17 +163,53 @@ a:hover {
 }
 
 a.addremove_signature {
-	font-size: .8em;
-	font-family: 'klinic_slabbook';
-
-	display: block;
 	margin: 5px 0;
-
-	cursor: hand;
+	cursor: pointer;
 }
 
-a.addremove_signature i {
+a.signature_cancel {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.unsign {
+    color: #a0a0a0 !important;
+}
+
+.unsign a {
+    color: #a0a0a0 !important;
+}
+
+i.icon-pencil {
 	font-size: 2em;
+}
+
+.signature_container {
+    width: 220px;
+    border: 1px solid #e0e0e0;
+
+    padding-left: 12px;
+    padding-top: 4px;
+    padding-bottom: 8px;
+
+    font-family: 'klinic_slabbook';
+    font-size: .8em;
+
+    color: #3C4366;
+}
+
+.signature_container a {
+    color: #3C4366;
+}
+
+.signature_container label {
+    font-family: 'klinik_slabbook';
+    font-size: .7em;
+    display: inline;
+}
+
+.signature_container .show_public_container {
+    padding-left: 24px;
 }
 
 a.addremove_signature:hover, a.addremove_signature:focus, a.addremove_signature:visited {

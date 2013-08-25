@@ -1,0 +1,14 @@
+<!-- TEMP: Temporary CSS -->
+<div class="signature_container" data-id="{{ p.id }}">
+    <div class="pre_selection_container">
+        <a class="addremove_signature"><i class="icon-pencil"></i> bæta við undirskrift</a>
+    </div>
+    <div class="post_selection_container" style="display: none;">
+        <a class="addremove_signature"><i class="icon-pencil"></i> <b>staðfesta undirskrift</b></a> | <a class="signature_cancel">hætta við</a>
+        <div class="show_public_container">
+            <input type="checkbox" class="show_public" id="show_public_{{ p.id }}" value="1" checked="1" />
+            <label for="show_public_{{ p.id }}">Sýna undirskrift opinberlega</label>
+        </div>
+    </div>
+</div>
+
