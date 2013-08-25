@@ -8,7 +8,6 @@ from urllib import urlencode
 from django import forms
 from django.db.models import Count
 from django.conf import settings
-from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
