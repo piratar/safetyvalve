@@ -12,6 +12,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.template import Context
+from django.contrib.auth.models import User
 
 from safetyvalve.mail import create_email
 
@@ -67,10 +68,22 @@ def detail(request, petition_id):
     if request.user.is_authenticated():
         already_signed = Signature.objects.filter(user=request.user, petition=p).count() > 0
 
+    user_ids = []
+    signatures = Signature.objects.filter(petition_id=petition_id).order_by('date_created')
+    for s in signatures:
+        user_ids.append(s.user_id)
+
+    users = User.objects.filter(id__in=user_ids)
+
+    users_publics = zip(users, [ s.show_public for s in signatures ])
+
     context = Context({
         'petition': p,
+        'users': users,
+        'users_publics': users_publics,
         'already_signed': already_signed
     })
+
     return render(request, 'detail.html', context)
 
 

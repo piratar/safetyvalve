@@ -241,8 +241,6 @@ a.addremove_signature:hover, a.addremove_signature:focus, a.addremove_signature:
 }
 /* END - Left-side user information */
 
-
-
 /* --- Signatures --------------------------------------------------------- */
 
 table#signatures {
@@ -276,3 +274,21 @@ table#signatures {
 th .subheader {
     font-size: 75%;
 }
+
+/* START - User listing in petition */
+.petition_signatories {
+    border: 1px solid #a0a0a0;
+}
+.petition_signatories td {
+    font-size: .8em;
+    border: 1px solid #a0a0a0;
+    padding: 2px 4px 2px 4px;
+}
+.petition_signatories td.username {
+    text-align: center;
+}
+.petition_signatories td.fullname {
+    width: 31em;
+}
+/* END - User listing in petition */
+

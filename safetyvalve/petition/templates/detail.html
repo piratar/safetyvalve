@@ -30,6 +30,7 @@ div.description {
 </style>
 
 	<div>
+
         {% if already_signed %}
             <div class="petition_already_signed">
                 Þú hefur þegar skrifað undir mótmæli gegn þessu lagafrumvarpi.
@@ -42,6 +43,23 @@ div.description {
                 {% include 'stub/sign_button.html' %}
             {% endwith %}
         {% endif %}
+
+        <table class="petition_signatories">
+            {% for u, show_public in users_publics %}
+                {% if show_public %}
+                    <tr class="user">
+                        <td class="username">{{ u.username }}</td>
+                        <td class="fullname">{{ u.first_name }}</td>
+                    </tr>
+                {% else %}
+                    <tr class="user">
+                        <td class="username">[ fali&eth; ]</td>
+                        <td class="fullname">[ fali&eth; ]</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+
 		<div class="petition_detail">
 			<h1>{{ petition.name|capfirst }}</h1>
             <small>
