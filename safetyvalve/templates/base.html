@@ -48,7 +48,7 @@
         </div>
       </div> -->
 
-      {% if request.META.SERVER_NAME == 'localhost' or request.META.SERVER_NAME == 'staging.ventill.is' %}
+      {% if request.META.SERVER_NAME !=  'ventill.is' and request.META.SERVER_NAME !=  'www.ventill.is' %}
         <a href="/?fake-auth={% if request.session.fake_auth %}off{% else %}on{% endif %}"
            id="fake-auth-link">Fake auth: {% if request.session.fake_auth %}on{% else %}off{% endif %}</a>
           <style>

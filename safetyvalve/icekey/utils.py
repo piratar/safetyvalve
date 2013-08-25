@@ -50,7 +50,7 @@ def authenticate(request, redirect_url):
     user = request.user
     token = request.GET.get('token')
 
-    fake_auth = request.session['fake_auth']
+    fake_auth = request.session.get('fake_auth')
     if  fake_auth and hasattr(settings, 'AUTH_FAKE'):
         auth_fake = settings.AUTH_FAKE
         if not token:
