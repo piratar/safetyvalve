@@ -27,7 +27,8 @@ def index(request):
     p = Petition.objects.all().order_by('-date_created').annotate(num_signatures=Count('signature'))
 
     if request.META['SERVER_NAME'] not in ['www.ventill.is', 'ventill.is']:
-        request.session['fake_auth'] = request.GET.get('fake-auth', '').lower() in ['on', 'true']
+        if request.GET.get('fake-auth'):
+            request.session['fake_auth'] = request.GET.get('fake-auth', '').lower() in ['on', 'true']
 
     for i in p:
         if isinstance(i.name, unicode):
