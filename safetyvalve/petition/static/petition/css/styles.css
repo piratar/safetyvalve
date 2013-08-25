@@ -162,6 +162,7 @@ a:hover {
     display: inline;
 }
 
+/* START - Sign/Unsign buttons */
 a.addremove_signature {
 	margin: 5px 0;
 	cursor: pointer;
@@ -215,12 +216,14 @@ i.icon-pencil {
 a.addremove_signature:hover, a.addremove_signature:focus, a.addremove_signature:visited {
 	text-decoration: none;
 }
+/* END - Sign/Unsign buttons */
 
 .petition_item .details .date_created, .petition_item .details .num_signatures, .petition_item .details .share {
 	font-family: 'klinic_slabbook_italic';
 	text-align: middle;
 }
 
+/* START - Left-side user information */
 .person_info {
     position: absolute;
     left: 0px;
@@ -236,6 +239,7 @@ a.addremove_signature:hover, a.addremove_signature:focus, a.addremove_signature:
     margin-bottom: 0px;
     font-weight: bold;
 }
+/* END - Left-side user information */
 
 
 
