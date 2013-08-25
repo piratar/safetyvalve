@@ -1,11 +1,14 @@
 
+import json
+
 from urllib import urlencode
 
 from django.conf import settings
 from django.contrib.auth import logout
 from django.core.urlresolvers import reverse
 from django.shortcuts import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, render_to_response
+from django.http import HttpResponseForbidden
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template import Context
 
 from petition.models import Signature
@@ -29,6 +32,42 @@ def signatures(request):
     c['signatures'] = signs
 
     return render(request, 'petition/signatures.html', Context(c))
+
+
+def signature_change_public(request, signature_id):
+    if not request.user.is_authenticated():
+        return HttpResponseForbidden()
+
+    s = get_object_or_404(Signature, id=signature_id, user=request.user)
+
+    s.show_public = not s.show_public
+    s.save()
+
+    return HttpResponseRedirect(reverse('signatures'))
+
+
+def remove_signature(request, signature_id):
+
+    if not request.user.is_authenticated():
+        return HttpResponseForbidden()
+
+    s = get_object_or_404(Signature, id=signature_id, user=request.user)
+
+    redirect_to = request.GET.get('next', reverse('signatures'))
+
+    if request.GET.get('answer', '').lower() == 'yes':
+        s.delete()
+        return HttpResponseRedirect(redirect_to)
+
+    context = Context({
+        'signature': s,
+        'next': redirect_to,
+    })
+
+    if request.GET.get('method', '').lower() == 'browser-confirm':
+        return render(request, 'person/remove_signature__json.html', context, content_type='application/json')
+    else:
+        return render(request, 'person/remove_signature.html', context)
 
 
 def login_view(request):

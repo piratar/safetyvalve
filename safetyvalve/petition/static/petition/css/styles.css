@@ -237,3 +237,38 @@ a.addremove_signature:hover, a.addremove_signature:focus, a.addremove_signature:
     font-weight: bold;
 }
 
+
+
+/* --- Signatures --------------------------------------------------------- */
+
+table#signatures {
+
+}
+
+#signatures thead {
+    
+}
+
+#signatures tbody {
+    
+}
+
+#signatures td,
+#signatures th {
+    padding: 0.5em 1.5em;
+    border: 1px solid black;
+}
+
+.align-left {
+    text-align: left;
+}
+.align-center {
+    text-align: center;
+}
+.align-right {
+    text-align: right;
+}
+
+th .subheader {
+    font-size: 75%;
+}

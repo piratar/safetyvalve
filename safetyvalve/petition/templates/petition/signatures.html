@@ -1,23 +1,47 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}
     Signatures
 {% endblock %}
 
+{% block javascript %}
+{{ block.super }}
+    <script>
+        var yesno = "{% trans "Yes,No" %}".split(',');
+    </script>
+    <script src="{{STATIC_URL}}person/js/signatures.js" type="text/javascript"></script>
+{% endblock %}
+
 {% block content %}
-    <div class="row">
-        <div class="span12 petition_detail">
+    <div class="row-fluid">
+        <div class="span1">
+            &nbsp;
+        </div>
+        <div class="span11 petition_detail">
             <h1>Signatures</h1>
 
-            <ul>
-                {% for signature in signatures %}
-                <li>
-                    {{signature}}
-                </li>
-                {% empty %}
-                <li>No signatures yet!</li>
-                {% endfor %}
-            </ul>
+            <table id="signatures">
+                <thead>
+                    <tr>
+                        <th class="align-left">{% trans "Petition" %}</th>
+                        <th>{% trans "Sign date" %}</th>
+                        <th>{% trans "Public" %}<br/><span class="subheader">(Click to alter)</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for signature in signatures %}
+                    <tr data-id="{{signature.id}}">
+                        <td><a href="/petition/{{signature.petition.id}}/">{{signature.petition}}</a></td>
+                        <td>{{signature.date_created}}</td>
+                        <td class="align-center"><a class="change-public" data-show-public="{{signature.show_public|yesno:"yes,no"}}" href="/person/signatures/change-public/{{signature.id}}/">{{signature.show_public|yesno:_("Yes,No")}}</a></td>
+                        <td><a class="remove-signature" data-method="browser-confirm" href="/person/signatures/remove/{{signature.id}}/?next=%2Fperson%2Fsignatures%2F">Remove</a></td>
+                    </tr>
+                    {% empty %}
+                    <tr><td class="align-center" colspan="3">No signatures yet!</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}
