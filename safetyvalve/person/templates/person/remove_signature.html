@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block title %}
-    Remove signature
+    {% trans 'Remove signature' %}
 {% endblock %}
 
 {% block content %}
@@ -11,13 +11,13 @@
             &nbsp;
         </div>
         <div class="span11 petition_detail">
-            <h1>Remove signature</h1>
+            <h1>{% trans 'Remove signature' %}</h1>
 
             <p>
                 {% include 'person/_remove_signature__text.html' %}
             </p>
-            <a href="?answer=yes&next={{next|iriencode}}">Yes</a>
-            <a href="{{next}}">No</a>
+            [ <a href="?answer=yes&next={{next|iriencode}}">{% trans 'Yes' %}</a> ]
+            [ <a href="{{next}}">{% trans 'No' %}</a> ]
         </div>
     </div>
 {% endblock %}

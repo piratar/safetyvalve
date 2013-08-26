@@ -1,0 +1,183 @@
+# Icelandic translation for SafetyValve.
+# Copyright (C) 2013
+# This file is distributed under the same license as the SafetyValve package.
+# Helgi Hrafn Gunnarsson <helgi@piratar.is>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SafetyValve\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-26 22:55+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
+"Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: person/templates/person/_remove_signature__text.html:1
+#, python-format
+msgid "Are you sure you want to remove your signature for '%(petition)s'?"
+msgstr ""
+"Ertu viss um að þú viljir fjarlægja undirskrift þína gegn '%(petition)s'?"
+
+#: person/templates/person/remove_signature.html:14
+msgid "Remove signature"
+msgstr "Fjarlægja undirskrift"
+
+#: person/templates/person/remove_signature.html:19
+#: petition/templates/petition/signatures.html:33
+msgid "Yes"
+msgstr "Já"
+
+#: person/templates/person/remove_signature.html:20
+#: petition/templates/petition/signatures.html:34
+msgid "No"
+msgstr "Nei"
+
+#: petition/views.py:126
+msgid "Email address"
+msgstr "Netfang"
+
+#: petition/views.py:127
+msgid "Confirm email address"
+msgstr "Staðfesting netfangs"
+
+#: petition/views.py:133
+msgid "Email addresses must match"
+msgstr "Netföngin verða bæði að vera eins"
+
+#: petition/templates/detail.html:22
+msgid "You have already signed an objection against this bill."
+msgstr "Þú hefur þegar skrifað undir mótmæli gegn þessu frumvarpi."
+
+#: petition/templates/detail.html:46
+msgid "Civil nr."
+msgstr "Kennitala"
+
+#: petition/templates/detail.html:47
+msgid "Full name"
+msgstr "Fullt nafn"
+
+#: petition/templates/detail.html:48
+msgid "Date"
+msgstr "Dags."
+
+#: petition/templates/detail.html:66
+#: petition/templates/petition/signatures.html:47
+msgid "No signatures yet!"
+msgstr "Enn engar undirskriftir!"
+
+#: petition/templates/detail.html:79
+msgid "distributed"
+msgstr "útbýtt"
+
+#: petition/templates/index.html:32
+msgid "signature"
+msgstr "undirskrift"
+
+#: petition/templates/index.html:34
+msgid "signatures"
+msgstr "undirskriftir"
+
+#: petition/templates/index.html:38
+msgid "Share"
+msgstr "Deila"
+
+#: petition/templates/petition/email.html:5
+msgid "Email required"
+msgstr "Þörf á netfangi"
+
+#: petition/templates/petition/email.html:10
+msgid ""
+"In order to secure the legitimacy of each signature, we send a receipt via "
+"email to the signatory person."
+msgstr ""
+"Til að tryggja lögmæti undirskrifta enn frekar sendum við kvittun "
+"ítölvupósti til þess sem skrifar undir."
+
+#: petition/templates/petition/email.html:15
+msgid ""
+"Email addresses are only used for verification purposes and are never sent "
+"to a third party."
+msgstr ""
+"Netföng eru einungis notuð til staðfestingar og eru aldrei sendþriðja aðila."
+
+#: petition/templates/petition/email.html:23
+msgid "Confirm"
+msgstr "Staðfesta"
+
+#: petition/templates/petition/signatures.html:5
+#: petition/templates/petition/signatures.html:16 templates/base.html:96
+msgid "My Signatures"
+msgstr "Mínar undirskriftir"
+
+#: petition/templates/petition/signatures.html:21
+msgid "Petition"
+msgstr "Undirskriftalisti"
+
+#: petition/templates/petition/signatures.html:22
+msgid "Sign date"
+msgstr "Dags. undirskriftar"
+
+#: petition/templates/petition/signatures.html:23
+msgid "Visible"
+msgstr "Sýnileg"
+
+#: petition/templates/petition/signatures.html:35
+msgid "Change"
+msgstr "Breyta"
+
+#: petition/templates/petition/signatures.html:43
+msgid "Remove"
+msgstr "Fjarlægja"
+
+#: petition/templates/stub/sign_button.html:4
+msgid "add signature"
+msgstr "bæta við endurskrift"
+
+#: petition/templates/stub/sign_button.html:7
+msgid "confirm signature"
+msgstr "staðfesta undirskrift"
+
+#: petition/templates/stub/sign_button.html:7
+msgid "cancel"
+msgstr "hætta við"
+
+#: petition/templates/stub/sign_button.html:10
+msgid "Show signature publicly"
+msgstr "Birta undirskrift opinberlega"
+
+#: petition/templates/stub/unsign_button.html:3
+msgid "remove signature"
+msgstr "fjarlægja undirskrift"
+
+#: templates/base.html:29
+msgid "Are you sure?"
+msgstr ""
+
+#: templates/base.html:76
+msgid "Signed-in user"
+msgstr "Innskráður notandi"
+
+#: templates/base.html:93
+msgid "Home"
+msgstr "Heim"
+
+#: templates/base.html:94
+msgid "About Us"
+msgstr "Um Okkur"
+
+#: templates/base.html:95
+msgid "Contact Us"
+msgstr "Hafðu Samband"
+
+#: templates/base.html:97
+msgid "Most Popular"
+msgstr "Vinsælast"
+
+#: templates/base.html:99
+msgid "Sign out"
+msgstr "Útskrá"

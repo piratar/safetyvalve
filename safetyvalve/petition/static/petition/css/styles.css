@@ -87,7 +87,7 @@ html, body {
 }
 
 #right-panel {
-	padding: 90px 0 100px 0;
+	padding: 64px 0 100px 64px;
 	margin-left: 250px;
 }
 
@@ -118,6 +118,7 @@ a:hover {
 	cursor: hand;
 }
 
+/* START - Petition list */
 .petition_item {
 	border: 2px solid #D7D7D7;
 	border-right: none;
@@ -153,13 +154,16 @@ a:hover {
 
 	vertical-align: -.2em;
 }
+/* END - Petition list */
 
-.petition_already_signed {
-    border: 1px solid #000000;
+.note {
+    border: 1px solid #aaaa88;
     text-align: center;
-    background: #e0e0e0;
-    padding: 4px 4px 4px 4px;
-    display: inline;
+    background: #ffffaa;
+    display: block;
+    max-width: 500px;
+    padding: 24px 24px;
+    text-align: center;
 }
 
 /* START - Sign/Unsign buttons */
@@ -243,23 +247,6 @@ a.addremove_signature:hover, a.addremove_signature:focus, a.addremove_signature:
 
 /* --- Signatures --------------------------------------------------------- */
 
-table#signatures {
-
-}
-
-#signatures thead {
-    
-}
-
-#signatures tbody {
-    
-}
-
-#signatures td,
-#signatures th {
-    padding: 0.5em 1.5em;
-    border: 1px solid black;
-}
 
 .align-left {
     text-align: left;
@@ -276,35 +263,68 @@ th .subheader {
 }
 
 /* START - User listing in petition */
-.petition_signatories {
+.datatable {
     border: 1px solid #a0a0a0;
 }
-.petition_signatories th {
+.datatable th {
     font-size: .8em;
-    text-align: left;
     background: #ffffff;
     border-left: 1px dotted #a0a0a0;
     padding: 2px 6px 2px 6px;
 }
-.petition_signatories th.username {
+.datatable th.username {
     text-align: center;
 }
-.petition_signatories th.timing {
-    text-align: right;
+.datatable th.timing {
+    text-align: center;
 }
-.petition_signatories td {
+.datatable td {
     font-size: .8em;
     border: 1px solid #a0a0a0;
     padding: 2px 6px 2px 6px;
 }
-.petition_signatories td.username {
+.datatable td.username {
     text-align: center;
 }
-.petition_signatories td.fullname {
+.datatable td.fullname {
     width: 31em;
 }
-.petition_signatories td.timing {
-    text-align: right;
+.datatable td.timing {
+    text-align: center;
+}
+.datatable span.button {
+    font-family: fixed;
+    font-size: .9em;
+    color: #000000;
+}
+.datatable span.button a {
+    color: #336699;
 }
 /* END - User listing in petition */
+
+/* START - Petition details */
+.petition_detail {
+    width: 800px;
+}
+
+.petition_detail h2 {
+    margin: 0px;
+}
+
+.petition_detail .description {
+    margin: 0px;
+    font-size: .8em;
+    font-style: italic;
+}
+
+.petition_detail .distributed {
+    margin: 0px;
+    font-size: .8em;
+}
+
+.petition_detail .content {
+    border: 1px solid #000000;
+    padding: 48px;
+}
+/* END - Petition details */
 

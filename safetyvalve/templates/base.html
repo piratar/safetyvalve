@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="is">
   <head>
@@ -22,6 +23,11 @@
     <script src="{{STATIC_URL}}bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     {% block javascript %}
     {% endblock %}
+
+    <!-- Globally translatable strings for JavaScript -->
+    <div style="display: none;">
+        <div id="msg_are_you_sure">{% trans 'Are you sure?' %}</div>
+    </div>
 
   </head>
 
@@ -67,7 +73,7 @@
       <div id="left-panel">
       {% if user.is_authenticated or True %}
         <div class="person_info">
-          <label>Innskr&aacute;&eth;ur notandi:</label>
+          <label>{% trans 'Signed-in user' %}</label>
           {{ user.first_name }}<br />
           <small>{{ user }}</small><br /><br />
         </div>
@@ -84,13 +90,13 @@
           <div class="row-fluid">
             <div class="span12">
               <ul>
-                <li><a href="/">Heim</a></li>
-                <li><a href="#">Um Okkur</a></li>
-                <li><a href="#">Hafa Samband</a></li>
-                <li><a href="/person/signatures/">Mínar<br />Undirskriftir</a></li>
-                <li><a href="#">Vinsælast</a></li>
+                <li><a href="/">{% trans 'Home' %}</a></li>
+                <li><a href="#">{% trans 'About Us' %}</a></li>
+                <li><a href="#">{% trans 'Contact Us' %}</a></li>
+                <li><a href="/person/signatures/">{% trans 'My Signatures' %}</a></li>
+                <li><a href="#">{% trans 'Most Popular' %}</a></li>
                 {% if user.is_authenticated %}
-                <li><a href="/person/logout/">Útskrá</a></li>
+                <li><a href="/person/logout/">{% trans 'Sign out' %}</a></li>
                 {% endif %}
               </ul>
             </div>

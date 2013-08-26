@@ -28,3 +28,19 @@ then:
     python manage.py collectstatic (optional in dev)
     python manage.py updatealthingi (will poll for frumvarp)
     python manage.py runserver (to run a dev server)
+
+Translating
+------
+At the project's root directory (where 'manage.py' recides), run the following
+
+    django-admin makemessages -l is # (or some other code instead of 'is')
+
+This will update the translation source file at: locale/is/LC_MESSAGES/django.po
+Edit the file and translate the strings. Then run:
+
+    django-admin compilemessages
+
+This will compile the translation file into the target file at: locale/is/LC_MESSAGES/django.mo
+
+Then the server will need restarting to take the changes into account.
+

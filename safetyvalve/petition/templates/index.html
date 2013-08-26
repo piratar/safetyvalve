@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block javascript %}
 {{block.super}}
@@ -9,10 +10,7 @@
 
 	{% for p in petitions %}
 		<div class="row-fluid">
-			<div class="span1">
-				&nbsp;
-			</div>
-			<div class="span11 petition_item">
+			<div class="petition_item">
 
 				<a class="petition_title" href="/petition/{{ p.id }}">{{ p.name|capfirst }}</a>
                 {% if p.description %}
@@ -28,8 +26,16 @@
 
 				<div class="details">
 					<span class="date_created">{{p.timing_published|date:"DATE_FORMAT"}}</span> -
-					<span class="num_signatures">{{p.num_signatures}} undirskrift(ir)</span> - 
-					<span class="share">Deila:</span>
+					<span class="num_signatures">
+                        {{ p.num_signatures }}
+                        {% if p.num_signatures == 1 %}
+                            {% trans 'signature' %}
+                        {% else %}
+                            {% trans 'signatures' %}
+                        {% endif %}
+                    </span>
+                    -
+					<span class="share">{% trans 'Share' %}:</span>
 					<a href="{{p.url_facebook_share}}" target="_blank" class="share_icon"><i class="icon-facebook-sign"></i></a>
 					
 					<a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="icon-twitter-sign"></i></a>

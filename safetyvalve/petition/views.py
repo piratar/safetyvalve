@@ -13,6 +13,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.template import Context
 from django.contrib.auth.models import User
+from django.utils.translation import *
 
 from safetyvalve.mail import create_email
 
@@ -122,14 +123,14 @@ def email(request, petition_id):
     c = {}
 
     class EmailForm(forms.Form):
-        email = forms.EmailField()
-        confirm_email = forms.EmailField()
+        email = forms.EmailField(label=ugettext('Email address'))
+        confirm_email = forms.EmailField(label=ugettext('Confirm email address'))
 
         def clean(self):
             if (self.cleaned_data.get('email') !=
                 self.cleaned_data.get('confirm_email')):
                 raise forms.ValidationError(
-                    "Email addresses must match."
+                    ugettext("Email addresses must match")
                 )
             return self.cleaned_data
 

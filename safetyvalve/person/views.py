@@ -27,7 +27,7 @@ def signatures(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('login'))
 
-    signs = Signature.objects.filter(user=request.user).order_by('-last_updated')
+    signs = Signature.objects.filter(user=request.user).order_by('-date_created')
 
     c['signatures'] = signs
 

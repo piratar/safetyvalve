@@ -1,19 +1,26 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}
-    E-Mail wanted
+    {% trans 'Email required' %}
 {% endblock %}
 
 {% block content %}
-    <p>
-        Til að auka traust á undirskriftirnar þurfum við ... (sbdy. please finish this text :p)
-    </p>
-    <p>
-        Gættu þess að netfangið sé alveg rétt, þar sem við krefjumst ekki staðfestingar á netfanginu.
-    </p>
-    <form action="." method="post">{% csrf_token %}
+
+    <p>{% trans 'In order to secure the legitimacy of each signature, we send a receipt via email to the signatory person.' %}</p>
+<!--
+Til að tryggja lögmæti undirskrifta enn frekar sendum við kvittun í tölvupósti til þess sem skrifar undir.
+-->
+
+    <p>{% trans 'Email addresses are only used for verification purposes and are never sent to a third party.' %}</p>
+<!--
+Netföng eru einungis notuð til staðfestingar og eru aldrei send þriðja aðila.
+-->
+
+    <form action="." method="post">
+    {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit" />
+    <button type="submit">{% trans 'Confirm' %}</button>
     </form>
 {% endblock %}
 

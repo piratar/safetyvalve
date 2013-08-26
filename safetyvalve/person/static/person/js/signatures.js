@@ -15,7 +15,9 @@ $(function () {
             async: false,
             success: function () {
                 success = true;
-                anchor.text(yesno[is_public*1]);  // Now is_public has changed
+                //anchor.text(yesno[is_public*1]);  // Now is_public has changed
+                anchor.parent().find('.pseudo_checkbox_yes').css('display', (is_public ? 'none' : 'inline'));
+                anchor.parent().find('.pseudo_checkbox_no').css('display', (is_public ? 'inline' : 'none'));
                 anchor.data('show-public', ['yes', 'no'][is_public*1]);
             }
         })

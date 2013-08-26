@@ -196,3 +196,8 @@ LOGGING = {
         },
     }
 }
+
+LOCALE_PATHS = (
+    'locale',
+)
+

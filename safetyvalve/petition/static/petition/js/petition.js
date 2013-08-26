@@ -2,7 +2,8 @@
 $(function () {
 
     $('a.unsign').bind('click', function (e) {
-        if (!confirm('Ertu viss?')) {
+        var msg = $('#msg_are_you_sure').text();
+        if (!confirm(msg)) {
             e.preventDefault();
             return false;
         }
