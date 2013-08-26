@@ -136,7 +136,7 @@ msgstr "Fjarlægja"
 
 #: petition/templates/stub/sign_button.html:4
 msgid "add signature"
-msgstr "bæta við endurskrift"
+msgstr "bæta við undurskrift"
 
 #: petition/templates/stub/sign_button.html:7
 msgid "confirm signature"
