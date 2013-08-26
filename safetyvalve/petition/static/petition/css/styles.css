@@ -279,16 +279,32 @@ th .subheader {
 .petition_signatories {
     border: 1px solid #a0a0a0;
 }
+.petition_signatories th {
+    font-size: .8em;
+    text-align: left;
+    background: #ffffff;
+    border-left: 1px dotted #a0a0a0;
+    padding: 2px 6px 2px 6px;
+}
+.petition_signatories th.username {
+    text-align: center;
+}
+.petition_signatories th.timing {
+    text-align: right;
+}
 .petition_signatories td {
     font-size: .8em;
     border: 1px solid #a0a0a0;
-    padding: 2px 4px 2px 4px;
+    padding: 2px 6px 2px 6px;
 }
 .petition_signatories td.username {
     text-align: center;
 }
 .petition_signatories td.fullname {
     width: 31em;
+}
+.petition_signatories td.timing {
+    text-align: right;
 }
 /* END - User listing in petition */
 

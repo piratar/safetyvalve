@@ -45,16 +45,23 @@ div.description {
         {% endif %}
 
         <table class="petition_signatories">
-            {% for u, show_public in users_publics %}
-                {% if show_public %}
+            <tr>
+                <th class="username">Kennitala</th>
+                <th class="fullname">Fullt nafn</th>
+                <th class="timing">dag./mán./ár</th>
+            </tr>
+            {% for s in signatures %}
+                {% if s.show_public %}
                     <tr class="user">
-                        <td class="username">{{ u.username }}</td>
-                        <td class="fullname">{{ u.first_name }}</td>
+                        <td class="username">{{ s.user.username }}</td>
+                        <td class="fullname">{{ s.user.first_name }}</td>
+                        <td class="timing">{{ s.date_created|date:'d/m/Y' }}</td>
                     </tr>
                 {% else %}
                     <tr class="user">
                         <td class="username">[ fali&eth; ]</td>
                         <td class="fullname">[ fali&eth; ]</td>
+                        <td class="timing">{{ s.date_created|date:'d/m/Y' }}</td>
                     </tr>
                 {% endif %}
             {% endfor %}
