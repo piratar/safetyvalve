@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
 
+from safetyvalve import views
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -17,4 +19,6 @@ urlpatterns = patterns('',
     url(r'^petition/', include('petition.urls')),
     url(r'^person/', include('person.urls')),
     url(r'^althingi/', include('althingi.urls')),
+
+    url(r'^about-us/', views.about_us, name='about_us'),
 )

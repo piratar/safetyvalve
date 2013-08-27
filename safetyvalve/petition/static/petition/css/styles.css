@@ -227,6 +227,24 @@ a.addremove_signature:hover, a.addremove_signature:focus, a.addremove_signature:
 	text-align: middle;
 }
 
+/* START - Informational text pages */
+div.longtext {
+    width: 600px;
+    text-align: justify;
+}
+div.longtext h3 {
+    font-family: 'klinik_slabbook';
+    margin: 0px;
+}
+div.longtext p {
+    font-family: 'klinik_slabbook';
+    margin-bottom: 1.2em;
+}
+div.longtext li {
+    font-family: 'klinik_slabbook';
+}
+/* END - Informational text pages */
+
 /* START - Left-side user information */
 .person_info {
     position: absolute;
