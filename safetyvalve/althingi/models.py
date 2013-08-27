@@ -91,6 +91,9 @@ class Document(models.Model):
 
             self.xhtml = soup.prettify()
 
+            # Final cleanup at text-stage.
+            self.xhtml = self.xhtml.replace(' <!-- Tab -->\n  ', '&nbsp;&nbsp;&nbsp;&nbsp;')
+
             petition.content = self.xhtml
 
             petition.save()

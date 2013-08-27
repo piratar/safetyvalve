@@ -322,7 +322,7 @@ th .subheader {
 
 /* START - Petition details */
 .petition_detail {
-    width: 800px;
+    width: 680px;
 }
 
 .petition_detail h2 {
@@ -341,6 +341,9 @@ th .subheader {
 }
 
 .petition_detail .content {
+    font-family: Times New Roman;
+    font-size: 1em;
+    text-align: justify;
     border: 1px solid #000000;
     padding: 48px;
 }
