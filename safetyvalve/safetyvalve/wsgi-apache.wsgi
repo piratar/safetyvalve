@@ -1,11 +1,16 @@
 import os
 import sys
+import site
 
-sys.path.append('/home/ubuntu/safetyvalve/safetyvalve')
+site.addsitedir('/var/www/ventill.is/env/lib/python2.7/site-packages/')
 
-os.environ['PYTHON_EGG_CACHE'] = '/var/www/.python-egg'
+sys.path.append('/var/www/ventill.is/safetyvalve/')
+
+os.environ['PYTHON_EGG_CACHE'] = '/var/www/ventill.is/.python-egg'
 os.environ['DJANGO_SETTINGS_MODULE'] = 'safetyvalve.settings'
+
+#activate_env = '/var/www/staging.ventill.is/env/bin/activate_this.py'
+#execfile(activate_env, dict(__file__=activate_env))
 
 import django.core.handlers.wsgi
 application = django.core.handlers.wsgi.WSGIHandler()
-
