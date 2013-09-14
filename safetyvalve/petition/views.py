@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import codecs
+import os
 import urllib
 
 from urllib import urlencode
@@ -169,7 +170,9 @@ def sign_receipt(request, petition_id):
 
     subject = u'Staðfesting undirskriftar á Ventill.is'
 
-    message = codecs.open('templates/email/sign_notification.txt', 'r', 'utf-8').read()
+    template = 'email/sign_notification.txt'
+    template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
+    message = codecs.open(template_path, 'r', 'utf-8').read()
     message = message % {
         'name': request.user.first_name,
         'token': s.authentication.token,
@@ -177,7 +180,9 @@ def sign_receipt(request, petition_id):
         'text': s.petition.content,
         }
 
-    html = codecs.open('templates/email/sign_notification.html', 'r', 'utf-8').read()
+    template = 'email/sign_notification.html'
+    template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
+    html = codecs.open(template_path, 'r', 'utf-8').read()
     html = html % {
         'name': request.user.first_name,
         'token': s.authentication.token,
@@ -200,7 +205,9 @@ def unsign_receipt(request, petition_id):
 
     subject = u'Staðfesting á fjarlægingu undirskriftar á Ventill.is'
 
-    message = codecs.open('templates/email/unsign_notification.txt', 'r', 'utf-8').read()
+    template = 'email/unsign_notification.txt'
+    template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
+    message = codecs.open(template_path, 'r', 'utf-8').read()
     message = message % {
         'name': request.user.first_name,
         'token': s.authentication.token,
@@ -208,7 +215,9 @@ def unsign_receipt(request, petition_id):
         'text': s.petition.content,
         }
 
-    html = codecs.open('templates/email/unsign_notification.html', 'r', 'utf-8').read()
+    template = 'email/unsign_notification.html'
+    template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
+    html = codecs.open(template_path, 'r', 'utf-8').read()
     html = html % {
         'name': request.user.first_name,
         'token': s.authentication.token,
