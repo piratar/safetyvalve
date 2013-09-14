@@ -70,7 +70,7 @@ def remove_signature(request, signature_id):
 
 def login_view(request):
 
-    params = {'path': reverse('login')[1:]}
+    params = {'path': reverse('login')}
     auth_url = settings.AUTH_URL % urlencode(params)
     ret = authenticate(request, auth_url)
     if isinstance(ret, HttpResponse):
