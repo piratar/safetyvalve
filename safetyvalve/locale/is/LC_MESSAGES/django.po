@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-26 22:55+0000\n"
+"POT-Creation-Date: 2013-09-14 15:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -23,7 +23,9 @@ msgid "Are you sure you want to remove your signature for '%(petition)s'?"
 msgstr ""
 "Ertu viss um að þú viljir fjarlægja undirskrift þína gegn '%(petition)s'?"
 
+#: person/templates/person/remove_signature.html:5
 #: person/templates/person/remove_signature.html:14
+#: person/templates/person/remove_signature__json.html:3
 msgid "Remove signature"
 msgstr "Fjarlægja undirskrift"
 
@@ -37,21 +39,21 @@ msgstr "Já"
 msgid "No"
 msgstr "Nei"
 
-#: petition/views.py:126
+#: petition/views.py:125
 msgid "Email address"
 msgstr "Netfang"
 
-#: petition/views.py:127
+#: petition/views.py:126
 msgid "Confirm email address"
 msgstr "Staðfesting netfangs"
 
-#: petition/views.py:133
+#: petition/views.py:132
 msgid "Email addresses must match"
 msgstr "Netföngin verða bæði að vera eins"
 
 #: petition/templates/detail.html:22
-msgid "You have already signed an objection against this bill."
-msgstr "Þú hefur þegar skrifað undir mótmæli gegn þessu frumvarpi."
+msgid "Your objection against this bill has been noted."
+msgstr "Mótmæli þín gegn þessu frumvarpi hafa verið skráð."
 
 #: petition/templates/detail.html:46
 msgid "Civil nr."
