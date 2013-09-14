@@ -71,7 +71,7 @@
       {% endif %}
 
       <div id="left-panel">
-      {% if user.is_authenticated or True %}
+      {% if user.is_authenticated %}
         <div class="person_info">
           <label>{% trans 'Signed-in user' %}</label>
           {{ user.first_name }}<br />
