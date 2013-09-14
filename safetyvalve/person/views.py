@@ -1,6 +1,4 @@
 
-import json
-
 from urllib import urlencode
 
 from django.conf import settings

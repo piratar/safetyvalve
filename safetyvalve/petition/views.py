@@ -12,8 +12,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.template import Context
-from django.contrib.auth.models import User
-from django.utils.translation import *
+from django.utils.translation import ugettext
 
 from safetyvalve.mail import create_email
 
