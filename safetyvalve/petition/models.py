@@ -38,4 +38,3 @@ class Signature(models.Model):
 
     def __unicode__(self):
         return u'%s signed "%s"' % (self.user, self.petition)
-

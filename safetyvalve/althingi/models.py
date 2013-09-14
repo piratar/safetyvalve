@@ -6,8 +6,9 @@ import urllib
 
 from petition.models import Petition
 
+
 class Session(models.Model):
-    session_num = models.IntegerField(unique = True) # IS: Þingnúmer
+    session_num = models.IntegerField(unique=True)  # IS: Þingnúmer
 
     def __unicode__(self):
         return u'Session %d' % self.session_num
@@ -23,9 +24,9 @@ class Issue(models.Model):
 
     session = models.ForeignKey(Session)
 
-    issue_num = models.IntegerField() # IS: Málsnúmer
-    issue_type = models.CharField(max_length = 1, choices = ISSUE_TYPES) # IS: Málstegund
-    name = models.CharField(max_length = 500)
+    issue_num = models.IntegerField()  # IS: Málsnúmer
+    issue_type = models.CharField(max_length=1, choices=ISSUE_TYPES)  # IS: Málstegund
+    name = models.CharField(max_length=500)
     description = models.TextField()
 
     def save(self, *args, **kwargs):
@@ -45,16 +46,17 @@ class Issue(models.Model):
     def __unicode__(self):
         return u'%d (%s)' % (self.issue_num, self.name)
 
+
 class Document(models.Model):
     issue = models.ForeignKey(Issue)
 
     doc_num = models.IntegerField()
-    doc_type = models.CharField(max_length = 50)
+    doc_type = models.CharField(max_length=50)
     timing_published = models.DateTimeField()
-    is_main = models.BooleanField(default = False)
+    is_main = models.BooleanField(default=False)
 
-    path_html = models.CharField(max_length = 500)
-    path_pdf = models.CharField(max_length = 500)
+    path_html = models.CharField(max_length=500)
+    path_pdf = models.CharField(max_length=500)
 
     xhtml = models.TextField()
 
@@ -72,7 +74,7 @@ class Document(models.Model):
 
             # Get the content of the petition.
             content = urllib.urlopen(self.path_html).read().decode('ISO-8859-1').replace('&nbsp;', ' ')
-            soup = BeautifulSoup(content) # Turn it into proper XML.
+            soup = BeautifulSoup(content)  # Turn it into proper XML.
 
             # Remove garbage.
             [s.extract() for s in soup('script')]
@@ -102,4 +104,3 @@ class Document(models.Model):
 
     def __unicode__(self):
         return u'%d (%s)' % (self.doc_num, self.doc_type)
-

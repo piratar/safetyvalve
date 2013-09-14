@@ -50,7 +50,7 @@ def index(request):
     signed_petition_ids = []
     if request.user.is_authenticated():
         signs = Signature.objects.filter(user=request.user)
-        signed_petition_ids = [ s.petition_id for s in signs ]
+        signed_petition_ids = [s.petition_id for s in signs]
 
     context = Context({
         'petitions': p,

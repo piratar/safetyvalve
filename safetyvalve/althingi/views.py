@@ -1,10 +1,10 @@
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from django.http import HttpResponse
-
-from BeautifulSoup import BeautifulSoup, Tag
 
 import urllib
+
+from BeautifulSoup import BeautifulSoup
+
+from django.http import HttpResponse
+
 
 def home(request):
 
@@ -36,4 +36,3 @@ def home(request):
     return HttpResponse(content, content_type='text/xml')
 
     #return render_to_response('althingi/home.html', { 'data': 'Some Data!' }, context_instance = RequestContext(request))
-

@@ -1,5 +1,6 @@
 
-import os, binascii
+import os
+import binascii
 
 from lxml import etree
 from StringIO import StringIO

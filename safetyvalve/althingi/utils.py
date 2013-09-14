@@ -8,10 +8,12 @@ from models import Session, Issue, Document
 ISSUE_LIST_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/?lthing=%d'
 ISSUE_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/thingmal/?lthing=%d&malnr=%d'
 
-CURRENT_SESSION_NUM = 142 # Temporary, while we figure out a wholesome way to auto-detect
+CURRENT_SESSION_NUM = 142  # Temporary, while we figure out a wholesome way to auto-detect
+
 
 def get_last_session_num():
-    return CURRENT_SESSION_NUM # Temporary, while we figure out a wholesome way to auto-detect
+    return CURRENT_SESSION_NUM  # Temporary, while we figure out a wholesome way to auto-detect
+
 
 def update_issues():
     """Fetch a list of "recent" petitions on Althingi and update our database
@@ -20,7 +22,7 @@ def update_issues():
 
     session_num = get_last_session_num()
 
-    session, created = Session.objects.get_or_create(session_num = session_num)
+    session, created = Session.objects.get_or_create(session_num=session_num)
     if created:
         print 'Added session: %s' % session_num
     else:
@@ -58,10 +60,10 @@ def update_issues():
             print 'Added issue: %s' % issue
 
         # Import the issue's documents.
-        issue_xml = minidom.parse(urllib.urlopen(ISSUE_URL % (session_num, issue.issue_num))) 
-        docs_xml = issue_xml.getElementsByTagName(u'þingskjöl')[0].getElementsByTagName(u'þingskjal');
+        issue_xml = minidom.parse(urllib.urlopen(ISSUE_URL % (session_num, issue.issue_num)))
+        docs_xml = issue_xml.getElementsByTagName(u'þingskjöl')[0].getElementsByTagName(u'þingskjal')
 
-        lowest_doc_num = 0 # Lowest document number will always be the main document of the issue.
+        lowest_doc_num = 0  # Lowest document number will always be the main document of the issue.
         for doc_xml in docs_xml:
             # Make sure that this is indeed the correct issue.
             if int(doc_xml.getAttribute(u'málsnúmer')) != issue.issue_num or int(doc_xml.getAttribute(u'þingnúmer')) != session_num:
@@ -101,4 +103,3 @@ def update_issues():
         main_doc.save()
 
         print '- Main document determined to be: %s' % main_doc
-

@@ -7,11 +7,13 @@ class SessionAdmin(admin.ModelAdmin):
 
 
 class IssueAdmin(admin.ModelAdmin):
-    list_display = ('name', 'issue_num', 'issue_type', 'description', 'session')
+    list_display = ('name', 'issue_num', 'issue_type', 'description',
+                    'session')
 
 
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ('doc_num', 'doc_type', 'timing_published', 'is_main', 'path_html', 'path_pdf', 'xhtml')
+    list_display = ('doc_num', 'doc_type', 'timing_published', 'is_main',
+                    'path_html', 'path_pdf', 'xhtml')
 
 
 admin.site.register(Session, SessionAdmin)
