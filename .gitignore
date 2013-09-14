@@ -8,6 +8,8 @@ local/
 share/
 env/
 
+htaccesspass
+
 # Ignore local databasefiles
 *.sqlite3
 
