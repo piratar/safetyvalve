@@ -73,8 +73,15 @@ def update_issues():
             doc_type = doc_xml.getElementsByTagName(u'skjalategund')[0].firstChild.nodeValue
             timing_published = doc_xml.getElementsByTagName(u'útbýting')[0].firstChild.nodeValue + "+00:00"
 
-            path_html = doc_xml.getElementsByTagName(u'slóð')[0].getElementsByTagName(u'html')[0].firstChild.nodeValue
-            path_pdf = doc_xml.getElementsByTagName(u'slóð')[0].getElementsByTagName(u'pdf')[0].firstChild.nodeValue
+            paths_xml =  doc_xml.getElementsByTagName(u'slóð')
+            html_paths_xml = paths_xml[0].getElementsByTagName(u'html') 
+            pdf_paths_xml = paths_xml[0].getElementsByTagName(u'pdf')
+            if len(html_paths_xml) == 0:
+                print 'Document not published: %d' % doc_num
+                continue
+
+            path_html = html_paths_xml[0].firstChild.nodeValue
+            path_pdf = pdf_paths_xml[0].firstChild.nodeValue
 
             if lowest_doc_num == 0:
                 lowest_doc_num = doc_num
