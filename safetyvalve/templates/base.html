@@ -33,27 +33,6 @@
 
   <body>
 
-
-    <!-- <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="/">Öryggisventill</a>
-            <div class="nav-collapse collapse">
-              <ul class="nav">
-                <li class="active"><a href="/">Heim</a></li>
-                <li><a href="#about">Um okkur</a></li>
-                <li><a href="#contact">Hafðu samband</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
       {% if request.META.SERVER_NAME !=  'ventill.is' and request.META.SERVER_NAME !=  'www.ventill.is' %}
         <a href="/?fake-auth={% if request.session.fake_auth %}off{% else %}on{% endif %}"
            id="fake-auth-link">Fake auth: {% if request.session.fake_auth %}on{% else %}off{% endif %}</a>
@@ -94,7 +73,7 @@
                 <li><a href="/about-us/">{% trans 'About Us' %}</a></li>
                 <li><a href="#">{% trans 'Contact Us' %}</a></li>
                 <li><a href="/person/signatures/">{% trans 'My Signatures' %}</a></li>
-                <li><a href="#">{% trans 'Most Popular' %}</a></li>
+                <li><a href="/petition/popular/">{% trans 'Most Popular' %}</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="/person/logout/">{% trans 'Sign out' %}</a></li>
                 {% endif %}
