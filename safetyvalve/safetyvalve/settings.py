@@ -159,6 +159,7 @@ INSTALLED_APPS = (
     'bootstrap',
 
     # Local apps
+    'core',
     'althingi',
     'petition',
     'person',

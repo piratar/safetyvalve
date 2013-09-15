@@ -79,7 +79,7 @@ html, body {
     position: fixed;
     top: 0;
     left: 0;
-    background-image: url(../img/escheresque.png); 
+    background-image: url(/static/core/img/escheresque.png);
     width: 100%;
     height: 100%;
     opacity : 0.5;
