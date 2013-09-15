@@ -4,11 +4,13 @@ import codecs
 import os
 import urllib
 
+from datetime import datetime
 from urllib import urlencode
 
 from django import forms
 from django.db.models import Count
 from django.conf import settings
+from django.core.cache import cache
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -24,8 +26,22 @@ from icekey.utils import authenticate
 from models import Signature
 
 
+def cached_or_fun(key, fun, timeout=60 * 5, *args, **kwargs):
+    x = cache.get(key)
+    if x is None:
+        item = fun(*args, **kwargs)
+        cache.set(key, (item, datetime.now()), timeout)
+        return item
+    return x[0]
+
+
 def index(request):
-    p = Petition.objects.all().order_by('-date_created').annotate(num_signatures=Count('signature'))
+
+    def get_petitions():
+        return Petition.objects.all() \
+                               .order_by('-date_created') \
+                               .annotate(num_signatures=Count('signature'))
+    p = cached_or_fun('popular__petitions', get_petitions, 60 * 5)
 
     if request.META['SERVER_NAME'] not in ['www.ventill.is', 'ventill.is']:
         if request.GET.get('fake-auth'):
@@ -60,6 +76,22 @@ def index(request):
     })
 
     return render(request, 'index.html', context)
+
+
+def popular(request):
+
+    def get_popular_petitions():
+        return Petition.objects \
+                       .annotate(num_signatures=Count('signature')) \
+                       .filter(num_signatures__gt=0) \
+                       .order_by('-num_signatures')[:10]
+    petitions = cached_or_fun('popular__petitions', get_popular_petitions, 10)
+
+    context = Context({
+        'petitions': petitions,
+    })
+
+    return render(request, 'petition/popular.html', context)
 
 
 def detail(request, petition_id):
