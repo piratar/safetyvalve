@@ -198,7 +198,7 @@ LOGGING = {
 }
 
 LOCALE_PATHS = (
-    'locale',
+    here('../locale'),
 )
 
 # Memcached cache
@@ -223,3 +223,4 @@ if DEBUG:
             'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
         }
     }
+
