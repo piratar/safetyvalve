@@ -8,7 +8,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^', include('core.urls')),
-    url(r'^petition/', include('petition.urls')),
+    url(r'^frumvarp/', include('petition.urls')),
     url(r'^', include('person.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

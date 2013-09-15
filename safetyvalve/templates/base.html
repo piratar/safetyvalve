@@ -70,12 +70,12 @@
             <div class="span12">
               <ul>
                 <li><a href="/">{% trans 'Home' %}</a></li>
-                <li><a href="/about-us/">{% trans 'About Us' %}</a></li>
+                <li><a href="/um-okkur/">{% trans 'About Us' %}</a></li>
                 <li><a href="mailto:ventill@ventill.is">{% trans 'Contact Us' %}</a></li>
-                <li><a href="/signatures/">{% trans 'My Signatures' %}</a></li>
-                <!-- <li><a href="/petition/popular/">{% trans 'Most Popular' %}</a></li> -->
+                <li><a href="/undirskriftir/">{% trans 'My Signatures' %}</a></li>
+                <!-- <li><a href="/vinsaelt/">{% trans 'Most Popular' %}</a></li> -->
                 {% if user.is_authenticated %}
-                <li><a href="/logout/">{% trans 'Sign out' %}</a></li>
+                <li><a href="/utskra/">{% trans 'Sign out' %}</a></li>
                 {% endif %}
               </ul>
             </div>

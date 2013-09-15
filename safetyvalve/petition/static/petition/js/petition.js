@@ -26,7 +26,7 @@ $(function () {
 
         petition_id = container.data('id');
 
-        url = '/petition/' + petition_id + '/sign/?show_public=' + (show_public ? '1' : '0');
+        url = '/frumvarp/' + petition_id + '/skra/?show_public=' + (show_public ? '1' : '0');
 
         location.href = url;
 

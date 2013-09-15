@@ -27,12 +27,12 @@
             <tbody>
                 {% for signature in signatures %}
                 <tr data-id="{{ signature.id }}">
-                    <td><a href="/petition/{{ signature.petition.id }}/">{{ signature.petition }}</a></td>
+                    <td><a href="/frumvarp/{{ signature.petition.id }}/">{{ signature.petition }}</a></td>
                     <td>{{ signature.date_created|date:"DATE_FORMAT" }}</td>
                     <td class="align-right">
                         <span class="pseudo_checkbox_yes" {% if not signature.show_public %}style="display: none;"{% endif %}>{% trans 'Yes' %}</span>
                         <span class="pseudo_checkbox_no" {% if signature.show_public %}style="display: none;" {% endif %}>{% trans 'No' %}</span>
-                        [ <a class="change-public" data-show-public="{{ signature.show_public|yesno:"yes,no" }}" href="/person/signatures/change-public/{{ signature.id }}/">{% trans 'Change' %}</a> ]
+                        [ <a class="change-public" data-show-public="{{ signature.show_public|yesno:"yes,no" }}" href="/undirskriftir/breyta-opinber/{{ signature.id }}/">{% trans 'Change' %}</a> ]
                     </td>
                     <td>
                         <!--
@@ -40,7 +40,7 @@
                         {% include 'stub/unsign_button.html' %}
                         {% endwith %}
                         -->
-                        [ <a class="remove-signature" data-method="browser-confirm" href="/person/signatures/remove/{{signature.id}}/?next=%2Fperson%2Fsignatures%2F">{% trans "Remove" %}</a> ]
+                        [ <a class="remove-signature" data-method="browser-confirm" href="/undirskriftir/fjarlaegja/{{signature.id}}/?next=%2Fperson%2Fsignatures%2F">{% trans "Remove" %}</a> ]
                     </td>
                 </tr>
                 {% empty %}
