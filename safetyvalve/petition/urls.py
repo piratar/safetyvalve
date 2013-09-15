@@ -6,7 +6,7 @@ from petition import views
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     
-    url(r'^popular/$', views.popular, name='popular'),
+#    url(r'^popular/$', views.popular, name='popular'),
     
     url(r'^(?P<petition_id>\d+)/$', views.detail, name='detail'),
 
