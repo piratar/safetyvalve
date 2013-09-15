@@ -39,7 +39,7 @@ def parse_saml(saml):
 def ensure_user(request, name, kennitala):
     user = User.objects.get_or_create(username=kennitala)[0]
     if user.first_name == '':
-        user.first_name = name
+        user.first_name = name.encode('utf8')
         user.save()
 
     user.backend = 'django.contrib.auth.backends.ModelBackend'
