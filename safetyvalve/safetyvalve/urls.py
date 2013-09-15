@@ -14,7 +14,6 @@ urlpatterns = patterns('',
     url(r'^', include('core.urls')),
     url(r'^petition/', include('petition.urls')),
     url(r'^person/', include('person.urls')),
-    url(r'^althingi/', include('althingi.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
