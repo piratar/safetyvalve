@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-from safetyvalve import views
+#from safetyvalve import views
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin

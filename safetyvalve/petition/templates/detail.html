@@ -15,14 +15,54 @@
 {% endblock %}
 
 {% block content %}
+    
+    <div id="petition_detail_panel">
 
-    {% if already_signed %}
+    </div>
+
+    <div class="container-fluid petition_detail">
+        <div class="row-fluid">
+            <div class="span12 title_span">
+                <h2>{{ petition.name|capfirst }}</h2>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span12 published">
+                {% trans 'distributed' %}: {{ petition.timing_published|date:"DATE_FORMAT"}}
+            </div>
+        </div>
+
+        {% if petition.description %}
+        <div class="row-fluid">
+            <div class="span12 petition_description" style="text-align: center">
+                {{ petition.description}}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row-fluid separator">
+            <div class="span12">
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="petition_content">
+                    {{ petition.content|safe }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    {% comment %}
         <div class="row-fluid">
             <div class="note">
                 {% trans 'Your objection against this bill has been noted.' %}
             </div>
         </div>
-    {% endif %}
+    
 
     <div class="row-fluid">
         <div>
@@ -69,21 +109,9 @@
         </table>
 
     </div>
-    <div class="row-fluid">
 
-		<div class="petition_detail">
-			<h2>{{ petition.name|capfirst }}</h2>
-            {% if petition.description %}
-                <p class="description">{{ petition.description}}</p>
-            {% endif %}
-    		<p class="distributed">{% trans 'distributed' %}: {{ petition.timing_published|date:"DATE_FORMAT"|title }}</p>
+    
 
-			<div class="content">
-                {{ petition.content|safe }}
-			</div>
-        </div>
-
-    </div>
     <div class="row-fluid">
 
         {% if not already_signed %}
@@ -97,4 +125,7 @@
 
         {% endif %}
 	</div>
+
+    {% endcomment %}
+    
 {% endblock %}

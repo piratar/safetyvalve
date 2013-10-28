@@ -1,19 +1,35 @@
-html, body {
-	height: 100%;
-	font-size: 16px;
+body {
+	background-image: url(/static/core/img/escheresque.png);
 }
 
-/* GLOBAL ELEMENTS -------- */
+#wrapper {
+	padding-left: 215px;
+	padding-right: 60px;
 
-#left-panel {
-	width: 250px;
+	max-width: 1600px;
+}
+
+#content {
+	width: auto;
+}
+
+/* ---- NAVIGATION STYLES -------------------------------------------------- */
+
+#nav {
+
 	height: 100%;
+	width: 215px;
 
 	font-size: inherit;
 	text-align: center;
 
-	padding-top: 95px;
 	position: fixed;
+	top: 0;
+	left: 0;
+
+	color: #FFFFFF;
+
+	padding-top: 65px;
 
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -34,31 +50,84 @@ html, body {
 	);
 }
 
-#left-panel h1 {
+#right_panel {
+
+	height: 100%;
+	width: 60px;
+
+	font-size: inherit;
+	text-align: center;
+
+	position: fixed;
+	top: 0;
+	right: 0;
+
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;  
+
+	background-image: linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: -o-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: -moz-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: -webkit-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: -ms-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #231641),
+		color-stop(1, #3B4265)
+	);
+}
+
+#wrapper .navbar-inner {
+	background-image: linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: -o-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: -moz-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: -webkit-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: -ms-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #231641),
+		color-stop(1, #3B4265)
+	);
+}
+
+#nav h1, #mobile_nav .brand {
 	font-family: 'fairviewregular';
 	color: #FFFFFF;
 	font-weight: normal;
-	font-size: 2em;
+	font-size: 32px;
 	line-height: .85em;
 
 	margin-bottom: 0;
 	margin-top: 0;
 
-	opacity: 0.7;
+	opacity: 0.8;
+
+	text-transform: uppercase;
 }
 
-#left-panel ul {
+#mobile-nav .brand {
+	font-size: 1.5em;
+}
+
+#nav ul {
 	list-style-type: none;
 
 	padding: 0;
 	margin: 40px 0 0 0;
 }
 
-#left-panel ul li {
+#nav ul li {
 	padding: 10px 0;
 }
 
-#left-panel ul li a {
+#nav ul li a {
 	color: #FFFFFF;
 	font-family: 'klinic_slabbold';
 	font-size: 1.2em;
@@ -67,285 +136,185 @@ html, body {
 	opacity: 0.6;
 }
 
-#left-panel ul li a:hover {
+#nav ul li a:hover {
 	text-decoration: none;
 
-	opacity: 0.75;
+	opacity: 0.9;
 }
 
-#right-panel:before { /* for the background image */
-	content : "";
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-image: url(/static/core/img/escheresque.png);
-    width: 100%;
-    height: 100%;
-    opacity : 0.5;
-    z-index: -9999;
+/* ---- END NAVIGATION STYLES ---------------------------------------------- */
+
+
+
+/* ---- PETITION LISTING STYLES -------------------------------------------- */
+.petition_list {
+	padding-top: 65px;
+	padding-bottom: 65px;
+}
+.petition_list_item {
+	border-top: dotted;
+	border-color: #b3b3b3;
+	border-width: 3px;
+
+	min-height: 150px;
 }
 
-#right-panel {
-	padding: 64px 0 100px 64px;
-	margin-left: 250px;
+.petition_list_item:last-child {
+	border-bottom: dotted;
+	border-color: #b3b3b3;
+	border-width: 3px;
 }
 
-#right-panel > .container-fluid {
-	padding: 0;
+.petition_list_item .details {
+	margin-left: 80px;
+	color: #3C4366;
+	font-size: 14px;
+	font-family: 'klinic_slabbook_italic';
 }
 
-#right-panel .row-fluid [class*="span"] { 
-	margin:0;
+.petition_list_item .details p {
+	font-family: 'klinic_slabbook';
+	color: #3C4366;
+	font-size: 16px;
+
+	margin-top: 5px;
 }
 
-#right-panel .row-fluid .span1 {
-	width: 8.3334%;
+.petition_list_item .details .share_icon {
+	color: #3C4366;
+	font-size: 26px;
+
+	margin-right: 2px;
 }
 
-#right-panel .row-fluid .span11 {
-	width: 91.6666%;
+.petition_list_item .details .share_icon:hover {
+	text-decoration: none;
 }
 
-/* END GLOBAL ELEMENTS ---- */
-
-a, a:active, a:focus {
-  outline: none;
-  -moz-outline-style: none;
+.petition_list_item h2 {
+	font-family: 'klinic_slabbold';
+	font-size: 1.6em;
+	font-weight: normal;
+	color: #57557b;
 }
 
-a:hover {
-	cursor: hand;
+.heat_meter {
+	width: 80px;
+	text-align:  center;
+
+	float: left;
 }
 
-/* START - Petition list */
-.petition_item {
-	border: 2px solid #D7D7D7;
-	border-right: none;
-	border-bottom: none;
-
-	padding: 15px 23px;
-}
-
-.row-fluid:last-child .petition_item {
-	border: 2px solid #D7D7D7;
-}
-
-.petition_item, .petition_item a {
+.heat_meter_count {
+	font-family: 'fairviewregular';
+	font-size: 1.9em;
 	color: #3C4366;
 }
 
-.petition_item .petition_title {
-	font-size: 1.4em;
-	line-height: 1em;
-	font-family: 'klinic_slabbold';
+.heat_bar {
+	background-color: #b62d2e;
+	width: 20px;
+	height: 3px;
 
-	display: inline-block;
-	margin-bottom: 10px;
+	margin: 0 auto 2px auto;
 }
 
-.petition_item .details {
-	font-size: .8em;
+.signature_container, .pre_selection_container {
+	color: #57557b; 
+	display: inline;
 }
 
-.petition_item .details a.share_icon, a.share_icon:hover {
-	font-size: 2.5em;
-	text-decoration: none;
-
-	vertical-align: -.2em;
-}
-/* END - Petition list */
-
-.note {
-    border: 1px solid #aaaa88;
-    text-align: center;
-    background: #ffffaa;
-    display: block;
-    max-width: 500px;
-    padding: 24px 24px;
-    text-align: center;
-}
-
-/* START - Sign/Unsign buttons */
-a.addremove_signature {
-	margin: 5px 0;
+.pre_selection_container a, .pre_selection_container a:hover {
 	cursor: pointer;
-}
-
-a.signature_cancel {
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.unsign {
-    color: #a0a0a0 !important;
-}
-
-.unsign a {
-    color: #a0a0a0 !important;
-}
-
-i.icon-pencil {
-	font-size: 2em;
-}
-
-.signature_container {
-    width: 220px;
-    border: 1px solid #e0e0e0;
-
-    padding-left: 12px;
-    padding-top: 4px;
-    padding-bottom: 8px;
-
-    font-family: 'klinic_slabbook';
-    font-size: .8em;
-
-    color: #3C4366;
-}
-
-.signature_container a {
-    color: #3C4366;
-}
-
-.signature_container label {
-    font-family: 'klinik_slabbook';
-    font-size: .7em;
-    display: inline;
-}
-
-.signature_container .show_public_container {
-    padding-left: 24px;
-}
-
-a.addremove_signature:hover, a.addremove_signature:focus, a.addremove_signature:visited {
-	text-decoration: none;
-}
-/* END - Sign/Unsign buttons */
-
-.petition_item .details .date_created, .petition_item .details .num_signatures, .petition_item .details .share {
+	color: #3C4366;
 	font-family: 'klinic_slabbook_italic';
-	text-align: middle;
 }
 
-/* START - Informational text pages */
-div.longtext {
-    width: 600px;
-    text-align: justify;
-}
-div.longtext h3 {
-    font-family: 'klinik_slabbook';
-    margin: 0px;
-}
-div.longtext p {
-    font-family: 'klinik_slabbook';
-    margin-bottom: 1.2em;
-}
-div.longtext li {
-    font-family: 'klinik_slabbook';
-}
-/* END - Informational text pages */
-
-/* START - Left-side user information */
-.person_info {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    color: #f0f0f0;
-    width: 250px;
-    padding-top: 8px;
-    font-size: 0.8em;
+.pre_selection_container a i, .pre_selection_container a:hover i {
+	font-size: 26px;
+	text-decoration: none;
+	font-style: normal;
 }
 
-.person_info label {
-    font-size: 1em;
-    margin-bottom: 0px;
-    font-weight: bold;
-}
-/* END - Left-side user information */
-
-/* --- Signatures --------------------------------------------------------- */
-
-
-.align-left {
-    text-align: left;
-}
-.align-center {
-    text-align: center;
-}
-.align-right {
-    text-align: right;
+.post_selection_container {
+	color: #3C4366; 
+	font-family: 'klinic_slabbook_italic';
 }
 
-th .subheader {
-    font-size: 75%;
+
+/* ---- END PETITION LISTING STYLES ---------------------------------------- */
+
+
+/* ---- PETITION DETAIL STYLES --------------------------------------------- */
+#petition_detail_panel {
+	height: 60px;
+
+	background-color: #efeee8;
+
+	border-bottom: 5px solid #57557b;
+	border-width: 5px;
+
+	margin-bottom: 5px;
 }
 
-/* START - User listing in petition */
-.datatable {
-    border: 1px solid #a0a0a0;
-}
-.datatable th {
-    font-size: .8em;
-    background: #ffffff;
-    border-left: 1px dotted #a0a0a0;
-    padding: 2px 6px 2px 6px;
-}
-.datatable th.username {
-    text-align: center;
-}
-.datatable th.timing {
-    text-align: center;
-}
-.datatable td {
-    font-size: .8em;
-    border: 1px solid #a0a0a0;
-    padding: 2px 6px 2px 6px;
-}
-.datatable td.username {
-    text-align: center;
-}
-.datatable td.fullname {
-    width: 31em;
-}
-.datatable td.timing {
-    text-align: center;
-}
-.datatable span.button {
-    font-family: fixed;
-    font-size: .9em;
-    color: #000000;
-}
-.datatable span.button a {
-    color: #336699;
-}
-/* END - User listing in petition */
-
-/* START - Petition details */
-.petition_detail {
-    width: 680px;
+.petition_detail .title_span h2 {
+	text-align: center;
+	font-family: 'klinic_slabbold';
+	font-size: 34px;
+	font-weight: normal;
+	color: #57557b;
 }
 
-.petition_detail h2 {
-    margin: 0px;
+.petition_detail .published {
+	font-family: 'klinic_slabbook_italic';
+	text-align: center;
+	color: #57557b;
+	font-size: 14px;
+
+	padding: 10px 0 15px 0;
 }
 
-.petition_detail .description {
-    margin: 0px;
-    font-size: .8em;
-    font-style: italic;
+.petition_detail .petition_description {
+	font-family: 'klinic_slabbold_italic';
+	text-align: center;
+	color: #57557b;
+	font-size: 20px;
 }
 
-.petition_detail .distributed {
-    margin: 0px;
-    font-size: .8em;
+.petition_detail .separator {
+	border-top: dotted;
+	border-color: #b3b3b3;
+	border-width: 3px;
 }
 
-.petition_detail .content {
-    font-family: Times New Roman;
-    font-size: 1em;
-    text-align: justify;
-    border: 1px solid #000000;
-    padding: 48px;
-}
-/* END - Petition details */
+.petition_detail .petition_content {
+	background-color: #efefef;
 
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
+
+	padding: 45px 60px 45px 60px;
+	margin-bottom: 50px;
+
+	font-family: 'klinic_slabbook';
+	color: #241742;
+	font-size: 16px;
+}
+/* ---- END PETITION DETAIL STYLES ----------------------------------------- */
+
+@media only screen and (max-width: 979px) {
+	#wrapper {
+		padding: 0;
+	}
+
+	body {
+		padding: 0;
+		background-color: #111111;
+	}
+}
+
+body {
+	padding: 0;
+	margin: 0;
+}

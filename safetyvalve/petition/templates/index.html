@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load i18n %}
 
 {% block javascript %}
 {{block.super}}
@@ -7,44 +6,51 @@
 {% endblock %}
 
 {% block content %}
+  
+  <div class="container-fluid petition_list">
+  {% for p in petitions %}
 
-	{% for p in petitions %}
-		<div class="row-fluid">
-			<div class="petition_item">
+    <div class="row-fluid petition_list_item">
+      <div class="span12">
 
-				<a class="petition_title" href="/frumvarp/{{ p.id }}/">{{ p.name|capfirst }}</a>
-                {% if p.description %}
-                    &nbsp;
-                    <small>({{ p.description }})</small>
-                {% endif %}
+        <a class="petition_title" href="/frumvarp/{{ p.id }}/"><h2>{{ p.name|capfirst }}</h2></a>
 
-                {% if p.id in signed_petition_ids %}
-                    {% include 'stub/unsign_button.html' %}
-                {% else %}
-                    {% include 'stub/sign_button.html' %}
-                 {% endif %}
+        <div class="heat_meter">
 
-				<div class="details">
-					<span class="date_created">{{p.timing_published|date:"DATE_FORMAT"}}</span> -
-					<span class="num_signatures">
-                        {{ p.num_signatures }}
-                        {% if p.num_signatures == 1 %}
-                            {% trans 'signature' %}
-                        {% else %}
-                            {% trans 'signatures' %}
-                        {% endif %}
-                    </span>
-                    -
-					<span class="share">{% trans 'Share' %}:</span>
-					<a href="{{p.url_facebook_share}}" target="_blank" class="share_icon"><i class="icon-facebook-sign"></i></a>
-					
-					<a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="icon-twitter-sign"></i></a>
+          <span class="heat_meter_count">{{p.num_signatures}}</span>
+          
+          <div class="heat_bar opacity_6"></div>
+          <div class="heat_bar opacity_5"></div>
+          <div class="heat_bar opacity_4"></div>
+          <div class="heat_bar opacity_3"></div>
+          <div class="heat_bar opacity_2"></div>
+          <div class="heat_bar opacity_1"></div>
+        
+        </div>
 
-					<a href="{{p.url_googleplus_share}}" target="_blank" class="share_icon"><i class="icon-google-plus-sign"></i></a>
-				</div>
+        <div class="details">
+          <a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="icon-twitter-sign"></i></a>
+          <a href="{{p.url_facebook_share}}" target="_blank" class="share_icon"><i class="icon-facebook-sign"></i></a>
+          <a href="{{p.url_googleplus_share}}" target="_blank" class="share_icon"><i class="icon-google-plus-sign"></i></a>&nbsp;&nbsp;&nbsp;
+          {% if p.id in signed_petition_ids %}
+            {% include 'stub/unsign_button.html' %}
+          {% else %}
+            {% include 'stub/sign_button.html' %}
+          {% endif %}
 
-			</div>
-		</div>
+          -- published on: {{p.timing_published|date:"DATE_FORMAT"}}
+          
+          <p>
+            {{ p.description }}
+          </p>
+        
+        </div>
+
+
+      </div>
+
+    </div>
 	{% endfor %}
+  </div>
 
 {% endblock %}
