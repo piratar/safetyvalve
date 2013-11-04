@@ -7,8 +7,9 @@
     python-dev
     libxml2-dev
     libxslt-dev
+    gettext
     ---
-    sudo apt-get install libmysqlclient-dev python-dev libxml2-dev libxslt-dev (on a debian/ubuntu based flavor)
+    sudo apt-get install libmysqlclient-dev python-dev libxml2-dev libxslt-dev gettext (on a debian/ubuntu based flavor)
 
 after cloning, make sure to run:
 

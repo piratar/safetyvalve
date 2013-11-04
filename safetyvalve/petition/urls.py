@@ -7,6 +7,7 @@ urlpatterns = patterns('',
 #    url(r'^vinsaelt/$', views.popular, name='popular'),
     
     url(r'^(?P<petition_id>\d+)/$', views.detail, name='detail'),
+    url(r'^(?P<petition_id>\d+)/undirskriftir/$', views.get_public_signatures, name='get_public_signatures'),
 
     url(r'^(?P<petition_id>\d+)/skra/$', views.sign, name='sign'),
     url(r'^(?P<petition_id>\d+)/afskra/$', views.unsign, name='unsign'),

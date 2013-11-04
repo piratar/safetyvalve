@@ -3,15 +3,19 @@
 import codecs
 import os
 import urllib
+import json
 
+from math import floor
 from datetime import datetime
 from urllib import urlencode
 
 from django import forms
 from django.db.models import Count
 from django.conf import settings
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.cache import cache
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.template import Context
@@ -33,6 +37,111 @@ def cached_or_fun(key, fun, timeout=60 * 5, *args, **kwargs):
         cache.set(key, (item, datetime.now()), timeout)
         return item
     return x[0]
+
+
+def detail(request, petition_id):
+    p = Petition.objects.get(id=petition_id)
+
+    already_signed = False
+    if request.user.is_authenticated():
+        already_signed = Signature.objects.filter(user=request.user, petition=p).count() > 0
+
+    signatures = Signature.objects.select_related('user').filter(petition_id=petition_id).order_by('date_created')
+
+
+    context = Context({
+        'petition': p,
+        'signatures': signatures,
+        'already_signed': already_signed,
+        'signatures_url': settings.INSTANCE_URL + reverse('get_public_signatures', args=(petition_id, )) + ''  
+    })
+
+    return render(request, 'detail.html', context)
+
+
+def email(request, petition_id):
+    c = {}
+
+    class EmailForm(forms.Form):
+        email = forms.EmailField(label=ugettext('Email address'))
+        confirm_email = forms.EmailField(label=ugettext('Confirm email address'))
+
+        def clean(self):
+            if (self.cleaned_data.get('email') !=
+                self.cleaned_data.get('confirm_email')):
+                raise forms.ValidationError(
+                    ugettext("Email addresses must match")
+                )
+            return self.cleaned_data
+
+    if request.method == 'POST':
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            request.user.email = form.cleaned_data['email']
+            request.user.save()
+            return HttpResponseRedirect(reverse('sign_receipt', args=(petition_id, )))
+    else:
+        form = EmailForm()
+
+    c['form'] = form
+
+    return render(request, 'petition/email.html', c)
+
+
+def get_public_signatures(request, petition_id):
+
+    empty_response = False
+    response = []
+
+    start_index = int(request.GET.get('iDisplayStart', 0))
+    page_length = int(request.GET.get('iDisplayLength', 0))
+
+    if start_index < 0:
+        start_index = 0;
+    if page_length < 1:
+        page_length = 1
+
+    page_num = floor(start_index / page_length) + 1
+
+    sort_index = int(request.GET.get('iSortCol_0', 0))
+    sort_dir = request.GET.get('sSortDir_0', "desc")
+
+    if sort_dir not in ["asc", "desc"]:
+        sort_dir = "desc"
+
+    if sort_index == 0:
+        sort_fields = ['user__first_name', 'user__last_name']
+    else:
+        sort_fields = ['date_created']
+
+    for i in xrange(len(sort_fields)):
+        if sort_dir == "desc":
+            sort_fields[i] = "-"+sort_fields[i]
+
+    signatures = Signature.objects.select_related('user').filter(petition_id=petition_id).order_by(*sort_fields)
+    try:
+        p = Paginator(signatures, page_length)
+        results = p.page(page_num)
+    except PageNotAnInteger:
+        results = p.page(1)
+    except EmptyPage:
+        results = p.page(paginator.num_pages)
+
+    for s in results:
+        o = []
+        o.append(s.user.first_name + " " + s.user.last_name)
+        o.append(s.user.username)
+        o.append(s.date_created.strftime("%Y-%m-%d %H:%M:%S"))
+
+        response.append(o)
+
+    response_wrapper = {}
+    response_wrapper['iTotalRecords'] = p.count
+    response_wrapper['iTotalDisplayRecords'] = p.count
+    response_wrapper['aaData'] = response
+
+
+    return HttpResponse(json.dumps(response_wrapper), content_type="application/json")
 
 
 def index(request):
@@ -94,24 +203,6 @@ def popular(request):
     return render(request, 'petition/popular.html', context)
 
 
-def detail(request, petition_id):
-    p = Petition.objects.get(id=petition_id)
-
-    already_signed = False
-    if request.user.is_authenticated():
-        already_signed = Signature.objects.filter(user=request.user, petition=p).count() > 0
-
-    signatures = Signature.objects.select_related('user').filter(petition_id=petition_id).order_by('date_created')
-
-    context = Context({
-        'petition': p,
-        'signatures': signatures,
-        'already_signed': already_signed
-    })
-
-    return render(request, 'detail.html', context)
-
-
 def sign(request, petition_id):
 
     p = get_object_or_404(Petition, pk=petition_id)
@@ -150,34 +241,6 @@ def unsign(request, petition_id):
         s.delete()
     return HttpResponseRedirect('/')
 
-
-def email(request, petition_id):
-    c = {}
-
-    class EmailForm(forms.Form):
-        email = forms.EmailField(label=ugettext('Email address'))
-        confirm_email = forms.EmailField(label=ugettext('Confirm email address'))
-
-        def clean(self):
-            if (self.cleaned_data.get('email') !=
-                self.cleaned_data.get('confirm_email')):
-                raise forms.ValidationError(
-                    ugettext("Email addresses must match")
-                )
-            return self.cleaned_data
-
-    if request.method == 'POST':
-        form = EmailForm(request.POST)
-        if form.is_valid():
-            request.user.email = form.cleaned_data['email']
-            request.user.save()
-            return HttpResponseRedirect(reverse('sign_receipt', args=(petition_id, )))
-    else:
-        form = EmailForm()
-
-    c['form'] = form
-
-    return render(request, 'petition/email.html', c)
 
 
 def _receipt(request, petition_id, subject, message, html=None):
