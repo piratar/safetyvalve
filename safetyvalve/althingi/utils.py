@@ -5,10 +5,10 @@ from xml.dom import minidom
 
 from models import Session, Issue, Document
 
+from althingi_settings import *
+
 ISSUE_LIST_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/?lthing=%d'
 ISSUE_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/thingmal/?lthing=%d&malnr=%d'
-
-CURRENT_SESSION_NUM = 142  # Temporary, while we figure out a wholesome way to auto-detect
 
 
 def get_last_session_num():
