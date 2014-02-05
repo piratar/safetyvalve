@@ -4,7 +4,7 @@ from django.db import models
 from BeautifulSoup import BeautifulSoup
 import urllib
 
-from petition.models import Petition
+from petition.models import Petition, Source
 
 
 class Session(models.Model):
@@ -36,8 +36,12 @@ class Issue(models.Model):
             external_id = "%s.%s" % (self.session.session_num, self.issue_num)
 
             if Petition.objects.filter(external_id=external_id).count() == 0:
+
+                althingi_source = Source.objects.get(name='althingi')
+                
                 # Create a petition for this issue
                 petition = Petition()
+                petition.source = althingi_source
                 petition.external_id = external_id
                 petition.name = self.name
                 petition.description = self.description
