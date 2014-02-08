@@ -107,7 +107,7 @@ body {
 	margin-bottom: 0;
 	margin-top: 0;
 
-	opacity: 0.8;
+	opacity: 0.95;
 
 	text-transform: uppercase;
 }
@@ -142,6 +142,15 @@ body {
 	opacity: 0.9;
 }
 
+#current_user {
+	width: auto;
+	height: 47px;
+
+	background-color: #f4f4f4;
+	border-bottom: 5px solid #57557b;
+
+	color: #;
+}
 /* ---- END NAVIGATION STYLES ---------------------------------------------- */
 
 
@@ -167,22 +176,22 @@ body {
 
 .petition_list_item .details {
 	margin-left: 80px;
-	color: #3C4366;
+	color: #3b4265;
 	font-size: 14px;
 	font-family: 'klinic_slabbook_italic';
 }
 
 .petition_list_item .details p {
 	font-family: 'klinic_slabbook';
-	color: #3C4366;
+	color: #3b4265;
 	font-size: 16px;
 
 	margin-top: 5px;
 }
 
 .petition_list_item .details .share_icon {
-	color: #3C4366;
 	font-size: 26px;
+	color: #56547a;
 
 	margin-right: 2px;
 }
@@ -195,7 +204,7 @@ body {
 	font-family: 'klinic_slabbold';
 	font-size: 1.6em;
 	font-weight: normal;
-	color: #57557b;
+	color: #56547a;
 }
 
 .heat_meter {
@@ -220,13 +229,13 @@ body {
 }
 
 .signature_container, .pre_selection_container {
-	color: #57557b; 
+	color: #3b4265; 
 	display: inline;
 }
 
 .pre_selection_container a, .pre_selection_container a:hover {
 	cursor: pointer;
-	color: #3C4366;
+	color: #3b4265;
 	font-family: 'klinic_slabbook_italic';
 }
 
@@ -298,7 +307,7 @@ body {
 	margin-bottom: 50px;
 
 	font-family: 'klinic_slabbook';
-	color: #241742;
+	color: #231641;
 	font-size: 16px;
 }
 /* ---- END PETITION DETAIL STYLES ----------------------------------------- */

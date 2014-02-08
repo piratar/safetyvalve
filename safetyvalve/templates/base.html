@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="is">
   <head>
@@ -77,6 +78,8 @@
         </div>
       </div>
 
+      
+
       <div id="content">
         {% if request.META.SERVER_NAME == 'localhost' or request.META.SERVER_NAME == 'staging.ventill.is' %}
         <a href="/?fake-auth={% if request.session.fake_auth %}off{% else %}on{% endif %}"
@@ -94,12 +97,21 @@
           </style>
         {% endif %}
 
+        <div id="current_user">
+          {% if user.is_authenticated or request.session.fake_auth %}
+
+          {% else %}
+            {% trans 'My Signatures' %}
+          {% endif %}
+        </div>
+
         {% block content %}
         {% endblock %}
 
       </div>
 
       <div id="right_panel" class="visible-desktop">
+        <i class="fa fa-pencil-square-o"></i>
       </div>
 
     </div>

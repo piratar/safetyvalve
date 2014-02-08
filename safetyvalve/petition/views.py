@@ -160,6 +160,11 @@ def index(request):
         if isinstance(i.name, unicode):
             i.name = i.name.encode('utf-8')
 
+        if i.num_signatures > 999:
+            i.num_signatures_display = '%.3gK' % (i.num_signatures / 1000)
+        else:
+            i.num_signatures_display = i.num_signatures
+
         url = urllib.quote("%s/petition/%s" % (settings.INSTANCE_URL, str(i.id)))
 
         #facebook share logic

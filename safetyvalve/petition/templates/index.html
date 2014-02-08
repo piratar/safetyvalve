@@ -8,6 +8,7 @@
 {% block content %}
   
   <div class="container-fluid petition_list">
+  d
   {% for p in petitions %}
 
     <div class="row-fluid petition_list_item">
@@ -17,7 +18,7 @@
 
         <div class="heat_meter">
 
-          <span class="heat_meter_count">{{p.num_signatures}}</span>
+          <span class="heat_meter_count">{{p.num_signatures_display}}</span>
           
           <div class="heat_bar opacity_6"></div>
           <div class="heat_bar opacity_5"></div>
