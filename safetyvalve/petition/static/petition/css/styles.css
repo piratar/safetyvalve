@@ -145,11 +145,33 @@ body {
 #current_user {
 	width: auto;
 	height: 47px;
+	padding: 0 20px;
 
 	background-color: #f4f4f4;
 	border-bottom: 5px solid #57557b;
 
-	color: #;
+	color: #3B4265;
+	line-height: 47px;
+	font-size: 22px;
+	font-family: 'fairviewregular';
+}
+
+#current_user > .my_signatures {
+	height: 47px;
+	float: right;
+}
+
+#current_user > .my_signatures > div {
+	display: inline-block;
+	float: left;
+	margin-top: 1px;
+	margin-right: 8px;
+
+	font-size: 24px;
+}
+
+#current_user a {
+	color: #3B4265;
 }
 /* ---- END NAVIGATION STYLES ---------------------------------------------- */
 

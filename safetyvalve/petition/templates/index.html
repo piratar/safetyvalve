@@ -8,10 +8,10 @@
 {% block content %}
   
   <div class="container-fluid petition_list">
-  d
   {% for p in petitions %}
 
     <div class="row-fluid petition_list_item">
+
       <div class="span12">
 
         <a class="petition_title" href="/frumvarp/{{ p.id }}/"><h2>{{ p.name|capfirst }}</h2></a>
@@ -30,9 +30,9 @@
         </div>
 
         <div class="details">
-          <a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="icon-twitter-sign"></i></a>
-          <a href="{{p.url_facebook_share}}" target="_blank" class="share_icon"><i class="icon-facebook-sign"></i></a>
-          <a href="{{p.url_googleplus_share}}" target="_blank" class="share_icon"><i class="icon-google-plus-sign"></i></a>&nbsp;&nbsp;&nbsp;
+          <a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="fa fa-twitter-square"></i></a>
+          <a href="{{p.url_facebook_share}}" target="_blank" class="share_icon"><i class="fa fa-facebook-square"></i></a>
+          <a href="{{p.url_googleplus_share}}" target="_blank" class="share_icon"><i class="fa fa-google-plus-square"></i></a>&nbsp;&nbsp;&nbsp;
           {% if p.id in signed_petition_ids %}
             {% include 'stub/unsign_button.html' %}
           {% else %}
@@ -44,13 +44,12 @@
           <p>
             {{ p.description }}
           </p>
-        
         </div>
-
 
       </div>
 
     </div>
+
 	{% endfor %}
   </div>
 

@@ -69,7 +69,6 @@
             <li><a href="/">Heim</a></li>
             <li><a href="/um-okkur/">Um Okkur</a></li>
             <li><a href="ventill@ventill.is">Hafa Samband</a></li>
-            <li><a href="/undirskriftir/">Mínar<br />Undirskriftir</a></li>
             <li><a href="#">Vinsælast</a></li>
             {% if user.is_authenticated %}
             <li><a href="/utskra/">Útskrá</a></li>
@@ -87,7 +86,7 @@
           <style>
             #fake-auth-link {
               position: absolute;
-              right: 0;
+              left: 0;
               top: 0;
               z-index: 999;
               color: #F00;
@@ -100,8 +99,16 @@
         <div id="current_user">
           {% if user.is_authenticated or request.session.fake_auth %}
 
+            {% trans 'Signed-in user' %}: {% if request.session.fake_auth %}Fake User{% else %}{{ user.get_full_name }} {{ user.get_username }} {% endif %}
+
+            <div class="my_signatures">
+              <div>
+                <i class="fa fa-pencil-square-o"></i>
+              </div>
+              <a href="/undirskriftir/">{% trans 'My Signatures' %}</a>
+            </div>
           {% else %}
-            {% trans 'My Signatures' %}
+            <a href="/undirskriftir/">{% trans 'Sign In' %}</a>
           {% endif %}
         </div>
 
@@ -111,7 +118,7 @@
       </div>
 
       <div id="right_panel" class="visible-desktop">
-        <i class="fa fa-pencil-square-o"></i>
+        &nbsp;
       </div>
 
     </div>
