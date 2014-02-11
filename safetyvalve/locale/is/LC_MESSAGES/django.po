@@ -156,9 +156,8 @@ msgid "Signed-in user"
 msgstr "Innskráður notandi"
 
 #: templates/base.html:111
-#, fuzzy
 msgid "Sign In"
-msgstr "Útskrá"
+msgstr "Innskráning"
 
 #~ msgid "Your objection against this bill has been noted."
 #~ msgstr "Mótmæli þín gegn þessu frumvarpi hafa verið skráð."
