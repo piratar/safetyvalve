@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-03 16:51-0600\n"
+"POT-Creation-Date: 2014-02-11 23:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -39,21 +39,33 @@ msgstr "Já"
 msgid "No"
 msgstr "Nei"
 
-#: petition/views.py:158
+#: petition/views.py:66
 msgid "Email address"
 msgstr "Netfang"
 
-#: petition/views.py:159
+#: petition/views.py:67
 msgid "Confirm email address"
 msgstr "Staðfesting netfangs"
 
-#: petition/views.py:165
+#: petition/views.py:73
 msgid "Email addresses must match"
 msgstr "Netföngin verða bæði að vera eins"
 
-#: petition/templates/detail.html:32
+#: petition/templates/detail.html:55
 msgid "distributed"
 msgstr "útbýtt"
+
+#: petition/templates/detail.html:77
+msgid "Name"
+msgstr ""
+
+#: petition/templates/detail.html:78
+msgid "Social Number"
+msgstr ""
+
+#: petition/templates/detail.html:79
+msgid "Date Signed"
+msgstr ""
 
 #: petition/templates/petition/email.html:5
 msgid "Email required"
@@ -91,7 +103,7 @@ msgid "Share"
 msgstr "Deila"
 
 #: petition/templates/petition/signatures.html:5
-#: petition/templates/petition/signatures.html:16
+#: petition/templates/petition/signatures.html:16 templates/base.html:108
 msgid "My Signatures"
 msgstr "Mínar undirskriftir"
 
@@ -139,6 +151,15 @@ msgstr "Birta undirskrift opinberlega"
 msgid "remove signature"
 msgstr "fjarlægja undirskrift"
 
+#: templates/base.html:102
+msgid "Signed-in user"
+msgstr "Innskráður notandi"
+
+#: templates/base.html:111
+#, fuzzy
+msgid "Sign In"
+msgstr "Útskrá"
+
 #~ msgid "Your objection against this bill has been noted."
 #~ msgstr "Mótmæli þín gegn þessu frumvarpi hafa verið skráð."
 
@@ -151,9 +172,6 @@ msgstr "fjarlægja undirskrift"
 #~ msgid "Date"
 #~ msgstr "Dags."
 
-#~ msgid "Signed-in user"
-#~ msgstr "Innskráður notandi"
-
 #~ msgid "Home"
 #~ msgstr "Heim"
 
@@ -165,6 +183,3 @@ msgstr "fjarlægja undirskrift"
 
 #~ msgid "Most Popular"
 #~ msgstr "Vinsælast"
-
-#~ msgid "Sign out"
-#~ msgstr "Útskrá"
