@@ -6,7 +6,7 @@ body {
 	padding-left: 215px;
 	padding-right: 60px;
 
-	max-width: 1600px;
+/*	max-width: 1600px;*/
 }
 
 #content {
@@ -146,6 +146,7 @@ body {
 	width: auto;
 	height: 47px;
 	padding: 0 20px;
+	z-index: 100;
 
 	background-color: #f4f4f4;
 	border-bottom: 5px solid #57557b;
@@ -179,15 +180,20 @@ body {
 
 /* ---- PETITION LISTING STYLES -------------------------------------------- */
 .petition_list {
-	padding-top: 65px;
+	padding-top: 0px;
 	padding-bottom: 65px;
 }
+
 .petition_list_item {
 	border-top: dotted;
 	border-color: #b3b3b3;
 	border-width: 3px;
 
-	min-height: 150px;
+	padding-bottom: 20px;
+}
+
+.petition_list_item:first-child {
+	border-top: none;
 }
 
 .petition_list_item:last-child {
@@ -197,10 +203,11 @@ body {
 }
 
 .petition_list_item .details {
-	margin-left: 80px;
 	color: #3b4265;
 	font-size: 14px;
 	font-family: 'klinic_slabbook_italic';
+
+	margin-top: -6px;
 }
 
 .petition_list_item .details p {
@@ -208,7 +215,7 @@ body {
 	color: #3b4265;
 	font-size: 16px;
 
-	margin-top: 5px;
+	margin-top: 0px;
 }
 
 .petition_list_item .details .share_icon {
@@ -225,7 +232,9 @@ body {
 .petition_list_item h2 {
 	font-family: 'klinic_slabbold';
 	font-size: 1.6em;
+	line-height: 1.6em;
 	font-weight: normal;
+	margin-top: 9px;
 	color: #56547a;
 }
 
