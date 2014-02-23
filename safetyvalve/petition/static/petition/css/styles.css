@@ -11,6 +11,7 @@ body {
 
 #content {
 	width: auto;
+	padding-top: 47px;
 }
 
 /* ---- NAVIGATION STYLES -------------------------------------------------- */
@@ -143,9 +144,13 @@ body {
 }
 
 #current_user {
+	position: fixed;
+	left: 215px;
+	right: 60px;
 	width: auto;
 	height: 47px;
 	padding: 0 20px;
+	margin-top: -47px;
 	z-index: 100;
 
 	background-color: #f4f4f4;

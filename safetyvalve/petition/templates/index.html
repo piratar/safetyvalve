@@ -37,9 +37,21 @@
             {{ p.description }}
           </p>
 
-          <a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="fa fa-twitter-square"></i></a>
-          <a href="{{p.url_facebook_share}}" target="_blank" class="share_icon"><i class="fa fa-facebook-square"></i></a>
-          <a href="{{p.url_googleplus_share}}" target="_blank" class="share_icon"><i class="fa fa-google-plus-square"></i></a>&nbsp;&nbsp;&nbsp;
+          <div class="detail">
+            00
+          </div>
+
+          <div class="detail">
+            <a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="fa fa-twitter-square"></i></a>
+          </div>
+          <div class="detail">
+            <a href="{{p.url_facebook_share}}" target="_blank" class="share_icon"><i class="fa fa-facebook-square"></i></a>
+          </div>
+          <div class="detail">
+            <a href="{{p.url_googleplus_share}}" target="_blank" class="share_icon"><i class="fa fa-google-plus-square"></i></a>
+          </div>
+          
+          &nbsp;&nbsp;&nbsp;
           {% if p.id in signed_petition_ids %}
             {% include 'stub/unsign_button.html' %}
           {% else %}
