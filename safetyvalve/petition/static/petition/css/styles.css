@@ -1,5 +1,6 @@
 body {
 	background-image: url(/static/core/img/escheresque.png);
+	font-size: 16px;
 }
 
 #wrapper {
@@ -209,10 +210,15 @@ body {
 
 .petition_list_item .details {
 	color: #3b4265;
-	font-size: 14px;
+	font-size: 16px;
 	font-family: 'klinic_slabbook_italic';
 
 	margin-top: -6px;
+	position: relative;
+}
+
+.petition_list_item .details .detail {
+	display: inline-block;
 }
 
 .petition_list_item .details p {
@@ -223,11 +229,50 @@ body {
 	margin-top: 0px;
 }
 
-.petition_list_item .details .share_icon {
-	font-size: 26px;
+.petition_list_item .details .detail_figure {
+	font-size: 1.44em;
+	font-family: 'fairviewregular';
+	color: #56547a;
+}
+
+.share_icon {
+	cursor: pointer;
+}
+
+.petition_list_item .details .share_icon i {
+	font-size: 1.42em;
 	color: #56547a;
 
-	margin-right: 2px;
+	margin-right: 5px;
+}
+
+/* detail icon placements */
+.petition_list_item .details .detail:nth-child(2) {
+	left: 0;
+}
+
+.petition_list_item .details .detail:nth-child(3) {
+	left: 78px;
+	bottom: 0;
+	position: absolute;
+}
+
+.petition_list_item .details .detail:nth-child(4) {
+	left: 269px;
+	bottom: 0;
+	position: absolute;
+}
+
+.petition_list_item .details .detail:nth-child(5) {
+	left: 359px;
+	bottom: 0;
+	position: absolute;
+}
+
+.petition_list_item .details .detail:nth-child(6) {
+	left: 449px;
+	bottom: 0;
+	position: absolute;
 }
 
 .petition_list_item .details .share_icon:hover {
@@ -241,6 +286,11 @@ body {
 	font-weight: normal;
 	margin-top: 9px;
 	color: #56547a;
+	display: inline-block;
+}
+
+.petition_list_item h2:hover {
+	text-decoration: underline;
 }
 
 .heat_meter {

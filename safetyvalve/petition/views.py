@@ -30,7 +30,7 @@ from icekey.utils import authenticate
 from models import Signature
 
 
-def cached_or_fun(key, fun, timeout=60 * 5, *args, **kwargs):
+def cached_or_function(key, fun, timeout=60 * 5, *args, **kwargs):
     x = cache.get(key)
     if x is None:
         item = fun(*args, **kwargs)
@@ -150,7 +150,7 @@ def index(request):
         return Petition.objects.all() \
                                .order_by('-date_created') \
                                .annotate(num_signatures=Count('signature'))
-    p = cached_or_fun('popular__petitions', get_petitions, 60 * 5)
+    p = cached_or_function('popular__petitions', get_petitions, 60 * 5)
 
     if request.META['SERVER_NAME'] not in ['www.ventill.is', 'ventill.is']:
         if request.GET.get('fake-auth'):
@@ -199,7 +199,7 @@ def popular(request):
                        .annotate(num_signatures=Count('signature')) \
                        .filter(num_signatures__gt=0) \
                        .order_by('-num_signatures')[:10]
-    petitions = cached_or_fun('popular__petitions', get_popular_petitions, 10)
+    petitions = cached_or_function('popular__petitions', get_popular_petitions, 10)
 
     context = Context({
         'petitions': petitions,

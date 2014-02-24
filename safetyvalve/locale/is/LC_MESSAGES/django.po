@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-11 23:11+0000\n"
+"POT-Creation-Date: 2014-02-24 19:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -66,6 +66,10 @@ msgstr ""
 #: petition/templates/detail.html:79
 msgid "Date Signed"
 msgstr ""
+
+#: petition/templates/index.html:34
+msgid "Published On"
+msgstr "Frumvarp flutt"
 
 #: petition/templates/petition/email.html:5
 msgid "Email required"

@@ -1,10 +1,12 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}Heim{% endblock %}
 
 {% block javascript %}
 {{block.super}}
     <script src="{{STATIC_URL}}petition/js/petition.js" type="text/javascript"></script>
+    <script src="{{STATIC_URL}}petition/js/jquery.sharrre.min.js" type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
@@ -18,19 +20,6 @@
 
         <a class="petition_title" href="/frumvarp/{{ p.id }}/"><h2>{{ p.name|capfirst }}</h2></a>
 
-<!--         <div class="heat_meter">
-
-          <span class="heat_meter_count">{{p.num_signatures_display}}</span>
-          
-          <div class="heat_bar opacity_6"></div>
-          <div class="heat_bar opacity_5"></div>
-          <div class="heat_bar opacity_4"></div>
-          <div class="heat_bar opacity_3"></div>
-          <div class="heat_bar opacity_2"></div>
-          <div class="heat_bar opacity_1"></div>
-        
-        </div> -->
-
         <div class="details">
 
           <p>
@@ -38,27 +27,36 @@
           </p>
 
           <div class="detail">
-            00
+            <div class="share_icon"><i class="fa fa-check-square"></i><span class="detail_figure">{{p.num_signatures}}</span></div>
           </div>
 
           <div class="detail">
-            <a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="fa fa-twitter-square"></i></a>
+            <span class="detail_figure">{% trans 'Published On' %}: {{p.timing_published|date:"d. b o"}}</span>
           </div>
+
           <div class="detail">
-            <a href="{{p.url_facebook_share}}" target="_blank" class="share_icon"><i class="fa fa-facebook-square"></i></a>
+            <div class="fb_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="Áfram hjá þetta!" data-title="Like"></div>
           </div>
+
           <div class="detail">
+            <div class="twitter_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="Áfram hjá þetta!" data-title="Tweet"></div>
+          </div>
+
+<!--           <div class="detail">
+            <a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="fa fa-twitter-square"></i><span class="share_total">[[TWITTER_TOTAL]]</span></a>
+          </div> -->
+
+<!--           <div class="detail">
             <a href="{{p.url_googleplus_share}}" target="_blank" class="share_icon"><i class="fa fa-google-plus-square"></i></a>
-          </div>
+          </div> -->
           
-          &nbsp;&nbsp;&nbsp;
+          <div class="detail">
           {% if p.id in signed_petition_ids %}
             {% include 'stub/unsign_button.html' %}
           {% else %}
             {% include 'stub/sign_button.html' %}
           {% endif %}
-
-          -- published on: {{p.timing_published|date:"DATE_FORMAT"}}
+          </div>
 
         </div>
 
