@@ -17,6 +17,8 @@ AUTH_FAKE = {
     'name': u'Jón Jónsson'
 }
 
+INDEX_PAGE_ITEMS = 15
+
 INSTANCE_NOREPLY_EMAIL = 'noreply@example.com'
 
 

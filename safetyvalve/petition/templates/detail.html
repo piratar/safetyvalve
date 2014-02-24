@@ -9,6 +9,7 @@
 {% block javascript %}
 {{block.super}}
     <script src="{{STATIC_URL}}petition/js/petition.js" type="text/javascript"></script>
+    <script src="{{STATIC_URL}}petition/js/jquery.sharrre.min.js" type="text/javascript"></script>
     <script src="{{STATIC_URL}}petition/js/jquery.dataTables.min.js" type="text/javascript"></script>
 
     <script type="text/javascript">
@@ -52,7 +53,7 @@
 
         <div class="row-fluid">
             <div class="span12 published">
-                {% trans 'distributed' %}: {{ petition.timing_published|date:"DATE_FORMAT"}}
+                {% trans 'distributed' %}: {{ petition.time_published|date:"DATE_FORMAT"}}
             </div>
         </div>
 
@@ -69,7 +70,7 @@
             </div>
         </div>
 
-        <div class-"fow-fluid">
+        <div class-"row-fluid">
             
             <table id="signatures">
                 

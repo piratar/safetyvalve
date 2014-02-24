@@ -146,17 +146,31 @@ def get_public_signatures(request, petition_id):
 
 def index(request):
 
-    def get_petitions():
-        return Petition.objects.all() \
-                               .order_by('-date_created') \
-                               .annotate(num_signatures=Count('signature'))
-    p = cached_or_function('popular__petitions', get_petitions, 60 * 5)
+    # def get_petitions():
+    #     return Petition.objects.all() \
+    #                            .order_by('-date_created') \
+    #                            .annotate(num_signatures=Count('signature'))
+
+    # p = cached_or_function('popular__petitions', get_petitions, 60 * 5)
+
+    all_petitions = Petition.objects.all().order_by('-date_created').annotate(num_signatures=Count('signature'))
+    paginator = Paginator(all_petitions, settings.INDEX_PAGE_ITEMS)
+
+    page = request.GET.get('page', 1)
+    try:
+        petitions = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        petitions = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        petitions = paginator.page(1)
 
     if request.META['SERVER_NAME'] not in ['www.ventill.is', 'ventill.is']:
         if request.GET.get('fake-auth'):
             request.session['fake_auth'] = request.GET.get('fake-auth', '').lower() in ['on', 'true']
 
-    for i in p:
+    for i in petitions:
         if isinstance(i.name, unicode):
             i.name = i.name.encode('utf-8')
 
@@ -167,24 +181,13 @@ def index(request):
 
         url = urllib.quote("%s/petition/%s" % (settings.INSTANCE_URL, str(i.id)))
 
-        #facebook share logic
-        i.url_facebook_share = 'http://www.facebook.com/sharer/sharer.php?u=%s' % url
-
-        #twitter length logic
-        url_twitter_share = ('%s %s' % (url, i.name))
-        url_twitter_share = url_twitter_share if len(url_twitter_share) <= 140 else url_twitter_share[:137] + '...'
-        i.url_twitter_share = 'http://twitter.com/home?status=' + urllib.quote(url_twitter_share)
-
-        #g+ share logic
-        i.url_googleplus_share = 'https://plus.google.com/share?url=%s' % url
-
     signed_petition_ids = []
     if request.user.is_authenticated():
         signs = Signature.objects.filter(user=request.user)
         signed_petition_ids = [s.petition_id for s in signs]
 
     context = Context({
-        'petitions': p,
+        'petitions': petitions,
         'instance_url': settings.INSTANCE_URL,
         'signed_petition_ids': signed_petition_ids
     })

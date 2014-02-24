@@ -12,7 +12,7 @@ class IssueAdmin(admin.ModelAdmin):
 
 
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ('doc_num', 'doc_type', 'timing_published', 'is_main',
+    list_display = ('doc_num', 'doc_type', 'time_published', 'is_main',
                     'path_html', 'path_pdf', 'xhtml')
 
 

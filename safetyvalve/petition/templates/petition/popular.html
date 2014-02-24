@@ -19,7 +19,7 @@
                 {% endif %}
 
                 <div class="details">
-                    <span class="date_created">{{p.timing_published|date:"DATE_FORMAT"}}</span> -
+                    <span class="date_created">{{p.time_published|date:"DATE_FORMAT"}}</span> -
                     <span class="num_signatures">
                         {{ p.num_signatures }}
                         {% if p.num_signatures == 1 %}

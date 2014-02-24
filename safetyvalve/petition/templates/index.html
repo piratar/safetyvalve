@@ -23,15 +23,15 @@
         <div class="details">
 
           <p>
-            {{ p.description }}
+            {{ p.description }}&nbsp;
           </p>
 
           <div class="detail">
-            <div class="share_icon"><i class="fa fa-check-square"></i><span class="detail_figure">{{p.num_signatures}}</span></div>
+            <div class="icon"><i class="fa fa-check-square"></i><span class="detail_figure">{{p.num_signatures}}</span></div>
           </div>
 
           <div class="detail">
-            <span class="detail_figure">{% trans 'Published On' %}: {{p.timing_published|date:"d. b o"}}</span>
+            <span class="detail_figure">{% trans 'Published On' %}: {{p.time_published|date:"d. b o"}}</span>
           </div>
 
           <div class="detail">

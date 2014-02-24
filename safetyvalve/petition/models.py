@@ -21,13 +21,13 @@ class Petition(models.Model):
     description = models.TextField()
     content = models.TextField()
     positive_notion = models.BooleanField(default=False)
-    timing_published = models.DateTimeField(null=True)
+    time_published = models.DateTimeField(null=True)
 
     date_created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['-timing_published', 'name']
+        ordering = ['-time_published', 'name']
 
     def __unicode__(self):
         return self.name

@@ -54,13 +54,6 @@
       </div>
 
       <div id="nav" class="visible-desktop">
-        {% if user.is_authenticated  %}
-          <div class="person_info">
-            <label>Innskr&aacute;&eth;ur notandi:</label>
-            {{ user.first_name }}<br />
-            <small>{{ user }}</small><br /><br />
-          </div>
-        {% endif %}
         <h1>ÖRYGGISVENTILL</h1>
         <img src="{% static 'petition/img/logo.png' %}" />
 

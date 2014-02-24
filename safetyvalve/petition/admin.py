@@ -4,7 +4,7 @@ from petition.models import Petition, Signature
 
 class PetitionAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'date_created', 'last_updated')
-    date_hierarchy = 'timing_published'
+    date_hierarchy = 'time_published'
 
 
 class SignatureAdmin(admin.ModelAdmin):

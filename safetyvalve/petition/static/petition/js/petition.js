@@ -48,7 +48,7 @@ $(function () {
         share: {
             facebook: true
         },
-        template: '<div class="share_icon"><i class="fa fa-facebook-square"></i><span class="detail_figure">{total}</span></div>',
+        template: '<div class="icon share_icon"><i class="fa fa-facebook-square"></i><span class="detail_figure">{total}</span></div>',
         enableHover: false,
         enableTracking: true,
         click: function(api, options) {
@@ -61,12 +61,12 @@ $(function () {
         share: {
             facebook: true
         },
-        template: '<div class="share_icon"><i class="fa fa-twitter-square"></i><span class="detail_figure">{total}</span></div>',
+        template: '<div class="icon share_icon"><i class="fa fa-twitter-square"></i><span class="detail_figure">{total}</span></div>',
         enableHover: false,
         enableTracking: true,
         click: function(api, options) {
             api.simulateClick();
-            api.openPopup('facebook');
+            api.openPopup('twitter');
         }
     });
 

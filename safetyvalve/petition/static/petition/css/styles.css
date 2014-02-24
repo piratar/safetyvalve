@@ -12,7 +12,7 @@ body {
 
 #content {
 	width: auto;
-	padding-top: 47px;
+	padding-top: 50px;
 }
 
 /* ---- NAVIGATION STYLES -------------------------------------------------- */
@@ -37,18 +37,18 @@ body {
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;  
 
-	background-image: linear-gradient(bottom, #231641 0%, #3B4265 100%);
-	background-image: -o-linear-gradient(bottom, #231641 0%, #3B4265 100%);
-	background-image: -moz-linear-gradient(bottom, #231641 0%, #3B4265 100%);
-	background-image: -webkit-linear-gradient(bottom, #231641 0%, #3B4265 100%);
-	background-image: -ms-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: linear-gradient(bottom, #231641 5%, #56547A 95%);
+	background-image: -o-linear-gradient(bottom, #231641 5%, #56547A 95%);
+	background-image: -moz-linear-gradient(bottom, #231641 5%, #56547A 95%);
+	background-image: -webkit-linear-gradient(bottom, #231641 5%, #56547A 95%);
+	background-image: -ms-linear-gradient(bottom, #231641 5%, #56547A 95%);
 
 	background-image: -webkit-gradient(
 		linear,
 		left bottom,
 		left top,
 		color-stop(0, #231641),
-		color-stop(1, #3B4265)
+		color-stop(1, #56547A)
 	);
 }
 
@@ -68,18 +68,18 @@ body {
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;  
 
-	background-image: linear-gradient(bottom, #231641 0%, #3B4265 100%);
-	background-image: -o-linear-gradient(bottom, #231641 0%, #3B4265 100%);
-	background-image: -moz-linear-gradient(bottom, #231641 0%, #3B4265 100%);
-	background-image: -webkit-linear-gradient(bottom, #231641 0%, #3B4265 100%);
-	background-image: -ms-linear-gradient(bottom, #231641 0%, #3B4265 100%);
+	background-image: linear-gradient(bottom, #231641 5%, #56547A 95%);
+	background-image: -o-linear-gradient(bottom, #231641 5%, #56547A 95%);
+	background-image: -moz-linear-gradient(bottom, #231641 5%, #56547A 95%);
+	background-image: -webkit-linear-gradient(bottom, #231641 5%, #56547A 95%);
+	background-image: -ms-linear-gradient(bottom, #231641 5%, #56547A 95%);
 
 	background-image: -webkit-gradient(
 		linear,
 		left bottom,
 		left top,
-		color-stop(0, #231641),
-		color-stop(1, #3B4265)
+		color-stop(0, #56547A),
+		color-stop(1, #56547A)
 	);
 }
 
@@ -151,7 +151,7 @@ body {
 	width: auto;
 	height: 47px;
 	padding: 0 20px;
-	margin-top: -47px;
+	margin-top: -50px;
 	z-index: 100;
 
 	background-color: #f4f4f4;
@@ -187,7 +187,7 @@ body {
 /* ---- PETITION LISTING STYLES -------------------------------------------- */
 .petition_list {
 	padding-top: 0px;
-	padding-bottom: 65px;
+	padding-bottom: 10px;
 }
 
 .petition_list_item {
@@ -200,12 +200,6 @@ body {
 
 .petition_list_item:first-child {
 	border-top: none;
-}
-
-.petition_list_item:last-child {
-	border-bottom: dotted;
-	border-color: #b3b3b3;
-	border-width: 3px;
 }
 
 .petition_list_item .details {
@@ -239,11 +233,15 @@ body {
 	cursor: pointer;
 }
 
-.petition_list_item .details .share_icon i {
+.petition_list_item .details .icon i {
 	font-size: 1.42em;
 	color: #56547a;
 
 	margin-right: 5px;
+}
+
+.petition_list_item .details .icon:hover {
+	text-decoration: none;
 }
 
 /* detail icon placements */
@@ -273,10 +271,6 @@ body {
 	left: 449px;
 	bottom: 0;
 	position: absolute;
-}
-
-.petition_list_item .details .share_icon:hover {
-	text-decoration: none;
 }
 
 .petition_list_item h2 {

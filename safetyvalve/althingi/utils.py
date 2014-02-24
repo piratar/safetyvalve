@@ -37,7 +37,7 @@ def update_issues():
         name = issue_xml.getElementsByTagName(u'málsheiti')[0].firstChild.nodeValue
 
         description = issue_xml.getElementsByTagName(u'efnisgreining')[0].firstChild
-        description = description.nodeValue if description != None else ''
+        description = description.nodeValue if description != None else 'engin lýsing útgefin'
 
         issue_type = issue_xml.getElementsByTagName(u'málstegund')[0].getAttribute(u'málstegund')
 
@@ -71,7 +71,7 @@ def update_issues():
 
             doc_num = int(doc_xml.getAttribute(u'skjalsnúmer'))
             doc_type = doc_xml.getElementsByTagName(u'skjalategund')[0].firstChild.nodeValue
-            timing_published = doc_xml.getElementsByTagName(u'útbýting')[0].firstChild.nodeValue + "+00:00"
+            time_published = doc_xml.getElementsByTagName(u'útbýting')[0].firstChild.nodeValue + "+00:00"
 
             paths_xml =  doc_xml.getElementsByTagName(u'slóð')
             html_paths_xml = paths_xml[0].getElementsByTagName(u'html') 
@@ -97,7 +97,7 @@ def update_issues():
                 doc = Document()
                 doc.doc_num = doc_num
                 doc.doc_type = doc_type
-                doc.timing_published = timing_published
+                doc.time_published = time_published
                 doc.path_html = path_html
                 doc.path_pdf = path_pdf
                 doc.issue = issue
