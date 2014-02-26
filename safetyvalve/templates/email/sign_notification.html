@@ -1,15 +1,15 @@
 <div style="background-color: 3B4265; color: c2c2c2;">
     <p>
-        Sæl(l) %(name)s!
+        {% trans 'Dear %(name)s!' %}Sæl(l) %(name)s!
     </p>
     <p>
-        Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir skrifað undir eftirfarandi lög með tókanum %(token)s frá island.is:
+        {% trans 'Thank you for using our system. We hereby confirm that you have signed the following petitions with the following token %(token)s from island.is:' %}Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir skrifað undir eftirfarandi undirskriftalista með tókanum %(token)s frá island.is:
     </p>
     <blockquote style="background-color: #fff; color: black;">
         %(text)s
     </blockquote>
     <p>
-        Með kveðju,<br/>
+        {% trans 'Best regards,' %}Með kveðju,<br/>
         Ventill.is
     </p>
 </div>

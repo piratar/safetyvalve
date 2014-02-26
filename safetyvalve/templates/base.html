@@ -44,9 +44,9 @@
             <a class="brand" href="/">Öryggisventill</a>
             <div class="nav-collapse collapse">
               <ul class="nav">
-                <li class="active"><a href="/">Heim</a></li>
-                <li><a href="#about">Um okkur</a></li>
-                <li><a href="#contact">Hafðu samband</a></li>
+                <li class="active"><a href="/">{% trans 'Home' %}Heim</a></li>
+                <li><a href="#about">{% trans 'About Us' %}Um okkur</a></li>
+                <li><a href="#contact">{% trans 'Contact Us' %}Hafðu samband</a></li>
               </ul>
             </div>
           </div>
@@ -59,12 +59,12 @@
 
         <div>
           <ul>
-            <li><a href="/">Heim</a></li>
-            <li><a href="/um-okkur/">Um Okkur</a></li>
-            <li><a href="ventill@ventill.is">Hafa Samband</a></li>
-            <li><a href="#">Vinsælast</a></li>
+            <li><a href="/">{% trans 'Home' %}Heim</a></li>
+            <li><a href="/um-okkur/">{% trans 'About Us' %}Um Okkur</a></li>
+            <li><a href="ventill@ventill.is">{% trans 'Contact Us' %}Hafa Samband</a></li>
+            <li><a href="#">{% trans 'Popular' %}Vinsælast</a></li>
             {% if user.is_authenticated %}
-            <li><a href="/utskra/">Útskrá</a></li>
+            <li><a href="/utskra/">{% trans 'Sign out' %}Útskrá</a></li>
             {% endif %}
           </ul>
         </div>

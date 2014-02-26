@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Villa við sendingu kvittunar
+    {% trans 'Error while sending receipt' %}Villa við sendingu kvittunar
 {% endblock %}
 
 {% block content %}
-    <p>Villa kom upp við sendingu kvittunar.</p>
+    <p>{% trans 'Error while sending receipt' %}Villa kom upp við sendingu kvittunar.</p>
 
-    <p>Villan sem kom upp var: {{ e }}</p>
+    <p>{% trans 'The error was:' %}Villan sem kom upp var: {{ e }}</p>
 
-    <p>Umsjónarmenn munu tryggja að kvittun berist til þín í pósti þegar villan hefur verið lagfærð. Við biðjumst velvirðingar á vandanum.</p>
+    <p>{% trans 'Administrators will make sure that the receipt will be sent to you via mail when the error has been fixed. Please excuse the inconvenience.' %}Umsjónarmenn munu tryggja að kvittun berist til þín í pósti þegar villan hefur verið lagfærð. Við biðjumst velvirðingar á vandanum.</p>
 {% endblock %}
 
