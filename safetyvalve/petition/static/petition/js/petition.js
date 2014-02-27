@@ -3,7 +3,7 @@ $(function () {
 
     $('a.unsign').bind('click', function (e) {
         var msg = $('#msg_are_you_sure').text();
-        if (!confirm(msg)) {
+        if (!confirm('are you sure?')) {
             e.preventDefault();
             return false;
         }

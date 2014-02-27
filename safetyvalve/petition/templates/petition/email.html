@@ -7,21 +7,25 @@
 
 {% block content %}
 
-    <p>{% trans 'In order to secure the legitimacy of each signature, we send a receipt via email to the signatory person.' %}</p>
-<!--
-Til að tryggja lögmæti undirskrifta enn frekar sendum við kvittun í tölvupósti til þess sem skrifar undir.
--->
+	<div class="container-fluid petition_list">
 
-    <p>{% trans 'Email addresses are only used for verification purposes and are never sent to a third party.' %}</p>
-<!--
-Netföng eru einungis notuð til staðfestingar og eru aldrei send þriðja aðila.
--->
+	    <p>{% trans 'In order to secure the legitimacy of each signature, we send a receipt via email to the signatory person.' %}</p>
+	<!--
+	Til að tryggja lögmæti undirskrifta enn frekar sendum við kvittun í tölvupósti til þess sem skrifar undir.
+	-->
 
-    <form action="." method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">{% trans 'Confirm' %}</button>
-    </form>
+	    <p>{% trans 'Email addresses are only used for verification purposes and are never sent to a third party.' %}</p>
+	<!--
+	Netföng eru einungis notuð til staðfestingar og eru aldrei send þriðja aðila.
+	-->
+
+	    <form action="." method="post">
+		    {% csrf_token %}
+		    {{ form.as_p }}
+		    <button type="submit">{% trans 'Confirm' %}</button>
+	    </form>
+
+    <div class="container-fluid petition_list">
 {% endblock %}
 
 

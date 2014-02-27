@@ -2,7 +2,11 @@ Sæl(l) %(name)s!
 
 Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir fjarlægt undirskrift fyrir eftirfarandi undirskriftalista:
 
-> %(text)s
+------------------------------------
+
+%(text)s
+
+------------------------------------
 
 Með kveðju,
 Ventill.is

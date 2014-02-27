@@ -2,7 +2,6 @@
 
 import codecs
 import os
-import urllib
 import json
 
 from math import floor
@@ -28,6 +27,7 @@ from petition.models import Petition
 from icekey.utils import authenticate
 
 from models import Signature
+from utils import convert_petition_to_plaintext_email
 
 
 def cached_or_function(key, fun, timeout=60 * 5, *args, **kwargs):
@@ -179,7 +179,6 @@ def index(request):
         else:
             i.num_signatures_display = i.num_signatures
 
-        url = urllib.quote("%s/petition/%s" % (settings.INSTANCE_URL, str(i.id)))
 
     signed_petition_ids = []
     if request.user.is_authenticated():
@@ -250,7 +249,6 @@ def unsign(request, petition_id):
     return HttpResponseRedirect('/')
 
 
-
 def _receipt(request, petition_id, subject, message, html=None):
     sender = 'stadfesting@ventill.is'
     recipients = [request.user.email]
@@ -279,8 +277,9 @@ def sign_receipt(request, petition_id):
     message = message % {
         'name': request.user.first_name,
         'token': s.authentication.token,
-        'subject': subject,
-        'text': s.petition.content,
+        'subject': subject.replace,
+        'title': s.petition.name,
+        'text': convert_petition_to_plaintext_email(s.petition.content),
         }
 
     template = 'email/sign_notification.html'
@@ -290,6 +289,7 @@ def sign_receipt(request, petition_id):
         'name': request.user.first_name,
         'token': s.authentication.token,
         'subject': subject,
+        'title': s.petition.name,
         'text': s.petition.content,
         }
 
@@ -315,7 +315,8 @@ def unsign_receipt(request, petition_id):
         'name': request.user.first_name,
         'token': s.authentication.token,
         'subject': subject,
-        'text': s.petition.content,
+        'title': s.petition.name,
+        'text': convert_petition_to_plaintext_email(s.petition.content),
         }
 
     template = 'email/unsign_notification.html'
@@ -325,6 +326,7 @@ def unsign_receipt(request, petition_id):
         'name': request.user.first_name,
         'token': s.authentication.token,
         'subject': subject,
+        'title': s.petition.name,
         'text': s.petition.content,
         }
 

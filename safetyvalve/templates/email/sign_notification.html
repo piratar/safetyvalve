@@ -1,16 +1,33 @@
-<div style="background-color: 3B4265; color: c2c2c2;">
-    <p>
-        {% trans 'Dear %(name)s!' %}Sæl(l) %(name)s!
-    </p>
-    <p>
-        {% trans 'Thank you for using our system. We hereby confirm that you have signed the following petitions with the following token %(token)s from island.is:' %}Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir skrifað undir eftirfarandi undirskriftalista með tókanum %(token)s frá island.is:
-    </p>
-    <blockquote style="background-color: #fff; color: black;">
-        %(text)s
-    </blockquote>
-    <p>
-        {% trans 'Best regards,' %}Með kveðju,<br/>
-        Ventill.is
-    </p>
-</div>
+<!DOCTYPE html>
+    
+    <body>
 
+        <div style="color: #000000; width: 550px;">
+            <img alt="Öryggis Ventill" src="https://www.ventill.is/static/core/img/email_logo.jpg" />
+            
+            <div style="background-color: #FFFFFF; padding: 25px;">
+                <p>
+                    Sæl(l) %(name)s!<br />
+                    Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir skrifað undir eftirfarandi lög með tókanum %(token)s frá island.isbackground-color: #3c4366; :
+                </p>
+            </div>
+
+            <div style="background-color: #3c4366; border-top: 8px solid #241742; height: 40px; text-align: center;">
+                %(title)s
+            </div>
+            
+            <div>
+                <blockquote style="background-color: #ebebeb; color: #000000; padding: 0; margin: 0;">
+                    %(text)s
+                </blockquote>
+            </div>
+
+            <p>
+                Með kveðju,<br/>
+                Ventill.is
+            </p>
+        </div>
+
+    </body>
+
+</html>
