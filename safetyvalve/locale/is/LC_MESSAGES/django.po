@@ -72,9 +72,8 @@ msgid "Published On"
 msgstr "Frumvarp flutt"
 
 #: petition/templates/index.html:38
-#, fuzzy
 msgid "Share!"
-msgstr "Deila"
+msgstr "Deila!"
 
 #: petition/templates/index.html:42
 msgid "Tweet!"
@@ -82,7 +81,7 @@ msgstr "Tweet!"
 
 #: petition/templates/petition/email.html:5
 msgid "Email required"
-msgstr "Þörf á netfangi"
+msgstr "Netfang nauðsynlegt"
 
 #: petition/templates/petition/email.html:12
 msgid ""
@@ -90,14 +89,14 @@ msgid ""
 "email to the signatory person."
 msgstr ""
 "Til að tryggja lögmæti undirskrifta enn frekar sendum við kvittun "
-"ítölvupósti til þess sem skrifar undir."
+"í tölvupósti til þess sem skrifar undir."
 
 #: petition/templates/petition/email.html:17
 msgid ""
 "Email addresses are only used for verification purposes and are never sent "
 "to a third party."
 msgstr ""
-"Netföng eru einungis notuð til staðfestingar og eru aldrei sendþriðja aðila."
+"Netföng eru einungis notuð til staðfestingar og eru aldrei send þriðja aðila."
 
 #: petition/templates/petition/email.html:25
 msgid "Confirm"
@@ -118,17 +117,17 @@ msgstr "Deila"
 #: petition/templates/petition/receipt_error.html:4
 #: petition/templates/petition/receipt_error.html:8
 msgid "Error while sending receipt"
-msgstr "Villa í sendingu tölvupósts"
+msgstr "Villa í sendingu kvittunar"
 
 #: petition/templates/petition/receipt_error.html:10
 msgid "The error was:"
-msgstr "Villan var"
+msgstr "Villan var:"
 
 #: petition/templates/petition/receipt_error.html:12
 msgid ""
 "Administrators will make sure that the receipt will be sent to you via mail "
 "when the error has been fixed. Please excuse the inconvenience."
-msgstr "Stjórnendur kerfisins munu sjá til þess að staðfesting berast þeir með pósti"
+msgstr "Stjórnendur kerfisins munu sjá til þess að staðfesting berast þér með pósti"
 
 #: petition/templates/petition/signatures.html:5
 #: petition/templates/petition/signatures.html:17 templates/base.html:48
@@ -158,11 +157,11 @@ msgstr "Enn engar undirskriftir!"
 
 #: petition/templates/stub/sign_button.html:4
 msgid "Add Signature"
-msgstr "Bæta við Undurskrift"
+msgstr "Bæta við undirskrift"
 
 #: petition/templates/stub/sign_button.html:7
 msgid "Confirm Signature"
-msgstr "Staðfesta Undirskrift"
+msgstr "Staðfesta undirskrift"
 
 #: petition/templates/stub/sign_button.html:7
 msgid "Cancel"
@@ -182,21 +181,19 @@ msgstr "Heim"
 
 #: templates/base.html:49 templates/base.html.py:64
 msgid "About Us"
-msgstr "Um Okkur"
+msgstr "Um okkur"
 
 #: templates/base.html:50 templates/base.html.py:65
 msgid "Contact Us"
-msgstr "Hafðu Samband"
+msgstr "Hafðu samband"
 
 #: templates/base.html:66
-#, fuzzy
 msgid "Popular"
 msgstr "Vinsælast"
 
 #: templates/base.html:68
-#, fuzzy
 msgid "Sign out"
-msgstr "Útsrká"
+msgstr "Útskrá"
 
 #: templates/base.html:96
 msgid "Signed-in user"
