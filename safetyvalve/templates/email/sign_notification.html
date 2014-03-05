@@ -3,29 +3,32 @@
     <body>
 
         <div style="color: #000000; width: 550px;">
-            <img alt="Öryggis Ventill" src="https://www.ventill.is/static/core/img/email_logo.jpg" />
+
+            <div style="height: 82px; width: 550px; background-color: #241742;">
+                <img style="color: #FFFFFF; font-size: 25px; line-height: 82px; padding-left: 10px;" alt="Öryggis Ventill" src="https://www.ventill.is/static/core/img/email_logo.jpg" />
+            </div>
             
             <div style="background-color: #FFFFFF; padding: 25px;">
                 <p>
                     Sæl(l) %(name)s!<br />
-                    Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir skrifað undir eftirfarandi lög með tókanum %(token)s frá island.isbackground-color: #3c4366; :
+                    Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir skrifað undir eftirfarandi undirskriftalista með tókanum %(token)s frá island.is::
                 </p>
             </div>
 
-            <div style="background-color: #3c4366; border-top: 8px solid #241742; height: 40px; text-align: center;">
+            <div style="background-color: #3c4366; border-top: 8px solid #241742; height: 40px; line-height: 40px; text-align: center; color: #FFFFFF; font-size: 17px;">
                 %(title)s
             </div>
             
             <div>
-                <blockquote style="background-color: #ebebeb; color: #000000; padding: 0; margin: 0;">
+                <blockquote style="background-color: #ebebeb; color: #000000; padding: 30px 25px; margin: 0;">
                     %(text)s
                 </blockquote>
             </div>
 
-            <p>
-                Með kveðju,<br/>
-                Ventill.is
-            </p>
+            <div style="background-color: #3c4366; height: 40px; line-height: 40px; text-align: center; color: #FFFFFF; font-size: 15px;">
+                Með kveðju, Ventill.is
+            </div>
+
         </div>
 
     </body>

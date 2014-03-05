@@ -1,16 +1,36 @@
-<div style="background-color: 3B4265; color: c2c2c2;">
-    <img alt="Öryggis Ventill" src="https://www.ventill.is/static/core/img/email_logo.jpg" />
-    <p>
-        Sæl(l) %(name)s!
-    </p>
-    <p>
-        Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir fjarlægt undirskrift fyrir eftirfarandi lög:
-    </p>
-    <blockquote style="background-color: #fff; color: black;">
-        %(text)s
-    </blockquote>
-    <p>
-        Með kveðju,<br/>
-        Ventill.is
-    </p>
-</div>
+<!DOCTYPE html>
+    
+    <body>
+
+        <div style="color: #000000; width: 550px;">
+
+            <div style="height: 82px; width: 550px; background-color: #241742;">
+                <img style="color: #FFFFFF; font-size: 25px; line-height: 82px; padding-left: 10px;" alt="Öryggis Ventill" src="https://www.ventill.is/static/core/img/email_logo.jpg" />
+            </div>
+            
+            <div style="background-color: #FFFFFF; padding: 25px;">
+                <p>
+                    Sæl(l) %(name)s!<br />
+                    Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir fjarlægt undirskrift fyrir eftirfarandi lög:
+                </p>
+            </div>
+
+            <div style="background-color: #3c4366; border-top: 8px solid #241742; height: 40px; line-height: 40px; text-align: center; color: #FFFFFF; font-size: 17px;">
+                %(title)s
+            </div>
+            
+            <div>
+                <blockquote style="background-color: #ebebeb; color: #000000; padding: 30px 25px; margin: 0;">
+                    %(text)s
+                </blockquote>
+            </div>
+
+            <div style="background-color: #3c4366; height: 40px; line-height: 40px; text-align: center; color: #FFFFFF; font-size: 15px;">
+                Með kveðju, Ventill.is
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

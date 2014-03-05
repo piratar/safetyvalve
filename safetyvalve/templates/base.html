@@ -44,9 +44,10 @@
             <a class="brand" href="/">Öryggisventill</a>
             <div class="nav-collapse collapse">
               <ul class="nav">
-                <li class="active"><a href="/">{% trans 'Home' %}Heim</a></li>
-                <li><a href="#about">{% trans 'About Us' %}Um okkur</a></li>
-                <li><a href="#contact">{% trans 'Contact Us' %}Hafðu samband</a></li>
+                <li class="active"><a href="/">{% trans 'Home' %}</a></li>
+                <li><a href="/undirskriftir/">{% trans 'My Signatures' %}</a></li>
+                <li><a href="/um-okkur/">{% trans 'About Us' %}</a></li>
+                <li><a href="#contact">{% trans 'Contact Us' %}</a></li>
               </ul>
             </div>
           </div>
@@ -94,7 +95,7 @@
 
             {% trans 'Signed-in user' %}: {% if request.session.fake_auth %}Fake User{% else %}{{ user.get_full_name }} {{ user.get_username }} {% endif %}
 
-            <div class="my_signatures">
+            <div class="my_signatures visible-desktop">
               <div>
                 <i class="fa fa-pencil-square-o"></i>
               </div>
