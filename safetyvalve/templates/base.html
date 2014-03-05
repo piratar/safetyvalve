@@ -60,12 +60,12 @@
 
         <div>
           <ul>
-            <li><a href="/">{% trans 'Home' %}Heim</a></li>
-            <li><a href="/um-okkur/">{% trans 'About Us' %}Um Okkur</a></li>
-            <li><a href="ventill@ventill.is">{% trans 'Contact Us' %}Hafa Samband</a></li>
-            <li><a href="#">{% trans 'Popular' %}Vinsælast</a></li>
+            <li><a href="/">{% trans 'Home' %}</a></li>
+            <li><a href="/um-okkur/">{% trans 'About Us' %}</a></li>
+            <li><a href="mailto:ventill@ventill.is">{% trans 'Contact Us' %}</a></li>
+            <li><a href="#">{% trans 'Popular' %}</a></li>
             {% if user.is_authenticated %}
-            <li><a href="/utskra/">{% trans 'Sign out' %}Útskrá</a></li>
+            <li><a href="/utskra/">{% trans 'Sign out' %}</a></li>
             {% endif %}
           </ul>
         </div>
