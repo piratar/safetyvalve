@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-27 22:13+0000\n"
+"POT-Creation-Date: 2014-04-10 00:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -64,6 +64,7 @@ msgid "Social Number"
 msgstr "Kennitala"
 
 #: petition/templates/detail.html:80
+#: petition/templates/petition/signatures.html:23
 msgid "Date Signed"
 msgstr "Dagsetning undirskriftar"
 
@@ -88,8 +89,8 @@ msgid ""
 "In order to secure the legitimacy of each signature, we send a receipt via "
 "email to the signatory person."
 msgstr ""
-"Til að tryggja lögmæti undirskrifta enn frekar sendum við kvittun "
-"í tölvupósti til þess sem skrifar undir."
+"Til að tryggja lögmæti undirskrifta enn frekar sendum við kvittun í "
+"tölvupósti til þess sem skrifar undir."
 
 #: petition/templates/petition/email.html:17
 msgid ""
@@ -127,7 +128,8 @@ msgstr "Villan var:"
 msgid ""
 "Administrators will make sure that the receipt will be sent to you via mail "
 "when the error has been fixed. Please excuse the inconvenience."
-msgstr "Stjórnendur kerfisins munu sjá til þess að staðfesting berast þér með pósti"
+msgstr ""
+"Stjórnendur kerfisins munu sjá til þess að staðfesting berast þér með pósti"
 
 #: petition/templates/petition/signatures.html:5
 #: petition/templates/petition/signatures.html:17 templates/base.html:48
@@ -155,21 +157,9 @@ msgstr "Fjarlægja"
 msgid "No signatures yet!"
 msgstr "Enn engar undirskriftir!"
 
-#: petition/templates/stub/sign_button.html:4
+#: petition/templates/stub/sign_button.html:6
 msgid "Add Signature"
 msgstr "Bæta við undirskrift"
-
-#: petition/templates/stub/sign_button.html:7
-msgid "Confirm Signature"
-msgstr "Staðfesta undirskrift"
-
-#: petition/templates/stub/sign_button.html:7
-msgid "Cancel"
-msgstr "Hætta Við"
-
-#: petition/templates/stub/sign_button.html:10
-msgid "Show signature publicly"
-msgstr "Birta undirskrift opinberlega"
 
 #: petition/templates/stub/unsign_button.html:3
 msgid "remove signature"
@@ -202,6 +192,15 @@ msgstr "Innskráður notandi"
 #: templates/base.html:105
 msgid "Sign In"
 msgstr "Innskráning"
+
+#~ msgid "Confirm Signature"
+#~ msgstr "Staðfesta undirskrift"
+
+#~ msgid "Cancel"
+#~ msgstr "Hætta Við"
+
+#~ msgid "Show signature publicly"
+#~ msgstr "Birta undirskrift opinberlega"
 
 #~ msgid "Your objection against this bill has been noted."
 #~ msgstr "Mótmæli þín gegn þessu frumvarpi hafa verið skráð."

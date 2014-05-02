@@ -9,7 +9,7 @@ $(function () {
         }
     });
 
-    $('.pre_selection_container a.addremove_signature').bind('click', function(e) {
+    $('.pre_selection_container .addremove_signature').bind('click', function(e) {
         container = $(this).parent().parent();
 
         container.find('.pre_selection_container').hide();

@@ -320,7 +320,36 @@ body {
 	margin: 0 auto 2px auto;
 }
 
-.signature_container, .pre_selection_container {
+.signature_container {
+	margin-top: 10px;
+	height: 30px;
+}
+
+.signature_button {
+	display: inline-block;
+	height: 30px;
+	padding: 0 5px;
+	background-color: #57557B;
+
+	font-family: 'fairviewregular';
+	font-size: 1.44em;
+	color: #FFFFFF;
+	line-height: 30px;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+
+	cursor: pointer;
+
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+.signature_button > i {
+	padding-right: 5px;
+}
+
+/*.pre_selection_container {
 	color: #3b4265; 
 	display: inline;
 }
@@ -340,7 +369,7 @@ body {
 .post_selection_container {
 	color: #3C4366; 
 	font-family: 'klinic_slabbook_italic';
-}
+}*/
 
 
 /* ---- END PETITION LISTING STYLES ---------------------------------------- */

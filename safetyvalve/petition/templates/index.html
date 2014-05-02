@@ -49,16 +49,14 @@
 <!--           <div class="detail">
             <a href="{{p.url_googleplus_share}}" target="_blank" class="share_icon"><i class="fa fa-google-plus-square"></i></a>
           </div> -->
-          
-          <div class="detail">
-          {% if p.id in signed_petition_ids %}
-            {% include 'stub/unsign_button.html' %}
-          {% else %}
-            {% include 'stub/sign_button.html' %}
-          {% endif %}
-          </div>
 
         </div>
+
+        {% if p.id in signed_petition_ids %}
+          {% include 'stub/unsign_button.html' %}
+        {% else %}
+          {% include 'stub/sign_button.html' %}
+        {% endif %}
 
       </div>
 

@@ -1,4 +1,14 @@
 {% load i18n %}
+
+<div class="signature_container" data-id"{{p.id}}">
+    <div class="pre_selection_container">
+        <div class="signature_button addremove_signature">
+            <i class="fa fa-pencil-square"></i> {% trans 'Add Signature' %}
+        </div>
+    </div>
+</div>
+
+{% comment %}
 <div class="signature_container" data-id="{{ p.id }}">
     <div class="pre_selection_container">
         <a class="addremove_signature"><i class="fa fa-pencil"></i> {% trans 'Add Signature' %}</a>
@@ -11,4 +21,5 @@
         </div>
     </div>
 </div>
+{% endcomment %}
 
