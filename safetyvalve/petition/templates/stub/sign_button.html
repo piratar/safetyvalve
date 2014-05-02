@@ -1,10 +1,18 @@
 {% load i18n %}
 
-<div class="signature_container" data-id"{{p.id}}">
+<div class="signature_container" data-id="{{p.id}}">
     <div class="pre_selection_container">
         <div class="signature_button addremove_signature">
             <i class="fa fa-pencil-square"></i> {% trans 'Add Signature' %}
         </div>
+    </div>
+
+    <div class="post_selection_container">
+        <label for="show_public_{{ p.id }}">{% trans 'Show signature publicly' %}?</label>
+        <input type="checkbox" class="show_public" id="show_public_{{ p.id }}" value="1" checked="1" />
+
+        <i class="fa fa-check-circle confirm_signature_icon addremove_signature"></i>
+        <i class="fa fa-times-circle cancel_signature_icon signature_cancel"></i>
     </div>
 </div>
 

@@ -365,11 +365,42 @@ body {
 	text-decoration: none;
 	font-style: normal;
 }
+*/
 
 .post_selection_container {
+	display: none;
 	color: #3C4366; 
 	font-family: 'klinic_slabbook_italic';
-}*/
+}
+
+.post_selection_container input, .post_selection_container label {
+	display: inline-block;
+}
+
+.post_selection_container input {
+	margin-right: 15px;
+}
+
+.post_selection_container i {
+	display: inline-block;
+	cursor: pointer;
+
+	font-size: 25px;
+
+	margin-right: 10px;
+}
+
+.unsign .signature_button {
+	background-color: #B62A2A;
+}
+
+.confirm_signature_icon {
+	color: #38B449;
+}
+
+.cancel_signature_icon {
+	color: #B52929;
+}
 
 
 /* ---- END PETITION LISTING STYLES ---------------------------------------- */

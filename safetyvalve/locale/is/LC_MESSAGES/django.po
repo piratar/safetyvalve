@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-10 00:08+0000\n"
+"POT-Creation-Date: 2014-05-02 22:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -26,8 +26,9 @@ msgstr ""
 #: person/templates/person/remove_signature.html:5
 #: person/templates/person/remove_signature.html:14
 #: person/templates/person/remove_signature__json.html:3
+#, fuzzy
 msgid "Remove signature"
-msgstr "Fjarlægja undirskrift"
+msgstr "fjarlægja undirskrift"
 
 #: person/templates/person/remove_signature.html:19
 #: petition/templates/petition/signatures.html:34
@@ -79,6 +80,10 @@ msgstr "Deila!"
 #: petition/templates/index.html:42
 msgid "Tweet!"
 msgstr "Tweet!"
+
+#: petition/templates/index.html:67
+msgid "Are you sure"
+msgstr "Ertu viss"
 
 #: petition/templates/petition/email.html:5
 msgid "Email required"
@@ -161,9 +166,13 @@ msgstr "Enn engar undirskriftir!"
 msgid "Add Signature"
 msgstr "Bæta við undirskrift"
 
-#: petition/templates/stub/unsign_button.html:3
-msgid "remove signature"
-msgstr "fjarlægja undirskrift"
+#: petition/templates/stub/sign_button.html:11
+msgid "Show signature publicly"
+msgstr "Birta undirskrift opinberlega"
+
+#: petition/templates/stub/unsign_button.html:4
+msgid "Remove Signature"
+msgstr "Fjarlægja undirskrift"
 
 #: templates/base.html:47 templates/base.html.py:63
 msgid "Home"
@@ -198,9 +207,6 @@ msgstr "Innskráning"
 
 #~ msgid "Cancel"
 #~ msgstr "Hætta Við"
-
-#~ msgid "Show signature publicly"
-#~ msgstr "Birta undirskrift opinberlega"
 
 #~ msgid "Your objection against this bill has been noted."
 #~ msgstr "Mótmæli þín gegn þessu frumvarpi hafa verið skráð."

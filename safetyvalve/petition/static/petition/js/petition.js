@@ -1,12 +1,19 @@
 
 $(function () {
 
-    $('a.unsign').bind('click', function (e) {
-        var msg = $('#msg_are_you_sure').text();
-        if (!confirm('are you sure?')) {
-            e.preventDefault();
-            return false;
+    $('div.unsign').bind('click', function (e) {
+        var msg = $('#msg_sure').text();
+        if (confirm(msg)) {
+            container = $(this).parent();
+
+            petition_id = container.data('id');
+
+            url = '/frumvarp/' + petition_id + '/afskra/';
+            location.href = url;
         }
+
+        e.preventDefault();
+        return false;
     });
 
     $('.pre_selection_container .addremove_signature').bind('click', function(e) {
@@ -19,7 +26,7 @@ $(function () {
         return false;
     });
 
-    $('.post_selection_container a.addremove_signature').bind('click', function(e) {
+    $('.post_selection_container .addremove_signature').bind('click', function(e) {
         container = $(this).parent().parent();
 
         show_public = container.find('.show_public').is(':checked');
@@ -34,7 +41,7 @@ $(function () {
         return false;
     });
 
-    $('.post_selection_container a.signature_cancel').bind('click', function(e) {
+    $('.post_selection_container .signature_cancel').bind('click', function(e) {
         container = $(this).parent().parent();
 
         container.find('.post_selection_container').hide();
