@@ -45,9 +45,11 @@
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li class="active"><a href="/">{% trans 'Home' %}</a></li>
+                <li><a href="#">{% trans 'Popular' %}</a></li>
                 <li><a href="/undirskriftir/">{% trans 'My Signatures' %}</a></li>
                 <li><a href="/um-okkur/">{% trans 'About Us' %}</a></li>
                 <li><a href="#contact">{% trans 'Contact Us' %}</a></li>
+                <li><a href="/utskra/">{% trans 'Sign Out' %}</a></li>
               </ul>
             </div>
           </div>
@@ -61,12 +63,16 @@
         <div>
           <ul>
             <li><a href="/">{% trans 'Home' %}</a></li>
+            <li><a href="#">{% trans 'Popular' %}</a></li>
+            <li><a href="/undirskriftir/">Mínar<br />Undirskriftir</a></li>
+
+            {% comment %}
+              <li><a href="/undirskriftir/">{% trans 'My Signatures' %}</a></li>
+              // difficult hack to figure out, as i only need the translation to have a line break in this context 
+            {% endcomment %}
+
             <li><a href="/um-okkur/">{% trans 'About Us' %}</a></li>
             <li><a href="mailto:ventill@ventill.is">{% trans 'Contact Us' %}</a></li>
-            <li><a href="#">{% trans 'Popular' %}</a></li>
-            {% if user.is_authenticated %}
-            <li><a href="/utskra/">{% trans 'Sign out' %}</a></li>
-            {% endif %}
           </ul>
         </div>
       </div>
@@ -93,15 +99,18 @@
         <div id="current_user">
           {% if user.is_authenticated or request.session.fake_auth %}
 
-            {% trans 'Signed-in user' %}: {% if request.session.fake_auth %}Fake User{% else %}{{ user.get_full_name }} {{ user.get_username }} {% endif %}
+            {% trans 'Signed-in user' %}: {% if request.session.fake_auth %}Aðalheiður Ámunda Ragnarsdóttir{% else %}{{ user.get_full_name }} {{ user.get_username }} {% endif %}
 
             <div class="my_signatures visible-desktop">
-              <div>
-                <i class="fa fa-pencil-square-o"></i>
+              <div class="auth_icon">
+                <i class="fa fa-lock"></i>
               </div>
-              <a href="/undirskriftir/">{% trans 'My Signatures' %}</a>
+              <a href="/utskra/">{% trans 'Sign Out' %}</a>
             </div>
           {% else %}
+            <div class="auth_icon">
+              <i class="fa fa-lock"></i>
+            </div>
             <a href="/undirskriftir/">{% trans 'Sign In' %}</a>
           {% endif %}
         </div>

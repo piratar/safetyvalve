@@ -1,7 +1,7 @@
 
 $(function () {
 
-    $('div.unsign').bind('click', function (e) {
+    $('div.unsign .addremove_signature').bind('click', function (e) {
         var msg = $('#msg_sure').text();
         if (confirm(msg)) {
             container = $(this).parent();

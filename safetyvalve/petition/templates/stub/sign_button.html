@@ -9,25 +9,17 @@
 
     <div class="post_selection_container">
         <label for="show_public_{{ p.id }}">{% trans 'Show signature publicly' %}?</label>
-        <input type="checkbox" class="show_public" id="show_public_{{ p.id }}" value="1" checked="1" />
+        <input type="checkbox" class="show_public" id="show_public_{{ p.id }}" value="1" />
 
-        <i class="fa fa-check-circle confirm_signature_icon addremove_signature"></i>
-        <i class="fa fa-times-circle cancel_signature_icon signature_cancel"></i>
-    </div>
-</div>
+        <div class="signature_button_separator"></div>
+        <div class="signature_button confirm_signature_button addremove_signature">
+            <i class="fa fa-check-circle"></i> {% trans 'Confirm Signature' %}
+        </div>
 
-{% comment %}
-<div class="signature_container" data-id="{{ p.id }}">
-    <div class="pre_selection_container">
-        <a class="addremove_signature"><i class="fa fa-pencil"></i> {% trans 'Add Signature' %}</a>
-    </div>
-    <div class="post_selection_container" style="display: none;">
-        <a class="addremove_signature"><i class="fa fa-pencil"></i> <b>{% trans 'confirm signature' %}</b></a> | <a class="signature_cancel">{% trans 'cancel' %}</a>
-        <div class="show_public_container">
-            <input type="checkbox" class="show_public" id="show_public_{{ p.id }}" value="1" checked="1" />
-            <label for="show_public_{{ p.id }}">{% trans 'Show signature publicly' %}</label>
+        <div class="signature_button_separator"></div>
+        <div class="signature_button cancel_signature_button signature_cancel">
+            <i class="fa fa-times-circle"></i> {% trans 'Cancel' %}
         </div>
     </div>
 </div>
-{% endcomment %}
 

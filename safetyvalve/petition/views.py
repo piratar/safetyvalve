@@ -161,9 +161,11 @@ def index(request):
         petitions = paginator.page(page)
     except PageNotAnInteger:
         # If page is not an integer, deliver first page.
+        page = 1
         petitions = paginator.page(1)
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
+        page = 1
         petitions = paginator.page(1)
 
     if request.META['SERVER_NAME'] not in ['www.ventill.is', 'ventill.is']:
@@ -180,6 +182,17 @@ def index(request):
             i.num_signatures_display = i.num_signatures
 
 
+    total_pages = paginator.num_pages;
+    total_pages = 7;
+
+    if total_pages <= settings.MAX_PAGE_BUTTONS:
+        pages = paginator.page_range
+    else:
+        pages = []
+
+    print pages
+
+
     signed_petition_ids = []
     if request.user.is_authenticated():
         signs = Signature.objects.filter(user=request.user)
@@ -188,7 +201,8 @@ def index(request):
     context = Context({
         'petitions': petitions,
         'instance_url': settings.INSTANCE_URL,
-        'signed_petition_ids': signed_petition_ids
+        'signed_petition_ids': signed_petition_ids,
+        'pages' : pages
     })
 
     return render(request, 'index.html', context)

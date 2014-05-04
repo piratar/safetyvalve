@@ -180,7 +180,7 @@ body {
 	float: right;
 }
 
-#current_user > .my_signatures > div {
+#current_user .auth_icon {
 	display: inline-block;
 	float: left;
 	margin-top: 1px;
@@ -321,8 +321,7 @@ body {
 }
 
 .signature_container {
-	margin-top: 10px;
-	height: 30px;
+	margin-top: 15px;
 }
 
 .signature_button {
@@ -349,26 +348,19 @@ body {
 	padding-right: 5px;
 }
 
-/*.pre_selection_container {
-	color: #3b4265; 
-	display: inline;
+.signature_button_separator {
+	width: 0;
+	height: 0;
+	display: none;
+	margin: 0;
+	padding: 0;
 }
-
-.pre_selection_container a, .pre_selection_container a:hover {
-	cursor: pointer;
-	color: #3b4265;
-	font-family: 'klinic_slabbook_italic';
-}
-
-.pre_selection_container a i, .pre_selection_container a:hover i {
-	font-size: 26px;
-	text-decoration: none;
-	font-style: normal;
-}
-*/
 
 .post_selection_container {
 	display: none;
+	line-height: 30px;
+	padding-top: 5px;
+
 	color: #3C4366; 
 	font-family: 'klinic_slabbook_italic';
 }
@@ -377,29 +369,29 @@ body {
 	display: inline-block;
 }
 
-.post_selection_container input {
+.post_selection_container input[type="checkbox"] {
 	margin-right: 15px;
+	margin-top: -7px;
+
+	display: inline-block;
 }
 
-.post_selection_container i {
-	display: inline-block;
-	cursor: pointer;
 
-	font-size: 25px;
-
-	margin-right: 10px;
+.post_selection_container label {
+	font-size: 24px;
+	font-family: 'fairviewregular';
 }
 
 .unsign .signature_button {
 	background-color: #B62A2A;
 }
 
-.confirm_signature_icon {
-	color: #38B449;
+.confirm_signature_button {
+	background-color: #38B449;
 }
 
-.cancel_signature_icon {
-	color: #B52929;
+.cancel_signature_button {
+	background-color: #B52929;
 }
 
 
@@ -498,5 +490,16 @@ table td { /* Add a little breathing space for tables - especially under /signat
 	body .petition_list {
 		padding: 0px 10px;
 	}
+
+	.signature_button_separator {
+		display: block;
+		height: 5px;
+	}
+
+/*	body .petition_list_item .details .detail.share_detail {
+		display: block;
+		position: relative;
+		left: 0;
+	}*/
 
 }

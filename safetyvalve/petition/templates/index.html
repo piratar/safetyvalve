@@ -12,6 +12,19 @@
 {% block content %}
   
   <div class="container-fluid petition_list">
+
+  {% if p|length > 1 %}
+    <div id="page_numbers">
+    {% for p in pages %}
+      
+      <div class="page_number">
+        <a href="/?page={{p}}">{{p}}</a>
+      </div>
+    
+    {% endfor %}
+    </div>
+  {% endif %}
+
   {% for p in petitions %}
 
     <div class="row-fluid petition_list_item">
@@ -34,12 +47,12 @@
             <span class="detail_figure">{% trans 'Published On' %}: {{p.time_published|date:"d. b o"}}</span>
           </div>
 
-          <div class="detail">
-            <div class="fb_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="{% trans 'Share!' %}Deila!" data-title="Like"></div>
+          <div class="detail share_detail">
+            <div class="fb_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="{% trans 'Share!' %}" data-title="Like"></div>
           </div>
 
-          <div class="detail">
-            <div class="twitter_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="{% trans 'Tweet!' %}Deila!" data-title="Tweet"></div>
+          <div class="detail share_detail">
+            <div class="twitter_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="{% trans 'Tweet!' %}" data-title="Tweet"></div>
           </div>
 
 <!--           <div class="detail">
@@ -64,7 +77,7 @@
 
 	{% endfor %}
 
-    <div id="msg_sure">{% trans 'Are you sure' %}?</div>
+    <div id="msg_sure" style="display:none;">{% trans 'Are you sure' %}?</div>
 
   </div>
 

@@ -34,7 +34,7 @@ class Email(EmailMultiAlternatives):
 
 def create_email(subject, body, html=None, from_email=None):
     #email = Email(headers={'From: ': from_email, 'Reply-To': from_email}) # Won't work with GMail
-    email = Email(headers={'Reply-To': from_email})
+    email = Email(headers={'Reply-To': from_email, 'From': 'Öryggisventill'})
     email.subject = subject
     email.body = body
     if from_email is None:
