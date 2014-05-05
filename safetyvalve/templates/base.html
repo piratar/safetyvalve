@@ -80,7 +80,7 @@
       
 
       <div id="content">
-        {% if request.META.SERVER_NAME == 'localhost' or request.META.SERVER_NAME == 'staging.ventill.is' %}
+        {% if request.META.SERVER_NAME == 'localhost' %}
         <a href="/?fake-auth={% if request.session.fake_auth %}off{% else %}on{% endif %}"
            id="fake-auth-link">Fake auth: {% if request.session.fake_auth %}on{% else %}off{% endif %}</a>
           <style>
@@ -97,9 +97,9 @@
         {% endif %}
 
         <div id="current_user">
-          {% if user.is_authenticated or request.session.fake_auth %}
+          {% if user.is_authenticated %}
 
-            {% trans 'Signed-in user' %}: {% if request.session.fake_auth %}{{ user.get_full_name }} {{ user.get_username }}{% else %}{{ user.get_full_name }} {{ user.get_username }} {% endif %}
+            {% trans 'Signed-in user' %}: {{ user.get_full_name }} {{ user.get_username }}
 
             <div class="my_signatures visible-desktop">
               <div class="auth_icon">

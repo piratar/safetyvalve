@@ -170,9 +170,9 @@ def index(request):
 
     page = int(page) #seems to come back as a unicode string in some occasions
 
-    if request.META['SERVER_NAME'] not in ['www.ventill.is', 'ventill.is']:
+    if request.META['SERVER_NAME'] == 'localhost' and hasattr(settings, 'FAKE_AUTH'):
         if request.GET.get('fake-auth'):
-            request.session['fake_auth'] = request.GET.get('fake-auth', '').lower() in ['on', 'true']
+            request.session['fake_auth'] = request.GET.get('fake-auth', '').lower() == 'on'
 
     for i in petitions:
         if isinstance(i.name, unicode):

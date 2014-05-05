@@ -51,22 +51,22 @@ def authenticate(request, redirect_url):
     user = request.user
     token = request.GET.get('token')
 
-    fake_auth = request.session.get('fake_auth')
-    if  fake_auth and hasattr(settings, 'AUTH_FAKE'):
-        auth_fake = settings.AUTH_FAKE
+    if request.session.get('fake_auth') and request.META['SERVER_NAME'] == 'localhost' and hasattr(settings, 'FAKE_AUTH'):
+        fake_auth = settings.FAKE_AUTH
         if not token:
             curr_url = request.get_full_path().split('?')[0]
             fake_token = binascii.b2a_hex(os.urandom(10))
             return HttpResponseRedirect('%s?token=%s' % (curr_url, fake_token))
-        name = auth_fake['name']
-        kennitala = auth_fake['kennitala']
+
+        name = fake_auth['name']
+        kennitala = fake_auth['kennitala']
     else:
-        auth_fake = None
+        fake_auth = None
 
     if not token:
         return HttpResponseRedirect(redirect_url)
 
-    if auth_fake is None:
+    if fake_auth is None:
         result = get_saml(request, token)
         name, kennitala = parse_saml(result['saml'])
 
