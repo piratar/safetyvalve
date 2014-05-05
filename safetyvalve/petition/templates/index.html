@@ -16,11 +16,13 @@
   {% if p|length > 1 %}
     <div id="page_numbers">
     {% for p in pages %}
-      
-      <div class="page_number">
-        <a href="/?page={{p}}">{{p}}</a>
-      </div>
-    
+
+      {% if p == '...' %}
+        <div class="page_number_separator"><div></div><div></div><div></div></div>
+      {% else %}
+        <a class="page_number{% ifequal p current_page %} selected{% endifequal %}" href="/?page={{p}}">{{p}}</a>
+      {% endif %}
+
     {% endfor %}
     </div>
   {% endif %}

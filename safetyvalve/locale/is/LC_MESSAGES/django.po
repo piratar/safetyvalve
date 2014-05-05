@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-02 22:38+0000\n"
+"POT-Creation-Date: 2014-05-05 02:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -69,19 +69,19 @@ msgstr "Kennitala"
 msgid "Date Signed"
 msgstr "Dagsetning undirskriftar"
 
-#: petition/templates/index.html:34
+#: petition/templates/index.html:49
 msgid "Published On"
 msgstr "Frumvarp flutt"
 
-#: petition/templates/index.html:38
+#: petition/templates/index.html:53
 msgid "Share!"
 msgstr "Deila!"
 
-#: petition/templates/index.html:42
+#: petition/templates/index.html:57
 msgid "Tweet!"
 msgstr "Tweet!"
 
-#: petition/templates/index.html:67
+#: petition/templates/index.html:82
 msgid "Are you sure"
 msgstr "Ertu viss"
 
@@ -120,16 +120,16 @@ msgstr "undirskriftir"
 msgid "Share"
 msgstr "Deila"
 
-#: petition/templates/petition/receipt_error.html:4
-#: petition/templates/petition/receipt_error.html:8
+#: petition/templates/petition/receipt_error.html:5
+#: petition/templates/petition/receipt_error.html:9
 msgid "Error while sending receipt"
 msgstr "Villa í sendingu kvittunar"
 
-#: petition/templates/petition/receipt_error.html:10
+#: petition/templates/petition/receipt_error.html:11
 msgid "The error was:"
 msgstr "Villan var:"
 
-#: petition/templates/petition/receipt_error.html:12
+#: petition/templates/petition/receipt_error.html:13
 msgid ""
 "Administrators will make sure that the receipt will be sent to you via mail "
 "when the error has been fixed. Please excuse the inconvenience."
@@ -137,8 +137,7 @@ msgstr ""
 "Stjórnendur kerfisins munu sjá til þess að staðfesting berast þér með pósti"
 
 #: petition/templates/petition/signatures.html:5
-#: petition/templates/petition/signatures.html:17 templates/base.html:48
-#: templates/base.html.py:102
+#: petition/templates/petition/signatures.html:17 templates/base.html:49
 msgid "My Signatures"
 msgstr "Mínar undirskriftir"
 
@@ -170,43 +169,45 @@ msgstr "Bæta við undirskrift"
 msgid "Show signature publicly"
 msgstr "Birta undirskrift opinberlega"
 
+#: petition/templates/stub/sign_button.html:16
+msgid "Confirm Signature"
+msgstr "Staðfesta undirskrift"
+
+#: petition/templates/stub/sign_button.html:21
+msgid "Cancel"
+msgstr "Hætta Við"
+
 #: petition/templates/stub/unsign_button.html:4
 msgid "Remove Signature"
 msgstr "Fjarlægja undirskrift"
 
-#: templates/base.html:47 templates/base.html.py:63
+#: templates/base.html:47 templates/base.html.py:65
 msgid "Home"
 msgstr "Heim"
 
-#: templates/base.html:49 templates/base.html.py:64
-msgid "About Us"
-msgstr "Um okkur"
-
-#: templates/base.html:50 templates/base.html.py:65
-msgid "Contact Us"
-msgstr "Hafðu samband"
-
-#: templates/base.html:66
+#: templates/base.html:48 templates/base.html.py:66
 msgid "Popular"
 msgstr "Vinsælast"
 
-#: templates/base.html:68
-msgid "Sign out"
+#: templates/base.html:50 templates/base.html.py:75
+msgid "About Us"
+msgstr "Um okkur"
+
+#: templates/base.html:51 templates/base.html.py:76
+msgid "Contact Us"
+msgstr "Hafðu samband"
+
+#: templates/base.html:52 templates/base.html.py:109
+msgid "Sign Out"
 msgstr "Útskrá"
 
-#: templates/base.html:96
+#: templates/base.html:103
 msgid "Signed-in user"
 msgstr "Innskráður notandi"
 
-#: templates/base.html:105
+#: templates/base.html:115
 msgid "Sign In"
 msgstr "Innskráning"
-
-#~ msgid "Confirm Signature"
-#~ msgstr "Staðfesta undirskrift"
-
-#~ msgid "Cancel"
-#~ msgstr "Hætta Við"
 
 #~ msgid "Your objection against this bill has been noted."
 #~ msgstr "Mótmæli þín gegn þessu frumvarpi hafa verið skráð."

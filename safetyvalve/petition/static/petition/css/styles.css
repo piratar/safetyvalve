@@ -165,6 +165,7 @@ body {
 	padding: 0 20px;
 	margin-top: -50px;
 	z-index: 100;
+	overflow: hidden;
 
 	background-color: #f4f4f4;
 	border-bottom: 5px solid #57557b;
@@ -318,6 +319,62 @@ body {
 	height: 3px;
 
 	margin: 0 auto 2px auto;
+}
+
+#page_numbers {
+	overflow: auto;
+	width: 100%;
+	padding: 14px 8px 11px 8px;
+	line-height: 24px;
+}
+
+#page_numbers .page_number {
+	margin-right: 9px;
+	margin-bottom: 3px;
+	width: 24px;
+	height: 24px;
+
+	line-height: 24px;
+	text-align: center;
+	font-size: 14px;
+	font-family: "Arial";
+	color: #56547A;
+
+	float: left;
+
+	cursor: pointer;
+}
+
+#page_numbers .page_number_separator {
+	margin-right: 9px;
+	margin-bottom: 3px;
+	float: left;
+}
+
+#page_numbers .page_number_separator div {
+	margin-right: 2px;
+	width: 3px;
+	height: 3px;
+	display: inline-block;
+}
+
+#page_numbers .page_number_separator div:last-child {
+	margin-right: 0px;
+}
+
+#page_numbers .page_number, #page_numbers .page_number_separator div {
+	border-radius: 50%;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #56547A;
+
+	background-color: #F3F3F3;
+}
+
+#page_numbers .page_number:hover, #page_numbers .page_number.selected {
+	background-color: #56547A;
+	color: #F3F3F3;
+	text-decoration: none;
 }
 
 .signature_container {

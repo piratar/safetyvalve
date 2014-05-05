@@ -168,6 +168,8 @@ def index(request):
         page = 1
         petitions = paginator.page(1)
 
+    page = int(page) #seems to come back as a unicode string in some occasions
+
     if request.META['SERVER_NAME'] not in ['www.ventill.is', 'ventill.is']:
         if request.GET.get('fake-auth'):
             request.session['fake_auth'] = request.GET.get('fake-auth', '').lower() in ['on', 'true']
@@ -183,14 +185,33 @@ def index(request):
 
 
     total_pages = paginator.num_pages;
-    total_pages = 7;
 
-    if total_pages <= settings.MAX_PAGE_BUTTONS:
+    if total_pages <= settings.PAGE_BUTTONS_THRESHOLD:
         pages = paginator.page_range
     else:
-        pages = []
+        pages_padded_start = page - settings.CURRENT_PAGE_BUTTON_PADDING
 
-    print pages
+        if pages_padded_start <= 1:
+            pages_padded_start = 2
+
+        pages_padded_end = (settings.CURRENT_PAGE_BUTTON_PADDING * 2) + pages_padded_start + 1
+
+        if pages_padded_end > total_pages:
+            pages_padded_end = total_pages
+            pages_padded_start = total_pages - (settings.CURRENT_PAGE_BUTTON_PADDING * 2 + 1)
+
+        pages = [1]
+
+        for i in range (pages_padded_start, pages_padded_end):
+            pages.append(i);
+
+        pages.append(total_pages)
+
+        if page - settings.CURRENT_PAGE_BUTTON_PADDING > 1:
+            pages.insert(1, '...')
+
+        if page + settings.CURRENT_PAGE_BUTTON_PADDING < total_pages - 1:
+            pages.insert(len(pages)-1, '...')
 
 
     signed_petition_ids = []
@@ -202,7 +223,8 @@ def index(request):
         'petitions': petitions,
         'instance_url': settings.INSTANCE_URL,
         'signed_petition_ids': signed_petition_ids,
-        'pages' : pages
+        'pages' : pages,
+        'current_page': page
     })
 
     return render(request, 'index.html', context)
