@@ -99,7 +99,7 @@
         <div id="current_user">
           {% if user.is_authenticated or request.session.fake_auth %}
 
-            {% trans 'Signed-in user' %}: {% if request.session.fake_auth %}Aðalheiður Ámunda Ragnarsdóttir AnotherLongIcelandicName{% else %}{{ user.get_full_name }} {{ user.get_username }} {% endif %}
+            {% trans 'Signed-in user' %}: {% if request.session.fake_auth %}{{ user.get_full_name }} {{ user.get_username }}{% else %}{{ user.get_full_name }} {{ user.get_username }} {% endif %}
 
             <div class="my_signatures visible-desktop">
               <div class="auth_icon">
