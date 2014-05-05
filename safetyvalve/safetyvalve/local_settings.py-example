@@ -12,10 +12,10 @@ AUTH_ISLAND = {
     'login': 'piratar_vefur',
     'password': '',
 }
-AUTH_FAKE = {
-    'kennitala': '1234567890',
-    'name': u'Jón Jónsson'
-}
+# FAKE_AUTH = {
+#    'kennitala': '1234567890',
+#    'name': u'Jón Jónsson'
+#}
 
 INDEX_PAGE_ITEMS = 15
 PAGE_BUTTONS_THRESHOLD = 7
