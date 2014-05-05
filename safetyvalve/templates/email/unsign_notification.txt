@@ -1,6 +1,11 @@
 Sæl(l) %(name)s!
 
-Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir fjarlægt undirskrift þína gegn eftirfarandi þingmáli:
+Takk fyrir að nota kerfið okkar.
+
+Undirskriftasöfnunin gegn þingmálinu finnst hér:
+%(detail_url)s
+
+Hér með staðfestist að þú hafir fjarlægt undirskrift þína gegn eftirfarandi þingmáli:
 
 ------------------------------------
 
@@ -9,5 +14,5 @@ Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir fjarlæ
 ------------------------------------
 
 Með kveðju,
-Ventill.is
+ventill.is
 

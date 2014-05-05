@@ -1,6 +1,11 @@
 Sæl(l) %(name)s!
 
-Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir skrifað undir gegn eftirfarandi þingmáli með tókanum %(token)s frá island.is:
+Takk fyrir að nota kerfið okkar.
+
+Undirskriftasöfnunin gegn þingmálinu finnst hér:
+%(detail_url)s
+
+Hér með staðfestist að þú hafir skrifað undir gegn eftirfarandi þingmáli með tókanum %(token)s frá island.is:
 
 ------------------------------------
 
@@ -9,5 +14,5 @@ Takk fyrir að nota kerfið okkar. Hér með staðfestist að þú hafir skrifa�
 ------------------------------------
 
 Með kveðju,
-Ventill.is
+ventill.is
 

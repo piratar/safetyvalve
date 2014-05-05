@@ -316,6 +316,7 @@ def sign_receipt(request, petition_id):
         'subject': subject.replace,
         'title': s.petition.name,
         'text': convert_petition_to_plaintext_email(s.petition.content),
+        'detail_url': settings.INSTANCE_URL + reverse('detail', args=(petition_id, ))
         }
 
     template = 'email/sign_notification.html'
@@ -327,6 +328,7 @@ def sign_receipt(request, petition_id):
         'subject': subject,
         'title': s.petition.name,
         'text': s.petition.content,
+        'detail_url': settings.INSTANCE_URL + reverse('detail', args=(petition_id, ))
         }
 
     ret = _receipt(request, petition_id, subject, message, html)
@@ -353,6 +355,7 @@ def unsign_receipt(request, petition_id):
         'subject': subject,
         'title': s.petition.name,
         'text': convert_petition_to_plaintext_email(s.petition.content),
+        'detail_url': settings.INSTANCE_URL + reverse('detail', args=(petition_id, ))
         }
 
     template = 'email/unsign_notification.html'
@@ -364,6 +367,7 @@ def unsign_receipt(request, petition_id):
         'subject': subject,
         'title': s.petition.name,
         'text': s.petition.content,
+        'detail_url': settings.INSTANCE_URL + reverse('detail', args=(petition_id, ))
         }
 
     ret = _receipt(request, petition_id, subject, message, html)
