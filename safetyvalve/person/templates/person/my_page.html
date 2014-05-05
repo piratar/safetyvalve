@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'My Signatures' %}
+{% endblock %}
+
+{% block css %}
+{{block.super}}
+    <link href="{{STATIC_URL}}petition/css/jquery.dataTables.css" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+{{block.super}}
+    <script src="{{STATIC_URL}}petition/js/petition.js" type="text/javascript"></script>
+    <script src="{{STATIC_URL}}petition/js/jquery.sharrre.min.js" type="text/javascript"></script>
+    <script src="{{STATIC_URL}}petition/js/jquery.dataTables.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#signatures').dataTable( {
+                "bProcessing": true,
+                "bServerSide": true,
+                "bFilter": false,
+                "bInfo": false,
+                "sAjaxSource": '{{ INSTANCE_URL }}{{ signatures_url }}',
+                "aoColumns": [
+                    null,
+                    {"bSortable": false},
+                    null
+                ]
+            } );
+        } );
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+
+    <div class-"row-fluid">
+            
+        <table id="signatures">
+            
+            <thead>
+                <th>{% trans 'Name' %}</th>
+                <th>{% trans 'Social Number' %}</th>
+                <th>{% trans 'Date Signed' %}</th>
+            </thead>
+
+            <tbody>
+            </tbody>
+
+        </table>
+    
+    </div>
+
+    <div class="row-fluid">
+        <h1>{% trans 'My Signaturesss' %}</h1>
+
+        <table id="signaturesa" class="datatable">
+            <thead>
+                <tr>
+                    <th class="align-left">{% trans "Petition" %}</th>
+                    <th>{% trans "Date Signed" %}</th>
+                    <th class="align-center">{% trans "Visible" %}</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for signature in signatures %}
+                <tr data-id="{{ signature.id }}">
+                    <td><a href="/frumvarp/{{ signature.petition.id }}/">{{ signature.petition }}</a></td>
+                    <td>{{ signature.date_created|date:"DATE_FORMAT" }}</td>
+                    <td class="align-right">
+                        <span class="pseudo_checkbox_yes" {% if not signature.show_public %}style="display: none;"{% endif %}>{% trans 'Yes' %}</span>
+                        <span class="pseudo_checkbox_no" {% if signature.show_public %}style="display: none;" {% endif %}>{% trans 'No' %}</span>
+                        [ <a class="change-public" data-show-public="{{ signature.show_public|yesno:"yes,no" }}" href="/undirskriftir/breyta-opinber/{{ signature.id }}/">{% trans 'Change' %}</a> ]
+                    </td>
+                    <td>
+                        <!--
+                        {% with p=signature.petition %}
+                        {% include 'stub/unsign_button.html' %}
+                        {% endwith %}
+                        -->
+                        [ <a class="remove-signature" data-method="browser-confirm" href="/undirskriftir/fjarlaegja/{{signature.id}}/?next=%2Fperson%2Fsignatures%2F">{% trans "Remove" %}</a> ]
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td class="align-center" colspan="4">{% trans 'No signatures yet!' %}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+{% endblock %}
