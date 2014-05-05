@@ -41,19 +41,19 @@
             {{ p.description }}&nbsp;
           </p>
 
-          <div class="detail">
+          <div class="detail" title="{%trans 'Signatures' %}">
             <div class="icon"><i class="fa fa-check-square"></i><span class="detail_figure">{{p.num_signatures}}</span></div>
           </div>
 
-          <div class="detail">
+          <div class="detail" >
             <span class="detail_figure">{% trans 'Published On' %}: {{p.time_published|date:"d. b o"}}</span>
           </div>
 
-          <div class="detail share_detail">
+          <div class="detail share_detail" title="{%trans 'Facebook Likes' %}">
             <div class="fb_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="{% trans 'Share!' %}" data-title="Like"></div>
           </div>
 
-          <div class="detail share_detail">
+          <div class="detail share_detail" title="{%trans 'Twitter Shares' %}">
             <div class="twitter_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="{% trans 'Tweet!' %}" data-title="Tweet"></div>
           </div>
 

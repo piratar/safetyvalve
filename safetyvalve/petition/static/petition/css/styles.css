@@ -553,10 +553,29 @@ table td { /* Add a little breathing space for tables - especially under /signat
 		height: 5px;
 	}
 
-/*	body .petition_list_item .details .detail.share_detail {
-		display: block;
+	#wrapper .petition_list_item .details .detail {
 		position: relative;
 		left: 0;
-	}*/
+		float: left;
+		clear: left;
+
+		margin-top: 2px;
+	}
+
+	#wrapper .petition_list_item .details .detail:nth-child(3) {
+		margin-left: 49px;
+		position: relative;
+		display: inline-block;
+
+		clear: none;
+	}
+
+	.signature_container {
+		position: relative;
+		float: left;
+		clear: left;
+
+		margin-top: 10px;
+	}
 
 }
