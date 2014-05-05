@@ -416,7 +416,7 @@ body {
 .post_selection_container {
 	display: none;
 	line-height: 30px;
-	padding-top: 5px;
+	height: 30px;
 
 	color: #3C4366; 
 	font-family: 'klinic_slabbook_italic';
@@ -576,6 +576,10 @@ table td { /* Add a little breathing space for tables - especially under /signat
 		clear: left;
 
 		margin-top: 10px;
+	}
+
+	.post_selection_container {
+		height: auto;
 	}
 
 }
