@@ -12,6 +12,8 @@ AUTH_ISLAND = {
     'login': 'piratar_vefur',
     'password': '',
 }
+
+FAKE_AUTH_URLS = ['127.0.0.1', 'localhost']
 # FAKE_AUTH = {
 #    'kennitala': '1234567890',
 #    'name': u'Jón Jónsson'

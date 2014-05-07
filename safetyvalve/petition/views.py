@@ -170,7 +170,7 @@ def index(request):
 
     page = int(page) #seems to come back as a unicode string in some occasions
 
-    if request.META['SERVER_NAME'] == 'localhost' and hasattr(settings, 'FAKE_AUTH'):
+    if request.META['SERVER_NAME'] in settings.FAKE_AUTH_URLS and hasattr(settings, 'FAKE_AUTH'):
         if request.GET.get('fake-auth'):
             request.session['fake_auth'] = request.GET.get('fake-auth', '').lower() == 'on'
 
