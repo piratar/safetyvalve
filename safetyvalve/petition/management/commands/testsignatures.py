@@ -27,7 +27,7 @@ class Command(BaseCommand):
             stdout.write("Generating %d signatures for petition '%s'" % (signatures_count, petition.name))
             stdout.flush()
 
-            for i in range(0, petition_count):
+            for i in range(0, signatures_count):
                 random_number = 0 # Just for formality's sake, really.
                 user = None
                 while user is None:
