@@ -139,7 +139,7 @@ def login_view(request):
     if isinstance(ret, HttpResponse):
         return ret
 
-    return HttpResponseRedirect(reverse('signatures'))
+    return HttpResponseRedirect(reverse('index', current_app='petition'))
 
 
 def test_auth(request):
