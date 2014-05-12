@@ -1,5 +1,5 @@
 body {
-	background-image: url(/static/core/img/escheresque.png);
+	/*background-image: url(/static/core/img/escheresque.png);*/
 	font-size: 16px;
 
 	padding: 0;
@@ -121,10 +121,6 @@ body {
 
 	text-transform: uppercase;
 }
-#nav h1 a,
-#nav h1 a:hover {
-	opacity: 1;
-}
 
 #mobile-nav .brand {
 	font-size: 1.5em;
@@ -150,7 +146,7 @@ body {
 	opacity: 0.6;
 }
 
-#nav ul li a:hover {
+#nav ul li a:hover, #nav ul li a.selected {
 	text-decoration: none;
 
 	opacity: 0.9;
@@ -479,9 +475,9 @@ body {
 	font-family: 'klinic_slabbook_italic';
 	text-align: center;
 	color: #57557b;
-	font-size: 14px;
+	font-size: 16px;
 
-	padding: 10px 0 15px 0;
+	padding: 0px 0 15px 0;
 }
 
 .petition_detail .petition_description {
@@ -499,6 +495,7 @@ body {
 
 .petition_detail .petition_content {
 	background-color: #efefef;
+	background-image: url(/static/core/img/paper.png);
 
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */

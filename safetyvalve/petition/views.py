@@ -39,7 +39,7 @@ def all(request):
 
     petitions = cached_or_function('all_petitions', get_all_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
 
-    return index(request, ugettext('All Issues'), petitions)
+    return index(request, 'All Issues', petitions)
 
 
 def cached_or_function(key, fun, timeout=60 * 5, *args, **kwargs):
@@ -236,7 +236,7 @@ def index(request, page_title, petitions):
         'signed_petition_ids': signed_petition_ids,
         'pages' : pages,
         'current_page': page,
-        'title': page_title
+        'page_title': page_title
     })
 
     return render(request, 'index.html', context)
@@ -251,7 +251,7 @@ def popular(request):
                        .order_by('-num_signatures')
     petitions = cached_or_function('popular__petitions', get_popular_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
 
-    return index(request, ugettext('Popular'), petitions)
+    return index(request, 'Popular', petitions)
 
 
 def sign(request, petition_id):

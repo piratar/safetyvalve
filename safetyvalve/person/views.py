@@ -89,7 +89,8 @@ def my_page(request):
         return HttpResponseRedirect(reverse('login'))
 
     context = Context({
-        'signatures_url': settings.INSTANCE_URL + reverse('get_user_signatures') + ''  
+        'signatures_url': settings.INSTANCE_URL + reverse('get_user_signatures') + '',
+        'page_title': 'My Page'
     })
 
     return render(request, 'person/my_page.html', context)
@@ -139,7 +140,7 @@ def login_view(request):
     if isinstance(ret, HttpResponse):
         return ret
 
-    return HttpResponseRedirect(reverse('index', current_app='petition'))
+    return HttpResponseRedirect(reverse('popular', current_app='petition'))
 
 
 def test_auth(request):

@@ -62,10 +62,10 @@
 
         <div>
           <ul>
-            <li><a href="/">{% trans 'Popular' %}</a></li>
-            <li><a href="/ollmal/">{% trans 'All Issues' %}</a></li>
-            <li><a href="/minsida/">{% trans 'My Page' %}</a></li>
-            <li><a href="/um-okkur/">{% trans 'About Us' %}</a></li>
+            <li><a href="/" {% if page_title == 'Popular' %}class="selected"{% endif %}>{% trans 'Popular' %}</a></li>
+            <li><a href="/ollmal/" {% if page_title == 'All Issues' %}class="selected"{% endif %}>{% trans 'All Issues' %}</a></li>
+            <li><a href="/minsida/" {% if page_title == 'My Page' %}class="selected"{% endif %}>{% trans 'My Page' %}</a></li>
+            <li><a href="/um-okkur/" {% if page_title == 'About Us' %}class="selected"{% endif %}>{% trans 'About Us' %}</a></li>
             <li><a href="mailto:ventill@ventill.is">{% trans 'Contact Us' %}</a></li>
           </ul>
         </div>
@@ -93,7 +93,7 @@
         <div id="current_user">
           {% if user.is_authenticated %}
 
-            {% trans 'Signed-in user' %}: {{ user.get_full_name }} {{ user.get_username }}
+            {{ user.get_full_name }} {{ user.get_username }}
 
             <div class="my_signatures visible-desktop">
               <div class="auth_icon">
@@ -105,7 +105,7 @@
             <div class="auth_icon">
               <i class="fa fa-lock"></i>
             </div>
-            <a href="/undirskriftir/">{% trans 'Sign In' %}</a>
+            <a href="/minsida/">{% trans 'Sign In' %}</a>
           {% endif %}
         </div>
 

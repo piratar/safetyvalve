@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}
-    {% trans 'My Signatures' %}
-{% endblock %}
+{% block title %}{% trans page_title %}{% endblock %}
 
 {% block css %}
 {{block.super}}
