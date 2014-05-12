@@ -63,7 +63,11 @@
 
       <div id="nav" class="visible-desktop">
         <h1><a href="/">ÖRYGGISVENTILL</a></h1>
-        <a class="logo_link" href="/"><div class="logo"></div></a>
+        <a class="logo_link" href="/">
+          <object class="logo" data="{% static 'core/img/logo.svg' %}" type="image/svg+xml"> 
+            <img class="logo" src="{% static 'core/img/logo.svg' %}" />
+          </object>
+        </a>
 
         <div>
           <ul>

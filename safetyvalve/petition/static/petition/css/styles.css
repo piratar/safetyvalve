@@ -140,14 +140,10 @@ body {
 	padding: 0px;
 
 }
+
 #nav .logo {
 	width: 123px;
 	height: 123px;
-
-	display: inline-block;
-
-	background: url(/static/core/img/logo.svg);
-	background-size: 123 123px;
 }
 
 #nav ul {
