@@ -123,8 +123,31 @@ body {
 	text-transform: uppercase;
 }
 
-#mobile-nav .brand {
-	font-size: 1.5em;
+#mobile_nav .logo {
+	width: 21px;
+	height: 21px;
+
+	margin-top: -6px;
+}
+
+#nav .logo_link {
+	display: inline-block;
+	
+	width: 123px;
+	height: 123px;
+
+	margin: 0px;
+	padding: 0px;
+
+}
+#nav .logo {
+	width: 123px;
+	height: 123px;
+
+	display: inline-block;
+
+	background: url(/static/core/img/logo.svg);
+	background-size: 123 123px;
 }
 
 #nav ul {

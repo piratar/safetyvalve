@@ -41,7 +41,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="/">Öryggisventill</a>
+            <a class="brand" href="/">
+              <object class="logo" data="{% static 'core/img/logo.svg' %}" type="image/svg+xml"> 
+                <img class="logo" src="{% static 'core/img/logo.svg' %}" />
+              </object>
+              Öryggisventill
+            </a>
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li class="active"><a href="/">{% trans 'Popular' %}</a></li>
@@ -58,7 +63,7 @@
 
       <div id="nav" class="visible-desktop">
         <h1><a href="/">ÖRYGGISVENTILL</a></h1>
-        <a href="/"><img src="{% static 'petition/img/logo.png' %}" /></a>
+        <a class="logo_link" href="/"><div class="logo"></div></a>
 
         <div>
           <ul>
