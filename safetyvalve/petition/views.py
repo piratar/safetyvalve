@@ -294,7 +294,7 @@ def unsign(request, petition_id):
 
 
 def _receipt(request, petition_id, subject, message, html=None):
-    sender = 'stadfesting@ventill.is'
+    sender = settings.INSTANCE_NOREPLY_EMAIL
     recipients = [request.user.email]
 
     try:
