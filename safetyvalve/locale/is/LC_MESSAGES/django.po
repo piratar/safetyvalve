@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-12 17:19+0000\n"
+"POT-Creation-Date: 2014-05-12 22:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -23,63 +23,58 @@ msgid "Are you sure you want to remove your signature for '%(petition)s'?"
 msgstr ""
 "Ertu viss um að þú viljir fjarlægja undirskrift þína gegn '%(petition)s'?"
 
-#: person/templates/person/my_page.html:5 templates/base.html:49
-#: templates/base.html.py:67
-msgid "My Page"
-msgstr "Síðan Mín"
-
-#: person/templates/person/my_page.html:45 petition/templates/detail.html:78
+#: person/templates/person/my_page.html:43 petition/templates/detail.html:78
 msgid "Name"
 msgstr "Nafn"
 
-#: person/templates/person/my_page.html:46 petition/templates/detail.html:79
+#: person/templates/person/my_page.html:44 petition/templates/detail.html:79
 msgid "Social Number"
 msgstr "Kennitala"
 
-#: person/templates/person/my_page.html:47
-#: person/templates/person/my_page.html:64 petition/templates/detail.html:80
+#: person/templates/person/my_page.html:45
+#: person/templates/person/my_page.html:62 petition/templates/detail.html:80
 #: petition/templates/petition/signatures.html:23
 msgid "Date Signed"
 msgstr "Dagsetning undirskriftar"
 
-#: person/templates/person/my_page.html:58
+#: person/templates/person/my_page.html:56
 #, fuzzy
 msgid "My Signaturesss"
 msgstr "Mínar undirskriftir"
 
-#: person/templates/person/my_page.html:63
+#: person/templates/person/my_page.html:61
 #: petition/templates/petition/signatures.html:22
 msgid "Petition"
 msgstr "Undirskriftalisti"
 
-#: person/templates/person/my_page.html:65
+#: person/templates/person/my_page.html:63
 #: petition/templates/petition/signatures.html:24
 msgid "Visible"
 msgstr "Sýnileg"
 
-#: person/templates/person/my_page.html:75
+#: person/templates/person/my_page.html:73
 #: person/templates/person/remove_signature.html:19
 #: petition/templates/petition/signatures.html:34
 msgid "Yes"
 msgstr "Já"
 
-#: person/templates/person/my_page.html:76
+#: person/templates/person/my_page.html:74
 #: person/templates/person/remove_signature.html:20
 #: petition/templates/petition/signatures.html:35
 msgid "No"
 msgstr "Nei"
 
-#: person/templates/person/my_page.html:77
+#: person/templates/person/my_page.html:75
 #: petition/templates/petition/signatures.html:36
 msgid "Change"
 msgstr "Breyta"
 
-#: person/templates/person/my_page.html:85
+#: person/templates/person/my_page.html:83
 #: petition/templates/petition/signatures.html:44
 msgid "Remove"
 msgstr "Fjarlægja"
 
-#: person/templates/person/my_page.html:89
+#: person/templates/person/my_page.html:87
 #: petition/templates/petition/signatures.html:48
 msgid "No signatures yet!"
 msgstr "Enn engar undirskriftir!"
@@ -107,11 +102,6 @@ msgstr "Netföngin verða bæði að vera eins"
 msgid "distributed"
 msgstr "útbýtt"
 
-#: petition/templates/index.html:4
-#, python-format
-msgid "%(title)s"
-msgstr ""
-
 #: petition/templates/index.html:44
 #, fuzzy
 msgid "Signatures"
@@ -126,16 +116,16 @@ msgid "Facebook Likes"
 msgstr ""
 
 #: petition/templates/index.html:53
-msgid "Share!"
-msgstr "Deila!"
+msgid "I oppose this! Add your name now!"
+msgstr ""
 
 #: petition/templates/index.html:56
 msgid "Twitter Shares"
 msgstr ""
 
 #: petition/templates/index.html:57
-msgid "Tweet!"
-msgstr "Tweet!"
+msgid "I Oppose This! Add your name now!"
+msgstr ""
 
 #: petition/templates/index.html:82
 msgid "Are you sure"
@@ -198,8 +188,8 @@ msgid "My Signatures"
 msgstr "Mínar undirskriftir"
 
 #: petition/templates/stub/sign_button.html:6
-msgid "Add Signature"
-msgstr "Bæta við undirskrift"
+msgid "Oppose"
+msgstr "Mótmæla"
 
 #: petition/templates/stub/sign_button.html:11
 msgid "Show signature publicly"
@@ -225,6 +215,10 @@ msgstr "Vinsælast"
 msgid "All Issues"
 msgstr "Öll Mál"
 
+#: templates/base.html:49 templates/base.html.py:67
+msgid "My Page"
+msgstr "Síðan Mín"
+
 #: templates/base.html:50 templates/base.html.py:68
 msgid "About Us"
 msgstr "Um okkur"
@@ -237,13 +231,21 @@ msgstr "Hafðu samband"
 msgid "Sign Out"
 msgstr "Útskrá"
 
-#: templates/base.html:96
-msgid "Signed-in user"
-msgstr "Innskráður notandi"
-
 #: templates/base.html:108
 msgid "Sign In"
 msgstr "Innskráning"
+
+#~ msgid "Share!"
+#~ msgstr "Deila!"
+
+#~ msgid "Tweet!"
+#~ msgstr "Tweet!"
+
+#~ msgid "Add Signature"
+#~ msgstr "Bæta við undirskrift"
+
+#~ msgid "Signed-in user"
+#~ msgstr "Innskráður notandi"
 
 #~ msgid "Home"
 #~ msgstr "Heim"
