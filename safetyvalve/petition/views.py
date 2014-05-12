@@ -313,7 +313,7 @@ def sign_receipt(request, petition_id):
     p = get_object_or_404(Petition, pk=petition_id)
     s = get_object_or_404(Signature, user=request.user, petition=p)
 
-    subject = u'Staðfesting undirskriftar á Ventill.is'
+    subject = u'Staðfesting undirskriftar á Ventill.is - ' + s.petition.name
 
     template = 'email/sign_notification.txt'
     template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
@@ -352,7 +352,7 @@ def unsign_receipt(request, petition_id):
     p = get_object_or_404(Petition, pk=petition_id)
     s = get_object_or_404(Signature, user=request.user, petition=p)
 
-    subject = u'Staðfesting á fjarlægingu undirskriftar á Ventill.is'
+    subject = u'Staðfesting á fjarlægingu undirskriftar á Ventill.is - ' + s.petition.name
 
     template = 'email/unsign_notification.txt'
     template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
