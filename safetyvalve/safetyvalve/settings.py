@@ -214,7 +214,7 @@ LOCALE_PATHS = (
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': 'unique-snowflake',
+        'LOCATION': '127.0.0.1',
     }
 }
 

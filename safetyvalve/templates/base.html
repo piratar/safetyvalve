@@ -44,8 +44,8 @@
             <a class="brand" href="/">Öryggisventill</a>
             <div class="nav-collapse collapse">
               <ul class="nav">
-                <li class="active"><a href="/">{% trans 'Home' %}</a></li>
-                <li><a href="#">{% trans 'Popular' %}</a></li>
+                <li class="active"><a href="/">{% trans 'Popular' %}</a></li>
+                <li><a href="/ollmal/">{% trans 'All Issues' %}</a></li>
                 <li><a href="/minsida/">{% trans 'My Page' %}</a></li>
                 <li><a href="/um-okkur/">{% trans 'About Us' %}</a></li>
                 <li><a href="#contact">{% trans 'Contact Us' %}</a></li>
@@ -62,15 +62,9 @@
 
         <div>
           <ul>
-            <li><a href="/">{% trans 'Home' %}</a></li>
-            <li><a href="#">{% trans 'Popular' %}</a></li>
+            <li><a href="/">{% trans 'Popular' %}</a></li>
+            <li><a href="/ollmal/">{% trans 'All Issues' %}</a></li>
             <li><a href="/minsida/">{% trans 'My Page' %}</a></li>
-
-            {% comment %}
-              <li><a href="/undirskriftir/">{% trans 'My Signatures' %}</a></li>
-              // difficult hack to figure out, as i only need the translation to have a line break in this context 
-            {% endcomment %}
-
             <li><a href="/um-okkur/">{% trans 'About Us' %}</a></li>
             <li><a href="mailto:ventill@ventill.is">{% trans 'Contact Us' %}</a></li>
           </ul>

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}Heim{% endblock %}
+{% block title %}{{title}}{% endblock %}
 
 {% block javascript %}
 {{block.super}}
@@ -20,7 +20,7 @@
       {% if p == '...' %}
         <div class="page_number_separator"><div></div><div></div><div></div></div>
       {% else %}
-        <a class="page_number{% ifequal p current_page %} selected{% endifequal %}" href="/?page={{p}}">{{p}}</a>
+        <a class="page_number{% ifequal p current_page %} selected{% endifequal %}" href="?page={{p}}">{{p}}</a>
       {% endif %}
 
     {% endfor %}

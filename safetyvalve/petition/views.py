@@ -29,13 +29,27 @@ from icekey.utils import authenticate
 from models import Signature
 from utils import convert_petition_to_plaintext_email
 
+def all(request):
+
+    def get_all_petitions():
+        return Petition.objects \
+                        .all() \
+                        .order_by('-time_published') \
+                        .annotate(num_signatures=Count('signature'))
+
+    petitions = cached_or_function('all_petitions', get_all_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
+
+    return index(request, ugettext('All Issues'), petitions)
+
 
 def cached_or_function(key, fun, timeout=60 * 5, *args, **kwargs):
     x = cache.get(key)
+
     if x is None:
         item = fun(*args, **kwargs)
         cache.set(key, (item, datetime.now()), timeout)
         return item
+
     return x[0]
 
 
@@ -143,18 +157,15 @@ def get_public_signatures(request, petition_id):
 
     return HttpResponse(json.dumps(response_wrapper), content_type="application/json")
 
-
-def index(request):
-
-    # def get_petitions():
-    #     return Petition.objects.all() \
-    #                            .order_by('-date_created') \
-    #                            .annotate(num_signatures=Count('signature'))
+def index(request, page_title, petitions):
 
     # p = cached_or_function('popular__petitions', get_petitions, 60 * 5)
 
-    all_petitions = Petition.objects.all().order_by('-date_created').annotate(num_signatures=Count('signature'))
-    paginator = Paginator(all_petitions, settings.INDEX_PAGE_ITEMS)
+    if request.META['SERVER_NAME'] in settings.FAKE_AUTH_URLS and hasattr(settings, 'FAKE_AUTH'):
+        if request.GET.get('fake-auth'):
+            request.session['fake_auth'] = request.GET.get('fake-auth', '').lower() == 'on'
+
+    paginator = Paginator(petitions, settings.INDEX_PAGE_ITEMS)
 
     page = request.GET.get('page', 1)
     try:
@@ -224,7 +235,8 @@ def index(request):
         'instance_url': settings.INSTANCE_URL,
         'signed_petition_ids': signed_petition_ids,
         'pages' : pages,
-        'current_page': page
+        'current_page': page,
+        'title': page_title
     })
 
     return render(request, 'index.html', context)
@@ -236,14 +248,10 @@ def popular(request):
         return Petition.objects \
                        .annotate(num_signatures=Count('signature')) \
                        .filter(num_signatures__gt=0) \
-                       .order_by('-num_signatures')[:10]
-    petitions = cached_or_function('popular__petitions', get_popular_petitions, 10)
+                       .order_by('-num_signatures')
+    petitions = cached_or_function('popular__petitions', get_popular_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
 
-    context = Context({
-        'petitions': petitions,
-    })
-
-    return render(request, 'petition/popular.html', context)
+    return index(request, ugettext('Popular'), petitions)
 
 
 def sign(request, petition_id):

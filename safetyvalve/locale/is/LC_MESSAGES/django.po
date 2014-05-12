@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-05 02:12+0000\n"
+"POT-Creation-Date: 2014-05-12 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -23,6 +23,67 @@ msgid "Are you sure you want to remove your signature for '%(petition)s'?"
 msgstr ""
 "Ertu viss um að þú viljir fjarlægja undirskrift þína gegn '%(petition)s'?"
 
+#: person/templates/person/my_page.html:5 templates/base.html:49
+#: templates/base.html.py:67
+msgid "My Page"
+msgstr ""
+
+#: person/templates/person/my_page.html:45 petition/templates/detail.html:78
+msgid "Name"
+msgstr "Nafn"
+
+#: person/templates/person/my_page.html:46 petition/templates/detail.html:79
+msgid "Social Number"
+msgstr "Kennitala"
+
+#: person/templates/person/my_page.html:47
+#: person/templates/person/my_page.html:64 petition/templates/detail.html:80
+#: petition/templates/petition/signatures.html:23
+msgid "Date Signed"
+msgstr "Dagsetning undirskriftar"
+
+#: person/templates/person/my_page.html:58
+#, fuzzy
+msgid "My Signaturesss"
+msgstr "Mínar undirskriftir"
+
+#: person/templates/person/my_page.html:63
+#: petition/templates/petition/signatures.html:22
+msgid "Petition"
+msgstr "Undirskriftalisti"
+
+#: person/templates/person/my_page.html:65
+#: petition/templates/petition/signatures.html:24
+msgid "Visible"
+msgstr "Sýnileg"
+
+#: person/templates/person/my_page.html:75
+#: person/templates/person/remove_signature.html:19
+#: petition/templates/petition/signatures.html:34
+msgid "Yes"
+msgstr "Já"
+
+#: person/templates/person/my_page.html:76
+#: person/templates/person/remove_signature.html:20
+#: petition/templates/petition/signatures.html:35
+msgid "No"
+msgstr "Nei"
+
+#: person/templates/person/my_page.html:77
+#: petition/templates/petition/signatures.html:36
+msgid "Change"
+msgstr "Breyta"
+
+#: person/templates/person/my_page.html:85
+#: petition/templates/petition/signatures.html:44
+msgid "Remove"
+msgstr "Fjarlægja"
+
+#: person/templates/person/my_page.html:89
+#: petition/templates/petition/signatures.html:48
+msgid "No signatures yet!"
+msgstr "Enn engar undirskriftir!"
+
 #: person/templates/person/remove_signature.html:5
 #: person/templates/person/remove_signature.html:14
 #: person/templates/person/remove_signature__json.html:3
@@ -30,52 +91,50 @@ msgstr ""
 msgid "Remove signature"
 msgstr "fjarlægja undirskrift"
 
-#: person/templates/person/remove_signature.html:19
-#: petition/templates/petition/signatures.html:34
-msgid "Yes"
-msgstr "Já"
+#: petition/views.py:42 templates/base.html:48 templates/base.html.py:66
+msgid "All Issues"
+msgstr "Öll Mál"
 
-#: person/templates/person/remove_signature.html:20
-#: petition/templates/petition/signatures.html:35
-msgid "No"
-msgstr "Nei"
-
-#: petition/views.py:66
+#: petition/views.py:82
 msgid "Email address"
 msgstr "Netfang"
 
-#: petition/views.py:67
+#: petition/views.py:83
 msgid "Confirm email address"
 msgstr "Staðfesting netfangs"
 
-#: petition/views.py:73
+#: petition/views.py:89
 msgid "Email addresses must match"
 msgstr "Netföngin verða bæði að vera eins"
+
+#: petition/views.py:256
+msgid "Home"
+msgstr "Heim"
 
 #: petition/templates/detail.html:56
 msgid "distributed"
 msgstr "útbýtt"
 
-#: petition/templates/detail.html:78
-msgid "Name"
-msgstr "Nafn"
-
-#: petition/templates/detail.html:79
-msgid "Social Number"
-msgstr "Kennitala"
-
-#: petition/templates/detail.html:80
-#: petition/templates/petition/signatures.html:23
-msgid "Date Signed"
-msgstr "Dagsetning undirskriftar"
+#: petition/templates/index.html:44
+#, fuzzy
+msgid "Signatures"
+msgstr "undirskriftir"
 
 #: petition/templates/index.html:49
 msgid "Published On"
 msgstr "Frumvarp flutt"
 
+#: petition/templates/index.html:52
+msgid "Facebook Likes"
+msgstr ""
+
 #: petition/templates/index.html:53
 msgid "Share!"
 msgstr "Deila!"
+
+#: petition/templates/index.html:56
+msgid "Twitter Shares"
+msgstr ""
 
 #: petition/templates/index.html:57
 msgid "Tweet!"
@@ -137,29 +196,9 @@ msgstr ""
 "Stjórnendur kerfisins munu sjá til þess að staðfesting berast þér með pósti"
 
 #: petition/templates/petition/signatures.html:5
-#: petition/templates/petition/signatures.html:17 templates/base.html:49
+#: petition/templates/petition/signatures.html:17
 msgid "My Signatures"
 msgstr "Mínar undirskriftir"
-
-#: petition/templates/petition/signatures.html:22
-msgid "Petition"
-msgstr "Undirskriftalisti"
-
-#: petition/templates/petition/signatures.html:24
-msgid "Visible"
-msgstr "Sýnileg"
-
-#: petition/templates/petition/signatures.html:36
-msgid "Change"
-msgstr "Breyta"
-
-#: petition/templates/petition/signatures.html:44
-msgid "Remove"
-msgstr "Fjarlægja"
-
-#: petition/templates/petition/signatures.html:48
-msgid "No signatures yet!"
-msgstr "Enn engar undirskriftir!"
 
 #: petition/templates/stub/sign_button.html:6
 msgid "Add Signature"
@@ -182,30 +221,26 @@ msgid "Remove Signature"
 msgstr "Fjarlægja undirskrift"
 
 #: templates/base.html:47 templates/base.html.py:65
-msgid "Home"
-msgstr "Heim"
-
-#: templates/base.html:48 templates/base.html.py:66
 msgid "Popular"
 msgstr "Vinsælast"
 
-#: templates/base.html:50 templates/base.html.py:75
+#: templates/base.html:50 templates/base.html.py:68
 msgid "About Us"
 msgstr "Um okkur"
 
-#: templates/base.html:51 templates/base.html.py:76
+#: templates/base.html:51 templates/base.html.py:69
 msgid "Contact Us"
 msgstr "Hafðu samband"
 
-#: templates/base.html:52 templates/base.html.py:109
+#: templates/base.html:52 templates/base.html.py:102
 msgid "Sign Out"
 msgstr "Útskrá"
 
-#: templates/base.html:103
+#: templates/base.html:96
 msgid "Signed-in user"
 msgstr "Innskráður notandi"
 
-#: templates/base.html:115
+#: templates/base.html:108
 msgid "Sign In"
 msgstr "Innskráning"
 
