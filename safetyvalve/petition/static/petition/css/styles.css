@@ -1,5 +1,6 @@
 body {
 	/*background-image: url(/static/core/img/escheresque.png);*/
+	background-color: #FFFFFF;
 	font-size: 16px;
 
 	padding: 0;
@@ -398,7 +399,9 @@ body {
 }
 
 .signature_button > i {
-	padding-right: 5px;
+	padding: 0 5px 0 0;
+	margin: 0;
+	line-height: 30px;
 }
 
 .signature_button_separator {
@@ -519,7 +522,6 @@ table td { /* Add a little breathing space for tables - especially under /signat
 
 	body {
 		padding: 0;
-		background-color: #111111;
 	}
 
 	#wrapper {
