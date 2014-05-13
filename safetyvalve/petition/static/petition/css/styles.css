@@ -252,17 +252,17 @@ body {
 	margin-top: 0px;
 }
 
-.petition_list_item .details .detail_figure {
+.petition_list_item .details .detail_figure, .petition_detail .details .detail_figure {
 	font-size: 1.44em;
 	font-family: 'fairviewregular';
-	color: #56547a;
+	color: #56547a
 }
 
 .share_icon {
 	cursor: pointer;
 }
 
-.petition_list_item .details .icon i {
+.petition_list_item .details .icon i, .petition_detail .details .icon i {
 	font-size: 1.42em;
 	color: #56547a;
 
@@ -486,7 +486,7 @@ body {
 }
 
 .petition_detail {
-	padding-top: 40px;
+	padding-top: 30px;
 }
 
 .petition_detail .title_span h2 {
@@ -537,6 +537,10 @@ body {
 
 table td { /* Add a little breathing space for tables - especially under /signatures/ */
     padding: 2px 10px;
+}
+
+.petition_detail .details .detail:nth-child(2) {
+	margin-left: 60px;
 }
 
 /* ---- END PETITION DETAIL STYLES ----------------------------------------- */

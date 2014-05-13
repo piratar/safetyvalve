@@ -38,21 +38,22 @@
                   "sLengthMenu": "{% trans 'Show _MENU_ entries' %}"
                 },
                 "sPaginationType": "full_numbers",
-                "bInfo": true
+                "bInfo": true,
+                "bLengthChange": false
             } );
         } );
     </script>
 {% endblock %}
 
 {% block extra_meta %}
-        <meta property="og:title" content="{{ petition.name }}" />
+        <meta property="og:title" content="{{ p.name }}" />
         <meta property="og:description" content="{% trans 'I oppose!' %}" />
         <meta property="og:image" content="{{ INSTANCE_URL }}{{STATIC_URL}}core/img/fb_share.png" />
         <meta property="og:image:type" content="image/svg+xml" />
 {% endblock %}
 
 {% block title %}
-    {{ petition.name }}
+    {{ p.name }}
 {% endblock %}
 
 {% block content %}
@@ -60,20 +61,20 @@
     <div class="container-fluid petition_detail">
         <div class="row-fluid">
             <div class="span12 title_span">
-                <h2>{{ petition.name|capfirst }}</h2>
+                <h2>{{ p.name|capfirst }}</h2>
             </div>
         </div>
 
         <div class="row-fluid">
             <div class="span12 published">
-                {% trans 'distributed' %}: {{ petition.time_published|date:"DATE_FORMAT"}}
+                {% trans 'distributed' %}: {{ p.time_published|date:"DATE_FORMAT"}}
             </div>
         </div>
 
-        {% if petition.description %}
+        {% if p.description %}
         <div class="row-fluid">
             <div class="span12 petition_description" style="text-align: center">
-                {{ petition.description}}
+                {{ p.description}}
             </div>
         </div>
         {% endif %}
@@ -83,6 +84,30 @@
             </div>
         </div>
 
+        <div class="row-fluid">
+
+            <div class="span12">
+                <div class="details">
+
+                    <div class="detail share_detail" title="{%trans 'Facebook Likes' %}">
+                        <div class="fb_share" data-url="{{INSTANCE_URL}}/frumvarp/{{ p.id }}/?r={% now "si" %}" data-text="{% trans 'I oppose this! Add your name now!' %}" data-title="Like"></div>
+                    </div>
+
+                    <div class="detail share_detail" title="{%trans 'Twitter Shares' %}">
+                        <div class="twitter_share" data-url="{{INSTANCE_URL}}/frumvarp/{{ p.id }}/" data-text="{% trans 'I Oppose This! Add your name now!' %}" data-title="Tweet"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        {% if already_signed %}
+          {% include 'stub/unsign_button.html' %}
+        {% else %}
+          {% include 'stub/sign_button.html' %}
+        {% endif %}
+
         <div class-"row-fluid">
             
             <table id="signatures">
@@ -90,7 +115,7 @@
                 <thead>
                     <th>{% trans 'Name' %}</th>
                     <th>{% trans 'Social Number' %}</th>
-                    <th>{% trans 'Date Signed' %}</th>
+                    <th>{% trans 'Date' %}</th>
                 </thead>
 
                 <tbody>
@@ -100,102 +125,21 @@
         
         </div>
 
-        <div class="details">
-
-            <div class="detail" title="{%trans 'Signatures' %}">
-                <div class="icon"><i class="fa fa-check-square"></i><span class="detail_figure"></span></div>
+        <div class="row-fluid separator">
+            <div class="span12">
             </div>
-
-            <div class="detail share_detail" title="{%trans 'Facebook Likes' %}">
-                <div class="fb_share" data-url="{{INSTANCE_URL}}/frumvarp/{{ petition.id }}/?r={% now "si" %}" data-text="{% trans 'I oppose this! Add your name now!' %}" data-title="Like"></div>
-            </div>
-
-            <div class="detail share_detail" title="{%trans 'Twitter Shares' %}">
-                <div class="twitter_share" data-url="{{INSTANCE_URL}}/frumvarp/{{ petition.id }}/" data-text="{% trans 'I Oppose This! Add your name now!' %}" data-title="Tweet"></div>
-            </div>
-
         </div>
 
         <div class="row-fluid">
             <div class="span12">
                 <div class="petition_content">
-                    {{ petition.content|safe }}
+                    {{ p.content|safe }}
                 </div>
             </div>
         </div>
 
-    </div>
-    
-    {% comment %}
-        <div class="row-fluid">
-            <div class="note">
-                {% trans 'Your objection against this bill has been noted.' %}
-            </div>
-        </div>
-    
-
-    <div class="row-fluid">
-        <div>
-        {% if already_signed %}
-            {% with p=petition %}
-                {% include 'stub/unsign_button.html' %}
-            {% endwith %}
-        {% else %}
-            {% with p=petition %}
-                {% include 'stub/sign_button.html' %}
-            {% endwith %}
-        {% endif %}
-        </div>
-    </div>
+        <div id="msg_sure" style="display:none;">{% trans 'Are you sure' %}?</div>
 
     </div>
-    <div class="row-fluid">
-
-        <table class="datatable">
-            <tr>
-                <th class="username">{% trans 'Civil nr.' %}</th>
-                <th class="fullname">{% trans 'Full name' %}</th>
-                <th class="timing">{% trans 'Date' %}</th>
-            </tr>
-            {% for s in signatures %}
-                {% if s.show_public %}
-                    <tr class="user">
-                        <td class="username">{{ s.user.username }}</td>
-                        <td class="fullname">{{ s.user.first_name }}</td>
-                        <td class="timing">{{ s.date_created|date:'DATE_FORMAT' }}</td>
-                    </tr>
-                {% else %}
-                    <tr class="user">
-                        <td class="username">[ fali&eth; ]</td>
-                        <td class="fullname">[ fali&eth; ]</td>
-                        <td class="timing">{{ s.date_created|date:'DATE_FORMAT' }}</td>
-                    </tr>
-                {% endif %}
-            {% empty %}
-                <tr>
-                    <td class="align-center" colspan="3">{% trans 'No signatures yet!' %}</td>
-                </tr>
-            {% endfor %}
-        </table>
-
-    </div>
-
-    
-
-    <div class="row-fluid">
-
-        {% if not already_signed %}
-            {% with p=petition %}
-                {% include 'stub/sign_button.html' %}
-            {% endwith %}
-        {% else %}
-           {% with p=petition %}
-                {% include 'stub/unsign_button.html' %}
-            {% endwith %}
-
-        {% endif %}
-    </div>
-
-    {% endcomment %}
     
 {% endblock %}

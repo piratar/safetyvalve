@@ -61,12 +61,8 @@ def detail(request, petition_id):
     if request.user.is_authenticated():
         already_signed = Signature.objects.filter(user=request.user, petition=p).count() > 0
 
-    signatures = Signature.objects.select_related('user').filter(petition_id=petition_id).order_by('date_created')
-
-
     context = Context({
-        'petition': p,
-        'signatures': signatures,
+        'p': p,
         'already_signed': already_signed,
         'signatures_url': reverse('get_public_signatures', args=(petition_id, )) + '' ,
         'INSTANCE_URL' : settings.INSTANCE_URL
