@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-13 14:52+0000\n"
+"POT-Creation-Date: 2014-05-13 15:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -86,15 +86,15 @@ msgstr "Enn engar undirskriftir!"
 msgid "Remove signature"
 msgstr "fjarlægja undirskrift"
 
-#: petition/views.py:81
+#: petition/views.py:82
 msgid "Email address"
 msgstr "Netfang"
 
-#: petition/views.py:82
+#: petition/views.py:83
 msgid "Confirm email address"
 msgstr "Staðfesting netfangs"
 
-#: petition/views.py:88
+#: petition/views.py:89
 msgid "Email addresses must match"
 msgstr "Netföngin verða bæði að vera eins"
 
@@ -102,9 +102,9 @@ msgstr "Netföngin verða bæði að vera eins"
 msgid "No data available in table"
 msgstr "Engin gögn aðgengileg"
 
-#: petition/templates/detail.html:39 petition/templates/index.html:53
-msgid "I oppose this! Add your name now!"
-msgstr ""
+#: petition/templates/detail.html:39
+msgid "I oppose!"
+msgstr "Ég mótmæli!"
 
 #: petition/templates/detail.html:59
 msgid "distributed"
@@ -121,6 +121,10 @@ msgstr "Frumvarp flutt"
 
 #: petition/templates/index.html:52
 msgid "Facebook Likes"
+msgstr ""
+
+#: petition/templates/index.html:53
+msgid "I oppose this! Add your name now!"
 msgstr ""
 
 #: petition/templates/index.html:56
