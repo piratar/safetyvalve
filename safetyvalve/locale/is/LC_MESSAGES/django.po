@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-13 21:53+0000\n"
+"POT-Creation-Date: 2014-05-13 22:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -22,19 +22,12 @@ msgid "Email address"
 msgstr "Netfang"
 
 #: person/views.py:97
-#, fuzzy
 msgid "This field is required"
 msgstr "Netfang nauðsynlegt"
 
 #: person/views.py:98
 msgid "Please enter a valid e-mail address"
 msgstr "Vinsamlegast skrifað inn gott netfang"
-
-#: person/templates/person/_remove_signature__text.html:1
-#, python-format
-msgid "Are you sure you want to remove your signature for '%(petition)s'?"
-msgstr ""
-"Ertu viss um að þú viljir fjarlægja undirskrift þína gegn '%(petition)s'?"
 
 #: person/templates/person/my_page.html:29 petition/templates/detail.html:29
 msgid "No data available in table"
@@ -57,35 +50,16 @@ msgid "Save"
 msgstr "Vista"
 
 #: person/templates/person/my_page.html:69
-#: petition/templates/petition/signatures.html:5
-#: petition/templates/petition/signatures.html:17
 msgid "My Signatures"
 msgstr "Mínar undirskriftir"
 
-#: person/templates/person/my_page.html:74 petition/templates/detail.html:120
+#: person/templates/person/my_page.html:74 petition/templates/detail.html:121
 msgid "Name"
 msgstr "Nafn"
 
-#: person/templates/person/my_page.html:75 petition/templates/detail.html:122
+#: person/templates/person/my_page.html:75 petition/templates/detail.html:123
 msgid "Date"
 msgstr "Dagsetning"
-
-#: person/templates/person/remove_signature.html:5
-#: person/templates/person/remove_signature.html:14
-#: person/templates/person/remove_signature__json.html:3
-#, fuzzy
-msgid "Remove signature"
-msgstr "fjarlægja undirskrift"
-
-#: person/templates/person/remove_signature.html:19
-#: petition/templates/petition/signatures.html:34
-msgid "Yes"
-msgstr "Já"
-
-#: person/templates/person/remove_signature.html:20
-#: petition/templates/petition/signatures.html:35
-msgid "No"
-msgstr "Nei"
 
 #: petition/views.py:87
 msgid "Confirm email address"
@@ -99,7 +73,8 @@ msgstr "Netföngin verða bæði að vera eins"
 msgid "Showing _START_ to _END_ of _TOTAL_ of public signatures"
 msgstr "Sýni _START_ til _END_ af _TOTAL_ birtar undirskriftir"
 
-#: petition/templates/detail.html:49
+#: petition/templates/detail.html:49 petition/templates/detail.html.py:97
+#: petition/templates/index.html:53
 msgid "I oppose!"
 msgstr "Ég mótmæli!"
 
@@ -107,35 +82,31 @@ msgstr "Ég mótmæli!"
 msgid "distributed"
 msgstr "útbýtt"
 
-#: petition/templates/detail.html:98 petition/templates/index.html:44
+#: petition/templates/detail.html:92 petition/templates/index.html:44
 msgid "Total Signatures"
 msgstr "Undirskriftir í Heild"
 
-#: petition/templates/detail.html:99
+#: petition/templates/detail.html:93
 msgid "total signatures"
 msgstr "undirskriftir í heild"
 
-#: petition/templates/detail.html:102 petition/templates/index.html:52
+#: petition/templates/detail.html:96 petition/templates/index.html:52
 msgid "Facebook Likes"
 msgstr ""
 
-#: petition/templates/detail.html:103 petition/templates/index.html:53
-msgid "I oppose this! Add your name now!"
-msgstr ""
-
-#: petition/templates/detail.html:106 petition/templates/index.html:56
+#: petition/templates/detail.html:100 petition/templates/index.html:56
 msgid "Twitter Shares"
 msgstr ""
 
-#: petition/templates/detail.html:107 petition/templates/index.html:57
-msgid "I Oppose This! Add your name now!"
-msgstr ""
+#: petition/templates/detail.html:101 petition/templates/index.html:57
+msgid "I Oppose!"
+msgstr "Ég mótmæli!"
 
-#: petition/templates/detail.html:121
+#: petition/templates/detail.html:122
 msgid "Social Number"
 msgstr "Kennitala"
 
-#: petition/templates/detail.html:145 petition/templates/index.html:82
+#: petition/templates/detail.html:146 petition/templates/index.html:82
 msgid "Are you sure"
 msgstr "Ertu viss"
 
@@ -147,7 +118,12 @@ msgstr "Frumvarp flutt"
 msgid "Email required"
 msgstr "Netfang nauðsynlegt"
 
-#: petition/templates/petition/email.html:12
+#: petition/templates/petition/email.html:16
+#: petition/templates/petition/receipt_error.html:16
+msgid "Attention!"
+msgstr "Athugið!"
+
+#: petition/templates/petition/email.html:26
 msgid ""
 "In order to secure the legitimacy of each signature, we send a receipt via "
 "email to the signatory person."
@@ -155,68 +131,33 @@ msgstr ""
 "Til að tryggja lögmæti undirskrifta enn frekar sendum við kvittun í "
 "tölvupósti til þess sem skrifar undir."
 
-#: petition/templates/petition/email.html:17
+#: petition/templates/petition/email.html:28
 msgid ""
 "Email addresses are only used for verification purposes and are never sent "
 "to a third party."
 msgstr ""
 "Netföng eru einungis notuð til staðfestingar og eru aldrei send þriðja aðila."
 
-#: petition/templates/petition/email.html:25
+#: petition/templates/petition/email.html:41
 msgid "Confirm"
 msgstr "Staðfesta"
 
-#: petition/templates/petition/popular.html:26
-msgid "signature"
-msgstr "undirskrift"
-
-#: petition/templates/petition/popular.html:28
-msgid "signatures"
-msgstr "undirskriftir"
-
-#: petition/templates/petition/popular.html:32
-msgid "Share"
-msgstr "Deila"
-
 #: petition/templates/petition/receipt_error.html:5
-#: petition/templates/petition/receipt_error.html:9
+#: petition/templates/petition/receipt_error.html:24
 msgid "Error while sending receipt"
 msgstr "Villa í sendingu kvittunar"
 
-#: petition/templates/petition/receipt_error.html:11
+#: petition/templates/petition/receipt_error.html:26
 msgid "The error was:"
 msgstr "Villan var:"
 
-#: petition/templates/petition/receipt_error.html:13
+#: petition/templates/petition/receipt_error.html:28
 msgid ""
-"Administrators will make sure that the receipt will be sent to you via mail "
-"when the error has been fixed. Please excuse the inconvenience."
+"We apologize for the error. We are still currently in beta and working "
+"towards resolving any errors in the system. Please check the appropriate "
+"page to see if your signature was added/remove. Failure to receive an e-mail "
+"does not mean that your action was not completed."
 msgstr ""
-"Stjórnendur kerfisins munu sjá til þess að staðfesting berast þér með pósti"
-
-#: petition/templates/petition/signatures.html:22
-msgid "Petition"
-msgstr "Undirskriftalisti"
-
-#: petition/templates/petition/signatures.html:23
-msgid "Date Signed"
-msgstr "Dagsetning undirskriftar"
-
-#: petition/templates/petition/signatures.html:24
-msgid "Visible"
-msgstr "Sýnileg"
-
-#: petition/templates/petition/signatures.html:36
-msgid "Change"
-msgstr "Breyta"
-
-#: petition/templates/petition/signatures.html:44
-msgid "Remove"
-msgstr "Fjarlægja"
-
-#: petition/templates/petition/signatures.html:48
-msgid "No signatures yet!"
-msgstr "Enn engar undirskriftir!"
 
 #: petition/templates/stub/sign_button.html:6
 msgid "Oppose"
@@ -266,9 +207,53 @@ msgstr "Útskrá"
 msgid "Sign In"
 msgstr "Innskráning"
 
+#~ msgid "Are you sure you want to remove your signature for '%(petition)s'?"
+#~ msgstr ""
+#~ "Ertu viss um að þú viljir fjarlægja undirskrift þína gegn '%(petition)s'?"
+
 #, fuzzy
-#~ msgid "My Signaturesss"
-#~ msgstr "Mínar undirskriftir"
+#~ msgid "Remove signature"
+#~ msgstr "fjarlægja undirskrift"
+
+#~ msgid "Yes"
+#~ msgstr "Já"
+
+#~ msgid "No"
+#~ msgstr "Nei"
+
+#~ msgid ""
+#~ "Administrators will make sure that the receipt will be sent to you via "
+#~ "mail when the error has been fixed. Please excuse the inconvenience."
+#~ msgstr ""
+#~ "Stjórnendur kerfisins munu sjá til þess að staðfesting berast þér með "
+#~ "pósti"
+
+#~ msgid "Petition"
+#~ msgstr "Undirskriftalisti"
+
+#~ msgid "Date Signed"
+#~ msgstr "Dagsetning undirskriftar"
+
+#~ msgid "Visible"
+#~ msgstr "Sýnileg"
+
+#~ msgid "Change"
+#~ msgstr "Breyta"
+
+#~ msgid "Remove"
+#~ msgstr "Fjarlægja"
+
+#~ msgid "No signatures yet!"
+#~ msgstr "Enn engar undirskriftir!"
+
+#~ msgid "signature"
+#~ msgstr "undirskrift"
+
+#~ msgid "signatures"
+#~ msgstr "undirskriftir"
+
+#~ msgid "Share"
+#~ msgstr "Deila"
 
 #~ msgid "Share!"
 #~ msgstr "Deila!"
