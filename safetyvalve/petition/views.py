@@ -37,7 +37,8 @@ def all(request):
                         .order_by('-time_published') \
                         .annotate(num_signatures=Count('signature'))
 
-    petitions = cached_or_function('all_petitions', get_all_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
+    #petitions = cached_or_function('all_petitions', get_all_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
+    petitions = get_all_petitions()
 
     return index(request, 'All Issues', petitions)
 
@@ -250,7 +251,8 @@ def popular(request):
                        .annotate(num_signatures=Count('signature')) \
                        .filter(num_signatures__gt=settings.POPULAR_SIGNATURE_THRESHOLD) \
                        .order_by('-num_signatures')
-    petitions = cached_or_function('popular__petitions', get_popular_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
+    #petitions = cached_or_function('popular__petitions', get_popular_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
+    petitions = get_popular_petitions()
 
     return index(request, 'Popular', petitions)
 
