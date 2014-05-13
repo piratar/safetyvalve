@@ -19,6 +19,57 @@ body {
 	padding-top: 50px;
 }
 
+h1 {
+	font-family: 'klinic_slabbold';
+	font-size: 45px;
+	font-weight: normal;
+	color: #56547a;
+}
+
+h2 {
+	font-family: 'klinic_slabbold';
+	font-size: 26px;
+	line-height: 26px;
+	font-weight: normal;
+	margin-top: 9px;
+	padding: 7px 0;
+	color: #56547a;
+}
+
+h3 {
+	font-family: 'klinic_slabbold';
+	font-size: 21px;
+	line-height: 23px;
+	font-weight: normal;
+	margin-top: 9px;
+	color: #56547a;
+	display: inline-block;
+}
+
+
+.separator {
+	border-top: dotted;
+	border-color: #b3b3b3;
+	border-width: 3px;
+}
+
+
+/* ---- FORM STYLES -------------------------------------------------------- */
+
+form label {
+	font-family: 'klinic_slabbold';
+	color: #3C4366;
+	font-size: 18px;
+}
+
+form .errorlist {
+	font-family: 'klinic_slabbook'
+}
+
+/* ---- END FORM STYLES --=------------------------------------------------- */
+
+
+
 /* ---- NAVIGATION STYLES -------------------------------------------------- */
 
 #nav {
@@ -302,13 +353,7 @@ body {
 	position: absolute;
 }
 
-.petition_list_item h2, #about_us_wrapper h2 {
-	font-family: 'klinic_slabbold';
-	font-size: 1.6em;
-	line-height: 1.6em;
-	font-weight: normal;
-	margin-top: 9px;
-	color: #56547a;
+.petition_list_item h2 {
 	display: inline-block;
 }
 
@@ -397,7 +442,7 @@ body {
 	margin-top: 15px;
 }
 
-.signature_button {
+.signature_button, button[type="submit"] {
 	display: inline-block;
 	height: 30px;
 	padding: 0 5px;
@@ -415,6 +460,11 @@ body {
 
 	border-radius: 5px;
 	-moz-border-radius: 5px;
+}
+
+button[type="submit"] {
+	border: 0;
+	background-color: #38B449;
 }
 
 .signature_button > i {
@@ -489,12 +539,8 @@ body {
 	padding-top: 30px;
 }
 
-.petition_detail .title_span h2 {
+.petition_detail .title_span {
 	text-align: center;
-	font-family: 'klinic_slabbold';
-	font-size: 34px;
-	font-weight: normal;
-	color: #57557b;
 }
 
 .petition_detail .published {
@@ -511,12 +557,6 @@ body {
 	text-align: center;
 	color: #57557b;
 	font-size: 20px;
-}
-
-.petition_detail .separator {
-	border-top: dotted;
-	border-color: #b3b3b3;
-	border-width: 3px;
 }
 
 .petition_detail .petition_content {
@@ -539,8 +579,22 @@ table td { /* Add a little breathing space for tables - especially under /signat
     padding: 2px 10px;
 }
 
+.petition_detail .details .detail:nth-child(1) {
+	margin-right: 60px;
+}
+
 .petition_detail .details .detail:nth-child(2) {
-	margin-left: 60px;
+	margin-right: 60px;
+}
+
+.petition_detail .details {
+	float: right;
+	margin-top: -2px;
+}
+
+.petition_detail .signature_container {
+	float: left;
+	margin-top: -5px;
 }
 
 /* ---- END PETITION DETAIL STYLES ----------------------------------------- */
@@ -551,20 +605,6 @@ table td { /* Add a little breathing space for tables - especially under /signat
 #about_us_wrapper {
 	padding-top: 15px;
 	padding-bottom: 30px;
-}
-
-#about_us_wrapper h2, #about_us_wrapper h3 {
-	font-family: 'klinic_slabbold';
-	font-size: 1.6em;
-	line-height: 1.6em;
-	font-weight: normal;
-	margin-top: 9px;
-	color: #56547a;
-	display: inline-block;
-}
-
-#about_us_wrapper h3 {
-	font-size: 1.4em;
 }
 
 #about_us_wrapper p {
@@ -583,6 +623,25 @@ table td { /* Add a little breathing space for tables - especially under /signat
 }
 
 /* ---- END ABOUT US STYLES ------------------------------------------------ */
+
+
+
+/* ---- MY PAGE STYLES ------------------------------------------------------ */
+
+#my_page_wrapper {
+	padding-top: 15px;
+}
+
+#my_page_wrapper form p {
+	display: inline-block;
+}
+
+#my_page_wrapper form button {
+	margin-left: 5px;
+	margin-top: -10px;
+}
+
+/* ---- END MY PAGE STYLES -------------------------------------------------- */
 
 
 
@@ -620,7 +679,7 @@ table td { /* Add a little breathing space for tables - especially under /signat
 		height: 5px;
 	}
 
-	#wrapper .petition_list_item .details .detail {
+	#wrapper .petition_list_item .details .detail, .petition_detail .details .detail {
 		position: relative;
 		left: 0;
 		float: left;
@@ -652,6 +711,23 @@ table td { /* Add a little breathing space for tables - especially under /signat
 	#about_us_wrapper {
 		padding-left: 10px;
 		padding-right: 10px;
+	}
+
+	#wrapper .petition_detail {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	.petition_detail .details {
+		float: none;
+		display: block;
+		margin-top: -6px;
+	}
+
+	.petition_detail .signature_container {
+		float: none;
+		display: block;
+		padding-top: 10px;
 	}
 
 }
