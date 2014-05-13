@@ -19,6 +19,7 @@ table.dataTable thead th {
 	font-family: 'klinic_slabbold';
 	font-weight: normal;
 	font-size: 20px;
+	color: #57557B;
 	cursor: pointer;
 	*cursor: hand;
 	text-align: center;
@@ -61,6 +62,8 @@ table.dataTable tr.even td.sorting_3 { background-color: #F4F4F4; }
 	position: relative;
 	clear: both;
 	*zoom: 1;
+
+	padding-bottom: 80px;
 }
 
 
@@ -69,6 +72,16 @@ table.dataTable tr.even td.sorting_3 { background-color: #F4F4F4; }
  */
 .dataTables_length {
 	float: left;
+}
+
+.dataTables_length > label, .dataTables_length  select {
+	font-family: "klinic_slabbold";
+	font-size: 18px;
+	color: #57557B;
+}
+
+.dataTables_length  select {
+	width: 100px;
 }
 
 
@@ -87,6 +100,11 @@ table.dataTable tr.even td.sorting_3 { background-color: #F4F4F4; }
 .dataTables_info {
 	clear: both;
 	float: left;
+
+	padding-top: 10px;
+	font-family: "klinic_slabbold";
+	font-size: 18px;
+	color: #57557B;
 }
 
 
@@ -146,6 +164,7 @@ table.dataTable tr.even td.sorting_3 { background-color: #F4F4F4; }
 
 /* Full number pagination */
 .paging_full_numbers {
+	padding-top: 10px;
 	height: 22px;
 	line-height: 22px;
 }
@@ -158,7 +177,7 @@ table.dataTable tr.even td.sorting_3 { background-color: #F4F4F4; }
 
 .paging_full_numbers a.paginate_button,
 .paging_full_numbers a.paginate_active {
-	border: 1px solid #aaa;
+/*	border: 1px solid #aaa;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -166,7 +185,28 @@ table.dataTable tr.even td.sorting_3 { background-color: #F4F4F4; }
 	margin: 0 3px;
 	cursor: pointer;
 	*cursor: hand;
-	color: #333 !important;
+	color: #333 !important;*/
+	margin-right: 9px;
+	margin-bottom: 3px;
+	width: 24px;
+	height: 24px;
+
+	line-height: 24px;
+	text-align: center;
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #56547A;
+
+	float: left;
+
+	cursor: pointer;
+
+	border-radius: 50%;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #56547A;
+
+	background-color: #F3F3F3;
 }
 
 .paging_full_numbers a.paginate_button {
@@ -174,14 +214,19 @@ table.dataTable tr.even td.sorting_3 { background-color: #F4F4F4; }
 }
 
 .paging_full_numbers a.paginate_button:hover {
-	background-color: #ccc;
-	text-decoration: none !important;
+	background-color: #56547A;
+	color: #F3F3F3;
+	text-decoration: none;
 }
 
 .paging_full_numbers a.paginate_active {
-	background-color: #99B3FF;
+	background-color: #56547A;
+	color: #F3F3F3;
 }
 
+.paging_full_numbers a.previous, .paging_full_numbers a.next, .paging_full_numbers a.first, .paging_full_numbers a.last {
+	font-family:'FontAwesome'
+}
 
 /*
  * Processing indicator

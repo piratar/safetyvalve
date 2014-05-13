@@ -231,7 +231,7 @@ body {
 	border-top: none;
 }
 
-.petition_list_item .details {
+.petition_list_item .details, .petition_detail .details  {
 	color: #3b4265;
 	font-size: 16px;
 	font-family: 'klinic_slabbook_italic';
@@ -240,7 +240,7 @@ body {
 	position: relative;
 }
 
-.petition_list_item .details .detail {
+.petition_list_item .details .detail, .petition_detail .detail {
 	display: inline-block;
 }
 
@@ -483,6 +483,10 @@ body {
 	border-width: 5px;
 
 	margin-bottom: 5px;
+}
+
+.petition_detail {
+	padding-top: 40px;
 }
 
 .petition_detail .title_span h2 {
