@@ -302,7 +302,7 @@ body {
 	position: absolute;
 }
 
-.petition_list_item h2 {
+.petition_list_item h2, #about_us_wrapper h2 {
 	font-family: 'klinic_slabbold';
 	font-size: 1.6em;
 	line-height: 1.6em;
@@ -537,6 +537,47 @@ table td { /* Add a little breathing space for tables - especially under /signat
 
 /* ---- END PETITION DETAIL STYLES ----------------------------------------- */
 
+
+
+/* ---- ABOUT US STYLES ---------------------------------------------------- */
+#about_us_wrapper {
+	padding-top: 15px;
+	padding-bottom: 30px;
+}
+
+#about_us_wrapper h2, #about_us_wrapper h3 {
+	font-family: 'klinic_slabbold';
+	font-size: 1.6em;
+	line-height: 1.6em;
+	font-weight: normal;
+	margin-top: 9px;
+	color: #56547a;
+	display: inline-block;
+}
+
+#about_us_wrapper h3 {
+	font-size: 1.4em;
+}
+
+#about_us_wrapper p {
+	font-family: 'klinic_slabbold';
+	color: #3C4366;
+
+}
+
+#about_us_wrapper a {
+	color: #B62A2A;
+}
+
+#about_us_wrapper a:visited, #about_us_wrapper a:hover {
+	text-decoration: none;
+	color: #842020;
+}
+
+/* ---- END ABOUT US STYLES ------------------------------------------------ */
+
+
+
 @media only screen and (max-width: 979px) {
 
 	body {
@@ -598,6 +639,11 @@ table td { /* Add a little breathing space for tables - especially under /signat
 
 	.post_selection_container {
 		height: auto;
+	}
+
+	#about_us_wrapper {
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 
 }
