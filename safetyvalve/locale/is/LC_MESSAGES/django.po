@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-13 16:45+0000\n"
+"POT-Creation-Date: 2014-05-13 17:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -32,7 +32,7 @@ msgid "Social Number"
 msgstr "Kennitala"
 
 #: person/templates/person/my_page.html:45
-#: person/templates/person/my_page.html:62 petition/templates/detail.html:93
+#: person/templates/person/my_page.html:62
 #: petition/templates/petition/signatures.html:23
 msgid "Date Signed"
 msgstr "Dagsetning undirskriftar"
@@ -86,15 +86,15 @@ msgstr "Enn engar undirskriftir!"
 msgid "Remove signature"
 msgstr "fjarlægja undirskrift"
 
-#: petition/views.py:82
+#: petition/views.py:78
 msgid "Email address"
 msgstr "Netfang"
 
-#: petition/views.py:83
+#: petition/views.py:79
 msgid "Confirm email address"
 msgstr "Staðfesting netfangs"
 
-#: petition/views.py:89
+#: petition/views.py:85
 msgid "Email addresses must match"
 msgstr "Netföngin verða bæði að vera eins"
 
@@ -104,7 +104,7 @@ msgstr "Engin gögn aðgengileg"
 
 #: petition/templates/detail.html:37
 msgid "Showing _START_ to _END_ of _TOTAL_ entries"
-msgstr "Sýni _START_ til _END_ af _TOTAL_ færslum"
+msgstr "Sýni _START_ til _END_ af _TOTAL_ undirskriftir"
 
 #: petition/templates/detail.html:38
 msgid "Show _MENU_ entries"
@@ -118,34 +118,38 @@ msgstr "Ég mótmæli!"
 msgid "distributed"
 msgstr "útbýtt"
 
-#: petition/templates/detail.html:105 petition/templates/index.html:44
+#: petition/templates/detail.html:93
+msgid "Date"
+msgstr "Dagsetning"
+
+#: petition/templates/detail.html:105 petition/templates/index.html:52
+msgid "Facebook Likes"
+msgstr ""
+
+#: petition/templates/detail.html:106 petition/templates/index.html:53
+msgid "I oppose this! Add your name now!"
+msgstr ""
+
+#: petition/templates/detail.html:109 petition/templates/index.html:56
+msgid "Twitter Shares"
+msgstr ""
+
+#: petition/templates/detail.html:110 petition/templates/index.html:57
+msgid "I Oppose This! Add your name now!"
+msgstr ""
+
+#: petition/templates/detail.html:129 petition/templates/index.html:82
+msgid "Are you sure"
+msgstr "Ertu viss"
+
+#: petition/templates/index.html:44
 #, fuzzy
 msgid "Signatures"
 msgstr "undirskriftir"
 
-#: petition/templates/detail.html:109 petition/templates/index.html:52
-msgid "Facebook Likes"
-msgstr ""
-
-#: petition/templates/detail.html:110 petition/templates/index.html:53
-msgid "I oppose this! Add your name now!"
-msgstr ""
-
-#: petition/templates/detail.html:113 petition/templates/index.html:56
-msgid "Twitter Shares"
-msgstr ""
-
-#: petition/templates/detail.html:114 petition/templates/index.html:57
-msgid "I Oppose This! Add your name now!"
-msgstr ""
-
 #: petition/templates/index.html:49
 msgid "Published On"
 msgstr "Frumvarp flutt"
-
-#: petition/templates/index.html:82
-msgid "Are you sure"
-msgstr "Ertu viss"
 
 #: petition/templates/petition/email.html:5
 msgid "Email required"
@@ -274,6 +278,3 @@ msgstr "Innskráning"
 
 #~ msgid "Full name"
 #~ msgstr "Fullt nafn"
-
-#~ msgid "Date"
-#~ msgstr "Dags."
