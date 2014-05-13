@@ -9,23 +9,43 @@
 
 	<div class="container-fluid petition_list">
 
-	    <p>{% trans 'In order to secure the legitimacy of each signature, we send a receipt via email to the signatory person.' %}</p>
-	<!--
-	Til að tryggja lögmæti undirskrifta enn frekar sendum við kvittun í tölvupósti til þess sem skrifar undir.
-	-->
+		<div class="row-fluid">
 
-	    <p>{% trans 'Email addresses are only used for verification purposes and are never sent to a third party.' %}</p>
-	<!--
-	Netföng eru einungis notuð til staðfestingar og eru aldrei send þriðja aðila.
-	-->
+			<div class="span12">
 
-	    <form action="." method="post">
-		    {% csrf_token %}
-		    {{ form.as_p }}
-		    <button type="submit">{% trans 'Confirm' %}</button>
-	    </form>
+			    <h2>{% trans 'Attention!' %}</h2>
 
-    <div class="container-fluid petition_list">
+		    </div>
+
+	    </div>
+
+		<div class="row-fluid">
+
+			<div class="span12">
+
+			    <p>{% trans 'In order to secure the legitimacy of each signature, we send a receipt via email to the signatory person.' %}</p>
+
+			    <p>{% trans 'Email addresses are only used for verification purposes and are never sent to a third party.' %}<br /><br /></p>
+
+		    </div>
+
+	    </div>
+
+	    <div class="row-fluid">
+
+	    	<div class="span12">
+
+			    <form action="." method="post">
+				    {% csrf_token %}
+				    {{ form.as_p }}
+				    <button type="submit"><i class="fa fa-check-circle"></i> {% trans 'Confirm' %}</button>
+			    </form>
+
+	    	</div>
+
+	    </div>
+
+    </div>
 {% endblock %}
 
 
