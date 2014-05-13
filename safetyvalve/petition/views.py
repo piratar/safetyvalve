@@ -247,7 +247,7 @@ def popular(request):
     def get_popular_petitions():
         return Petition.objects \
                        .annotate(num_signatures=Count('signature')) \
-                       .filter(num_signatures__gt=0) \
+                       .filter(num_signatures__gt=settings.POPULAR_SIGNATURE_THRESHOLD) \
                        .order_by('-num_signatures')
     petitions = cached_or_function('popular__petitions', get_popular_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
 
