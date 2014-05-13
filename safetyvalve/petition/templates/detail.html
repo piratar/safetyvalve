@@ -22,10 +22,13 @@
                 "bAutoWidth": true,
                 "sAjaxSource": '{{ INSTANCE_URL }}{{ signatures_url }}',
                 "aoColumns": [
-                    {"sWidth": "60%"},
-                    {"bSortable": false, "sWidth": "20%"},
-                    {"sWidth": "20%"}
-                ]
+                    {"sWidth": "50%"},
+                    {"bSortable": false, "sWidth": "25%", "sClass": "center"},
+                    {"sWidth": "25%", "sClass": "center"}
+                ],
+                "oLanguage": {
+                  "sEmptyTable": "{% trans 'No data available in table' %}"
+                }
             } );
         } );
     </script>
@@ -33,8 +36,8 @@
 
 {% block extra_meta %}
         <meta property="og:title" content="{{ petition.name }}" />
-        <meta property="og:description" content="{{ petition.description}}" />
-        <meta property="og:image" content="{{ INSTANCE_URL }}{{STATIC_URL}}/core/img/fb_share.svg" />
+        <meta property="og:description" content="{% trans 'I oppose this! Add your name now!' %}" />
+        <meta property="og:image" content="{{ INSTANCE_URL }}{{STATIC_URL}}core/img/fb_share.png" />
         <meta property="og:image:type" content="image/svg+xml" />
 {% endblock %}
 
