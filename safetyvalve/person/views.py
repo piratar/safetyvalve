@@ -120,42 +120,6 @@ def my_page(request):
     return render(request, 'person/my_page.html', context)
 
 
-def signature_change_public(request, signature_id):
-    if not request.user.is_authenticated():
-        return HttpResponseForbidden()
-
-    s = get_object_or_404(Signature, id=signature_id, user=request.user)
-
-    s.show_public = not s.show_public
-    s.save()
-
-    return HttpResponseRedirect(reverse('signatures'))
-
-
-def remove_signature(request, signature_id):
-
-    if not request.user.is_authenticated():
-        return HttpResponseForbidden()
-
-    s = get_object_or_404(Signature, id=signature_id, user=request.user)
-
-    redirect_to = request.GET.get('next', reverse('signatures'))
-
-    if request.GET.get('answer', '').lower() == 'yes':
-        s.delete()
-        return HttpResponseRedirect(redirect_to)
-
-    context = Context({
-        'signature': s,
-        'next': redirect_to,
-    })
-
-    if request.GET.get('method', '').lower() == 'browser-confirm':
-        return render(request, 'person/remove_signature__json.html', context, content_type='application/json')
-    else:
-        return render(request, 'person/remove_signature.html', context)
-
-
 def login_view(request):
 
     params = {'path': reverse('login')}
@@ -165,17 +129,3 @@ def login_view(request):
         return ret
 
     return HttpResponseRedirect(reverse('popular', current_app='petition'))
-
-
-def test_auth(request):
-    c = {}
-
-    if request.method == 'POST':
-
-        c['result'] = 'success'
-        c['token'] = 'TestToken123'
-
-        ret_url = request.GET.get('next')
-        return HttpResponseRedirect(ret_url)
-
-    return render_to_response('person/test_auth.html', c)
