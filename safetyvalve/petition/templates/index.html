@@ -41,7 +41,7 @@
             {{ p.description }}&nbsp;
           </p>
 
-          <div class="detail" title="{%trans 'Signatures' %}">
+          <div class="detail" title="{%trans 'Total Signatures' %}">
             <div class="icon"><i class="fa fa-check-square"></i><span class="detail_figure">{{p.num_signatures}}</span></div>
           </div>
 
@@ -50,11 +50,11 @@
           </div>
 
           <div class="detail share_detail" title="{%trans 'Facebook Likes' %}">
-            <div class="fb_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/?r={% now "si" %}" data-text="{% trans 'I oppose this! Add your name now!' %}" data-title="Like"></div>
+            <div class="fb_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/?r={% now "si" %}" data-text="{% trans 'I oppose!' %}" data-title="Like"></div>
           </div>
 
           <div class="detail share_detail" title="{%trans 'Twitter Shares' %}">
-            <div class="twitter_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="{% trans 'I Oppose This! Add your name now!' %}" data-title="Tweet"></div>
+            <div class="twitter_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="{% trans 'I Oppose!' %}" data-title="Tweet"></div>
           </div>
 
 <!--           <div class="detail">

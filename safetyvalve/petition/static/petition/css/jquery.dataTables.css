@@ -15,11 +15,6 @@ table.dataTable td {
 }
 
 table.dataTable thead th {
-	padding: 10px 18px 10px 10px;
-	font-family: 'klinic_slabbold';
-	font-weight: normal;
-	font-size: 20px;
-	color: #57557B;
 	cursor: pointer;
 	*cursor: hand;
 	text-align: center;

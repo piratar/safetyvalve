@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-13 17:59+0000\n"
+"POT-Creation-Date: 2014-05-13 21:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -17,67 +17,58 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
+#: person/views.py:93 petition/views.py:86
+msgid "Email address"
+msgstr "Netfang"
+
+#: person/views.py:97
+#, fuzzy
+msgid "This field is required"
+msgstr "Netfang nauðsynlegt"
+
+#: person/views.py:98
+msgid "Please enter a valid e-mail address"
+msgstr "Vinsamlegast skrifað inn gott netfang"
+
 #: person/templates/person/_remove_signature__text.html:1
 #, python-format
 msgid "Are you sure you want to remove your signature for '%(petition)s'?"
 msgstr ""
 "Ertu viss um að þú viljir fjarlægja undirskrift þína gegn '%(petition)s'?"
 
-#: person/templates/person/my_page.html:43 petition/templates/detail.html:91
+#: person/templates/person/my_page.html:29 petition/templates/detail.html:29
+msgid "No data available in table"
+msgstr "Engin gögn aðgengileg"
+
+#: person/templates/person/my_page.html:36
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr "Sýni _START_ til _END_ af _TOTAL_ undirskriftir"
+
+#: person/templates/person/my_page.html:37 petition/templates/detail.html:37
+msgid "Show _MENU_ entries"
+msgstr "Sýna _MENU_ færslur"
+
+#: person/templates/person/my_page.html:52
+msgid "Email Settings"
+msgstr "Netfangs Skráning"
+
+#: person/templates/person/my_page.html:57
+msgid "Save"
+msgstr "Vista"
+
+#: person/templates/person/my_page.html:69
+#: petition/templates/petition/signatures.html:5
+#: petition/templates/petition/signatures.html:17
+msgid "My Signatures"
+msgstr "Mínar undirskriftir"
+
+#: person/templates/person/my_page.html:74 petition/templates/detail.html:120
 msgid "Name"
 msgstr "Nafn"
 
-#: person/templates/person/my_page.html:44 petition/templates/detail.html:92
-msgid "Social Number"
-msgstr "Kennitala"
-
-#: person/templates/person/my_page.html:45
-#: person/templates/person/my_page.html:62
-#: petition/templates/petition/signatures.html:23
-msgid "Date Signed"
-msgstr "Dagsetning undirskriftar"
-
-#: person/templates/person/my_page.html:56
-#, fuzzy
-msgid "My Signaturesss"
-msgstr "Mínar undirskriftir"
-
-#: person/templates/person/my_page.html:61
-#: petition/templates/petition/signatures.html:22
-msgid "Petition"
-msgstr "Undirskriftalisti"
-
-#: person/templates/person/my_page.html:63
-#: petition/templates/petition/signatures.html:24
-msgid "Visible"
-msgstr "Sýnileg"
-
-#: person/templates/person/my_page.html:73
-#: person/templates/person/remove_signature.html:19
-#: petition/templates/petition/signatures.html:34
-msgid "Yes"
-msgstr "Já"
-
-#: person/templates/person/my_page.html:74
-#: person/templates/person/remove_signature.html:20
-#: petition/templates/petition/signatures.html:35
-msgid "No"
-msgstr "Nei"
-
-#: person/templates/person/my_page.html:75
-#: petition/templates/petition/signatures.html:36
-msgid "Change"
-msgstr "Breyta"
-
-#: person/templates/person/my_page.html:83
-#: petition/templates/petition/signatures.html:44
-msgid "Remove"
-msgstr "Fjarlægja"
-
-#: person/templates/person/my_page.html:87
-#: petition/templates/petition/signatures.html:48
-msgid "No signatures yet!"
-msgstr "Enn engar undirskriftir!"
+#: person/templates/person/my_page.html:75 petition/templates/detail.html:122
+msgid "Date"
+msgstr "Dagsetning"
 
 #: person/templates/person/remove_signature.html:5
 #: person/templates/person/remove_signature.html:14
@@ -86,29 +77,27 @@ msgstr "Enn engar undirskriftir!"
 msgid "Remove signature"
 msgstr "fjarlægja undirskrift"
 
-#: petition/views.py:78
-msgid "Email address"
-msgstr "Netfang"
+#: person/templates/person/remove_signature.html:19
+#: petition/templates/petition/signatures.html:34
+msgid "Yes"
+msgstr "Já"
 
-#: petition/views.py:79
+#: person/templates/person/remove_signature.html:20
+#: petition/templates/petition/signatures.html:35
+msgid "No"
+msgstr "Nei"
+
+#: petition/views.py:87
 msgid "Confirm email address"
 msgstr "Staðfesting netfangs"
 
-#: petition/views.py:85
+#: petition/views.py:93
 msgid "Email addresses must match"
 msgstr "Netföngin verða bæði að vera eins"
 
-#: petition/templates/detail.html:30
-msgid "No data available in table"
-msgstr "Engin gögn aðgengileg"
-
-#: petition/templates/detail.html:37
-msgid "Showing _START_ to _END_ of _TOTAL_ entries"
-msgstr "Sýni _START_ til _END_ af _TOTAL_ undirskriftir"
-
-#: petition/templates/detail.html:38
-msgid "Show _MENU_ entries"
-msgstr "Sýna _MENU_ færslur"
+#: petition/templates/detail.html:36
+msgid "Showing _START_ to _END_ of _TOTAL_ of public signatures"
+msgstr "Sýni _START_ til _END_ af _TOTAL_ birtar undirskriftir"
 
 #: petition/templates/detail.html:49
 msgid "I oppose!"
@@ -118,34 +107,37 @@ msgstr "Ég mótmæli!"
 msgid "distributed"
 msgstr "útbýtt"
 
-#: petition/templates/detail.html:93
-msgid "Date"
-msgstr "Dagsetning"
+#: petition/templates/detail.html:98 petition/templates/index.html:44
+msgid "Total Signatures"
+msgstr "Undirskriftir í Heild"
 
-#: petition/templates/detail.html:105 petition/templates/index.html:52
+#: petition/templates/detail.html:99
+msgid "total signatures"
+msgstr "undirskriftir í heild"
+
+#: petition/templates/detail.html:102 petition/templates/index.html:52
 msgid "Facebook Likes"
 msgstr ""
 
-#: petition/templates/detail.html:106 petition/templates/index.html:53
+#: petition/templates/detail.html:103 petition/templates/index.html:53
 msgid "I oppose this! Add your name now!"
 msgstr ""
 
-#: petition/templates/detail.html:109 petition/templates/index.html:56
+#: petition/templates/detail.html:106 petition/templates/index.html:56
 msgid "Twitter Shares"
 msgstr ""
 
-#: petition/templates/detail.html:110 petition/templates/index.html:57
+#: petition/templates/detail.html:107 petition/templates/index.html:57
 msgid "I Oppose This! Add your name now!"
 msgstr ""
 
-#: petition/templates/detail.html:129 petition/templates/index.html:82
+#: petition/templates/detail.html:121
+msgid "Social Number"
+msgstr "Kennitala"
+
+#: petition/templates/detail.html:145 petition/templates/index.html:82
 msgid "Are you sure"
 msgstr "Ertu viss"
-
-#: petition/templates/index.html:44
-#, fuzzy
-msgid "Signatures"
-msgstr "undirskriftir"
 
 #: petition/templates/index.html:49
 msgid "Published On"
@@ -202,10 +194,29 @@ msgid ""
 msgstr ""
 "Stjórnendur kerfisins munu sjá til þess að staðfesting berast þér með pósti"
 
-#: petition/templates/petition/signatures.html:5
-#: petition/templates/petition/signatures.html:17
-msgid "My Signatures"
-msgstr "Mínar undirskriftir"
+#: petition/templates/petition/signatures.html:22
+msgid "Petition"
+msgstr "Undirskriftalisti"
+
+#: petition/templates/petition/signatures.html:23
+msgid "Date Signed"
+msgstr "Dagsetning undirskriftar"
+
+#: petition/templates/petition/signatures.html:24
+msgid "Visible"
+msgstr "Sýnileg"
+
+#: petition/templates/petition/signatures.html:36
+msgid "Change"
+msgstr "Breyta"
+
+#: petition/templates/petition/signatures.html:44
+msgid "Remove"
+msgstr "Fjarlægja"
+
+#: petition/templates/petition/signatures.html:48
+msgid "No signatures yet!"
+msgstr "Enn engar undirskriftir!"
 
 #: petition/templates/stub/sign_button.html:6
 msgid "Oppose"
@@ -254,6 +265,10 @@ msgstr "Útskrá"
 #: templates/base.html:117
 msgid "Sign In"
 msgstr "Innskráning"
+
+#, fuzzy
+#~ msgid "My Signaturesss"
+#~ msgstr "Mínar undirskriftir"
 
 #~ msgid "Share!"
 #~ msgstr "Deila!"

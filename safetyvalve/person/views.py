@@ -4,6 +4,7 @@ import json
 from math import floor
 from urllib import urlencode
 
+from django import forms
 from django.conf import settings
 from django.contrib.auth import logout
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -12,6 +13,7 @@ from django.shortcuts import HttpResponse, HttpResponseRedirect
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template import Context
+from django.utils.translation import ugettext
 
 from petition.models import Signature
 
@@ -42,7 +44,7 @@ def get_user_signatures(request):
             sort_dir = "desc"
 
         if sort_index == 0:
-            sort_fields = ['user__first_name', 'user__last_name']
+            sort_fields = ['petition__name']
         else:
             sort_fields = ['date_created']
 
@@ -50,8 +52,7 @@ def get_user_signatures(request):
             if sort_dir == "desc":
                 sort_fields[i] = "-"+sort_fields[i]
 
-        signatures = Signature.objects.select_related('petition__name').filter(user=request.user).order_by('-date_created')
-        print signatures
+        signatures = Signature.objects.select_related('petition__name').filter(user=request.user).order_by(*sort_fields)
 
         try:
             p = Paginator(signatures, page_length)
@@ -83,14 +84,37 @@ def logout_view(request):
     return HttpResponseRedirect('/')
 
 def my_page(request):
-    c = {}
+    form_success = ""
 
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('login'))
 
+    class EmailForm(forms.Form):
+        email = forms.EmailField(label=ugettext('Email address'),
+                                initial=request.user.email, 
+                                localize=True,
+                                error_messages={
+                                    'required': ugettext('This field is required'),
+                                    'invalid': ugettext('Please enter a valid e-mail address')
+                                })
+
+        def clean(self):
+            return self.cleaned_data
+
+    if request.method == 'POST':
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            request.user.email = form.cleaned_data['email']
+            request.user.save()
+            form_success = "success"
+    else:
+        form = EmailForm()
+
     context = Context({
         'signatures_url': settings.INSTANCE_URL + reverse('get_user_signatures') + '',
-        'page_title': 'My Page'
+        'page_title': 'My Page',
+        'form': form,
+        'form_success': form_success
     })
 
     return render(request, 'person/my_page.html', context)

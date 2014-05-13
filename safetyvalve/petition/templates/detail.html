@@ -18,7 +18,6 @@
                 "bProcessing": true,
                 "bServerSide": true,
                 "bFilter": false,
-                "bInfo": false,
                 "bAutoWidth": true,
                 "sAjaxSource": '{{ INSTANCE_URL }}{{ signatures_url }}',
                 "aoColumns": [
@@ -34,7 +33,7 @@
                     "sFirst": "&#xf104;",
                     "sLast": "&#xf105;"
                   },
-                  "sInfo": "{% trans 'Showing _START_ to _END_ of _TOTAL_ entries' %}",
+                  "sInfo": "{% trans 'Showing _START_ to _END_ of _TOTAL_ of public signatures' %}",
                   "sLengthMenu": "{% trans 'Show _MENU_ entries' %}"
                 },
                 "sPaginationType": "full_numbers",
@@ -61,7 +60,7 @@
     <div class="container-fluid petition_detail">
         <div class="row-fluid">
             <div class="span12 title_span">
-                <h2>{{ p.name|capfirst }}</h2>
+                <h1>{{ p.name|capfirst }}</h1>
             </div>
         </div>
 
@@ -87,35 +86,41 @@
         <div class="row-fluid">
 
             <div class="span12">
+
                 <div class="details">
 
+                    <div class="detail" title="{%trans 'Total Signatures' %}">
+                        <div class="icon"><i class="fa fa-check-square"></i><span class="detail_figure">{{p.num_signatures}} {% trans 'total signatures' %}</span></div>
+                    </div>
+
                     <div class="detail share_detail" title="{%trans 'Facebook Likes' %}">
-                        <div class="fb_share" data-url="{{INSTANCE_URL}}/frumvarp/{{ p.id }}/?r={% now "si" %}" data-text="{% trans 'I oppose this! Add your name now!' %}" data-title="Like"></div>
+                        <div class="fb_share" data-url="{{INSTANCE_URL}}/frumvarp/{{ p.id }}/?r={% now "si" %}" data-text="{% trans 'I oppose!' %}" data-title="Like"></div>
                     </div>
 
                     <div class="detail share_detail" title="{%trans 'Twitter Shares' %}">
-                        <div class="twitter_share" data-url="{{INSTANCE_URL}}/frumvarp/{{ p.id }}/" data-text="{% trans 'I Oppose This! Add your name now!' %}" data-title="Tweet"></div>
+                        <div class="twitter_share" data-url="{{INSTANCE_URL}}/frumvarp/{{ p.id }}/" data-text="{% trans 'I Oppose!' %}" data-title="Tweet"></div>
                     </div>
 
                 </div>
+
+                {% if already_signed %}
+                  {% include 'stub/unsign_button.html' %}
+                {% else %}
+                  {% include 'stub/sign_button.html' %}
+                {% endif %}
+                
             </div>
 
         </div>
-
-        {% if already_signed %}
-          {% include 'stub/unsign_button.html' %}
-        {% else %}
-          {% include 'stub/sign_button.html' %}
-        {% endif %}
 
         <div class-"row-fluid">
             
             <table id="signatures">
                 
                 <thead>
-                    <th>{% trans 'Name' %}</th>
-                    <th>{% trans 'Social Number' %}</th>
-                    <th>{% trans 'Date' %}</th>
+                    <th><h2>{% trans 'Name' %}</h2></th>
+                    <th><h2>{% trans 'Social Number' %}</h2></th>
+                    <th><h2>{% trans 'Date' %}</h2></th>
                 </thead>
 
                 <tbody>

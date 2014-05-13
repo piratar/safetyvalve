@@ -55,7 +55,15 @@ def cached_or_function(key, fun, timeout=60 * 5, *args, **kwargs):
 
 
 def detail(request, petition_id):
-    p = Petition.objects.get(id=petition_id)
+    #p = Petition.objects.get(id=petition_id)
+    petitions = Petition.objects.select_related().filter(id=petition_id).annotate(num_signatures=Count('signature'))
+    petition = None
+
+    for p in petitions:
+        petition = p
+
+    if petition == None:
+        return HttpResponseRedirect(reverse('popular'))
 
     already_signed = False
     if request.user.is_authenticated():
@@ -130,7 +138,7 @@ def get_public_signatures(request, petition_id):
         if sort_dir == "desc":
             sort_fields[i] = "-"+sort_fields[i]
 
-    signatures = Signature.objects.select_related('user').filter(petition_id=petition_id).order_by(*sort_fields)
+    signatures = Signature.objects.select_related('user').filter(petition_id=petition_id).filter(show_public=1).order_by(*sort_fields)
     try:
         p = Paginator(signatures, page_length)
         results = p.page(page_num)
