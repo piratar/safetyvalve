@@ -53,6 +53,11 @@ h3 {
 	border-width: 3px;
 }
 
+p {
+	font-family: 'klinic_slabbook';
+	color: #3C4366;
+}
+
 
 /* ---- FORM STYLES -------------------------------------------------------- */
 
@@ -610,7 +615,6 @@ table td { /* Add a little breathing space for tables - especially under /signat
 #about_us_wrapper p {
 	font-family: 'klinic_slabbold';
 	color: #3C4366;
-
 }
 
 #about_us_wrapper a {
