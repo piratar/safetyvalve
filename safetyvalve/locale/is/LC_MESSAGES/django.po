@@ -157,7 +157,7 @@ msgid ""
 "towards resolving any errors in the system. Please check the appropriate "
 "page to see if your signature was added/remove. Failure to receive an e-mail "
 "does not mean that your action was not completed."
-msgstr ""
+msgstr "Við biðjumst velvirðingar á villunni. Þessi hugbúnaður er enn frumgerð og við vinnum hörðun höndum að því að laga allar villur sem koma upp. Vinsamlega athugaðu hvort að undirskrift þín skilaði sér (eða var fjarlægð) enda er ekki sjálfgefið að aðgerðin hafi ekki tekist þó tölvupósturinn hafi klikkað."
 
 #: petition/templates/stub/sign_button.html:6
 msgid "Oppose"
