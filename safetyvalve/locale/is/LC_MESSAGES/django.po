@@ -100,7 +100,7 @@ msgstr "Netföngin verða bæði að vera eins"
 
 #: petition/templates/detail.html:30
 msgid "No data available in table"
-msgstr "engin gögn aðgengileg"
+msgstr "Engin gögn aðgengileg"
 
 #: petition/templates/detail.html:39 petition/templates/index.html:53
 msgid "I oppose this! Add your name now!"
