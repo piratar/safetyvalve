@@ -19,11 +19,12 @@
                 "bServerSide": true,
                 "bFilter": false,
                 "bInfo": false,
+                "bAutoWidth": true,
                 "sAjaxSource": '{{ INSTANCE_URL }}{{ signatures_url }}',
                 "aoColumns": [
-                    null,
-                    {"bSortable": false},
-                    null
+                    {"sWidth": "60%"},
+                    {"bSortable": false, "sWidth": "20%"},
+                    {"sWidth": "20%"}
                 ]
             } );
         } );
@@ -32,6 +33,9 @@
 
 {% block extra_meta %}
         <meta property="og:title" content="{{ petition.name }}" />
+        <meta property="og:description" content="{{ petition.description}}" />
+        <meta property="og:image" content="{{ INSTANCE_URL }}{{STATIC_URL}}/core/img/fb_share.svg" />
+        <meta property="og:image:type" content="image/svg+xml" />
 {% endblock %}
 
 {% block title %}
@@ -39,10 +43,6 @@
 {% endblock %}
 
 {% block content %}
-    
-    <div id="petition_detail_panel">
-
-    </div>
 
     <div class="container-fluid petition_detail">
         <div class="row-fluid">

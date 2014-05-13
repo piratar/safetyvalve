@@ -67,7 +67,8 @@ def detail(request, petition_id):
         'petition': p,
         'signatures': signatures,
         'already_signed': already_signed,
-        'signatures_url': settings.INSTANCE_URL + reverse('get_public_signatures', args=(petition_id, )) + ''  
+        'signatures_url': reverse('get_public_signatures', args=(petition_id, )) + '' ,
+        'INSTANCE_URL' : settings.INSTANCE_URL
     })
 
     return render(request, 'detail.html', context)
