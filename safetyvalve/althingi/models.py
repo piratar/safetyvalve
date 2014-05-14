@@ -32,7 +32,7 @@ class Issue(models.Model):
     def save(self, *args, **kwargs):
         models.Model.save(self, *args, **kwargs)
 
-        if self.issue_type == 'l':
+        if self.issue_type == 'l' or self.issue_type == 'a':
             external_id = "%s.%s" % (self.session.session_num, self.issue_num)
 
             if Petition.objects.filter(external_id=external_id).count() == 0:
@@ -65,7 +65,7 @@ class Document(models.Model):
     xhtml = models.TextField()
 
     def save(self, *args, **kwargs):
-        if self.is_main and self.issue.issue_type == 'l':
+        if self.is_main and (self.issue.issue_type == 'l' or self.issue.issue_type == 'a'):
             external_id = "%s.%s" % (self.issue.session.session_num, self.issue.issue_num)
 
             petition = Petition.objects.get(external_id=external_id)
