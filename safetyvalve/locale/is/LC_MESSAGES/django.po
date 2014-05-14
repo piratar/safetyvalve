@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-14 15:59+0000\n"
+"POT-Creation-Date: 2014-05-14 16:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -194,6 +194,12 @@ msgstr "Hætta Við"
 #: petition/templates/stub/unsign_button.html:4
 msgid "Remove Signature"
 msgstr "Fjarlægja undirskrift"
+
+#: templates/base.html:18
+msgid ""
+"Safety Valve is an open source project dedicated to giving citizens a means "
+"of opposing parliamentary issues"
+msgstr "Öryggisventill er opið (e. open-source) verkefni sem er ætlað að gefa borgurum landsins færi á því að mótmæla þingmálum á Alþingi"
 
 #: templates/base.html:58 templates/base.html.py:77
 msgid "Hottest"
