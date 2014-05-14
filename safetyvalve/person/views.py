@@ -31,7 +31,7 @@ def get_user_signatures(request):
         page_length = int(request.GET.get('iDisplayLength', 0))
 
         if start_index < 0:
-            start_index = 0;
+            start_index = 0
         if page_length < 1:
             page_length = 1
 
@@ -45,6 +45,8 @@ def get_user_signatures(request):
 
         if sort_index == 0:
             sort_fields = ['petition__name']
+        elif sort_index == 1:
+            sort_fields = ['show_public']
         else:
             sort_fields = ['date_created']
 
@@ -64,7 +66,10 @@ def get_user_signatures(request):
 
         for s in results:
             o = []
-            o.append(s.petition.name.capitalize())
+            petition = {'petition_name': s.petition.name.capitalize(),
+                        'petition_id': s.petition.id}
+            o.append(petition)
+            o.append(ugettext('Yes') if s.show_public == 1 else ugettext('No'))
             o.append(s.date_created.strftime("%Y-%m-%d %H:%M:%S"))
 
             response.append(o)
