@@ -269,6 +269,20 @@ form .errorlist {
 #current_user a {
 	color: #3B4265;
 }
+
+.beta, #mobile_nav .beta {
+	color: #C12727;
+	font-family: 'klinic_slabbold';
+	font-size: 20px;
+
+	text-transform: none;
+}
+
+#mobile_nav .beta {
+	display: inline-block;
+	margin-left: 10px;
+	padding-top: 12px;
+}
 /* ---- END NAVIGATION STYLES ---------------------------------------------- */
 
 
