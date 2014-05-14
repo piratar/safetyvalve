@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block open_graph %}
-        <meta property="og:title" content="{{ p.name }}" />
+        <meta property="og:title" content="{{ p.name|capfirst }}" />
         <meta property="og:description" content="{% trans 'I oppose!' %}" />
         <meta property="og:image" content="{{ INSTANCE_URL }}{{STATIC_URL}}core/img/fb_share.png" />
         <meta property="og:image:type" content="image/svg+xml" />
@@ -40,7 +40,7 @@
                     "sFirst": "&#xf104;",
                     "sLast": "&#xf105;"
                   },
-                  "sInfo": "{% trans 'Showing _START_ to _END_ of _TOTAL_ of public signatures' %}",
+                  "sInfo": "{% trans 'Showing _START_ to _END_ of _TOTAL_ entries' %}",
                   "sLengthMenu": "{% trans 'Show _MENU_ entries' %}"
                 },
                 "sPaginationType": "full_numbers",
