@@ -66,7 +66,7 @@ $(function () {
 
     $('.twitter_share').sharrre({
         share: {
-            facebook: true
+            twitter: true
         },
         template: '<div class="icon share_icon"><i class="fa fa-twitter-square"></i><span class="detail_figure">{total}</span></div>',
         enableHover: false,
