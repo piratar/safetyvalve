@@ -56,7 +56,7 @@ def authenticate(request, redirect_url):
         if not token:
             curr_url = request.get_full_path().split('?')[0]
             fake_token = binascii.b2a_hex(os.urandom(10))
-            return HttpResponseRedirect('%s?token=%s' % (curr_url, fake_token))
+            return HttpResponseRedirect('%s?show_public=%s&token=%s' % (curr_url, str(request.GET.get('show_public', 0)), fake_token))
 
         name = fake_auth['name']
         kennitala = fake_auth['kennitala']
