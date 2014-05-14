@@ -1,5 +1,5 @@
-django==1.5.1
+django
 beautifulsoup
 mysql-python
-suds==0.4
-lxml==3.2.1
+suds
+lxml
