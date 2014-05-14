@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-13 22:57+0000\n"
+"POT-Creation-Date: 2014-05-14 15:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -29,15 +29,15 @@ msgstr "Netfang nauðsynlegt"
 msgid "Please enter a valid e-mail address"
 msgstr "Vinsamlegast skrifað inn gott netfang"
 
-#: person/templates/person/my_page.html:29 petition/templates/detail.html:29
+#: person/templates/person/my_page.html:29 petition/templates/detail.html:36
 msgid "No data available in table"
 msgstr "Engin gögn aðgengileg"
 
 #: person/templates/person/my_page.html:36
-msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgid "Showing _START_ to _END_ of _TOTAL_ signatures"
 msgstr "Sýni _START_ til _END_ af _TOTAL_ undirskriftir"
 
-#: person/templates/person/my_page.html:37 petition/templates/detail.html:37
+#: person/templates/person/my_page.html:37 petition/templates/detail.html:44
 msgid "Show _MENU_ entries"
 msgstr "Sýna _MENU_ færslur"
 
@@ -69,14 +69,14 @@ msgstr "Staðfesting netfangs"
 msgid "Email addresses must match"
 msgstr "Netföngin verða bæði að vera eins"
 
-#: petition/templates/detail.html:36
-msgid "Showing _START_ to _END_ of _TOTAL_ of public signatures"
-msgstr "Sýni _START_ til _END_ af _TOTAL_ birtar undirskriftir"
-
-#: petition/templates/detail.html:49 petition/templates/detail.html.py:97
+#: petition/templates/detail.html:11 petition/templates/detail.html.py:97
 #: petition/templates/index.html:53
 msgid "I oppose!"
 msgstr "Ég mótmæli!"
+
+#: petition/templates/detail.html:43
+msgid "Showing _START_ to _END_ of _TOTAL_ public signatures"
+msgstr "Sýni _START_ til _END_ af _TOTAL_ birtar undirskriftir"
 
 #: petition/templates/detail.html:69
 msgid "distributed"
@@ -157,7 +157,11 @@ msgid ""
 "towards resolving any errors in the system. Please check the appropriate "
 "page to see if your signature was added/remove. Failure to receive an e-mail "
 "does not mean that your action was not completed."
-msgstr "Við biðjumst velvirðingar á villunni. Við erum ennþá á prófunarstigi og vinnum að því að lagfæra allar villur í kerfinu. Vinsamlegast athugið á viðkomandi síðu hvort undirskrift þín fór inn/út. Villa við sendingu kvittunarpósts þýðir ekki endilega að aðgerðin hafi mistekist."
+msgstr ""
+"Við biðjumst velvirðingar á villunni. Við erum ennþá á prófunarstigi og "
+"vinnum að því að lagfæra allar villur í kerfinu. Vinsamlegast athugið á "
+"viðkomandi síðu hvort undirskrift þín fór inn/út. Villa við sendingu "
+"kvittunarpósts þýðir ekki endilega að aðgerðin hafi mistekist."
 
 #: petition/templates/stub/sign_button.html:6
 msgid "Oppose"
@@ -179,33 +183,36 @@ msgstr "Hætta Við"
 msgid "Remove Signature"
 msgstr "Fjarlægja undirskrift"
 
-#: templates/base.html:52 templates/base.html.py:74
+#: templates/base.html:58 templates/base.html.py:77
 msgid "Popular"
 msgstr "Vinsælast"
 
-#: templates/base.html:53 templates/base.html.py:75
+#: templates/base.html:59 templates/base.html.py:78
 msgid "All Issues"
 msgstr "Öll Mál"
 
-#: templates/base.html:54 templates/base.html.py:76
+#: templates/base.html:60 templates/base.html.py:79
 msgid "My Page"
 msgstr "Síðan Mín"
 
-#: templates/base.html:55 templates/base.html.py:77
+#: templates/base.html:61 templates/base.html.py:80
 msgid "About Us"
 msgstr "Um okkur"
 
-#: templates/base.html:56 templates/base.html.py:78
+#: templates/base.html:62 templates/base.html.py:81
 msgid "Contact Us"
 msgstr "Hafðu samband"
 
-#: templates/base.html:57 templates/base.html.py:111
+#: templates/base.html:63 templates/base.html.py:114
 msgid "Sign Out"
 msgstr "Útskrá"
 
-#: templates/base.html:117
+#: templates/base.html:120
 msgid "Sign In"
 msgstr "Innskráning"
+
+#~ msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+#~ msgstr "Sýni _START_ til _END_ af _TOTAL_ undirskriftir"
 
 #~ msgid "Are you sure you want to remove your signature for '%(petition)s'?"
 #~ msgstr ""
