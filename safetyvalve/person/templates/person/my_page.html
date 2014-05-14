@@ -23,8 +23,15 @@
                 "sAjaxSource": '{{ INSTANCE_URL }}{{ signatures_url }}',
                 "aoColumns": [
                     null,
+                    {"sWidth": "25%", "sClass": "center"},
                     {"sWidth": "25%", "sClass": "center"}
                 ],
+                "aoColumnDefs": [ {
+                  "aTargets": [ 0 ],
+                  "mRender": function ( data, type, full ) {
+                    return '<a href="/frumvarp/'+data.petition_id+'/">'+data.petition_name+'</a>';
+                  }
+                } ],
                 "oLanguage": {
                   "sEmptyTable": "{% trans 'No data available in table' %}",
                   "oPaginate": {
@@ -71,8 +78,9 @@
             <table id="signatures">
                 
                 <thead>
-                    <th>{% trans 'Name' %}</th>
-                    <th>{% trans 'Date' %}</th>
+                    <th><h2>{% trans 'Name' %}</h2></th>
+                    <th><h2>{% trans 'Shown Publically' %}</h2></th>
+                    <th><h2>{% trans 'Date' %}</h2></th>
                 </thead>
 
                 <tbody>

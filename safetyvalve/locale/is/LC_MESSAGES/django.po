@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-14 15:20+0000\n"
+"POT-Creation-Date: 2014-05-14 16:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -17,47 +17,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: person/views.py:93 petition/views.py:86
+#: person/views.py:72
+msgid "Yes"
+msgstr "Já"
+
+#: person/views.py:72
+msgid "No"
+msgstr "Nei"
+
+#: person/views.py:98 petition/views.py:86
 msgid "Email address"
 msgstr "Netfang"
 
-#: person/views.py:97
+#: person/views.py:102
 msgid "This field is required"
 msgstr "Netfang nauðsynlegt"
 
-#: person/views.py:98
+#: person/views.py:103
 msgid "Please enter a valid e-mail address"
 msgstr "Vinsamlegast setjið inn löggilt netfang"
 
-#: person/templates/person/my_page.html:29 petition/templates/detail.html:36
+#: person/templates/person/my_page.html:36 petition/templates/detail.html:36
 msgid "No data available in table"
 msgstr "Engar undirskrift enn"
 
-#: person/templates/person/my_page.html:36
+#: person/templates/person/my_page.html:43
 msgid "Showing _START_ to _END_ of _TOTAL_ signatures"
 msgstr "Sýni _START_ til _END_ af _TOTAL_ undirskriftir"
 
-#: person/templates/person/my_page.html:37 petition/templates/detail.html:44
+#: person/templates/person/my_page.html:44 petition/templates/detail.html:44
 msgid "Show _MENU_ entries"
 msgstr "Sýna _MENU_ færslur"
 
-#: person/templates/person/my_page.html:52
+#: person/templates/person/my_page.html:59
 msgid "Email Settings"
 msgstr "Netfangs Skráning"
 
-#: person/templates/person/my_page.html:57
+#: person/templates/person/my_page.html:64
 msgid "Save"
 msgstr "Vista"
 
-#: person/templates/person/my_page.html:69
+#: person/templates/person/my_page.html:76
 msgid "My Signatures"
 msgstr "Mínar undirskriftir"
 
-#: person/templates/person/my_page.html:74 petition/templates/detail.html:121
+#: person/templates/person/my_page.html:81 petition/templates/detail.html:121
 msgid "Name"
 msgstr "Nafn"
 
-#: person/templates/person/my_page.html:75 petition/templates/detail.html:123
+#: person/templates/person/my_page.html:82
+msgid "Shown Publically"
+msgstr "Nafnbirting opinber"
+
+#: person/templates/person/my_page.html:83 petition/templates/detail.html:123
 msgid "Date"
 msgstr "Dagsetning"
 
@@ -183,6 +195,12 @@ msgstr "Hætta Við"
 msgid "Remove Signature"
 msgstr "Fjarlægja undirskrift"
 
+#: templates/base.html:18
+msgid ""
+"Safety Valve is an open source project dedicated to giving citizens a means "
+"of opposing parliamentary issues"
+msgstr "Öryggisventill er opið (e. open-source) verkefni sem er ætlað að gefa borgurum landsins færi á því að mótmæla þingmálum á Alþingi"
+
 #: templates/base.html:58 templates/base.html.py:77
 msgid "Hottest"
 msgstr "Heitast"
@@ -218,12 +236,6 @@ msgstr "Innskráning"
 #, fuzzy
 #~ msgid "Remove signature"
 #~ msgstr "fjarlægja undirskrift"
-
-#~ msgid "Yes"
-#~ msgstr "Já"
-
-#~ msgid "No"
-#~ msgstr "Nei"
 
 #~ msgid ""
 #~ "Administrators will make sure that the receipt will be sent to you via "
