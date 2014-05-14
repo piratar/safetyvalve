@@ -51,8 +51,9 @@
               <object class="logo" data="{% static 'core/img/logo.svg' %}" type="image/svg+xml"> 
                 <img class="logo" src="{% static 'core/img/logo.svg' %}" />
               </object>
-              Öryggisventill
+              Öryggisventill 
             </a>
+            <span class="beta">{% trans 'Beta Version' %}</span>
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li class="active"><a href="/">{% trans 'Hottest' %}</a></li>
@@ -80,6 +81,9 @@
             <li><a href="/um-okkur/" {% if page_title == 'About Us' %}class="selected"{% endif %}>{% trans 'About Us' %}</a></li>
             <li><a href="mailto:ventill@ventill.is">{% trans 'Contact Us' %}</a></li>
           </ul>
+
+          <br />
+          <span class="beta">{% trans 'Beta Version' %}</span>
         </div>
       </div>
 
