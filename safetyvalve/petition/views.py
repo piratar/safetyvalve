@@ -259,7 +259,7 @@ def popular(request):
     #petitions = cached_or_function('popular__petitions', get_popular_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
     petitions = get_popular_petitions()
 
-    return index(request, 'Popular', petitions)
+    return index(request, 'Hottest', petitions)
 
 
 def sign(request, petition_id):
