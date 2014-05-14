@@ -43,7 +43,7 @@ msgstr "Engar undirskrift enn"
 
 #: person/templates/person/my_page.html:43
 msgid "Showing _START_ to _END_ of _TOTAL_ signatures"
-msgstr "Sýni _START_ til _END_ af _TOTAL_ undirskriftir"
+msgstr "Sýni _START_ til _END_ af _TOTAL_ undirskriftum"
 
 #: person/templates/person/my_page.html:44 petition/templates/detail.html:44
 msgid "Show _MENU_ entries"
@@ -88,7 +88,7 @@ msgstr "Ég mótmæli!"
 
 #: petition/templates/detail.html:43
 msgid "Showing _START_ to _END_ of _TOTAL_ public signatures"
-msgstr "Sýni _START_ til _END_ af _TOTAL_ birtar undirskriftir"
+msgstr "Sýni _START_ til _END_ af _TOTAL_ birtum undirskriftum"
 
 #: petition/templates/detail.html:69
 msgid "distributed"
@@ -124,7 +124,7 @@ msgstr "Ertu viss"
 
 #: petition/templates/index.html:49
 msgid "Published On"
-msgstr "Frumvarp flutt"
+msgstr "Þingmál flutt"
 
 #: petition/templates/petition/email.html:5
 msgid "Email required"
