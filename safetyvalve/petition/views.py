@@ -242,7 +242,8 @@ def index(request, page_title, petitions):
         'signed_petition_ids': signed_petition_ids,
         'pages' : pages,
         'current_page': page,
-        'page_title': page_title
+        'page_title': page_title,
+        'INSTANCE_URL' : settings.INSTANCE_URL
     })
 
     return render(request, 'index.html', context)
