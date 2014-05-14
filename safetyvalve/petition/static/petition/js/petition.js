@@ -57,7 +57,7 @@ $(function () {
         },
         template: '<div class="icon share_icon"><i class="fa fa-facebook-square"></i><span class="detail_figure">{total}</span></div>',
         enableHover: false,
-        enableTracking: true,
+        enableTracking: false,
         click: function(api, options) {
             api.simulateClick();
             api.openPopup('facebook');
@@ -70,7 +70,7 @@ $(function () {
         },
         template: '<div class="icon share_icon"><i class="fa fa-twitter-square"></i><span class="detail_figure">{total}</span></div>',
         enableHover: false,
-        enableTracking: true,
+        enableTracking: false,
         click: function(api, options) {
             api.simulateClick();
             api.openPopup('twitter');
