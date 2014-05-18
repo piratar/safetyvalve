@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-14 16:39+0000\n"
+"POT-Creation-Date: 2014-05-18 11:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -49,27 +49,27 @@ msgstr "Sýni _START_ til _END_ af _TOTAL_ undirskriftum"
 msgid "Show _MENU_ entries"
 msgstr "Sýna _MENU_ færslur"
 
-#: person/templates/person/my_page.html:59
+#: person/templates/person/my_page.html:60
 msgid "Email Settings"
 msgstr "Netfangs Skráning"
 
-#: person/templates/person/my_page.html:64
+#: person/templates/person/my_page.html:65
 msgid "Save"
 msgstr "Vista"
 
-#: person/templates/person/my_page.html:76
+#: person/templates/person/my_page.html:77
 msgid "My Signatures"
 msgstr "Mínar undirskriftir"
 
-#: person/templates/person/my_page.html:81 petition/templates/detail.html:121
+#: person/templates/person/my_page.html:82 petition/templates/detail.html:122
 msgid "Name"
 msgstr "Nafn"
 
-#: person/templates/person/my_page.html:82
-msgid "Shown Publically"
+#: person/templates/person/my_page.html:83
+msgid "Shown Publicly"
 msgstr "Nafnbirting opinber"
 
-#: person/templates/person/my_page.html:83 petition/templates/detail.html:123
+#: person/templates/person/my_page.html:84 petition/templates/detail.html:124
 msgid "Date"
 msgstr "Dagsetning"
 
@@ -81,7 +81,7 @@ msgstr "Staðfesting netfangs"
 msgid "Email addresses must match"
 msgstr "Netföngin verða bæði að vera eins"
 
-#: petition/templates/detail.html:11 petition/templates/detail.html.py:97
+#: petition/templates/detail.html:11 petition/templates/detail.html.py:98
 #: petition/templates/index.html:53
 msgid "I oppose!"
 msgstr "Ég mótmæli!"
@@ -90,35 +90,35 @@ msgstr "Ég mótmæli!"
 msgid "Showing _START_ to _END_ of _TOTAL_ public signatures"
 msgstr "Sýni _START_ til _END_ af _TOTAL_ birtum undirskriftum"
 
-#: petition/templates/detail.html:69
+#: petition/templates/detail.html:70
 msgid "distributed"
 msgstr "útbýtt"
 
-#: petition/templates/detail.html:92 petition/templates/index.html:44
+#: petition/templates/detail.html:93 petition/templates/index.html:44
 msgid "Total Signatures"
 msgstr "Undirskriftir í Heild"
 
-#: petition/templates/detail.html:93
+#: petition/templates/detail.html:94
 msgid "total signatures"
 msgstr "undirskriftir í heild"
 
-#: petition/templates/detail.html:96 petition/templates/index.html:52
+#: petition/templates/detail.html:97 petition/templates/index.html:52
 msgid "Facebook Likes"
 msgstr ""
 
-#: petition/templates/detail.html:100 petition/templates/index.html:56
+#: petition/templates/detail.html:101 petition/templates/index.html:56
 msgid "Twitter Shares"
 msgstr ""
 
-#: petition/templates/detail.html:101 petition/templates/index.html:57
+#: petition/templates/detail.html:102 petition/templates/index.html:57
 msgid "I Oppose!"
 msgstr "Ég mótmæli!"
 
-#: petition/templates/detail.html:122
+#: petition/templates/detail.html:123
 msgid "Social Number"
 msgstr "Kennitala"
 
-#: petition/templates/detail.html:146 petition/templates/index.html:82
+#: petition/templates/detail.html:147 petition/templates/index.html:82
 msgid "Are you sure"
 msgstr "Ertu viss"
 
@@ -203,35 +203,35 @@ msgstr ""
 "Öryggisventill er opið (e. open-source) verkefni sem er ætlað að gefa "
 "borgurum landsins færi á því að mótmæla þingmálum á Alþingi"
 
-#: templates/base.html:54 templates/base.html.py:85
+#: templates/base.html:56 templates/base.html.py:86
 msgid "Beta Version"
 msgstr "Prófunarútgáfa"
 
-#: templates/base.html:58 templates/base.html.py:77
+#: templates/base.html:59 templates/base.html.py:78
 msgid "Hottest"
 msgstr "Heitast"
 
-#: templates/base.html:59 templates/base.html.py:78
+#: templates/base.html:60 templates/base.html.py:79
 msgid "All Issues"
 msgstr "Öll Mál"
 
-#: templates/base.html:60 templates/base.html.py:79
+#: templates/base.html:61 templates/base.html.py:80
 msgid "My Page"
 msgstr "Síðan Mín"
 
-#: templates/base.html:61 templates/base.html.py:80
+#: templates/base.html:62 templates/base.html.py:81
 msgid "About Us"
 msgstr "Um okkur"
 
-#: templates/base.html:62 templates/base.html.py:81
+#: templates/base.html:63 templates/base.html.py:82
 msgid "Contact Us"
 msgstr "Hafðu samband"
 
-#: templates/base.html:63 templates/base.html.py:117
+#: templates/base.html:64 templates/base.html.py:118
 msgid "Sign Out"
 msgstr "Útskrá"
 
-#: templates/base.html:123
+#: templates/base.html:124
 msgid "Sign In"
 msgstr "Innskráning"
 
