@@ -27,21 +27,21 @@
                     {"sWidth": "25%", "sClass": "center"}
                 ],
                 "aoColumnDefs": [ {
-                  "aTargets": [ 0 ],
-                  "mRender": function ( data, type, full ) {
-                    return '<a href="/frumvarp/'+data.petition_id+'/">'+data.petition_name+'</a>';
-                  }
+                    "aTargets": [ 0 ],
+                    "mRender": function ( data, type, full ) {
+                        return '<a href="/frumvarp/'+data.petition_id+'/">'+data.petition_name+'</a>';
+                    }
                 } ],
                 "oLanguage": {
-                  "sEmptyTable": "{% trans 'No data available in table' %}",
-                  "oPaginate": {
-                    "sPrevious": "&#xf100;",
-                    "sNext": "&#xf101;",
-                    "sFirst": "&#xf104;",
-                    "sLast": "&#xf105;"
-                  },
-                  "sInfo": "{% trans 'Showing _START_ to _END_ of _TOTAL_ signatures' %}",
-                  "sLengthMenu": "{% trans 'Show _MENU_ entries' %}"
+                    "sEmptyTable": "{% trans 'No data available in table' %}",
+                    "oPaginate": {
+                        "sPrevious": "&#xf100;",
+                        "sNext": "&#xf101;",
+                        "sFirst": "&#xf104;",
+                        "sLast": "&#xf105;"
+                    },
+                    "sInfo": "{% trans 'Showing _START_ to _END_ of _TOTAL_ signatures' %}",
+                    "sLengthMenu": "{% trans 'Show _MENU_ entries' %}"
                 },
                 "sPaginationType": "full_numbers",
                 "bInfo": true,
