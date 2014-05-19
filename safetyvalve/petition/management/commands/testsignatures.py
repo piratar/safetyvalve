@@ -19,7 +19,7 @@ class Command(BaseCommand):
 
         user, newly_created = User.objects.get_or_create(username='1234567891', first_name='Test User')
 
-        petitions = Petition.objects.all().order_by('?')[:petition_count]
+        petitions = Petition.objects.all().order_by('-date_created')[:petition_count]
         for petition in petitions:
 
             signatures_count = randrange(signatures_min, signatures_max + 1)
