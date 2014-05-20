@@ -32,6 +32,19 @@
                     {"bSortable": false, "sWidth": "25%", "sClass": "center"},
                     {"sWidth": "25%", "sClass": "center"}
                 ],
+                "aoColumnDefs": [ {
+                    "aTargets": [ 0 ],
+                    "mRender": function( data, type, full ) {
+                        thumb = '';
+                        if (data.signature_stance == 'oppose') {
+                            thumb = '<i class="fa fa-thumbs-down"></i>';
+                        }
+                        else if (data.signature_stance == 'endorse') {
+                            thumb = '<i class="fa fa-thumbs-up"></i>';
+                        }
+                        return thumb + " " + data.signature_name;
+                    }
+                } ],
                 "oLanguage": {
                     "sEmptyTable": "{% trans 'No data available in table' %}",
                     "oPaginate": {
@@ -91,7 +104,9 @@
                 <div class="details">
 
                     <div class="detail" title="{%trans 'Total Signatures' %}">
-                        <div class="icon"><i class="fa fa-check-square"></i><span class="detail_figure">{{p.num_signatures}} {% trans 'total signatures' %}</span></div>
+                        <div class="icon"><i class="fa fa-check-square"></i><span class="detail_figure">{{ p.total_count }} {% trans 'total signatures' %}</span></div>
+                        <div class="icon"><i class="fa fa-thumbs-down"></i><span class="detail_figure">{{ p.oppose_count }} {% trans 'oppose' %}</span></div>
+                        <div class="icon"><i class="fa fa-thumbs-up"></i><span class="detail_figure">{{ p.endorse_count }} {% trans 'endorse' %}</span></div>
                     </div>
 
                     <div class="detail share_detail" title="{%trans 'Facebook Likes' %}">
@@ -104,7 +119,7 @@
 
                 </div>
 
-                {% if already_signed %}
+                {% if stance != '' %}
                   {% include 'stub/unsign_button.html' %}
                 {% else %}
                   {% include 'stub/sign_button.html' %}

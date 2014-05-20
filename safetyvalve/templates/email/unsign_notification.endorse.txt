@@ -1,0 +1,18 @@
+Sæl(l) %(name)s!
+
+Takk fyrir að nota kerfið okkar.
+
+Undirskriftasöfnunin finnst hér:
+%(detail_url)s
+
+Hér með staðfestist að þú hafir tekið til baka stuðning þinn við eftirfarandi þingmál:
+
+------------------------------------
+
+%(text)s
+
+------------------------------------
+
+Með kveðju,
+ventill.is
+

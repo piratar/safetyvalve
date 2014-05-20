@@ -52,6 +52,7 @@ class Command(BaseCommand):
                 sig.petition = petition
                 sig.authentication = auth
                 sig.show_public = True
+                sig.stance = 'oppose' if randrange(0, 2) == 1 else 'endorse' # Coin toss
                 sig.save()
 
                 stdout.write(".")

@@ -42,7 +42,15 @@
           </p>
 
           <div class="detail" title="{%trans 'Total Signatures' %}">
-            <div class="icon"><i class="fa fa-check-square"></i><span class="detail_figure">{{p.num_signatures}}</span></div>
+            <div class="icon">
+              <i class="fa fa-check-square"></i><span class="detail_figure">{{ p.total_count }}</span>
+            </div>
+            <div class="icon">
+              <i class="fa fa-thumbs-down"></i><span class="detail_figure">{{ p.oppose_count }}</span>
+            </div>
+            <div class="icon">
+              <i class="fa fa-thumbs-up"></i><span class="detail_figure">{{ p.endorse_count }}</span>
+            </div>
           </div>
 
           <div class="detail" >
@@ -67,10 +75,16 @@
 
         </div>
 
-        {% if p.id in signed_petition_ids %}
-          {% include 'stub/unsign_button.html' %}
-        {% else %}
+        {% if p.id not in oppose_petition_ids and p.id not in endorse_petition_ids %}
           {% include 'stub/sign_button.html' %}
+        {% else %}
+          {% if p.id in oppose_petition_ids %}
+            {% include 'stub/unsign_button.html' with stance='oppose' %}
+          {% else %}
+            {% if p.id in endorse_petition_ids %}
+              {% include 'stub/unsign_button.html' with stance='endorse' %}
+            {% endif %}
+          {% endif %}
         {% endif %}
 
       </div>

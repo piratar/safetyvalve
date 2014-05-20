@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-18 11:02+0000\n"
+"POT-Creation-Date: 2014-05-20 02:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -17,112 +17,120 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: person/views.py:72
+#: person/views.py:73
 msgid "Yes"
 msgstr "Já"
 
-#: person/views.py:72
+#: person/views.py:73
 msgid "No"
 msgstr "Nei"
 
-#: person/views.py:98 petition/views.py:86
+#: person/views.py:99 petition/views.py:88
 msgid "Email address"
 msgstr "Netfang"
 
-#: person/views.py:102
+#: person/views.py:103
 msgid "This field is required"
 msgstr "Netfang nauðsynlegt"
 
-#: person/views.py:103
+#: person/views.py:104
 msgid "Please enter a valid e-mail address"
 msgstr "Vinsamlegast setjið inn löggilt netfang"
 
-#: person/templates/person/my_page.html:36 petition/templates/detail.html:36
+#: person/templates/person/my_page.html:43 petition/templates/detail.html:49
 msgid "No data available in table"
 msgstr "Engar undirskrift enn"
 
-#: person/templates/person/my_page.html:43
+#: person/templates/person/my_page.html:50
 msgid "Showing _START_ to _END_ of _TOTAL_ signatures"
 msgstr "Sýni _START_ til _END_ af _TOTAL_ undirskriftum"
 
-#: person/templates/person/my_page.html:44 petition/templates/detail.html:44
+#: person/templates/person/my_page.html:51 petition/templates/detail.html:57
 msgid "Show _MENU_ entries"
 msgstr "Sýna _MENU_ færslur"
 
-#: person/templates/person/my_page.html:60
+#: person/templates/person/my_page.html:67
 msgid "Email Settings"
 msgstr "Netfangs Skráning"
 
-#: person/templates/person/my_page.html:65
+#: person/templates/person/my_page.html:72
 msgid "Save"
 msgstr "Vista"
 
-#: person/templates/person/my_page.html:77
+#: person/templates/person/my_page.html:84
 msgid "My Signatures"
 msgstr "Mínar undirskriftir"
 
-#: person/templates/person/my_page.html:82 petition/templates/detail.html:122
+#: person/templates/person/my_page.html:89 petition/templates/detail.html:137
 msgid "Name"
 msgstr "Nafn"
 
-#: person/templates/person/my_page.html:83
+#: person/templates/person/my_page.html:90
 msgid "Shown Publicly"
 msgstr "Nafnbirting opinber"
 
-#: person/templates/person/my_page.html:84 petition/templates/detail.html:124
+#: person/templates/person/my_page.html:91 petition/templates/detail.html:139
 msgid "Date"
 msgstr "Dagsetning"
 
-#: petition/views.py:87
+#: petition/views.py:89
 msgid "Confirm email address"
 msgstr "Staðfesting netfangs"
 
-#: petition/views.py:93
+#: petition/views.py:95
 msgid "Email addresses must match"
 msgstr "Netföngin verða bæði að vera eins"
 
-#: petition/templates/detail.html:11 petition/templates/detail.html.py:98
-#: petition/templates/index.html:53
+#: petition/templates/detail.html:11 petition/templates/detail.html.py:113
+#: petition/templates/index.html:61
 msgid "I oppose!"
 msgstr "Ég mótmæli!"
 
-#: petition/templates/detail.html:43
+#: petition/templates/detail.html:56
 msgid "Showing _START_ to _END_ of _TOTAL_ public signatures"
 msgstr "Sýni _START_ til _END_ af _TOTAL_ birtum undirskriftum"
 
-#: petition/templates/detail.html:70
+#: petition/templates/detail.html:83
 msgid "distributed"
 msgstr "útbýtt"
 
-#: petition/templates/detail.html:93 petition/templates/index.html:44
+#: petition/templates/detail.html:106 petition/templates/index.html:44
 msgid "Total Signatures"
 msgstr "Undirskriftir í Heild"
 
-#: petition/templates/detail.html:94
+#: petition/templates/detail.html:107
 msgid "total signatures"
 msgstr "undirskriftir í heild"
 
-#: petition/templates/detail.html:97 petition/templates/index.html:52
+#: petition/templates/detail.html:108
+msgid "oppose"
+msgstr "mótmæla"
+
+#: petition/templates/detail.html:109
+msgid "endorse"
+msgstr "styðja"
+
+#: petition/templates/detail.html:112 petition/templates/index.html:60
 msgid "Facebook Likes"
 msgstr ""
 
-#: petition/templates/detail.html:101 petition/templates/index.html:56
+#: petition/templates/detail.html:116 petition/templates/index.html:64
 msgid "Twitter Shares"
 msgstr ""
 
-#: petition/templates/detail.html:102 petition/templates/index.html:57
+#: petition/templates/detail.html:117 petition/templates/index.html:65
 msgid "I Oppose!"
 msgstr "Ég mótmæli!"
 
-#: petition/templates/detail.html:123
+#: petition/templates/detail.html:138
 msgid "Social Number"
 msgstr "Kennitala"
 
-#: petition/templates/detail.html:147 petition/templates/index.html:82
+#: petition/templates/detail.html:162 petition/templates/index.html:96
 msgid "Are you sure"
 msgstr "Ertu viss"
 
-#: petition/templates/index.html:49
+#: petition/templates/index.html:57
 msgid "Published On"
 msgstr "Þingmál flutt"
 
@@ -180,20 +188,28 @@ msgid "Oppose"
 msgstr "Mótmæla"
 
 #: petition/templates/stub/sign_button.html:11
+msgid "Endorse"
+msgstr "Styðja"
+
+#: petition/templates/stub/sign_button.html:16
 msgid "Show signature publicly"
 msgstr "Birta undirskrift opinberlega"
 
-#: petition/templates/stub/sign_button.html:16
+#: petition/templates/stub/sign_button.html:22
 msgid "Confirm Signature"
 msgstr "Staðfesta undirskrift"
 
-#: petition/templates/stub/sign_button.html:21
+#: petition/templates/stub/sign_button.html:27
 msgid "Cancel"
 msgstr "Hætta Við"
 
-#: petition/templates/stub/unsign_button.html:4
-msgid "Remove Signature"
-msgstr "Fjarlægja undirskrift"
+#: petition/templates/stub/unsign_button.html:5
+msgid "Remove opposition"
+msgstr "Fjarlægja mótmæli"
+
+#: petition/templates/stub/unsign_button.html:8
+msgid "Remove endorsement"
+msgstr "Fjarlægja stuðning"
 
 #: templates/base.html:18
 msgid ""
@@ -235,13 +251,12 @@ msgstr "Útskrá"
 msgid "Sign In"
 msgstr "Innskráning"
 
+#~ msgid "Remove Signature"
+#~ msgstr "Fjarlægja undirskrift"
+
 #~ msgid "Are you sure you want to remove your signature for '%(petition)s'?"
 #~ msgstr ""
 #~ "Ertu viss um að þú viljir fjarlægja undirskrift þína gegn '%(petition)s'?"
-
-#, fuzzy
-#~ msgid "Remove signature"
-#~ msgstr "fjarlægja undirskrift"
 
 #~ msgid ""
 #~ "Administrators will make sure that the receipt will be sent to you via "

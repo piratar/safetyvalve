@@ -5,7 +5,7 @@ Takk fyrir að nota kerfið okkar.
 Undirskriftasöfnunin gegn þingmálinu finnst hér:
 %(detail_url)s
 
-Hér með staðfestist að þú hafir fjarlægt undirskrift þína gegn eftirfarandi þingmáli:
+Hér með staðfestist að þú hafir fjarlægt mótmæli þín gegn eftirfarandi þingmáli:
 
 ------------------------------------
 

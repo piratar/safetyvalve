@@ -66,7 +66,8 @@ def get_user_signatures(request):
 
         for s in results:
             o = []
-            petition = {'petition_name': s.petition.name.capitalize(),
+            petition = {'signature_stance': s.stance,
+                        'petition_name': s.petition.name.capitalize(),
                         'petition_id': s.petition.id}
             o.append(petition)
             o.append(ugettext('Yes') if s.show_public == 1 else ugettext('No'))

@@ -29,7 +29,14 @@
                 "aoColumnDefs": [ {
                     "aTargets": [ 0 ],
                     "mRender": function ( data, type, full ) {
-                        return '<a href="/frumvarp/'+data.petition_id+'/">'+data.petition_name+'</a>';
+                        thumb = '';
+                        if (data.signature_stance == 'oppose') {
+                            thumb = '<i class="fa fa-thumbs-down"></i>';
+                        }
+                        else if (data.signature_stance == 'endorse') {
+                            thumb = '<i class="fa fa-thumbs-up"></i>';
+                        }
+                        return thumb+'<a href="/frumvarp/'+data.petition_id+'/">'+data.petition_name+'</a>';
                     }
                 } ],
                 "oLanguage": {

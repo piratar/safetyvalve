@@ -1,0 +1,18 @@
+Sæl(l) %(name)s!
+
+Takk fyrir að nota kerfið okkar.
+
+Undirskriftasöfnunin finnst hér:
+%(detail_url)s
+
+Hér með staðfestist að þú hafir skrifað undir stuðning við eftirfarandi þingmál með tókanum %(token)s frá island.is:
+
+------------------------------------
+
+%(text)s
+
+------------------------------------
+
+Með kveðju,
+ventill.is
+
