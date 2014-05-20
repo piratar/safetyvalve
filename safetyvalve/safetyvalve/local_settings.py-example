@@ -5,7 +5,7 @@ DEBUG = False
 INSTANCE_NAME = ''
 INSTANCE_SLUG = ''
 INSTANCE_LOGO = ''
-INSTANCE_URL = ''
+INSTANCE_URL = 'http://localhost:8000'
 AUTH_URL = ''  # e.g. https://www.island.is/audkenning?id=hello.is&%s
 AUTH_ISLAND = {
     'wsdl': 'https://egov.webservice.is/sst/runtime.asvc/com.actional.soapstation.eGOVDKM_AuthConsumer.AccessPoint?WSDL',
