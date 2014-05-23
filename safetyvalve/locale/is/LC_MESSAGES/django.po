@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-20 02:36+0000\n"
+"POT-Creation-Date: 2014-05-20 18:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -83,8 +83,14 @@ msgstr "Netföngin verða bæði að vera eins"
 
 #: petition/templates/detail.html:11 petition/templates/detail.html.py:113
 #: petition/templates/index.html:61
-msgid "I oppose!"
-msgstr "Ég mótmæli!"
+msgid ""
+"SafetyValve provides the ability to either oppose or endorse any issue put "
+"forth by Parliament, utilizing official means of digital authentication to "
+"ensure each signature's authenticity."
+msgstr ""
+"Öryggisventill veitir möguleikann á því að ýmist mótmæla eða styðja hvert "
+"mál sem lagt er fram á Alþingi. Lögmæti hverrar undirskriftar er tryggt með "
+"notkun rafrænnar auðkenningar í formi Íslykils eða rafrænna skilríkja."
 
 #: petition/templates/detail.html:56
 msgid "Showing _START_ to _END_ of _TOTAL_ public signatures"
@@ -119,8 +125,8 @@ msgid "Twitter Shares"
 msgstr ""
 
 #: petition/templates/detail.html:117 petition/templates/index.html:65
-msgid "I Oppose!"
-msgstr "Ég mótmæli!"
+msgid "Express yourself!"
+msgstr "Tjáðu hug þinn!"
 
 #: petition/templates/detail.html:138
 msgid "Social Number"
@@ -250,6 +256,12 @@ msgstr "Útskrá"
 #: templates/base.html:124
 msgid "Sign In"
 msgstr "Innskráning"
+
+#~ msgid "I oppose!"
+#~ msgstr "Ég mótmæli!"
+
+#~ msgid "I Oppose!"
+#~ msgstr "Ég mótmæli!"
 
 #~ msgid "Remove Signature"
 #~ msgstr "Fjarlægja undirskrift"
