@@ -154,7 +154,6 @@ def get_public_signatures(request, petition_id):
         signature = {'signature_stance': s.stance,
                      'signature_name': s.user.first_name + " " + s.user.last_name}
         o.append(signature)
-        o.append(s.user.first_name + " " + s.user.last_name)
         o.append(s.user.username)
         o.append(s.date_created.strftime("%Y-%m-%d %H:%M:%S"))
 
