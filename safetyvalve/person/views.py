@@ -19,9 +19,9 @@ from petition.models import Signature
 
 from icekey.utils import authenticate
 
+
 def get_user_signatures(request):
 
-    empty_response = False
     response = []
     total_signatures = 0
 
@@ -89,6 +89,7 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
 
+
 def my_page(request):
     form_success = ""
 
@@ -96,13 +97,14 @@ def my_page(request):
         return HttpResponseRedirect(reverse('login'))
 
     class EmailForm(forms.Form):
-        email = forms.EmailField(label=ugettext('Email address'),
-                                initial=request.user.email, 
-                                localize=True,
-                                error_messages={
-                                    'required': ugettext('This field is required'),
-                                    'invalid': ugettext('Please enter a valid e-mail address')
-                                })
+        email = forms.EmailField(
+            label=ugettext('Email address'),
+            initial=request.user.email,
+            localize=True,
+            error_messages={
+                'required': ugettext('This field is required'),
+                'invalid': ugettext('Please enter a valid e-mail address')
+            })
 
         def clean(self):
             return self.cleaned_data
