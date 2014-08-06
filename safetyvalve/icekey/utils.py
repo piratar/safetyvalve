@@ -1,25 +1,28 @@
 
 import os
 import binascii
-
 from lxml import etree
 from StringIO import StringIO
-from suds.client import Client
 
 from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 
+from suds.client import Client
+
+from core.views import authentication_error
 from person.models import UserAuthentication
 
 
 def get_saml(request, token):
     # Fetch SAML info
     AI = settings.AUTH_ISLAND
+    result = None
+
     client = Client(AI['wsdl'], username=AI['login'], password=AI['password'])
     ipaddr = request.META.get('REMOTE_ADDR')
-    result = client.service.generateSAMLFromToken(token, ipaddr)
+    result = client.service.generateSAMLFromToken('dada', ipaddr)
 
     if result['status']['message'] != 'Success':
         raise Exception('SAML error: %s' % result['status']['message'])
@@ -67,8 +70,16 @@ def authenticate(request, redirect_url):
         return HttpResponseRedirect(redirect_url)
 
     if fake_auth is None:
-        result = get_saml(request, token)
-        name, kennitala = parse_saml(result['saml'])
+
+        try:
+            result = get_saml(request, token)
+            name, kennitala = parse_saml(result['saml'])
+        except Exception as ex:
+            template = "An exception of type {0} occured. Arguments:\n{1!r}"
+            message = template.format(type(ex).__name__, ex.args)
+            print message
+            
+            return authentication_error(request)
 
     if not user.is_authenticated() or user.username != kennitala:
         user = ensure_user(request, name, kennitala)
