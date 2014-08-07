@@ -28,6 +28,7 @@ class Issue(models.Model):
     issue_type = models.CharField(max_length=1, choices=ISSUE_TYPES)  # IS: Málstegund
     name = models.CharField(max_length=500)
     description = models.TextField()
+    final_vote_complete = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         models.Model.save(self, *args, **kwargs)
@@ -36,9 +37,8 @@ class Issue(models.Model):
             external_id = "%s.%s" % (self.session.session_num, self.issue_num)
 
             if Petition.objects.filter(external_id=external_id).count() == 0:
-
                 althingi_source = Source.objects.get(name='althingi')
-                
+
                 # Create a petition for this issue
                 petition = Petition()
                 petition.source = althingi_source
@@ -108,3 +108,22 @@ class Document(models.Model):
 
     def __unicode__(self):
         return u'%d (%s)' % (self.doc_num, self.doc_type)
+
+
+class Parliamentarian (models.Model):
+    parliamentarian_id = models.IntegerField()
+    constituency_id = models.IntegerField(default=0)
+    seat_number = models.IntegerField(default=0)
+    most_recent_session_served = models.IntegerField(default=0)
+    name = models.CharField(max_length=100)
+    name_abbreviation = models.CharField(max_length=5, default="")
+    party = models.CharField(max_length=200, default="")
+    constituency = models.CharField(max_length=250, default="")
+
+    def __unicode__(self):
+        return u'db_id: %s | parliamentarian_id: (%s) | name: %s | party: %s | constituency: %s' % (
+            self.id,
+            self.parliamentarian_id,
+            self.name,
+            self.party,
+            self.constituency)

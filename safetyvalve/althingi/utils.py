@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import
 
 import urllib
 from xml.dom import minidom
 
-from models import Session, Issue, Document
-
-from althingi_settings import *
+from .models import Session, Issue, Document, Parliamentarian, Parliamentarian
+from .althingi_settings import *
 
 ISSUE_LIST_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/?lthing=%d'
 ISSUE_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/thingmal/?lthing=%d&malnr=%d'
+PARLIAMENTARIANS_URL = 'http://www.althingi.is/altext/xml/thingmenn/'
+PARLIAMENTARIAN_DETAILS_URL = 'http://www.althingi.is/altext/xml/thingmenn/thingmadur/thingseta/?nr=%d'
 
 
 def get_last_session_num():
@@ -110,3 +112,75 @@ def update_issues():
         main_doc.save()
 
         print '- Main document determined to be: %s' % main_doc
+
+
+def update_parliamentarians(update_existing=True):
+    if str(update_existing).lower() == "false":
+        update_existing = False
+
+    parlimentarians_list_xml = minidom.parse(urllib.urlopen(PARLIAMENTARIANS_URL))
+    parliamentarians_xml = parlimentarians_list_xml.getElementsByTagName(u'þingmaður')
+
+    for parliamentarian_xml in parliamentarians_xml:
+        parliamentarian_id = int(parliamentarian_xml.getAttribute(u'id'))
+        parliamentarian_name = xml_value_or_empty_string(parliamentarian_xml.getElementsByTagName('nafn')[0].firstChild)
+
+        try:
+            parliamentarian = Parliamentarian.objects.get(parliamentarian_id=parliamentarian_id)
+        except Parliamentarian.DoesNotExist:
+            parliamentarian = Parliamentarian()
+
+        if parliamentarian.id != None and update_existing == False:
+            continue
+
+        parliamentarian.parliamentarian_id = parliamentarian_id
+        parliamentarian.name = parliamentarian_name.strip()
+
+        try:
+            parliamentarian_detail_xml = minidom.parse(urllib.urlopen(PARLIAMENTARIAN_DETAILS_URL % parliamentarian_id))
+
+            most_recent_session = None
+            sessions = parliamentarian_detail_xml.getElementsByTagName(u'þingsetur')[0].getElementsByTagName(u'þingseta')
+
+            for session in sessions:
+                session_id = xml_value_or_zero(session.getElementsByTagName(u'þing')[0].firstChild)
+                
+                if most_recent_session is None:
+                    most_recent_session = session
+
+                if xml_value_or_zero(most_recent_session.getElementsByTagName(u'þing')[0].firstChild) < session_id:
+                    most_recent_session = session
+
+            if most_recent_session:
+                parliamentarian.constituency_id = int(xml_value_or_zero(most_recent_session.getElementsByTagName(u'kjördæmanúmer')[0].firstChild))
+                parliamentarian.name_abbreviated = xml_value_or_empty_string(most_recent_session.getElementsByTagName(u'skammstöfun')[0].firstChild).strip()
+                parliamentarian.party = xml_value_or_empty_string(most_recent_session.getElementsByTagName(u'þingflokkur')[0].firstChild).strip()
+                parliamentarian.constituency = xml_value_or_empty_string(most_recent_session.getElementsByTagName(u'kjördæmi')[0].firstChild).strip()
+                parliamentarian.seat_number = xml_value_or_zero(most_recent_session.getElementsByTagName(u'þingsalssæti')[0].firstChild)
+                parliamentarian.most_recent_session_served = xml_value_or_zero(most_recent_session.getElementsByTagName(u'þing')[0].firstChild)
+
+
+        except (KeyboardInterrupt, SystemExit):
+            raise
+        except Exception as ex:
+            print type(ex).__name__ + ': ' + PARLIAMENTARIAN_DETAILS_URL % parliamentarian_id
+            print ""
+
+        print parliamentarian
+        parliamentarian.save()
+
+    return
+
+
+def xml_value_or_empty_string(value):
+    if value:
+        return value.nodeValue
+    else:
+        return""
+
+
+def xml_value_or_zero(value):
+    if value:
+        return value.nodeValue
+    else:
+        return 0
