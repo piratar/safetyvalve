@@ -4,7 +4,7 @@ from __future__ import absolute_import
 import urllib
 from xml.dom import minidom
 
-from .models import Session, Issue, Document, Parliamentarian, Parliamentarian
+from .models import Session, Issue, IssueVotingRound, Document, Parliamentarian
 from .althingi_settings import *
 
 ISSUE_LIST_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/?lthing=%d'
@@ -123,7 +123,7 @@ def update_parliamentarians(update_existing=True):
 
     for parliamentarian_xml in parliamentarians_xml:
         parliamentarian_id = int(parliamentarian_xml.getAttribute(u'id'))
-        parliamentarian_name = xml_value_or_empty_string(parliamentarian_xml.getElementsByTagName('nafn')[0].firstChild)
+        parliamentarian_name = xml_value_or_empty_string(parliamentarian_xml.getElementsByTagName(u'nafn')[0].firstChild)
 
         try:
             parliamentarian = Parliamentarian.objects.get(parliamentarian_id=parliamentarian_id)
@@ -143,21 +143,21 @@ def update_parliamentarians(update_existing=True):
             sessions = parliamentarian_detail_xml.getElementsByTagName(u'þingsetur')[0].getElementsByTagName(u'þingseta')
 
             for session in sessions:
-                session_id = xml_value_or_zero(session.getElementsByTagName(u'þing')[0].firstChild)
+                session_id = xml_value_or_negative_int(session.getElementsByTagName(u'þing')[0].firstChild)
                 
                 if most_recent_session is None:
                     most_recent_session = session
 
-                if xml_value_or_zero(most_recent_session.getElementsByTagName(u'þing')[0].firstChild) < session_id:
+                if xml_value_or_negative_int(most_recent_session.getElementsByTagName(u'þing')[0].firstChild) < session_id:
                     most_recent_session = session
 
             if most_recent_session:
-                parliamentarian.constituency_id = int(xml_value_or_zero(most_recent_session.getElementsByTagName(u'kjördæmanúmer')[0].firstChild))
+                parliamentarian.constituency_id = int(xml_value_or_negative_int(most_recent_session.getElementsByTagName(u'kjördæmanúmer')[0].firstChild))
                 parliamentarian.name_abbreviated = xml_value_or_empty_string(most_recent_session.getElementsByTagName(u'skammstöfun')[0].firstChild).strip()
                 parliamentarian.party = xml_value_or_empty_string(most_recent_session.getElementsByTagName(u'þingflokkur')[0].firstChild).strip()
                 parliamentarian.constituency = xml_value_or_empty_string(most_recent_session.getElementsByTagName(u'kjördæmi')[0].firstChild).strip()
-                parliamentarian.seat_number = xml_value_or_zero(most_recent_session.getElementsByTagName(u'þingsalssæti')[0].firstChild)
-                parliamentarian.most_recent_session_served = xml_value_or_zero(most_recent_session.getElementsByTagName(u'þing')[0].firstChild)
+                parliamentarian.seat_number = xml_value_or_negative_int(most_recent_session.getElementsByTagName(u'þingsalssæti')[0].firstChild)
+                parliamentarian.most_recent_session_served = xml_value_or_negative_int(most_recent_session.getElementsByTagName(u'þing')[0].firstChild)
 
 
         except (KeyboardInterrupt, SystemExit):
@@ -172,6 +172,56 @@ def update_parliamentarians(update_existing=True):
     return
 
 
+def update_voting_rounds(session_number=-1):
+
+    if session_number == -1:
+        session_number = get_last_session_num()
+
+    issues = Issue.objects.filter(session__session_num=session_number)
+    for issue in issues:
+        #this should go to logging or something later, should be more clean
+        print issue
+
+        issue_xml = minidom.parse(urllib.urlopen(ISSUE_URL % (session_number, issue.issue_num)))
+        voting_rounds_xml = issue_xml.getElementsByTagName(u'atkvæðagreiðslur')[0].getElementsByTagName(u'atkvæðagreiðsla')
+
+        for voting_round_xml in voting_rounds_xml:
+            round_number = int(voting_round_xml.getAttribute(u'atkvæðagreiðslunúmer'))
+            round_type = xml_value_or_empty_string(voting_round_xml.getElementsByTagName(u'tegund')[0].firstChild)
+            round_details = xml_value_or_empty_string(voting_round_xml.getElementsByTagName(u'nánar')[0].firstChild)
+            votes_casted_time = voting_round_xml.getElementsByTagName(u'tími')[0].firstChild.nodeValue + "+00:00"
+
+            # parliamentarian votes are not always present. we check for the yes node to see if they are present.
+            yes_votes_xml = voting_round_xml.getElementsByTagName(u'já')
+            has_parliamentarian_votes = False
+
+            if len(yes_votes_xml) > 0:
+                has_parliamentarian_votes = True
+
+            # determines if final round of voting, i.e. bill is final
+            final_round = False
+
+            if round_type == 'Frv.' and 'svo breytt' in round_details:
+                final_round = True
+
+            try:
+                voting_round = IssueVotingRound.objects.get(issue=issue, round_number=round_number)
+            except IssueVotingRound.DoesNotExist:
+                voting_round = IssueVotingRound()
+
+            voting_round.issue = issue
+            voting_round.round_number = round_number
+            voting_round.round_type = round_type
+            voting_round.round_details = round_details
+            voting_round.votes_casted_time = votes_casted_time
+            voting_round.has_parliamentarian_votes = has_parliamentarian_votes
+            voting_round.final_round = final_round
+
+            voting_round.save()
+
+    return
+
+
 def xml_value_or_empty_string(value):
     if value:
         return value.nodeValue
@@ -179,8 +229,8 @@ def xml_value_or_empty_string(value):
         return""
 
 
-def xml_value_or_zero(value):
+def xml_value_or_negative_int(value):
     if value:
         return value.nodeValue
     else:
-        return 0
+        return -1

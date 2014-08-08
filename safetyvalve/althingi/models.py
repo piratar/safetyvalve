@@ -48,7 +48,26 @@ class Issue(models.Model):
                 petition.save()
 
     def __unicode__(self):
-        return u'%d (%s)' % (self.issue_num, self.name)
+        return u'Session: (%d) | %d (%s)' % (self.session.session_num, self.issue_num, self.name)
+
+
+class IssueVotingRound(models.Model):
+    issue = models.ForeignKey(Issue)
+    round_number = models.IntegerField()
+    round_type = models.CharField(max_length=100)
+    round_details = models.CharField(max_length=100)
+    votes_casted_time = models.DateTimeField()
+    has_parliamentarian_votes = models.BooleanField(default=0)
+    final_round = models.BooleanField(default=0)
+
+    def __unicode__(self):
+        return u'vround number: %d | round_type: %s | round_details: %s | cast time: %s | parliamentarian votes: %s | final: %s' % (
+            self.round_number,
+            self.round_type,
+            self.round_details,
+            self.votes_casted_time,
+            self.has_parliamentarian_votes,
+            self.final_round)
 
 
 class Document(models.Model):
@@ -127,3 +146,16 @@ class Parliamentarian (models.Model):
             self.name,
             self.party,
             self.constituency)
+
+
+class ParliamentarianVote (models.Model):
+    VOTE_TYPES = (
+        ('j', 'já'),
+        ('n', 'nei'),
+        ('sh', 'sátuhjá'),
+        ('gea', 'greiðirekkiatkvæði')
+    )
+
+    issue_voting_round = models.ForeignKey(IssueVotingRound)
+    parliamentarian = models.ForeignKey(Parliamentarian)
+    vote_type = models.CharField(max_length=3, choices=VOTE_TYPES)
