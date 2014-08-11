@@ -18,7 +18,7 @@ def get_last_session_num():
 
 
 def update_issues():
-    """Fetch a list of "recent" petitions on Althingi and update our database
+    """Fetch a list of "recent" issues on Althingi and update our database
     accordingly.
     """
 
