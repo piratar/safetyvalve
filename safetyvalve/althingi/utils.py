@@ -151,39 +151,44 @@ def update_parliamentarian_sessions():
             sessions_xml = parliamentarian_detail_xml.getElementsByTagName(u'þingsetur')[0].getElementsByTagName(u'þingseta')
 
             for session_xml in sessions_xml:
-                session_num = xml_value_or_negative_int(
-                    session_xml.getElementsByTagName(u'þing')[0].firstChild
-                )
 
                 try:
-                    session = ParliamentarianSession.objects.get(parliamentarian=parliamentarian, session_num=session_num)
+                    session_num = xml_value_or_negative_int(
+                        session_xml.getElementsByTagName(u'þing')[0].firstChild
+                    )
+                    althingi_session = Session.objects.get(session_num=session_num)
+                except Session.DoesNotExist:
+                    print "session %s not found, can't add parliamentarian session for: %s" % (session_num, parliamentarian)
+
+                try:
+                    parliamentarian_session = ParliamentarianSession.objects.get(parliamentarian=parliamentarian, session=althingi_session)
                 except ParliamentarianSession.DoesNotExist:
-                    session = ParliamentarianSession()
+                    parliamentarian_session = ParliamentarianSession()
 
-                session.parliamentarian = parliamentarian
+                parliamentarian_session.parliamentarian = parliamentarian
 
-                session.session_num = session_num
+                parliamentarian_session.session = althingi_session
 
-                session.constituency_id = xml_value_or_negative_int(
+                parliamentarian_session.constituency_id = xml_value_or_negative_int(
                     session_xml.getElementsByTagName(u'kjördæmanúmer')[0].firstChild
                 )
-                session.name_abbreviation = xml_value_or_empty_string(
+                parliamentarian_session.name_abbreviation = xml_value_or_empty_string(
                     session_xml.getElementsByTagName(u'skammstöfun')[0].firstChild
                 ).strip()
-                session.party = xml_value_or_empty_string(
+                parliamentarian_session.party = xml_value_or_empty_string(
                     session_xml.getElementsByTagName(u'þingflokkur')[0].firstChild
                 ).strip()
-                session.constituency = xml_value_or_empty_string(
+                parliamentarian_session.constituency = xml_value_or_empty_string(
                     session_xml.getElementsByTagName(u'kjördæmi')[0].firstChild
                 ).strip()
-                session.seat_number = xml_value_or_negative_int(
+                parliamentarian_session.seat_number = xml_value_or_negative_int(
                     session_xml.getElementsByTagName(u'þingsalssæti')[0].firstChild
                 )
-                session.most_recent_session_served = xml_value_or_negative_int(
+                parliamentarian_session.most_recent_session_served = xml_value_or_negative_int(
                     session_xml.getElementsByTagName(u'þing')[0].firstChild
                 )
 
-                session.save()
+                parliamentarian_session.save()
 
         except (KeyboardInterrupt, SystemExit):
             raise

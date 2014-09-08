@@ -87,24 +87,22 @@ class Parliamentarian (models.Model):
 
 class ParliamentarianSession (models.Model):
     parliamentarian = models.ForeignKey(Parliamentarian)
-    constituency_id = models.IntegerField(default=0)
+    session = models.ForeignKey(Session)
     seat_number = models.IntegerField(default=0)
-    session_num = models.IntegerField()
 
     # abbreviation is stored in a different place in the xml, and therefore could change by term
-    name_abbreviation = models.CharField(max_length=20, default="")
+    name_abbreviation = models.CharField(max_length=15, default="")
     party = models.CharField(max_length=200, default="")
     constituency = models.CharField(max_length=250, default="")
 
     def __unicode__(self):
-        return u'db_id: %s | parliamentarian_id: (%s) | name: %s | session_num: %s | abbrev: %s | party: %s | constituency_id: %s | constituency: %s' % (
+        return u'db_id: %s | parliamentarian_id: (%s) | name: %s | session_num: %s | abbrev: %s | party: %s | constituency: %s' % (
             self.id,
             self.parliamentarian.parliamentarian_id,
             self.parliamentarian.name,
             self.session_num,
             self.name_abbreviation,
             self.party,
-            self.constituency_id,
             self.constituency)
 
 
