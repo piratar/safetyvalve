@@ -5,11 +5,11 @@ import os
 import json
 
 from math import floor
-from datetime import datetime
+from datetime import datetime, timedelta
 from urllib import urlencode
 
 from django import forms
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.cache import cache
@@ -292,8 +292,8 @@ def popular(request):
     def get_popular_petitions():
         return Petition.objects \
                        .annotate(num_signatures=Count('signature')) \
-                       .filter(num_signatures__gte=settings.POPULAR_SIGNATURE_THRESHOLD) \
-                       .order_by('-num_signatures')
+                       .filter(Q(num_signatures__gte=settings.POPULAR_SIGNATURE_THRESHOLD) | Q(time_published__gt=(datetime.now() - timedelta(days=3)))) \
+                       .order_by('-num_signatures', '-time_published')
     #petitions = cached_or_function('popular__petitions', get_popular_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
     petitions = get_popular_petitions()
 
