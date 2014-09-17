@@ -105,6 +105,11 @@ def update_issues():
 
                 print '- Added document: %s' % doc
 
+        if lowest_doc_num == 0:
+            issue.delete()
+            print '- Has no documents, being removed'
+            continue
+
         main_doc = Document.objects.get(issue=issue, doc_num=lowest_doc_num)
         main_doc.is_main = True
         main_doc.save()
