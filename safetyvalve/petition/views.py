@@ -427,7 +427,7 @@ def unsign_receipt(request, petition_id):
 
     ret = _receipt(request, petition_id, subject, message, html)
 
-    if isinstance(ret, HttpResponseRedirect):
-        s.delete()
+    #if isinstance(ret, HttpResponseRedirect):
+    s.delete()
 
     return ret
