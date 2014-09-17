@@ -79,7 +79,7 @@ def authenticate(request, redirect_url):
             message = template.format(type(ex).__name__, ex.args)
             print message
             
-            return authentication_error(request, message)
+            return authentication_error(request, '')
 
     if not user.is_authenticated() or user.username != kennitala:
         user = ensure_user(request, name, kennitala)
