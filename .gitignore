@@ -7,6 +7,7 @@ lib/
 local/
 share/
 env/
+dumps/
 
 htaccesspass
 

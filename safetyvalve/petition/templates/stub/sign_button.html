@@ -2,14 +2,20 @@
 
 <div class="signature_container" data-id="{{p.id}}">
     <div class="pre_selection_container">
-        <div class="signature_button addremove_signature">
-            <i class="fa fa-pencil-square"></i> {% trans 'Oppose' %}!
+        <div class="signature_button addremove_signature oppose">
+            <i class="fa fa-thumbs-down"></i> {% trans 'Oppose' %}!
+        </div>
+
+        <div class="signature_button_separator"></div>
+        <div class="signature_button addremove_signature endorse">
+            <i class="fa fa-thumbs-up"></i> {% trans 'Endorse' %}!
         </div>
     </div>
 
     <div class="post_selection_container">
         <label for="show_public_{{ p.id }}">{% trans 'Show signature publicly' %}?</label>
-        <input type="checkbox" class="show_public" id="show_public_{{ p.id }}" value="1" checked="checked" />
+        <input type="checkbox" class="show_public" id="show_public_{{ p.id }}" value="1" />
+        <input type="hidden" class="stance" value="" />
 
         <div class="signature_button_separator"></div>
         <div class="signature_button confirm_signature_button addremove_signature">

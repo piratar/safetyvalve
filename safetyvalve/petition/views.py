@@ -31,14 +31,7 @@ from utils import convert_petition_to_plaintext_email
 
 def all(request):
 
-    def get_all_petitions():
-        return Petition.objects \
-                        .all() \
-                        .order_by('-time_published') \
-                        .annotate(num_signatures=Count('signature'))
-
-    #petitions = cached_or_function('all_petitions', get_all_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
-    petitions = get_all_petitions()
+    petitions = Petition.objects.all().order_by('-time_published')
 
     return index(request, 'All Issues', petitions)
 
@@ -55,23 +48,32 @@ def cached_or_function(key, fun, timeout=60 * 5, *args, **kwargs):
 
 
 def detail(request, petition_id):
-    #p = Petition.objects.get(id=petition_id)
-    petitions = Petition.objects.select_related().filter(id=petition_id).annotate(num_signatures=Count('signature'))
-    petition = None
 
-    for p in petitions:
-        petition = p
+    petition = get_object_or_404(Petition, id=petition_id)
 
-    if petition == None:
-        return HttpResponseRedirect(reverse('popular'))
-
-    already_signed = False
+    stance = ''
     if request.user.is_authenticated():
-        already_signed = Signature.objects.filter(user=request.user, petition=p).count() > 0
+        user_signatures = Signature.objects.filter(user=request.user, petition=petition)
+        if len(user_signatures) == 1: # Should never be anything but 0 or 1
+            stance = user_signatures[0].stance
+
+    oppose_petition = Petition.objects.filter(id=petition_id, signature__stance='oppose').annotate(oppose_count=Count('signature'))
+    if oppose_petition.count() > 0:
+        petition.oppose_count = oppose_petition[0].oppose_count
+    else:
+        petition.oppose_count = 0
+
+    endorse_petition = Petition.objects.filter(id=petition_id, signature__stance='endorse').annotate(endorse_count=Count('signature'))
+    if endorse_petition.count() > 0:
+        petition.endorse_count = endorse_petition[0].endorse_count
+    else:
+        petition.endorse_count = 0
+
+    petition.total_count = petition.oppose_count + petition.endorse_count
 
     context = Context({
-        'p': p,
-        'already_signed': already_signed,
+        'p': petition,
+        'stance': stance,
         'signatures_url': reverse('get_public_signatures', args=(petition_id, )) + '' ,
         'INSTANCE_URL' : settings.INSTANCE_URL
     })
@@ -149,7 +151,9 @@ def get_public_signatures(request, petition_id):
 
     for s in results:
         o = []
-        o.append(s.user.first_name + " " + s.user.last_name)
+        signature = {'signature_stance': s.stance,
+                     'signature_name': s.user.first_name + " " + s.user.last_name}
+        o.append(signature)
         o.append(s.user.username)
         o.append(s.date_created.strftime("%Y-%m-%d %H:%M:%S"))
 
@@ -171,6 +175,7 @@ def index(request, page_title, petitions):
         if request.GET.get('fake-auth'):
             request.session['fake_auth'] = request.GET.get('fake-auth', '').lower() == 'on'
 
+
     paginator = Paginator(petitions, settings.INDEX_PAGE_ITEMS)
 
     page = request.GET.get('page', 1)
@@ -191,14 +196,10 @@ def index(request, page_title, petitions):
         if request.GET.get('fake-auth'):
             request.session['fake_auth'] = request.GET.get('fake-auth', '').lower() == 'on'
 
+    # Seems like this should be taken care of at an earlier stage. -helgi@binary.is, 2014-05-19
     for i in petitions:
         if isinstance(i.name, unicode):
             i.name = i.name.encode('utf-8')
-
-        if i.num_signatures > 999:
-            i.num_signatures_display = '%.3gK' % (i.num_signatures / 1000)
-        else:
-            i.num_signatures_display = i.num_signatures
 
 
     total_pages = paginator.num_pages;
@@ -231,15 +232,52 @@ def index(request, page_title, petitions):
             pages.insert(len(pages)-1, '...')
 
 
-    signed_petition_ids = []
+    # Counting stances: First, we get a list of the IDs of petitions we actually need info on
+    id_list = [p.id for p in petitions.object_list] # Paginator has turns QuerySet into list at this point
+
+    # Counting stances: We check the number of the 'oppose' stances
+    oppose_counts_query = Petition.objects.filter(id__in=id_list, signature__stance='oppose').annotate(oppose_count=Count('signature'))
+    oppose_counts = {}
+    for p in oppose_counts_query:
+        oppose_counts[p.id] = p.oppose_count
+
+    # Counting stances: We check the count of the 'endorse' stance as well
+    endorse_counts_query = Petition.objects.filter(id__in=id_list, signature__stance='endorse').annotate(endorse_count=Count('signature'))
+    endorse_counts = {}
+    for p in endorse_counts_query:
+        endorse_counts[p.id] = p.endorse_count
+
+    # Counting stances: We write the values in places available to the template engine
+    for p in petitions:
+        if p.id in oppose_counts:
+            p.oppose_count = oppose_counts[p.id]
+        else:
+            p.oppose_count = 0
+
+        if p.id in endorse_counts:
+            p.endorse_count = endorse_counts[p.id]
+        else:
+            p.endorse_count = 0
+
+        p.total_count = p.oppose_count + p.endorse_count
+
+
+    # Having separate lists for 'oppose' and 'support' was honestly the tidiest solution that
+    # I found for displaying to the user his previous action.. - Django templates basically
+    # just don't support looking up dict elements. Considered using Jinja instead of the
+    # Django template engine but decided not to. -helgi@binary.is, 2014-05-19
+    oppose_petition_ids = []
+    endorse_petition_ids = []
     if request.user.is_authenticated():
-        signs = Signature.objects.filter(user=request.user)
-        signed_petition_ids = [s.petition_id for s in signs]
+        signatures = Signature.objects.filter(user=request.user)
+        oppose_petition_ids = [s.petition_id for s in signatures if s.stance == 'oppose']
+        endorse_petition_ids = [s.petition_id for s in signatures if s.stance == 'endorse']
 
     context = Context({
         'petitions': petitions,
         'instance_url': settings.INSTANCE_URL,
-        'signed_petition_ids': signed_petition_ids,
+        'oppose_petition_ids': oppose_petition_ids,
+        'endorse_petition_ids': endorse_petition_ids,
         'pages' : pages,
         'current_page': page,
         'page_title': page_title,
@@ -259,16 +297,17 @@ def popular(request):
     #petitions = cached_or_function('popular__petitions', get_popular_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
     petitions = get_popular_petitions()
 
+
     return index(request, 'Hottest', petitions)
 
 
-def sign(request, petition_id):
+def sign(request, petition_id, stance):
 
     p = get_object_or_404(Petition, pk=petition_id)
 
     show_public = int(request.GET.get('show_public', 0))
 
-    params = {'path': reverse('sign', args=(petition_id, )) + '?show_public=%d' % show_public}
+    params = {'path': reverse('sign', args=(petition_id, stance)) + '?show_public=%d' % show_public}
     auth_url = settings.AUTH_URL % urlencode(params)
     ret = authenticate(request, auth_url)
     if isinstance(ret, HttpResponse):
@@ -278,7 +317,7 @@ def sign(request, petition_id):
 
     if Signature.objects.filter(user=auth.user, petition=p).count():
         Signature.objects.filter(user=auth.user, petition=p).delete()
-    s = Signature(user=auth.user, petition=p, show_public=show_public, authentication=auth)
+    s = Signature(user=auth.user, petition=p, show_public=show_public, authentication=auth, stance=stance)
     s.save()
 
     if not request.user.email:
@@ -323,7 +362,7 @@ def sign_receipt(request, petition_id):
 
     subject = u'Staðfesting undirskriftar á Ventill.is - ' + s.petition.name
 
-    template = 'email/sign_notification.txt'
+    template = 'email/sign_notification.%s.txt' % s.stance
     template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
     message = codecs.open(template_path, 'r', 'utf-8').read()
     message = message % {
@@ -335,7 +374,7 @@ def sign_receipt(request, petition_id):
         'detail_url': settings.INSTANCE_URL + reverse('detail', args=(petition_id, ))
         }
 
-    template = 'email/sign_notification.html'
+    template = 'email/sign_notification.%s.html' % s.stance
     template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
     html = codecs.open(template_path, 'r', 'utf-8').read()
     html = html % {
@@ -362,7 +401,7 @@ def unsign_receipt(request, petition_id):
 
     subject = u'Staðfesting á fjarlægingu undirskriftar á Ventill.is - ' + s.petition.name
 
-    template = 'email/unsign_notification.txt'
+    template = 'email/unsign_notification.%s.txt' % s.stance
     template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
     message = codecs.open(template_path, 'r', 'utf-8').read()
     message = message % {
@@ -374,7 +413,7 @@ def unsign_receipt(request, petition_id):
         'detail_url': settings.INSTANCE_URL + reverse('detail', args=(petition_id, ))
         }
 
-    template = 'email/unsign_notification.html'
+    template = 'email/unsign_notification.%s.html' % s.stance
     template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
     html = codecs.open(template_path, 'r', 'utf-8').read()
     html = html % {

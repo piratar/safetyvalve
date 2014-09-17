@@ -6,7 +6,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'^', include('core.urls')),
     url(r'^frumvarp/', include('petition.urls')),
     url(r'^', include('person.urls')),

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans page_title %}{% endblock %}
+
+{% block content %}
+
+<!-- It makes no sense to translate this manually. -->
+
+<div id="error_wrapper" class="container-fluid">
+
+	<div class="row-fluid">
+
+		<div class="span12">
+
+		    <h2>{% trans 'Attention!' %}</h2>
+
+	    </div>
+
+    </div>
+
+	<div class="span12">
+	    <p>{% trans 'Authentication Error' %}</p>
+
+	    <p><strong>{% trans 'The error was:' %}</strong> {{ e }}</p>
+
+	    <p>{% trans 'We are unable to authenticate you against the national registry with your IceKey at this time. Please try again, and if the issue persists e-mail us regarding the issue.' %}</p>
+    </div>
+</div>
+
+{% endblock %}

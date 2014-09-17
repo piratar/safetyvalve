@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-18 11:02+0000\n"
+"POT-Creation-Date: 2014-09-17 12:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -17,112 +17,126 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: person/views.py:72
+#: person/views.py:73
 msgid "Yes"
 msgstr "Já"
 
-#: person/views.py:72
+#: person/views.py:73
 msgid "No"
 msgstr "Nei"
 
-#: person/views.py:98 petition/views.py:86
+#: person/views.py:101 petition/views.py:88
 msgid "Email address"
 msgstr "Netfang"
 
-#: person/views.py:102
+#: person/views.py:105
 msgid "This field is required"
 msgstr "Netfang nauðsynlegt"
 
-#: person/views.py:103
+#: person/views.py:106
 msgid "Please enter a valid e-mail address"
 msgstr "Vinsamlegast setjið inn löggilt netfang"
 
-#: person/templates/person/my_page.html:36 petition/templates/detail.html:36
+#: person/templates/person/my_page.html:43 petition/templates/detail.html:49
 msgid "No data available in table"
 msgstr "Engar undirskrift enn"
 
-#: person/templates/person/my_page.html:43
+#: person/templates/person/my_page.html:50
 msgid "Showing _START_ to _END_ of _TOTAL_ signatures"
 msgstr "Sýni _START_ til _END_ af _TOTAL_ undirskriftum"
 
-#: person/templates/person/my_page.html:44 petition/templates/detail.html:44
+#: person/templates/person/my_page.html:51 petition/templates/detail.html:57
 msgid "Show _MENU_ entries"
 msgstr "Sýna _MENU_ færslur"
 
-#: person/templates/person/my_page.html:60
+#: person/templates/person/my_page.html:67
 msgid "Email Settings"
 msgstr "Netfangs Skráning"
 
-#: person/templates/person/my_page.html:65
+#: person/templates/person/my_page.html:72
 msgid "Save"
 msgstr "Vista"
 
-#: person/templates/person/my_page.html:77
+#: person/templates/person/my_page.html:84
 msgid "My Signatures"
 msgstr "Mínar undirskriftir"
 
-#: person/templates/person/my_page.html:82 petition/templates/detail.html:122
+#: person/templates/person/my_page.html:89 petition/templates/detail.html:137
 msgid "Name"
 msgstr "Nafn"
 
-#: person/templates/person/my_page.html:83
+#: person/templates/person/my_page.html:90
 msgid "Shown Publicly"
 msgstr "Nafnbirting opinber"
 
-#: person/templates/person/my_page.html:84 petition/templates/detail.html:124
+#: person/templates/person/my_page.html:91 petition/templates/detail.html:139
 msgid "Date"
 msgstr "Dagsetning"
 
-#: petition/views.py:87
+#: petition/views.py:89
 msgid "Confirm email address"
 msgstr "Staðfesting netfangs"
 
-#: petition/views.py:93
+#: petition/views.py:95
 msgid "Email addresses must match"
 msgstr "Netföngin verða bæði að vera eins"
 
-#: petition/templates/detail.html:11 petition/templates/detail.html.py:98
-#: petition/templates/index.html:53
-msgid "I oppose!"
-msgstr "Ég mótmæli!"
+#: petition/templates/detail.html:11 petition/templates/detail.html.py:113
+#: petition/templates/index.html:61
+msgid ""
+"SafetyValve provides the ability to either oppose or endorse any issue put "
+"forth by Parliament, utilizing official means of digital authentication to "
+"ensure each signature's authenticity."
+msgstr ""
+"Öryggisventill veitir möguleikann á því að ýmist mótmæla eða styðja hvert "
+"mál sem lagt er fram á Alþingi. Lögmæti hverrar undirskriftar er tryggt með "
+"notkun rafrænnar auðkenningar í formi Íslykils eða rafrænna skilríkja."
 
-#: petition/templates/detail.html:43
+#: petition/templates/detail.html:56
 msgid "Showing _START_ to _END_ of _TOTAL_ public signatures"
 msgstr "Sýni _START_ til _END_ af _TOTAL_ birtum undirskriftum"
 
-#: petition/templates/detail.html:70
+#: petition/templates/detail.html:83
 msgid "distributed"
 msgstr "útbýtt"
 
-#: petition/templates/detail.html:93 petition/templates/index.html:44
+#: petition/templates/detail.html:106 petition/templates/index.html:44
 msgid "Total Signatures"
 msgstr "Undirskriftir í Heild"
 
-#: petition/templates/detail.html:94
+#: petition/templates/detail.html:107
 msgid "total signatures"
 msgstr "undirskriftir í heild"
 
-#: petition/templates/detail.html:97 petition/templates/index.html:52
+#: petition/templates/detail.html:108
+msgid "oppose"
+msgstr "mótmæla"
+
+#: petition/templates/detail.html:109
+msgid "endorse"
+msgstr "styðja"
+
+#: petition/templates/detail.html:112 petition/templates/index.html:60
 msgid "Facebook Likes"
 msgstr ""
 
-#: petition/templates/detail.html:101 petition/templates/index.html:56
+#: petition/templates/detail.html:116 petition/templates/index.html:64
 msgid "Twitter Shares"
 msgstr ""
 
-#: petition/templates/detail.html:102 petition/templates/index.html:57
-msgid "I Oppose!"
-msgstr "Ég mótmæli!"
+#: petition/templates/detail.html:117 petition/templates/index.html:65
+msgid "Express yourself!"
+msgstr "Tjáðu hug þinn!"
 
-#: petition/templates/detail.html:123
+#: petition/templates/detail.html:138
 msgid "Social Number"
 msgstr "Kennitala"
 
-#: petition/templates/detail.html:147 petition/templates/index.html:82
+#: petition/templates/detail.html:162 petition/templates/index.html:96
 msgid "Are you sure"
 msgstr "Ertu viss"
 
-#: petition/templates/index.html:49
+#: petition/templates/index.html:57
 msgid "Published On"
 msgstr "Þingmál flutt"
 
@@ -132,6 +146,7 @@ msgstr "Netfang nauðsynlegt"
 
 #: petition/templates/petition/email.html:16
 #: petition/templates/petition/receipt_error.html:16
+#: templates/authentication_error.html:16
 msgid "Attention!"
 msgstr "Athugið!"
 
@@ -160,6 +175,7 @@ msgid "Error while sending receipt"
 msgstr "Villa í sendingu kvittunar"
 
 #: petition/templates/petition/receipt_error.html:26
+#: templates/authentication_error.html:25
 msgid "The error was:"
 msgstr "Villan var:"
 
@@ -180,20 +196,39 @@ msgid "Oppose"
 msgstr "Mótmæla"
 
 #: petition/templates/stub/sign_button.html:11
+msgid "Endorse"
+msgstr "Styðja"
+
+#: petition/templates/stub/sign_button.html:16
 msgid "Show signature publicly"
 msgstr "Birta undirskrift opinberlega"
 
-#: petition/templates/stub/sign_button.html:16
+#: petition/templates/stub/sign_button.html:22
 msgid "Confirm Signature"
 msgstr "Staðfesta undirskrift"
 
-#: petition/templates/stub/sign_button.html:21
+#: petition/templates/stub/sign_button.html:27
 msgid "Cancel"
 msgstr "Hætta Við"
 
-#: petition/templates/stub/unsign_button.html:4
-msgid "Remove Signature"
-msgstr "Fjarlægja undirskrift"
+#: petition/templates/stub/unsign_button.html:5
+msgid "Remove opposition"
+msgstr "Fjarlægja mótmæli"
+
+#: petition/templates/stub/unsign_button.html:8
+msgid "Remove endorsement"
+msgstr "Fjarlægja stuðning"
+
+#: templates/authentication_error.html:23
+msgid "Authentication Error"
+msgstr ""
+
+#: templates/authentication_error.html:27
+msgid ""
+"We are unable to authenticate you against the national registry with your "
+"IceKey at this time. Please try again, and if the issue persists e-mail us "
+"regarding the issue."
+msgstr ""
 
 #: templates/base.html:18
 msgid ""
@@ -203,45 +238,49 @@ msgstr ""
 "Öryggisventill er opið (e. open-source) verkefni sem er ætlað að gefa "
 "borgurum landsins færi á því að mótmæla þingmálum á Alþingi"
 
-#: templates/base.html:56 templates/base.html.py:86
-msgid "Beta Version"
-msgstr "Prófunarútgáfa"
-
-#: templates/base.html:59 templates/base.html.py:78
+#: templates/base.html:68 templates/base.html.py:87
 msgid "Hottest"
 msgstr "Heitast"
 
-#: templates/base.html:60 templates/base.html.py:79
+#: templates/base.html:69 templates/base.html.py:88
 msgid "All Issues"
 msgstr "Öll Mál"
 
-#: templates/base.html:61 templates/base.html.py:80
+#: templates/base.html:70 templates/base.html.py:89
 msgid "My Page"
 msgstr "Síðan Mín"
 
-#: templates/base.html:62 templates/base.html.py:81
+#: templates/base.html:71 templates/base.html.py:90
 msgid "About Us"
 msgstr "Um okkur"
 
-#: templates/base.html:63 templates/base.html.py:82
+#: templates/base.html:72 templates/base.html.py:91
 msgid "Contact Us"
 msgstr "Hafðu samband"
 
-#: templates/base.html:64 templates/base.html.py:118
+#: templates/base.html:73 templates/base.html.py:127
 msgid "Sign Out"
 msgstr "Útskrá"
 
-#: templates/base.html:124
+#: templates/base.html:133
 msgid "Sign In"
 msgstr "Innskráning"
+
+#~ msgid "Beta Version"
+#~ msgstr "Prófunarútgáfa"
+
+#~ msgid "I oppose!"
+#~ msgstr "Ég mótmæli!"
+
+#~ msgid "I Oppose!"
+#~ msgstr "Ég mótmæli!"
+
+#~ msgid "Remove Signature"
+#~ msgstr "Fjarlægja undirskrift"
 
 #~ msgid "Are you sure you want to remove your signature for '%(petition)s'?"
 #~ msgstr ""
 #~ "Ertu viss um að þú viljir fjarlægja undirskrift þína gegn '%(petition)s'?"
-
-#, fuzzy
-#~ msgid "Remove signature"
-#~ msgstr "fjarlægja undirskrift"
 
 #~ msgid ""
 #~ "Administrators will make sure that the receipt will be sent to you via "

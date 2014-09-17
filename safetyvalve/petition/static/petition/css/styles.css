@@ -333,6 +333,11 @@ form .errorlist {
 	color: #56547a
 }
 
+.petition_list_item .details .detail .icon, .petition_detail .details .detail .icon {
+    display: inline-block;
+    margin-right: 24px;
+}
+
 .share_icon {
 	cursor: pointer;
 }
@@ -354,25 +359,25 @@ form .errorlist {
 }
 
 .petition_list_item .details .detail:nth-child(3) {
-	left: 78px;
+	left: 210px;
 	bottom: 0;
 	position: absolute;
 }
 
 .petition_list_item .details .detail:nth-child(4) {
-	left: 269px;
+	left: 410px;
 	bottom: 0;
 	position: absolute;
 }
 
 .petition_list_item .details .detail:nth-child(5) {
-	left: 359px;
+	left: 500px;
 	bottom: 0;
 	position: absolute;
 }
 
 .petition_list_item .details .detail:nth-child(6) {
-	left: 449px;
+	left: 590px;
 	bottom: 0;
 	position: absolute;
 }
@@ -491,6 +496,14 @@ button[type="submit"] {
 	background-color: #38B449;
 }
 
+.pre_selection_container .fa-thumbs-down, #signatures .fa-thumbs-down {
+    color: #F04F6D;
+}
+
+.pre_selection_container .fa-thumbs-up, #signatures .fa-thumbs-up {
+    color: #5FF04F;
+}
+
 .signature_button > i {
 	padding: 0 5px 0 0;
 	margin: 0;
@@ -533,6 +546,10 @@ button[type="submit"] {
 
 .unsign .signature_button {
 	background-color: #B62A2A;
+}
+
+.signature_container .you_endorsed_or_opposed {
+    display: inline-block;
 }
 
 .confirm_signature_button {

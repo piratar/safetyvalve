@@ -8,8 +8,8 @@
 
 {% block open_graph %}
         <meta property="og:title" content="{{ p.name|capfirst }}" />
-        <meta property="og:description" content="{% trans 'I oppose!' %}" />
-        <meta property="og:image" content="{{ INSTANCE_URL }}{{STATIC_URL}}core/img/fb_share.png" />
+        <meta property="og:description" content="{% trans "SafetyValve provides the ability to either oppose or endorse any issue put forth by Parliament, utilizing official means of digital authentication to ensure each signature's authenticity." %}" />
+        <meta property="og:image" content="{{ INSTANCE_URL }}{{STATIC_URL}}core/img/logo_alt.png" />
         <meta property="og:image:type" content="image/png" />
 {% endblock %}
 
@@ -32,6 +32,19 @@
                     {"bSortable": false, "sWidth": "25%", "sClass": "center"},
                     {"sWidth": "25%", "sClass": "center"}
                 ],
+                "aoColumnDefs": [ {
+                    "aTargets": [ 0 ],
+                    "mRender": function( data, type, full ) {
+                        thumb = '';
+                        if (data.signature_stance == 'oppose') {
+                            thumb = '<i class="fa fa-thumbs-down"></i>';
+                        }
+                        else if (data.signature_stance == 'endorse') {
+                            thumb = '<i class="fa fa-thumbs-up"></i>';
+                        }
+                        return thumb + " " + data.signature_name;
+                    }
+                } ],
                 "oLanguage": {
                     "sEmptyTable": "{% trans 'No data available in table' %}",
                     "oPaginate": {
@@ -91,20 +104,22 @@
                 <div class="details">
 
                     <div class="detail" title="{%trans 'Total Signatures' %}">
-                        <div class="icon"><i class="fa fa-check-square"></i><span class="detail_figure">{{p.num_signatures}} {% trans 'total signatures' %}</span></div>
+                        <div class="icon"><i class="fa fa-check-square"></i><span class="detail_figure">{{ p.total_count }} {% trans 'total signatures' %}</span></div>
+                        <div class="icon"><i class="fa fa-thumbs-down"></i><span class="detail_figure">{{ p.oppose_count }} {% trans 'oppose' %}</span></div>
+                        <div class="icon"><i class="fa fa-thumbs-up"></i><span class="detail_figure">{{ p.endorse_count }} {% trans 'endorse' %}</span></div>
                     </div>
 
                     <div class="detail share_detail" title="{%trans 'Facebook Likes' %}">
-                        <div class="fb_share" data-url="{{INSTANCE_URL}}/frumvarp/{{ p.id }}/" data-text="{% trans 'I oppose!' %}" data-title="Like"></div>
+                        <div class="fb_share" data-url="{{INSTANCE_URL}}/frumvarp/{{ p.id }}/" data-text="{% trans "SafetyValve provides the ability to either oppose or endorse any issue put forth by Parliament, utilizing official means of digital authentication to ensure each signature's authenticity." %}" data-title="Like"></div>
                     </div>
 
                     <div class="detail share_detail" title="{%trans 'Twitter Shares' %}">
-                        <div class="twitter_share" data-url="{{INSTANCE_URL}}/frumvarp/{{ p.id }}/" data-text="{% trans 'I Oppose!' %}" data-title="Tweet"></div>
+                        <div class="twitter_share" data-url="{{INSTANCE_URL}}/frumvarp/{{ p.id }}/" data-text="{% trans "Express yourself!" %}" data-title="Tweet"></div>
                     </div>
 
                 </div>
 
-                {% if already_signed %}
+                {% if stance != '' %}
                   {% include 'stub/unsign_button.html' %}
                 {% else %}
                   {% include 'stub/sign_button.html' %}
