@@ -22,7 +22,7 @@ def get_saml(request, token):
 
     client = Client(AI['wsdl'], username=AI['login'], password=AI['password'])
     ipaddr = request.META.get('REMOTE_ADDR')
-    result = client.service.generateSAMLFromToken('dada', ipaddr)
+    result = client.service.generateSAMLFromToken(token, ipaddr)
 
     if result['status']['message'] != 'Success':
         raise Exception('SAML error: %s' % result['status']['message'])
