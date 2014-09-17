@@ -9,8 +9,8 @@ def about_us(request):
     return render(request, 'about_us.html', Context({'page_title': 'About Us'}))
 
 
-def authentication_error(request):
-    return render(request, 'authentication_error.html', Context({'page_title': 'Authentication Error'}))
+def authentication_error(request, error=""):
+    return render(request, 'authentication_error.html', Context({'page_title': 'Authentication Error', 'error': error}))
 
 
 def test_mail(request):
