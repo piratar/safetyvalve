@@ -83,11 +83,11 @@ msgstr "Netföngin verða bæði að vera eins"
 
 #: petition/views.py:310
 msgid "Search Terms"
-msgstr ""
+msgstr "Leitarstrengur"
 
 #: petition/views.py:315
 msgid "You must enter a search term"
-msgstr ""
+msgstr "Þú verður að setja inn leitarstreng"
 
 #: petition/templates/detail.html:11 petition/templates/detail.html.py:113
 #: petition/templates/index.html:68
@@ -210,15 +210,14 @@ msgid "Search"
 msgstr ""
 
 #: petition/templates/petition/search_terms.html:16
-#, fuzzy
 msgid "Search Issues"
-msgstr "Öll Mál"
+msgstr "Leita í þingmálum"
 
 #: petition/templates/petition/search_terms.html:26
 msgid ""
 "Enter the terms you wish to search by below seperated by a space. Issues "
 "with the specified terms in their title or body conent will be returned."
-msgstr ""
+msgstr "Settu inn leitarorð aðskilin með bili. Þingmálum verður skilað sem innihalda eitthvert leitarorðanna í titli eða efnisinnihaldi.."
 
 #: petition/templates/stub/sign_button.html:6
 msgid "Oppose"
