@@ -14,5 +14,7 @@ urlpatterns = patterns('',
     url(r'^(?P<petition_id>\d+)/skraning_mottaka/$', views.sign_receipt, name='sign_receipt'),
     url(r'^(?P<petition_id>\d+)/afskraning_mottaka/$', views.unsign_receipt, name='unsign_receipt'),
     url(r'^(?P<petition_id>\d+)/email/$', views.email, name='email'),
+    url(r'^search/$', views.search_terms, name='search_terms'),
+    url(r'^search_results/(?P<search_terms>.+)$', views.search_results, name='search_results'),
     url(r'^audkenna/$', views.authenticate, name='authenticate'),
 )

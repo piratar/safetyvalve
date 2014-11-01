@@ -3,10 +3,11 @@
 import codecs
 import os
 import json
+import base64
 
 from math import floor
 from datetime import datetime, timedelta
-from urllib import urlencode
+from urllib import urlencode, quote_plus, unquote_plus
 
 from django import forms
 from django.db.models import Count, Q
@@ -167,7 +168,7 @@ def get_public_signatures(request, petition_id):
 
     return HttpResponse(json.dumps(response_wrapper), content_type="application/json")
 
-def index(request, page_title, petitions):
+def index(request, page_title, petitions, search_terms=""):
 
     # p = cached_or_function('popular__petitions', get_petitions, 60 * 5)
 
@@ -202,7 +203,7 @@ def index(request, page_title, petitions):
             i.name = i.name.encode('utf-8')
 
 
-    total_pages = paginator.num_pages;
+    total_pages = paginator.num_pages
 
     if total_pages <= settings.PAGE_BUTTONS_THRESHOLD:
         pages = paginator.page_range
@@ -281,7 +282,8 @@ def index(request, page_title, petitions):
         'pages' : pages,
         'current_page': page,
         'page_title': page_title,
-        'INSTANCE_URL' : settings.INSTANCE_URL
+        'INSTANCE_URL': settings.INSTANCE_URL,
+        'search_terms': search_terms
     })
 
     return render(request, 'index.html', context)
@@ -299,6 +301,43 @@ def popular(request):
 
 
     return index(request, 'Hottest', petitions)
+
+
+def search_terms(request):
+    c = {}
+
+    class SearchForm(forms.Form):
+        search_terms = forms.CharField(label=ugettext('Search Terms'), required=False)
+
+        def clean(self):
+            if (self.cleaned_data.get('search_terms') == '' or self.cleaned_data.get('search_terms') == ' '):
+                raise forms.ValidationError(
+                    ugettext("You must enter a search term")
+                )
+            return self.cleaned_data
+
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            clean_search_terms = form.cleaned_data['search_terms']
+            return HttpResponseRedirect(reverse('search_results', args=(quote_plus(clean_search_terms.encode("utf-8")), )))
+    else:
+        form = SearchForm()
+
+    c['form'] = form
+    c['page_title'] = 'Search'
+
+    return render(request, 'petition/search_terms.html', c)
+
+
+def search_results(request, search_terms):
+
+    clean_search_terms = unquote_plus(search_terms.encode("utf-8"))
+
+    petitions = Petition.objects.search(clean_search_terms)
+
+    return index(request, 'Search Results', petitions, clean_search_terms)
+
 
 
 def sign(request, petition_id, stance):

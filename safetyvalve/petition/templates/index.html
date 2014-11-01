@@ -13,6 +13,13 @@
   
   <div class="container-fluid petition_list">
 
+
+  {% if page_title == 'Search Results' %}
+
+    <h2>{% trans 'Terms Searched For' %}: &nbsp;&nbsp;{{search_terms}}</h2>
+
+  {% endif %}
+
   {% if pages|length > 1 %}
     <div id="page_numbers">
     {% for p in pages %}

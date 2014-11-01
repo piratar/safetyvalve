@@ -672,7 +672,7 @@ table td { /* Add a little breathing space for tables - especially under /signat
 	padding-top: 15px;
 }
 
-#my_page_wrapper form p {
+#my_page_wrapper form p,  {
 	display: inline-block;
 }
 
