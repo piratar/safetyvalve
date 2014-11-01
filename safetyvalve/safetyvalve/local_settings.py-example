@@ -34,6 +34,8 @@ TIME_ZONE = 'Iceland'
 LANGUAGE_CODE = 'is'
 DATE_FORMAT = 'd-F-Y'
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 ALLOWED_HOSTS = []
 
 # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
