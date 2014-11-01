@@ -146,7 +146,7 @@ msgstr "Ertu viss"
 
 #: petition/templates/index.html:19
 msgid "Terms Searched For"
-msgstr ""
+msgstr "Leitarorð"
 
 #: petition/templates/index.html:64
 msgid "Published On"
