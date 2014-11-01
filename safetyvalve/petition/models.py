@@ -13,11 +13,28 @@ class Source(models.Model):
     #     return self.name
 
 class PetitionManager(models.Manager):
-    def search(self, search_string):
+    # Example usage: Petition.objects.search('searchstring', 'name,description')
+    def search(self, search_string, search_fields=['name', 'description', 'content']):
         results = Petition.objects.none()
 
+        # Must look somewhere.
+        if len(search_fields) == 0:
+            return results
+
         for word in search_string.split():
-            result_part = Petition.objects.filter(Q(name__icontains=word) | Q(description__icontains=word) | Q(content__icontains=word))
+            q = Q()
+
+            if 'name' in search_fields:
+                kwargs = {'name__icontains': word}
+                q = q | Q(**kwargs)
+            if 'description' in search_fields:
+                kwargs = {'description__icontains': word}
+                q = q | Q(**kwargs)
+            if 'content' in search_fields:
+                kwargs = {'content__icontains': word}
+                q = q | Q(**kwargs)
+
+            result_part = Petition.objects.filter(q)
 
             results = results | result_part
 
