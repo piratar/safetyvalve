@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-01 17:02+0000\n"
+"POT-Creation-Date: 2014-11-02 22:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -25,7 +25,7 @@ msgstr "Já"
 msgid "No"
 msgstr "Nei"
 
-#: person/views.py:101 petition/views.py:89
+#: person/views.py:101 petition/views.py:92
 msgid "Email address"
 msgstr "Netfang"
 
@@ -73,19 +73,19 @@ msgstr "Nafnbirting opinber"
 msgid "Date"
 msgstr "Dagsetning"
 
-#: petition/views.py:90
+#: petition/views.py:93
 msgid "Confirm email address"
 msgstr "Staðfesting netfangs"
 
-#: petition/views.py:96
+#: petition/views.py:99
 msgid "Email addresses must match"
 msgstr "Netföngin verða bæði að vera eins"
 
-#: petition/views.py:310
+#: petition/views.py:313
 msgid "Search Terms"
 msgstr "Leitarstrengur"
 
-#: petition/views.py:315
+#: petition/views.py:318
 msgid "You must enter a search term"
 msgstr "Þú verður að setja inn leitarstreng"
 
@@ -217,7 +217,9 @@ msgstr "Leita í þingmálum"
 msgid ""
 "Enter the terms you wish to search by below seperated by a space. Issues "
 "with the specified terms in their title or body conent will be returned."
-msgstr "Settu inn leitarorð aðskilin með bili. Þingmálum verður skilað sem innihalda eitthvert leitarorðanna í titli eða efnisinnihaldi.."
+msgstr ""
+"Settu inn leitarorð aðskilin með bili. Þingmálum verður skilað sem innihalda "
+"eitthvert leitarorðanna í titli eða efnisinnihaldi.."
 
 #: petition/templates/stub/sign_button.html:6
 msgid "Oppose"
@@ -246,6 +248,37 @@ msgstr "Fjarlægja mótmæli"
 #: petition/templates/stub/unsign_button.html:8
 msgid "Remove endorsement"
 msgstr "Fjarlægja stuðning"
+
+#: templates/404.html:16
+msgid "Page not found"
+msgstr "Síða fannst ekki"
+
+#: templates/404.html:23
+msgid "The page that you have requested does not exist."
+msgstr "Síðan sem þú baðst um er ekki til."
+
+#: templates/500.html:16
+msgid "Something lousy occurred!"
+msgstr "Eitthvað leiðinlegt gerðist!"
+
+#: templates/500.html:24
+msgid ""
+"An unexpected error occurred and technicians have been notified. Please try "
+"again, and if the issue persists, please email us regarding the issue."
+msgstr ""
+"Óvænt villa kom upp og tæknimenn hafa verið látnir vita. Vinsamlegast reynið "
+"aftur, en ef vandamálið heldur áfram að koma upp, vinsamlegast sendið okkur "
+"tölvupóst á netfangið ventill@ventill.is."
+
+#: templates/500.html:26
+msgid ""
+"Our website relies on external services which may on occasion experience "
+"difficulties unrelated to our own website. When this happens it is usually "
+"enough to simply try again."
+msgstr ""
+"Okkar vefur stólar á ytri kerfi sem af og til geta átt við erfiðleika að "
+"stríða, óháð okkar kerfum. Þegar þetta gerist er yfirleitt nóg að "
+"einfaldlega reyna aftur."
 
 #: templates/authentication_error.html:23
 msgid "Authentication Error"
@@ -297,6 +330,9 @@ msgstr "Útskrá"
 #: templates/base.html:135
 msgid "Sign In"
 msgstr "Innskráning"
+
+#~ msgid "Unexpected error!"
+#~ msgstr "Óvænt villa!"
 
 #~ msgid "I oppose!"
 #~ msgstr "Ég mótmæli!"
