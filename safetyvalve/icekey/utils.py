@@ -71,6 +71,15 @@ def authenticate(request, redirect_url):
 
     if fake_auth is None:
 
+        result = get_saml(request, token)
+        name, kennitala = parse_saml(result['saml'])
+        '''
+        # If the WebFault exception is still popping up (yet to be determined), this should be
+        # moved to an exception-handling middleware of some sorts. For now, we will let the
+        # exception be raised at this point and handled by the 500-error handling mechanism.
+        #
+        # Remove this section if 2014-11-02 was a very long time ago, but please remember to then
+        # also remove the "authentication_error" view in 'core.views.py'.
         try:
             result = get_saml(request, token)
             name, kennitala = parse_saml(result['saml'])
@@ -80,6 +89,7 @@ def authenticate(request, redirect_url):
             print message
             
             return authentication_error(request, '')
+        '''
 
     if not user.is_authenticated() or user.username != kennitala:
         user = ensure_user(request, name, kennitala)

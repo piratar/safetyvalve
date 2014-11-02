@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans page_title %}{% endblock %}
+
+{% block content %}
+
+<!-- It makes no sense to translate this manually. -->
+
+<div id="error_wrapper" class="container-fluid">
+
+	<div class="row-fluid">
+
+		<div class="span12">
+
+		    <h2>{% trans "Something lousy occurred!" %}</h2>
+
+	    </div>
+
+    </div>
+
+	<div class="span12">
+
+        <p>{% trans "An unexpected error occurred and technicians have been notified. Please try again, and if the issue persists, please email us regarding the issue." %}</p>
+
+        <p>{% trans "Our website relies on external services which may on occasion experience difficulties unrelated to our own website. When this happens it is usually enough to simply try again." %}</p>
+
+    </div>
+</div>
+
+{% endblock %}
