@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-02 22:26+0000\n"
+"POT-Creation-Date: 2015-02-10 18:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -25,7 +25,7 @@ msgstr "Já"
 msgid "No"
 msgstr "Nei"
 
-#: person/views.py:101 petition/views.py:92
+#: person/views.py:101 petition/views.py:89
 msgid "Email address"
 msgstr "Netfang"
 
@@ -73,19 +73,27 @@ msgstr "Nafnbirting opinber"
 msgid "Date"
 msgstr "Dagsetning"
 
-#: petition/views.py:93
+#: petition/views.py:90
 msgid "Confirm email address"
 msgstr "Staðfesting netfangs"
 
-#: petition/views.py:99
+#: petition/views.py:96
 msgid "Email addresses must match"
 msgstr "Netföngin verða bæði að vera eins"
 
-#: petition/views.py:313
+#: petition/views.py:157
+msgid "[ Name hidden ]"
+msgstr "[ Nafn falið ]"
+
+#: petition/views.py:159
+msgid "[ SSN hidden ]"
+msgstr "[ Kennitala falin ]"
+
+#: petition/views.py:311
 msgid "Search Terms"
 msgstr "Leitarstrengur"
 
-#: petition/views.py:318
+#: petition/views.py:316
 msgid "You must enter a search term"
 msgstr "Þú verður að setja inn leitarstreng"
 
@@ -330,6 +338,9 @@ msgstr "Útskrá"
 #: templates/base.html:135
 msgid "Sign In"
 msgstr "Innskráning"
+
+#~ msgid "[anonymous]"
+#~ msgstr "[nafnlaus]"
 
 #~ msgid "Unexpected error!"
 #~ msgstr "Óvænt villa!"
