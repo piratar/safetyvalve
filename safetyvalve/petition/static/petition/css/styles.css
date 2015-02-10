@@ -638,6 +638,11 @@ table td { /* Add a little breathing space for tables - especially under /signat
 	margin-top: -5px;
 }
 
+.petition_detail span.small_signature {
+    font-style: italic;
+    color: #909090;
+}
+
 /* ---- END PETITION DETAIL STYLES ----------------------------------------- */
 
 

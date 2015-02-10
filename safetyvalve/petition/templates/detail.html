@@ -42,7 +42,20 @@
                         else if (data.signature_stance == 'endorse') {
                             thumb = '<i class="fa fa-thumbs-up"></i>';
                         }
-                        return thumb + " " + data.signature_name;
+                        name = data.signature_name;
+                        if (name.substr(0, 1) == '[') {
+                            name = '<span class="small_signature">' + name + '</span>';
+                        }
+                        return thumb + " " + name;
+                    }
+                }, {
+                    "aTargets": [ 1 ],
+                    "mRender": function(data, type, full) {
+                        ssn = data;
+                        if (ssn.substr(0, 1) == '[') {
+                            ssn = '<span class="small_signature">' + ssn + '</span>';
+                        }
+                        return ssn;
                     }
                 } ],
                 "oLanguage": {
@@ -53,7 +66,7 @@
                         "sFirst": "&#xf104;",
                         "sLast": "&#xf105;"
                     },
-                    "sInfo": "{% trans 'Showing _START_ to _END_ of _TOTAL_ public signatures' %}",
+                    "sInfo": "{% trans 'Showing _START_ to _END_ of _TOTAL_ signatures' %}",
                     "sLengthMenu": "{% trans 'Show _MENU_ entries' %}"
                 },
                 "sPaginationType": "full_numbers",
