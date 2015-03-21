@@ -1,8 +1,10 @@
 # -*- coding: utf-8
-from django.db import models
-
-from BeautifulSoup import BeautifulSoup
+import re
 import urllib
+
+from bs4 import BeautifulSoup
+
+from django.db import models
 
 from petition.models import Petition, Source
 
@@ -38,7 +40,7 @@ class Issue(models.Model):
             if Petition.objects.filter(external_id=external_id).count() == 0:
 
                 althingi_source = Source.objects.get(name='althingi')
-                
+
                 # Create a petition for this issue
                 petition = Petition()
                 petition.source = althingi_source
@@ -77,8 +79,10 @@ class Document(models.Model):
             petition.resource = self.path_html
 
             # Get the content of the petition.
-            content = urllib.urlopen(self.path_html).read().decode('ISO-8859-1').replace('&nbsp;', ' ')
+            content = urllib.urlopen(self.path_html).read().replace('&nbsp;', ' ')
             soup = BeautifulSoup(content)  # Turn it into proper XML.
+            soup = soup.find('div', {'class': lambda x: x and re.search('(\s|^)article(\s|$)', x)})
+            soup = soup.find('div', {'class': 'boxbody'})
 
             # Remove garbage.
             [s.extract() for s in soup('script')]
@@ -88,12 +92,12 @@ class Document(models.Model):
             [s.extract() for s in soup('hr')]
 
             # Replace 'html' and 'body' tags'
-            body_tag = soup.find('body')
-            body_tag.attrs.append(('id', 'body_tag'))
-            body_tag.name = 'div'
-            html_tag = soup.find('html')
-            html_tag.attrs.append(('id', 'html_tag'))
-            html_tag.name = 'div'
+            # body_tag = soup.find('body')
+            # body_tag.attrs.append(('id', 'body_tag'))
+            # body_tag.name = 'div'
+            # html_tag = soup.find('html')
+            # html_tag.attrs.append(('id', 'html_tag'))
+            # html_tag.name = 'div'
 
             self.xhtml = soup.prettify()
 
