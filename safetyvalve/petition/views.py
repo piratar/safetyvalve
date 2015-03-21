@@ -141,7 +141,7 @@ def get_public_signatures(request, petition_id):
         if sort_dir == "desc":
             sort_fields[i] = "-"+sort_fields[i]
 
-    signatures = Signature.objects.select_related('user').filter(petition_id=petition_id).filter(show_public=1).order_by(*sort_fields)
+    signatures = Signature.objects.select_related('user').filter(petition_id=petition_id).order_by(*sort_fields)
     try:
         p = Paginator(signatures, page_length)
         results = p.page(page_num)
@@ -152,10 +152,11 @@ def get_public_signatures(request, petition_id):
 
     for s in results:
         o = []
+        signature = {}
         signature = {'signature_stance': s.stance,
-                     'signature_name': s.user.first_name + " " + s.user.last_name}
+                     'signature_name': '%s %s' % (s.user.first_name, s.user.last_name) if s.show_public else ugettext('[ Name hidden ]')}
         o.append(signature)
-        o.append(s.user.username)
+        o.append(s.user.username if s.show_public else ugettext('[ SSN hidden ]'))
         o.append(s.date_created.strftime("%Y-%m-%d %H:%M:%S"))
 
         response.append(o)
