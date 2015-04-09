@@ -261,6 +261,14 @@ def index(request, page_title, petitions, search_terms=""):
         else:
             p.endorse_count = 0
 
+        issue_number = p.external_id.split('.')
+        if(len(issue_number) > 1):
+            issue_number = issue_number[1] + '/' + issue_number[0]
+        else:
+            issue_number = "blah"
+
+        p.issue_number = issue_number
+
         p.total_count = p.oppose_count + p.endorse_count
 
 

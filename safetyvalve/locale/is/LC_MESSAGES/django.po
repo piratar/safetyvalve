@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SafetyValve\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-10 18:16+0000\n"
+"POT-Creation-Date: 2015-04-09 12:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
 "Language-Team: Helgi Hrafn Gunnarsson <helgi@piratar.is>\n"
@@ -37,15 +37,15 @@ msgstr "Netfang nauðsynlegt"
 msgid "Please enter a valid e-mail address"
 msgstr "Vinsamlegast setjið inn löggilt netfang"
 
-#: person/templates/person/my_page.html:43 petition/templates/detail.html:49
+#: person/templates/person/my_page.html:43 petition/templates/detail.html:62
 msgid "No data available in table"
 msgstr "Engar undirskrift enn"
 
-#: person/templates/person/my_page.html:50
+#: person/templates/person/my_page.html:50 petition/templates/detail.html:69
 msgid "Showing _START_ to _END_ of _TOTAL_ signatures"
 msgstr "Sýni _START_ til _END_ af _TOTAL_ undirskriftum"
 
-#: person/templates/person/my_page.html:51 petition/templates/detail.html:57
+#: person/templates/person/my_page.html:51 petition/templates/detail.html:70
 msgid "Show _MENU_ entries"
 msgstr "Sýna _MENU_ færslur"
 
@@ -61,7 +61,7 @@ msgstr "Vista"
 msgid "My Signatures"
 msgstr "Mínar undirskriftir"
 
-#: person/templates/person/my_page.html:89 petition/templates/detail.html:137
+#: person/templates/person/my_page.html:89 petition/templates/detail.html:150
 msgid "Name"
 msgstr "Nafn"
 
@@ -69,7 +69,7 @@ msgstr "Nafn"
 msgid "Shown Publicly"
 msgstr "Nafnbirting opinber"
 
-#: person/templates/person/my_page.html:91 petition/templates/detail.html:139
+#: person/templates/person/my_page.html:91 petition/templates/detail.html:152
 msgid "Date"
 msgstr "Dagsetning"
 
@@ -89,16 +89,16 @@ msgstr "[ Nafn falið ]"
 msgid "[ SSN hidden ]"
 msgstr "[ Kennitala falin ]"
 
-#: petition/views.py:311
+#: petition/views.py:319
 msgid "Search Terms"
 msgstr "Leitarstrengur"
 
-#: petition/views.py:316
+#: petition/views.py:324
 msgid "You must enter a search term"
 msgstr "Þú verður að setja inn leitarstreng"
 
-#: petition/templates/detail.html:11 petition/templates/detail.html.py:113
-#: petition/templates/index.html:68
+#: petition/templates/detail.html:11 petition/templates/detail.html.py:126
+#: petition/templates/index.html:72
 msgid ""
 "SafetyValve provides the ability to either oppose or endorse any issue put "
 "forth by Parliament, utilizing official means of digital authentication to "
@@ -108,47 +108,43 @@ msgstr ""
 "mál sem lagt er fram á Alþingi. Lögmæti hverrar undirskriftar er tryggt með "
 "notkun rafrænnar auðkenningar í formi Íslykils eða rafrænna skilríkja."
 
-#: petition/templates/detail.html:56
-msgid "Showing _START_ to _END_ of _TOTAL_ public signatures"
-msgstr "Sýni _START_ til _END_ af _TOTAL_ birtum undirskriftum"
-
-#: petition/templates/detail.html:83
+#: petition/templates/detail.html:96
 msgid "distributed"
 msgstr "útbýtt"
 
-#: petition/templates/detail.html:106 petition/templates/index.html:51
+#: petition/templates/detail.html:119 petition/templates/index.html:55
 msgid "Total Signatures"
 msgstr "Undirskriftir í Heild"
 
-#: petition/templates/detail.html:107
+#: petition/templates/detail.html:120
 msgid "total signatures"
 msgstr "undirskriftir í heild"
 
-#: petition/templates/detail.html:108
+#: petition/templates/detail.html:121
 msgid "oppose"
 msgstr "mótmæla"
 
-#: petition/templates/detail.html:109
+#: petition/templates/detail.html:122
 msgid "endorse"
 msgstr "styðja"
 
-#: petition/templates/detail.html:112 petition/templates/index.html:67
+#: petition/templates/detail.html:125 petition/templates/index.html:71
 msgid "Facebook Likes"
 msgstr ""
 
-#: petition/templates/detail.html:116 petition/templates/index.html:71
+#: petition/templates/detail.html:129 petition/templates/index.html:75
 msgid "Twitter Shares"
 msgstr ""
 
-#: petition/templates/detail.html:117 petition/templates/index.html:72
+#: petition/templates/detail.html:130 petition/templates/index.html:76
 msgid "Express yourself!"
 msgstr "Tjáðu hug þinn!"
 
-#: petition/templates/detail.html:138
+#: petition/templates/detail.html:151
 msgid "Social Number"
 msgstr "Kennitala"
 
-#: petition/templates/detail.html:162 petition/templates/index.html:103
+#: petition/templates/detail.html:175 petition/templates/index.html:107
 msgid "Are you sure"
 msgstr "Ertu viss"
 
@@ -156,7 +152,11 @@ msgstr "Ertu viss"
 msgid "Terms Searched For"
 msgstr "Leitarorð"
 
-#: petition/templates/index.html:64
+#: petition/templates/index.html:48
+msgid "Issue Number"
+msgstr "mál"
+
+#: petition/templates/index.html:68
 msgid "Published On"
 msgstr "Þingmál flutt"
 
@@ -338,6 +338,9 @@ msgstr "Útskrá"
 #: templates/base.html:135
 msgid "Sign In"
 msgstr "Innskráning"
+
+#~ msgid "Showing _START_ to _END_ of _TOTAL_ public signatures"
+#~ msgstr "Sýni _START_ til _END_ af _TOTAL_ birtum undirskriftum"
 
 #~ msgid "[anonymous]"
 #~ msgstr "[nafnlaus]"

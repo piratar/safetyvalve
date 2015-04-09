@@ -5,103 +5,107 @@
 
 {% block javascript %}
 {{block.super}}
-    <script src="{{STATIC_URL}}petition/js/petition.js" type="text/javascript"></script>
-    <script src="{{STATIC_URL}}petition/js/jquery.sharrre.min.js" type="text/javascript"></script>
+        <script src="{{STATIC_URL}}petition/js/petition.js" type="text/javascript"></script>
+        <script src="{{STATIC_URL}}petition/js/jquery.sharrre.min.js" type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
-  
-  <div class="container-fluid petition_list">
+    
+    <div class="container-fluid petition_list">
 
 
-  {% if page_title == 'Search Results' %}
+    {% if page_title == 'Search Results' %}
 
-    <h2>{% trans 'Terms Searched For' %}: &nbsp;&nbsp;{{search_terms}}</h2>
+        <h2>{% trans 'Terms Searched For' %}: &nbsp;&nbsp;{{search_terms}}</h2>
 
-  {% endif %}
+    {% endif %}
 
-  {% if pages|length > 1 %}
-    <div id="page_numbers">
-    {% for p in pages %}
+    {% if pages|length > 1 %}
+        <div id="page_numbers">
+        {% for p in pages %}
 
-      {% if p == '...' %}
-        <div class="page_number_separator"><div></div><div></div><div></div></div>
-      {% else %}
-        <a class="page_number{% ifequal p current_page %} selected{% endifequal %}" href="?page={{p}}">{{p}}</a>
-      {% endif %}
+            {% if p == '...' %}
+                <div class="page_number_separator"><div></div><div></div><div></div></div>
+            {% else %}
+                <a class="page_number{% ifequal p current_page %} selected{% endifequal %}" href="?page={{p}}">{{p}}</a>
+            {% endif %}
 
-    {% endfor %}
-    </div>
-  {% endif %}
+        {% endfor %}
+        </div>
+    {% endif %}
 
-  {% for p in petitions %}
+    {% for p in petitions %}
 
-    <div class="row-fluid petition_list_item">
+        <div class="row-fluid petition_list_item">
 
-      <div class="span12">
+            <div class="span12">
 
-        <a class="petition_title" href="/frumvarp/{{ p.id }}/"><h2>{{ p.name|capfirst }}</h2></a>
+                <a class="petition_title" href="/frumvarp/{{ p.id }}/"><h2>{{ p.name|capfirst }}</h2></a>
 
-        <div class="details">
+                <div class="details">
 
-          <p>
-            {{ p.description }}&nbsp;
-          </p>
+                    <p>
+                        {%trans 'Issue Number' %} {{ p.issue_number }}&nbsp;
+                    </p>
 
-          <div class="detail" title="{%trans 'Total Signatures' %}">
-            <div class="icon">
-              <i class="fa fa-check-square"></i><span class="detail_figure">{{ p.total_count }}</span>
-            </div>
-            <div class="icon">
-              <i class="fa fa-thumbs-down"></i><span class="detail_figure">{{ p.oppose_count }}</span>
-            </div>
-            <div class="icon">
-              <i class="fa fa-thumbs-up"></i><span class="detail_figure">{{ p.endorse_count }}</span>
-            </div>
-          </div>
+                    <p>
+                        {{ p.description }}&nbsp;
+                    </p>
 
-          <div class="detail" >
-            <span class="detail_figure">{% trans 'Published On' %}: {{p.time_published|date:"d. b o"}}</span>
-          </div>
+                    <div class="detail" title="{%trans 'Total Signatures' %}">
+                        <div class="icon">
+                            <i class="fa fa-check-square"></i><span class="detail_figure">{{ p.total_count }}</span>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-thumbs-down"></i><span class="detail_figure">{{ p.oppose_count }}</span>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-thumbs-up"></i><span class="detail_figure">{{ p.endorse_count }}</span>
+                        </div>
+                    </div>
 
-          <div class="detail share_detail" title="{%trans 'Facebook Likes' %}">
-            <div class="fb_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="{% trans "SafetyValve provides the ability to either oppose or endorse any issue put forth by Parliament, utilizing official means of digital authentication to ensure each signature's authenticity." %}" data-title="Like"></div>
-          </div>
+                    <div class="detail" >
+                        <span class="detail_figure">{% trans 'Published On' %}: {{p.time_published|date:"d. b o"}}</span>
+                    </div>
 
-          <div class="detail share_detail" title="{%trans 'Twitter Shares' %}">
-            <div class="twitter_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="{% trans "Express yourself!" %}" data-title="Tweet"></div>
-          </div>
+                    <div class="detail share_detail" title="{%trans 'Facebook Likes' %}">
+                        <div class="fb_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="{% trans "SafetyValve provides the ability to either oppose or endorse any issue put forth by Parliament, utilizing official means of digital authentication to ensure each signature's authenticity." %}" data-title="Like"></div>
+                    </div>
+
+                    <div class="detail share_detail" title="{%trans 'Twitter Shares' %}">
+                        <div class="twitter_share" data-url="{{instance_url}}/frumvarp/{{ p.id }}/" data-text="{% trans "Express yourself!" %}" data-title="Tweet"></div>
+                    </div>
 
 <!--           <div class="detail">
-            <a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="fa fa-twitter-square"></i><span class="share_total">[[TWITTER_TOTAL]]</span></a>
-          </div> -->
+                        <a href="{{p.url_twitter_share}}" target="_blank" class="share_icon"><i class="fa fa-twitter-square"></i><span class="share_total">[[TWITTER_TOTAL]]</span></a>
+                    </div> -->
 
 <!--           <div class="detail">
-            <a href="{{p.url_googleplus_share}}" target="_blank" class="share_icon"><i class="fa fa-google-plus-square"></i></a>
-          </div> -->
+                        <a href="{{p.url_googleplus_share}}" target="_blank" class="share_icon"><i class="fa fa-google-plus-square"></i></a>
+                    </div> -->
+
+                </div>
+
+                {% if p.id not in oppose_petition_ids and p.id not in endorse_petition_ids %}
+                    {% include 'stub/sign_button.html' %}
+                {% else %}
+                    {% if p.id in oppose_petition_ids %}
+                        {% include 'stub/unsign_button.html' with stance='oppose' %}
+                    {% else %}
+                        {% if p.id in endorse_petition_ids %}
+                            {% include 'stub/unsign_button.html' with stance='endorse' %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+
+            </div>
 
         </div>
 
-        {% if p.id not in oppose_petition_ids and p.id not in endorse_petition_ids %}
-          {% include 'stub/sign_button.html' %}
-        {% else %}
-          {% if p.id in oppose_petition_ids %}
-            {% include 'stub/unsign_button.html' with stance='oppose' %}
-          {% else %}
-            {% if p.id in endorse_petition_ids %}
-              {% include 'stub/unsign_button.html' with stance='endorse' %}
-            {% endif %}
-          {% endif %}
-        {% endif %}
+    {% endfor %}
 
-      </div>
+        <div id="msg_sure" style="display:none;">{% trans 'Are you sure' %}?</div>
 
     </div>
-
-	{% endfor %}
-
-    <div id="msg_sure" style="display:none;">{% trans 'Are you sure' %}?</div>
-
-  </div>
 
 {% endblock %}

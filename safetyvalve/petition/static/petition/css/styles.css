@@ -354,29 +354,29 @@ form .errorlist {
 }
 
 /* detail icon placements */
-.petition_list_item .details .detail:nth-child(2) {
+.petition_list_item .details .detail:nth-child(3) {
 	left: 0;
 }
 
-.petition_list_item .details .detail:nth-child(3) {
+.petition_list_item .details .detail:nth-child(4) {
 	left: 210px;
 	bottom: 0;
 	position: absolute;
 }
 
-.petition_list_item .details .detail:nth-child(4) {
+.petition_list_item .details .detail:nth-child(5) {
 	left: 410px;
 	bottom: 0;
 	position: absolute;
 }
 
-.petition_list_item .details .detail:nth-child(5) {
+.petition_list_item .details .detail:nth-child(6) {
 	left: 500px;
 	bottom: 0;
 	position: absolute;
 }
 
-.petition_list_item .details .detail:nth-child(6) {
+.petition_list_item .details .detail:nth-child(7) {
 	left: 590px;
 	bottom: 0;
 	position: absolute;
@@ -733,7 +733,7 @@ table td { /* Add a little breathing space for tables - especially under /signat
 		margin-top: 2px;
 	}
 
-	#wrapper .petition_list_item .details .detail:nth-child(3) {
+	#wrapper .petition_list_item .details .detail:nth-child(4) {
 		margin-left: 49px;
 		position: relative;
 		display: inline-block;
