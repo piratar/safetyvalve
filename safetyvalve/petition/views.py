@@ -20,6 +20,8 @@ from django.shortcuts import render, get_object_or_404
 from django.template import Context
 from django.utils.translation import ugettext
 
+from althingi.althingi_settings import CURRENT_SESSION_NUM
+
 from safetyvalve.mail import create_email
 
 from petition.models import Petition
@@ -31,7 +33,7 @@ from utils import convert_petition_to_plaintext_email
 
 def all(request):
 
-    petitions = Petition.objects.all().order_by('-time_published')
+    petitions = Petition.objects.filter(external_id__startswith='%s.' % CURRENT_SESSION_NUM).order_by('-time_published')
 
     return index(request, 'All Issues', petitions)
 
@@ -290,10 +292,10 @@ def index(request, page_title, petitions):
 def popular(request):
 
     def get_popular_petitions():
-        return Petition.objects \
-                       .annotate(num_signatures=Count('signature')) \
-                       .filter(num_signatures__gte=settings.POPULAR_SIGNATURE_THRESHOLD) \
-                       .order_by('-num_signatures')
+        return Petition.objects.annotate(num_signatures=Count('signature')).filter(
+            num_signatures__gte=settings.POPULAR_SIGNATURE_THRESHOLD,
+            external_id__startswith=CURRENT_SESSION_NUM
+        ).order_by('-num_signatures')
     #petitions = cached_or_function('popular__petitions', get_popular_petitions, settings.PETITION_LIST_CACHE_TIMEOUT)
     petitions = get_popular_petitions()
 
