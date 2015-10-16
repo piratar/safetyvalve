@@ -3,6 +3,8 @@ from django.db import models
 from django.db.models import Q
 from django.contrib.auth.models import User
 
+from althingi.althingi_settings import CURRENT_SESSION_NUM
+
 from person.models import UserAuthentication
 
 class Source(models.Model):
@@ -34,7 +36,7 @@ class PetitionManager(models.Manager):
                 kwargs = {'content__icontains': word}
                 q = q | Q(**kwargs)
 
-            result_part = Petition.objects.filter(q)
+            result_part = Petition.objects.filter(q, external_id__startswith=CURRENT_SESSION_NUM)
 
             results = results | result_part
 
