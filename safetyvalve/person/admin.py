@@ -1,6 +1,5 @@
-
 from django.contrib import admin
-from models import UserAuthentication
+from .models import UserAuthentication
 
 
 class UserAuthenticationAdmin(admin.ModelAdmin):

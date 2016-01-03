@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import urllib
+from urllib.request import urlopen
+
 from xml.dom import minidom
 
-from models import Session, Issue, Document
+from .models import Session, Issue, Document
 
-from althingi_settings import *
+from .althingi_settings import *
 
 ISSUE_LIST_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/?lthing=%d'
 ISSUE_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/thingmal/?lthing=%d&malnr=%d'
@@ -24,11 +25,11 @@ def update_issues():
 
     session, created = Session.objects.get_or_create(session_num=session_num)
     if created:
-        print 'Added session: %s' % session_num
+        print('Added session: %s' % session_num)
     else:
-        print 'Already have session: %s' % session_num
+        print('Already have session: %s' % session_num)
 
-    issue_list_xml = minidom.parse(urllib.urlopen(ISSUE_LIST_URL % session_num))
+    issue_list_xml = minidom.parse(urlopen(ISSUE_LIST_URL % session_num))
 
     issues_xml = issue_list_xml.getElementsByTagName(u'mál')
 
@@ -47,7 +48,7 @@ def update_issues():
         if issue_try.count() > 0:
             issue = issue_try[0]
 
-            print 'Already have issue: %s' % issue
+            print('Already have issue: %s' % issue)
         else:
             issue = Issue()
             issue.issue_num = issue_num
@@ -57,10 +58,10 @@ def update_issues():
             issue.session = session
             issue.save()
 
-            print 'Added issue: %s' % issue
+            print('Added issue: %s' % issue)
 
         # Import the issue's documents.
-        issue_xml = minidom.parse(urllib.urlopen(ISSUE_URL % (session_num, issue.issue_num)))
+        issue_xml = minidom.parse(urlopen(ISSUE_URL % (session_num, issue.issue_num)))
         docs_xml = issue_xml.getElementsByTagName(u'þingskjöl')[0].getElementsByTagName(u'þingskjal')
 
         lowest_doc_num = 0  # Lowest document number will always be the main document of the issue.
@@ -77,7 +78,7 @@ def update_issues():
             html_paths_xml = paths_xml[0].getElementsByTagName(u'html') 
             pdf_paths_xml = paths_xml[0].getElementsByTagName(u'pdf')
             if len(html_paths_xml) == 0:
-                print 'Document not published: %d' % doc_num
+                print('Document not published: %d' % doc_num)
                 continue
 
             path_html = html_paths_xml[0].firstChild.nodeValue
@@ -92,7 +93,7 @@ def update_issues():
             if doc_try.count() > 0:
                 doc = doc_try[0]
 
-                print 'Already have document: %s' % doc
+                print('Already have document: %s' % doc)
             else:
                 doc = Document()
                 doc.doc_num = doc_num
@@ -103,15 +104,15 @@ def update_issues():
                 doc.issue = issue
                 doc.save()
 
-                print '- Added document: %s' % doc
+                print('- Added document: %s' % doc)
 
         if lowest_doc_num == 0:
             issue.delete()
-            print '- Has no documents, being removed'
+            print('- Has no documents, being removed')
             continue
 
         main_doc = Document.objects.get(issue=issue, doc_num=lowest_doc_num)
         main_doc.is_main = True
         main_doc.save()
 
-        print '- Main document determined to be: %s' % main_doc
+        print('- Main document determined to be: %s' % main_doc)

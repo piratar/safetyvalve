@@ -24,7 +24,7 @@ ALLOWED_HOSTS = []
 # overwritten in the local settings import
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except ImportError:
     raise Exception('You need to set up local_settings.py (see local_settings.py-example')
 

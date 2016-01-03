@@ -2,7 +2,7 @@
 import json
 
 from math import floor
-from urllib import urlencode
+from urllib.parse import urlencode
 
 from django import forms
 from django.conf import settings

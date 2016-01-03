@@ -7,7 +7,7 @@ import base64
 
 from math import floor
 from datetime import datetime, timedelta
-from urllib import urlencode, quote_plus, unquote_plus
+from urllib.parse import urlencode, quote_plus, unquote_plus
 
 from django import forms
 from django.db.models import Count, Q
@@ -29,8 +29,8 @@ from petition.models import Petition
 
 from icekey.utils import authenticate
 
-from models import Signature
-from utils import convert_petition_to_plaintext_email
+from .models import Signature
+from .utils import convert_petition_to_plaintext_email
 
 def all(request):
 
@@ -202,7 +202,7 @@ def index(request, page_title, petitions, search_terms=""):
 
     # Seems like this should be taken care of at an earlier stage. -helgi@binary.is, 2014-05-19
     for i in petitions:
-        if isinstance(i.name, unicode):
+        if isinstance(i.name, str):
             i.name = i.name.encode('utf-8')
 
 

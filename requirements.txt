@@ -1,5 +1,3 @@
 django==1.6.5
 beautifulsoup4
-mysql-python
-suds
 lxml

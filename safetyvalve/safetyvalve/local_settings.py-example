@@ -40,7 +40,7 @@ ALLOWED_HOSTS = []
 
 # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 # at the DATABASE_ENGINE
-DATABASE_ENGINE = 'django.db.backends.'
+DATABASE_ENGINE = 'django.db.backends.sqlite3'
 DATABASE_HOST = ''
 DATABASE_PORT = ''
 DATABASE_NAME = ''
@@ -48,7 +48,7 @@ DATABASE_USER = ''
 DATABASE_PASSWORD = ''
 
 # Required!
-SECRET_KEY = ''
+SECRET_KEY = 'some-nice-key'
 
 # To test email smtp:
 # $ sudo /usr/lib/python2.7/smtpd.py -n -c DebuggingServer 127.0.0.1:25

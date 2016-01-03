@@ -1,6 +1,6 @@
 # -*- coding: utf-8
 import re
-import urllib
+from urllib.request import urlopen
 
 from bs4 import BeautifulSoup
 
@@ -79,7 +79,11 @@ class Document(models.Model):
             petition.resource = self.path_html
 
             # Get the content of the petition.
-            content = urllib.urlopen(self.path_html).read().replace('&nbsp;', ' ')
+            url_data = urlopen(self.path_html).read().decode('utf-8')
+            print(url_data)
+            
+            content = url_data.replace('&nbsp;', ' ')
+            #content = urlopen(self.path_html).read().replace('&nbsp;', ' ')
             soup = BeautifulSoup(content)  # Turn it into proper XML.
             soup = soup.find('div', {'class': lambda x: x and re.search('(\s|^)article(\s|$)', x)})
             soup = soup.find('div', {'class': 'boxbody'})

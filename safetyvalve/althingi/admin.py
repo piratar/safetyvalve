@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Session, Issue, Document
+from .models import Session, Issue, Document
 
 
 class SessionAdmin(admin.ModelAdmin):
