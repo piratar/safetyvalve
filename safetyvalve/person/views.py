@@ -50,7 +50,7 @@ def get_user_signatures(request):
         else:
             sort_fields = ['date_created']
 
-        for i in xrange(len(sort_fields)):
+        for i in range(len(sort_fields)):
             if sort_dir == "desc":
                 sort_fields[i] = "-"+sort_fields[i]
 
@@ -92,7 +92,6 @@ def logout_view(request):
 
 def my_page(request):
     form_success = ""
-
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('login'))
 

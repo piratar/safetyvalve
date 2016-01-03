@@ -139,7 +139,7 @@ def get_public_signatures(request, petition_id):
     else:
         sort_fields = ['date_created']
 
-    for i in xrange(len(sort_fields)):
+    for i in range(len(sort_fields)):
         if sort_dir == "desc":
             sort_fields[i] = "-"+sort_fields[i]
 
@@ -175,10 +175,15 @@ def index(request, page_title, petitions, search_terms=""):
 
     # p = cached_or_function('popular__petitions', get_petitions, 60 * 5)
 
-    if request.META['SERVER_NAME'] in settings.FAKE_AUTH_URLS and hasattr(settings, 'FAKE_AUTH'):
+    """
+    # get_host() returns hostname with port if it exists. 
+    Make sure you add 'localhost:8000' to FAKE_AUTH_URLS if using FAKE_AUTH
+    """
+    
+    if request.get_host() in settings.FAKE_AUTH_URLS and hasattr(settings, 'FAKE_AUTH'):
         if request.GET.get('fake-auth'):
             request.session['fake_auth'] = request.GET.get('fake-auth', '').lower() == 'on'
-
+            
 
     paginator = Paginator(petitions, settings.INDEX_PAGE_ITEMS)
 
@@ -196,7 +201,7 @@ def index(request, page_title, petitions, search_terms=""):
 
     page = int(page) #seems to come back as a unicode string in some occasions
 
-    if request.META['SERVER_NAME'] in settings.FAKE_AUTH_URLS and hasattr(settings, 'FAKE_AUTH'):
+    if request.get_host() in settings.FAKE_AUTH_URLS and hasattr(settings, 'FAKE_AUTH'):
         if request.GET.get('fake-auth'):
             request.session['fake_auth'] = request.GET.get('fake-auth', '').lower() == 'on'
 
@@ -343,7 +348,6 @@ def search_terms(request):
 
 
 def search_results(request, search_terms):
-    print(search_terms.encode('utf-8'))
     clean_search_terms = unquote_plus(search_terms)
 
     petitions = Petition.objects.search(clean_search_terms)

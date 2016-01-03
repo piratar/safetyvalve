@@ -101,7 +101,7 @@
       
 
       <div id="content">
-        {% if request.META.SERVER_NAME == 'localhost' %}
+        {% if 'localhost' in request.get_host %}
         <a href="/?fake-auth={% if request.session.fake_auth %}off{% else %}on{% endif %}"
            id="fake-auth-link">Fake auth: {% if request.session.fake_auth %}on{% else %}off{% endif %}</a>
           <style>

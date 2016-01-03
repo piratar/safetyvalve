@@ -54,8 +54,9 @@ def authenticate(request, redirect_url):
     user = request.user
     token = request.GET.get('token')
 
-    if request.session.get('fake_auth') and request.META['SERVER_NAME'] in settings.FAKE_AUTH_URLS and hasattr(settings, 'FAKE_AUTH'):
-        fake_auth = settings.FAKE_AUTH
+
+    if request.session.get('fake_auth') and request.get_host() in settings.FAKE_AUTH_URLS and hasattr(settings, 'FAKE_AUTH'):
+        fake_auth = settings.FAKE_AUTH         
         if not token:
             curr_url = request.get_full_path().split('?')[0]
             fake_token = binascii.b2a_hex(os.urandom(10))
