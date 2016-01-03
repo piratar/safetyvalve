@@ -343,8 +343,8 @@ def search_terms(request):
 
 
 def search_results(request, search_terms):
-
-    clean_search_terms = unquote_plus(search_terms.encode("utf-8"))
+    print(search_terms.encode('utf-8'))
+    clean_search_terms = unquote_plus(search_terms)
 
     petitions = Petition.objects.search(clean_search_terms)
 
