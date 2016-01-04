@@ -416,7 +416,7 @@ def sign_receipt(request, petition_id):
     s = get_object_or_404(Signature, user=request.user, petition=p)
 
     subject = u'Staðfesting undirskriftar á Ventill.is - ' + s.petition.name
-
+    
     template = 'email/sign_notification.%s.txt' % s.stance
     template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
     message = codecs.open(template_path, 'r', 'utf-8').read()

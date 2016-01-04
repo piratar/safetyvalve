@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans page_title %}{% endblock %}
 
 {% block javascript %}
 {{block.super}}
-        <script src="{{STATIC_URL}}petition/js/petition.js" type="text/javascript"></script>
-        <script src="{{STATIC_URL}}petition/js/jquery.sharrre.min.js" type="text/javascript"></script>
+        <script src="{% static 'petition/js/petition.js' %}" type="text/javascript"></script>
+        <script src="{% static 'petition/js/jquery.sharrre.min.js' %}" type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}

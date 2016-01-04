@@ -3,7 +3,7 @@ from django.conf.urls import patterns, url
 from petition import views
 
 
-urlpatterns = patterns('',
+urlpatterns = [
 #    url(r'^vinsaelt/$', views.popular, name='popular'),
     
     url(r'^(?P<petition_id>\d+)/$', views.detail, name='detail'),
@@ -17,4 +17,4 @@ urlpatterns = patterns('',
     url(r'^search/$', views.search_terms, name='search_terms'),
     url(r'^search_results/(?P<search_terms>.+)$', views.search_results, name='search_results'),
     url(r'^audkenna/$', views.authenticate, name='authenticate'),
-)
+]
