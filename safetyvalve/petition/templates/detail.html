@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load static %}
-
 {% block css %}
 {{block.super}}
     <link href="{% static 'petition/css/jquery.dataTables.css' %}" rel="stylesheet">
@@ -17,8 +16,8 @@
 {% block javascript %}
 {{block.super}}
     <script src="{% static 'petition/js/petition.js' %}" type="text/javascript"></script>
-    <script src="{{STATIC_URL}}petition/js/jquery.sharrre.min.js" type="text/javascript"></script>
-    <script src="{{STATIC_URL}}petition/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="{% static 'petition/js/jquery.sharrre.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'petition/js/jquery.dataTables.min.js' %}" type="text/javascript"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {

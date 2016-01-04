@@ -7,6 +7,7 @@ import base64
 
 from math import floor
 from datetime import datetime, timedelta
+from django.utils import timezone
 from urllib.parse import urlencode, quote_plus, unquote_plus
 
 from django import forms
@@ -19,6 +20,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.template import Context
+from django.template.loader import render_to_string
 from django.utils.translation import ugettext
 
 from althingi.althingi_settings import CURRENT_SESSION_NUM
@@ -44,7 +46,7 @@ def cached_or_function(key, fun, timeout=60 * 5, *args, **kwargs):
 
     if x is None:
         item = fun(*args, **kwargs)
-        cache.set(key, (item, datetime.now()), timeout)
+        cache.set(key, (item, timezone.now()), timeout)
         return item
 
     return x[0]
@@ -308,7 +310,7 @@ def index(request, page_title, petitions, search_terms=""):
 def popular(request):
 
     def get_popular_petitions():
-        time_limit = datetime.now() - timedelta(days=3)
+        time_limit = timezone.now() - timedelta(days=3)
         return Petition.objects.annotate(num_signatures=Count('signature')).filter(
             Q(num_signatures__gte=settings.POPULAR_SIGNATURE_THRESHOLD) | Q(time_published__gt=time_limit),
             external_id__startswith=CURRENT_SESSION_NUM
@@ -415,33 +417,27 @@ def sign_receipt(request, petition_id):
     p = get_object_or_404(Petition, pk=petition_id)
     s = get_object_or_404(Signature, user=request.user, petition=p)
 
-    subject = u'Staðfesting undirskriftar á Ventill.is - ' + s.petition.name
-    
-    template = 'email/sign_notification.%s.txt' % s.stance
-    template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
-    message = codecs.open(template_path, 'r', 'utf-8').read()
-    message = message % {
+    subject = 'Staðfesting undirskriftar á Ventill.is - ' + s.petition.name
+
+    msg_txt = render_to_string('email/sign_notification.%s.txt' % s.stance, {                
         'name': request.user.first_name,
         'token': s.authentication.token,
         'subject': subject.replace,
         'title': s.petition.name,
         'text': convert_petition_to_plaintext_email(s.petition.content),
         'detail_url': settings.INSTANCE_URL + reverse('detail', args=(petition_id, ))
-        }
+        })
 
-    template = 'email/sign_notification.%s.html' % s.stance
-    template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
-    html = codecs.open(template_path, 'r', 'utf-8').read()
-    html = html % {
+    msg_html = render_to_string('email/sign_notification.%s.html' % s.stance, {
         'name': request.user.first_name,
         'token': s.authentication.token,
         'subject': subject,
         'title': s.petition.name,
         'text': s.petition.content,
         'detail_url': settings.INSTANCE_URL + reverse('detail', args=(petition_id, ))
-        }
+        })
 
-    ret = _receipt(request, petition_id, subject, message, html)
+    ret = _receipt(request, petition_id, subject, msg_txt, msg_html)
 
     if isinstance(ret, HttpResponseRedirect):
         s.mail_sent = True
@@ -454,33 +450,27 @@ def unsign_receipt(request, petition_id):
     p = get_object_or_404(Petition, pk=petition_id)
     s = get_object_or_404(Signature, user=request.user, petition=p)
 
-    subject = u'Staðfesting á fjarlægingu undirskriftar á Ventill.is - ' + s.petition.name
+    subject = 'Staðfesting á fjarlægingu undirskriftar á Ventill.is - ' + s.petition.name
 
-    template = 'email/unsign_notification.%s.txt' % s.stance
-    template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
-    message = codecs.open(template_path, 'r', 'utf-8').read()
-    message = message % {
+    msg_txt = render_to_string('email/unsign_notification.%s.txt' % s.stance, {                    
         'name': request.user.first_name,
         'token': s.authentication.token,
         'subject': subject,
         'title': s.petition.name,
         'text': convert_petition_to_plaintext_email(s.petition.content),
         'detail_url': settings.INSTANCE_URL + reverse('detail', args=(petition_id, ))
-        }
+        })
 
-    template = 'email/unsign_notification.%s.html' % s.stance
-    template_path = os.path.join(settings.TEMPLATE_DIRS[0], template)
-    html = codecs.open(template_path, 'r', 'utf-8').read()
-    html = html % {
+    msg_html = render_to_string('email/unsign_notification.%s.html' % s.stance, {                    
         'name': request.user.first_name,
         'token': s.authentication.token,
         'subject': subject,
         'title': s.petition.name,
         'text': s.petition.content,
         'detail_url': settings.INSTANCE_URL + reverse('detail', args=(petition_id, ))
-        }
+        })
 
-    ret = _receipt(request, petition_id, subject, message, html)
+    ret = _receipt(request, petition_id, subject, msg_txt, msg_html)
 
     #if isinstance(ret, HttpResponseRedirect):
     s.delete()

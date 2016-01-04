@@ -1,15 +1,15 @@
-Sæl(l) %(name)s!
+Sæl(l) {{name}}!
 
 Takk fyrir að nota kerfið okkar.
 
 Undirskriftasöfnunin finnst hér:
-%(detail_url)s
+{{detail_url}}
 
 Hér með staðfestist að þú hafir tekið til baka stuðning þinn við eftirfarandi þingmál:
 
 ------------------------------------
 
-%(text)s
+{{text}}
 
 ------------------------------------
 

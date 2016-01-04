@@ -1,15 +1,15 @@
-Sæl(l) %(name)s!
+Sæl(l) {{name}}!
 
 Takk fyrir að nota kerfið okkar.
 
 Undirskriftasöfnunin gegn þingmálinu finnst hér:
-%(detail_url)s
+{{detail_url}}
 
 Hér með staðfestist að þú hafir fjarlægt mótmæli þín gegn eftirfarandi þingmáli:
 
 ------------------------------------
 
-%(text)s
+{{text}}
 
 ------------------------------------
 
