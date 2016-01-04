@@ -25,7 +25,8 @@ then:
     cp safetyvalve/local_settings.py{-example,}
     # Edit the safetyvalve/local_settings.py to set database info and config your local instance
     # e.g. vim safetyvalve/local_settings.py
-    python manage.py syncdb (if you haven't already done so)
+    python manage.py makemigrations petition althingi person
+    python manage.py migrate
     python manage.py collectstatic (optional in dev)
     python manage.py updatealthingi (will poll for frumvarp)
     python manage.py runserver (to run a dev server)
