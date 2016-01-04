@@ -63,7 +63,7 @@ class Petition(models.Model):
     class Meta:
         ordering = ['-time_published', 'name']
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 class Signature(models.Model):
@@ -79,5 +79,5 @@ class Signature(models.Model):
 
     mail_sent = models.BooleanField(default=False)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s signed "%s"' % (self.user, self.petition)

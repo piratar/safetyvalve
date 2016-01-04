@@ -12,7 +12,7 @@ from petition.models import Petition, Source
 class Session(models.Model):
     session_num = models.IntegerField(unique=True)  # IS: Þingnúmer
 
-    def __unicode__(self):
+    def __str__(self):
         return u'Session %d' % self.session_num
 
 
@@ -32,12 +32,12 @@ class Issue(models.Model):
     description = models.TextField()
 
     def save(self, *args, **kwargs):
-        models.Model.save(self, *args, **kwargs)
+        super(Issue, self).save(*args, **kwargs)
 
-        if self.issue_type == 'l' or self.issue_type == 'a':
-            external_id = "%s.%s" % (self.session.session_num, self.issue_num)
-
-            if Petition.objects.filter(external_id=external_id).count() == 0:
+        if self.issue_type == 'l' or self.issue_type == 'a':            
+            external_id = "%s.%s" % (self.session.session_num, self.issue_num)            
+            print('EXTERNAL ID: ', external_id)
+            if not Petition.objects.filter(external_id=external_id).exists():
 
                 althingi_source = Source.objects.get(name='althingi')
 
@@ -49,7 +49,7 @@ class Issue(models.Model):
                 petition.description = self.description
                 petition.save()
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%d (%s)' % (self.issue_num, self.name)
 
 
@@ -67,9 +67,10 @@ class Document(models.Model):
     xhtml = models.TextField()
 
     def save(self, *args, **kwargs):
+        super(Document, self).save(*args, **kwargs)
         if self.is_main and (self.issue.issue_type == 'l' or self.issue.issue_type == 'a'):
             external_id = "%s.%s" % (self.issue.session.session_num, self.issue.issue_num)
-
+            
             petition = Petition.objects.get(external_id=external_id)
 
             # Time of publication (not necessarily creation)
@@ -79,8 +80,7 @@ class Document(models.Model):
             petition.resource = self.path_html
 
             # Get the content of the petition.
-            url_data = urlopen(self.path_html).read().decode('utf-8')
-            print(url_data)
+            url_data = urlopen(self.path_html).read().decode('utf-8')           
             
             content = url_data.replace('&nbsp;', ' ')
             #content = urlopen(self.path_html).read().replace('&nbsp;', ' ')
@@ -111,8 +111,8 @@ class Document(models.Model):
             petition.content = self.xhtml
 
             petition.save()
+            
+        #models.Model.save(self, *args, **kwargs)
 
-        models.Model.save(self, *args, **kwargs)
-
-    def __unicode__(self):
+    def __str__(self):
         return u'%d (%s)' % (self.doc_num, self.doc_type)

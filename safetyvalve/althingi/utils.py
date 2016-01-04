@@ -4,9 +4,10 @@ from urllib.request import urlopen
 
 from xml.dom import minidom
 
-from .models import Session, Issue, Document
+from .models import Session, Issue, Document, Source, Petition
 
 from .althingi_settings import *
+from django.utils import timezone
 
 ISSUE_LIST_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/?lthing=%d'
 ISSUE_URL = 'http://www.althingi.is/altext/xml/thingmalalisti/thingmal/?lthing=%d&malnr=%d'
@@ -20,7 +21,9 @@ def update_issues():
     """Fetch a list of "recent" petitions on Althingi and update our database
     accordingly.
     """
-
+    obj, created = Source.objects.update_or_create(
+    name='althingi', date_created=timezone.now())
+    
     session_num = get_last_session_num()
 
     session, created = Session.objects.get_or_create(session_num=session_num)
@@ -42,12 +45,10 @@ def update_issues():
 
         issue_type = issue_xml.getElementsByTagName(u'málstegund')[0].getAttribute(u'málstegund')
 
-        issue_num = int(issue_xml.getAttribute(u'málsnúmer'))
-
+        issue_num = int(issue_xml.getAttribute(u'málsnúmer'))        
         issue_try = Issue.objects.filter(issue_num=issue_num, session=session)
         if issue_try.count() > 0:
-            issue = issue_try[0]
-
+            issue = issue_try[0]            
             print('Already have issue: %s' % issue)
         else:
             issue = Issue()
@@ -70,7 +71,7 @@ def update_issues():
             if int(doc_xml.getAttribute(u'málsnúmer')) != issue.issue_num or int(doc_xml.getAttribute(u'þingnúmer')) != session_num:
                 continue
 
-            doc_num = int(doc_xml.getAttribute(u'skjalsnúmer'))
+            doc_num = int(doc_xml.getAttribute(u'skjalsnúmer'))            
             doc_type = doc_xml.getElementsByTagName(u'skjalategund')[0].firstChild.nodeValue
             time_published = doc_xml.getElementsByTagName(u'útbýting')[0].firstChild.nodeValue + "+00:00"
 
