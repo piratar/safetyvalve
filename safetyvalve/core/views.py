@@ -1,15 +1,15 @@
 from django.shortcuts import render
-from django.template import Context
+#from django.template import Context
 
 from safetyvalve.mail import create_email
 
 
 def about_us(request):
-    return render(request, 'about_us.html', Context({'page_title': 'About Us'}))
+    return render(request, 'about_us.html', {'page_title': 'About Us'})
 
 
 def authentication_error(request, error=""):
-    return render(request, 'authentication_error.html', Context({'page_title': 'Authentication Error', 'error': error}))
+    return render(request, 'authentication_error.html', {'page_title': 'Authentication Error', 'error': error})
 
 
 def test_mail(request):
