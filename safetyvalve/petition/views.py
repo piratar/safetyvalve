@@ -19,7 +19,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.template import Context
+#from django.template import Context
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
 
@@ -76,12 +76,12 @@ def detail(request, petition_id):
 
     petition.total_count = petition.oppose_count + petition.endorse_count
 
-    context = Context({
+    context = {
         'p': petition,
         'stance': stance,
         'signatures_url': reverse('get_public_signatures', args=(petition_id, )) + '' ,
         'INSTANCE_URL' : settings.INSTANCE_URL
-    })
+    }
 
     return render(request, 'detail.html', context)
 
@@ -292,7 +292,7 @@ def index(request, page_title, petitions, search_terms=""):
         oppose_petition_ids = [s.petition_id for s in signatures if s.stance == 'oppose']
         endorse_petition_ids = [s.petition_id for s in signatures if s.stance == 'endorse']
 
-    context = Context({
+    context = {
         'petitions': petitions,
         'instance_url': settings.INSTANCE_URL,
         'oppose_petition_ids': oppose_petition_ids,
@@ -302,7 +302,7 @@ def index(request, page_title, petitions, search_terms=""):
         'page_title': page_title,
         'INSTANCE_URL': settings.INSTANCE_URL,
         'search_terms': search_terms
-    })
+    }
 
     return render(request, 'index.html', context)
 

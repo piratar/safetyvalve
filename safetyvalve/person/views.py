@@ -12,7 +12,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import HttpResponse, HttpResponseRedirect
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, render_to_response, get_object_or_404
-from django.template import Context
+#from django.template import Context
 from django.utils.translation import ugettext as _
 
 from petition.models import Signature
@@ -117,12 +117,12 @@ def my_page(request):
     else:
         form = EmailForm()
 
-    context = Context({
+    context = {
         'signatures_url': settings.INSTANCE_URL + reverse('get_user_signatures') + '',
         'page_title': 'My Page',
         'form': form,
         'form_success': form_success
-    })
+    }
 
     return render(request, 'person/my_page.html', context)
 
